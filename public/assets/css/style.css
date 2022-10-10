@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
+.font-acme {
+    font-family: 'Acme', sans-serif;
+}
+
 .bg-biru {
     background-color: #083AA9;
 }

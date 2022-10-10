@@ -1,7 +1,7 @@
 <div class="container-fluid p-0">
     <header class="bg-biru d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2 border-bottom">
         <a href="/" class="d-flex align-items-center col-md-2 justify-content-center mb-3 mb-md-0 me-md-auto text-decoration-none">
-            <img src="/assets/img/brand-tegal.png" class="bi me-2" height="55"></img>
+            <img src="/assets/img/brand-tegal.png" class="bi me-2" height="55" alt="Brand Tegal">
         </a>
 
         <ul class="nav nav-pills col-md-7 d-flex justify-content-center">

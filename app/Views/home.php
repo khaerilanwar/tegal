@@ -46,11 +46,77 @@
 <!-- JUDUL -->
 <div class="container mt-5 mb-2">
     <div class="row">
-        <div class="col">
-            <h3 class="text-center comic">REKOMENDASI PARIWISATA KABUPATEN TEGAL</h3>
+        <div class="col border-bottom border-3 border-dark">
+            <h2 class="text-center font-acme pb-2">REKOMENDASI PARIWISATA KABUPATEN TEGAL</h2>
         </div>
     </div>
 </div>
 <!-- END JUDUL -->
+
+<!-- ALBUM  -->
+<div class="album py-5 bg-light">
+    <div class="container">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+            <!-- PERALBUM SATU FOTO -->
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img class="bd-placeholder-img card-img-top" src="/assets/img/wahana-dufan-1.jpg" width="100%" height="225">
+
+                    <div class="card-body">
+                        <h5>Dunia Fantasi | Jakarta</h5>
+                        <p class="card-text">Sebuah taman bermain yang cocok untuk liburan sekeluarga dan seru.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <span class="fs-5 fw-bold">HTM 20.000 / Orang</span>
+                            </div>
+                            <a href="" class="btn btn-primary">Pesan Tiket</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END PERALBUM SATU FOTO -->
+            <!-- PERALBUM SATU FOTO -->
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img class="bd-placeholder-img card-img-top" src="/assets/img/wahana-dufan-1.jpg" width="100%" height="225">
+
+                    <div class="card-body">
+                        <h5>Dunia Fantasi | Jakarta</h5>
+                        <p class="card-text">Sebuah taman bermain yang cocok untuk liburan sekeluarga dan seru.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <span class="fs-5 fw-bold">HTM 20.000 / Orang</span>
+                            </div>
+                            <a href="" class="btn btn-primary">Pesan Tiket</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END PERALBUM SATU FOTO -->
+            <!-- PERALBUM SATU FOTO -->
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img class="bd-placeholder-img card-img-top" src="/assets/img/wahana-dufan-1.jpg" width="100%" height="225">
+
+                    <div class="card-body">
+                        <h5>Dunia Fantasi | Jakarta</h5>
+                        <p class="card-text">Sebuah taman bermain yang cocok untuk liburan sekeluarga dan seru.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <span class="fs-5 fw-bold">HTM 20.000 / Orang</span>
+                            </div>
+                            <a href="" class="btn btn-primary">Pesan Tiket</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END PERALBUM SATU FOTO -->
+
+        </div>
+    </div>
+</div>
+<!-- END ALBUM -->
 
 <?php $this->endSection(); ?>
