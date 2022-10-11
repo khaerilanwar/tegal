@@ -46,7 +46,7 @@
 <!-- GARIS BAWAH -->
 <div class="container-fluid bg-biru py-2 garis-bawah">
     <div class="row">
-        <div class="col">
+        <div class="col-sm">
             <h4 class="text-white text-center">Aneka Tempat Wisata di Kabupaten Tegal</h4>
         </div>
     </div>
@@ -56,7 +56,7 @@
 <!-- JUDUL -->
 <div class="container mt-5 mb-2">
     <div class="row">
-        <div class="col border-bottom border-3 border-dark">
+        <div class="col-sm border-bottom border-3 border-dark">
             <h2 class="text-center font-acme pb-2">REKOMENDASI PARIWISATA KABUPATEN TEGAL</h2>
         </div>
     </div>
@@ -70,7 +70,7 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
             <!-- PERALBUM SATU FOTO -->
-            <div class="col">
+            <div class="col-sm">
                 <div class="card shadow-sm">
                     <img class="bd-placeholder-img card-img-top" src="/assets/img/wahana-dufan-1.jpg" width="100%" height="225">
 
@@ -88,7 +88,7 @@
             </div>
             <!-- END PERALBUM SATU FOTO -->
             <!-- PERALBUM SATU FOTO -->
-            <div class="col">
+            <div class="col-sm">
                 <div class="card shadow-sm">
                     <img class="bd-placeholder-img card-img-top" src="/assets/img/wahana-dufan-1.jpg" width="100%" height="225">
 
@@ -106,7 +106,7 @@
             </div>
             <!-- END PERALBUM SATU FOTO -->
             <!-- PERALBUM SATU FOTO -->
-            <div class="col">
+            <div class="col-sm">
                 <div class="card shadow-sm">
                     <img class="bd-placeholder-img card-img-top" src="/assets/img/wahana-dufan-1.jpg" width="100%" height="225">
 
@@ -124,7 +124,7 @@
             </div>
             <!-- END PERALBUM SATU FOTO -->
             <!-- PERALBUM SATU FOTO -->
-            <div class="col">
+            <div class="col-sm">
                 <div class="card shadow-sm">
                     <img class="bd-placeholder-img card-img-top" src="/assets/img/wahana-dufan-1.jpg" width="100%" height="225">
 
@@ -142,7 +142,7 @@
             </div>
             <!-- END PERALBUM SATU FOTO -->
             <!-- PERALBUM SATU FOTO -->
-            <div class="col">
+            <div class="col-sm">
                 <div class="card shadow-sm">
                     <img class="bd-placeholder-img card-img-top" src="/assets/img/wahana-dufan-1.jpg" width="100%" height="225">
 
@@ -160,7 +160,7 @@
             </div>
             <!-- END PERALBUM SATU FOTO -->
             <!-- PERALBUM SATU FOTO -->
-            <div class="col">
+            <div class="col-sm">
                 <div class="card shadow-sm">
                     <img class="bd-placeholder-img card-img-top" src="/assets/img/wahana-dufan-1.jpg" width="100%" height="225">
 
