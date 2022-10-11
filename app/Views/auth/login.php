@@ -31,7 +31,7 @@
                                             <label class="custom-control-label" for="customCheck">Ingat Saya</label>
                                         </div>
                                     </div>
-                                    <button href="index.html" class="btn btn-primary py-2 fs-5 btn-user btn-block">
+                                    <button href="index.html" class="btn btn-primary my-1 py-2 fs-5 btn-user btn-block">
                                         Masuk
                                     </button>
                                 </form>
