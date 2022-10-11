@@ -4,6 +4,10 @@
     font-family: 'Acme', sans-serif;
 }
 
+.garis-bawah {
+    border-radius: 0 0 20px 20px;
+}
+
 .bg-biru {
     background-color: #083AA9;
 }

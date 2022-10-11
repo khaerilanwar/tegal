@@ -11,21 +11,21 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="/assets/img/dufan-5.jpg" class="d-block w-100" alt="Dunia Fantasi">
+            <img src="/assets/img/flores.jpg" class="d-block w-100" alt="Dunia Fantasi">
             <div class="carousel-caption d-none d-md-block">
                 <h5>First slide label</h5>
                 <p>Some representative placeholder content for the first slide.</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="/assets/img/dufan-6.jpg" class="d-block w-100" alt="Dunia Fantasi">
+            <img src="/assets/img/restoran.jpg" class="d-block w-100" alt="Dunia Fantasi">
             <div class="carousel-caption d-none d-md-block">
                 <h5>Second slide label</h5>
                 <p>Some representative placeholder content for the second slide.</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="/assets/img/lombok.jpg" class="d-block w-100" alt="Dunia Fantasi">
+            <img src="/assets/img/bali.jpg" class="d-block w-100" alt="Dunia Fantasi">
             <div class="carousel-caption d-none d-md-block">
                 <h5>Second slide label</h5>
                 <p>Some representative placeholder content for the second slide.</p>
@@ -43,6 +43,16 @@
 </div>
 <!-- END CAROUSEL -->
 
+<!-- GARIS BAWAH -->
+<div class="container-fluid bg-biru py-2 garis-bawah">
+    <div class="row">
+        <div class="col">
+            <h4 class="text-white text-center">Aneka Tempat Wisata di Kabupaten Tegal</h4>
+        </div>
+    </div>
+</div>
+<!-- END GARIS BAWAH -->
+
 <!-- JUDUL -->
 <div class="container mt-5 mb-2">
     <div class="row">
@@ -59,6 +69,60 @@
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
+            <!-- PERALBUM SATU FOTO -->
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img class="bd-placeholder-img card-img-top" src="/assets/img/wahana-dufan-1.jpg" width="100%" height="225">
+
+                    <div class="card-body">
+                        <h5>Dunia Fantasi | Jakarta</h5>
+                        <p class="card-text">Sebuah taman bermain yang cocok untuk liburan sekeluarga dan seru.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <span class="fs-5 fw-bold">HTM 20.000 / Orang</span>
+                            </div>
+                            <a href="" class="btn btn-primary">Pesan Tiket</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END PERALBUM SATU FOTO -->
+            <!-- PERALBUM SATU FOTO -->
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img class="bd-placeholder-img card-img-top" src="/assets/img/wahana-dufan-1.jpg" width="100%" height="225">
+
+                    <div class="card-body">
+                        <h5>Dunia Fantasi | Jakarta</h5>
+                        <p class="card-text">Sebuah taman bermain yang cocok untuk liburan sekeluarga dan seru.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <span class="fs-5 fw-bold">HTM 20.000 / Orang</span>
+                            </div>
+                            <a href="" class="btn btn-primary">Pesan Tiket</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END PERALBUM SATU FOTO -->
+            <!-- PERALBUM SATU FOTO -->
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img class="bd-placeholder-img card-img-top" src="/assets/img/wahana-dufan-1.jpg" width="100%" height="225">
+
+                    <div class="card-body">
+                        <h5>Dunia Fantasi | Jakarta</h5>
+                        <p class="card-text">Sebuah taman bermain yang cocok untuk liburan sekeluarga dan seru.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <span class="fs-5 fw-bold">HTM 20.000 / Orang</span>
+                            </div>
+                            <a href="" class="btn btn-primary">Pesan Tiket</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END PERALBUM SATU FOTO -->
             <!-- PERALBUM SATU FOTO -->
             <div class="col">
                 <div class="card shadow-sm">
