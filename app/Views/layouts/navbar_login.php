@@ -13,8 +13,8 @@
         </ul>
 
         <div class="col-sm-3 d-flex justify-content-center">
-            <button type="button" class="btn btn-outline-light me-2">Login</button>
-            <button type="button" class="btn btn-primary">Sign-up</button>
+            <a href="auth" class="btn btn-outline-light me-2">Login</a>
+            <a href="auth/daftar" class="btn btn-primary">Sign-up</a>
         </div>
     </header>
 </div>
