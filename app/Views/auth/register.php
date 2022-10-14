@@ -13,10 +13,10 @@
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Daftar Akun!</h1>
                         </div>
-                        <form class="user" method="post" action="/auth/daftar">
+                        <form class="user" method="post" action="/registrasi/save">
                             <?= csrf_field(); ?>
                             <div class="form-group">
-                                <input type="text" name="nama" class="form-control form-control-user <?= ($validation->hasError('nama')) ? 'is-invalid' : ''; ?>" id="nama" placeholder="Nama Lengkap" value="<?= old('nama'); ?>" autofocus>
+                                <input type="text" name="nama" class="form-control form-control-user <?= ($validation->hasError('nama')) ? 'is-invalid' : ''; ?>" id="nama" placeholder="Nama Lengkap" value="<?= old('nama'); ?>">
                                 <div class="pl-3 invalid-feedback">
                                     <?= $validation->getError('nama'); ?>
                                 </div>
@@ -34,7 +34,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <select name="jenis_kelamin" class="<?= ($validation->hasError('jenis_kelamin')) ? 'is-invalid' : ''; ?> form-select px-3 py-3 form-select-md form-control-user text-muted rounded-5">
+                                <select name="jenis_kelamin" class="<?= ($validation->hasError('jenis_kelamin')) ? 'is-invalid' : ''; ?> form-select px-3 py-3 form-select-md form-control-user rounded-5">
                                     <option selected disabled value="">Pilih Jenis Kelamin</option>
                                     <option <?= (old('jenis_kelamin') == 'Laki-laki') ? 'selected' : ''; ?> value="Laki-laki">Laki - laki</option>
                                     <option <?= (old('jenis_kelamin') == 'Perempuan') ? 'selected' : ''; ?> value="Perempuan">Perempuan</option>
@@ -44,17 +44,20 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control form-control-user rounded-4 <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" id="alamat" name="alamat" rows="3" placeholder="Alamat Pengguna"></textarea>
+                                <textarea class="form-control form-control-user rounded-4 <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" id="alamat" name="alamat" rows="3" placeholder="Alamat Pengguna"><?= old('alamat'); ?></textarea>
                                 <div class="pl-3 invalid-feedback">
                                     <?= $validation->getError('alamat'); ?>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="password" class="form-control form-control-user" name="password1" id="password1" placeholder="Kata Sandi">
+                                    <input type="password" class="form-control form-control-user <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" name="password" id="password" placeholder="Kata Sandi">
+                                    <div class="pl-3 invalid-feedback">
+                                        <?= $validation->getError('password'); ?>
+                                    </div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="password" name="password2" class="form-control form-control-user" id="password2" placeholder="Konfirmasi Kata Sandi">
+                                    <input type="password" name="repassword" class="form-control form-control-user" id="repassword" placeholder="Konfirmasi Kata Sandi">
                                 </div>
                             </div>
                             <button type="submit" class="mt-3 btn btn-primary btn-user btn-block">
