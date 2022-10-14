@@ -13,29 +13,45 @@
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Daftar Akun!</h1>
                         </div>
-                        <form class="user">
-                            <div class="form-group row">
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name">
+                        <form class="user" method="post" action="/auth/daftar">
+                            <?= csrf_field(); ?>
+                            <div class="form-group">
+                                <input type="text" name="nama" class="form-control form-control-user <?= ($validation->hasError('nama')) ? 'is-invalid' : ''; ?>" id="nama" placeholder="Nama Lengkap" value="<?= old('nama'); ?>" autofocus>
+                                <div class="pl-3 invalid-feedback">
+                                    <?= $validation->getError('nama'); ?>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address">
+                                <input type="text" name="email" class="form-control form-control-user <?= ($validation->hasError('email')) ? 'is-invalid' : ''; ?>" value="<?= old('email'); ?>" id="email" placeholder="Alamat Email">
+                                <div class="pl-3 invalid-feedback">
+                                    <?= $validation->getError('email'); ?>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="no_telepon" class="form-control form-control-user <?= ($validation->hasError('no_telepon')) ? 'is-invalid' : ''; ?>" value="<?= old('no_telepon'); ?>" id="no_telepon" placeholder="Nomor Telepon">
+                                <div class="pl-3 invalid-feedback">
+                                    <?= $validation->getError('no_telepon'); ?>
+                                </div>
+                            </div>
+                            <select name="jenis_kelamin" class="form-select px-3 py-3 form-select-md mb-3 form-control-user text-muted rounded-5">
+                                <option selected>Pilih Jenis Kelamin</option>
+                                <option value="Laki-laki">Laki - laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                            <div class="form-group">
+                                <textarea class="form-control form-control-user rounded-4" id="alamat" name="alamat" rows="3" placeholder="Alamat Pengguna"></textarea>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                    <input type="password" class="form-control form-control-user" name="password1" id="password1" placeholder="Kata Sandi">
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
+                                    <input type="password" name="password2" class="form-control form-control-user" id="password2" placeholder="Konfirmasi Kata Sandi">
                                 </div>
                             </div>
-                            <a href="login.html" class="btn btn-primary btn-user btn-block">
+                            <button type="submit" class="mt-3 btn btn-primary btn-user btn-block">
                                 Daftar Akun
-                            </a>
+                            </button>
                         </form>
                         <hr>
                         <div class="text-center">

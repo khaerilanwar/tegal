@@ -10,7 +10,7 @@ class Wisata extends Migration
     {
         $this->forge->addField([
             'nama_wisata' => [
-                'type' => 'INT',
+                'type' => 'VARCHAR',
                 'constraint' => 11,
                 'unsigned' => true,
                 'auto_increment' => true
@@ -37,9 +37,12 @@ class Wisata extends Migration
             ]
         ]);
 
-        $this->forge->addKey('id');
+        $this->forge->addKey('id', true);
+        $this->forge->createTable('wisata');
     }
 
     public function down()
-    { }
+    {
+        $this->forge->dropTable('wisata');
+    }
 }

@@ -14,7 +14,7 @@
 
         <div class="col-sm-3 d-flex justify-content-center">
             <a href="auth" class="btn btn-outline-light me-2">Login</a>
-            <a href="auth/daftar" class="btn btn-primary">Sign-up</a>
+            <a href="auth/registrasi" class="btn btn-primary">Sign-up</a>
         </div>
     </header>
 </div>

@@ -40,7 +40,7 @@
                                     <a class="small text-decoration-none" href="forgot-password.html">Lupa Kata Sandi?</a>
                                 </div>
                                 <div class="text-center">
-                                    <a class="small text-decoration-none" href="/auth/daftar">Buat Akun!</a>
+                                    <a class="small text-decoration-none" href="/auth/registrasi">Buat Akun!</a>
                                 </div>
                             </div>
                         </div>
