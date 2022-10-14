@@ -59,9 +59,10 @@ class Auth extends BaseController
                     ]
                     ],
                     'password' => [
-                        'rules' => 'required',
+                        'rules' => 'required|password_strength[8]',
                         'errors' => [
-                            'required' => 'Password harus diisi'
+                            'required' => 'Password harus diisi',
+                            'password_strength' => 'Password harus menggunakan kombinasi angka dan huruf'
                         ]
                     ]
 
