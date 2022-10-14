@@ -33,13 +33,21 @@
                                     <?= $validation->getError('no_telepon'); ?>
                                 </div>
                             </div>
-                            <select name="jenis_kelamin" class="form-select px-3 py-3 form-select-md mb-3 form-control-user text-muted rounded-5">
-                                <option selected>Pilih Jenis Kelamin</option>
-                                <option value="Laki-laki">Laki - laki</option>
-                                <option value="Perempuan">Perempuan</option>
-                            </select>
                             <div class="form-group">
-                                <textarea class="form-control form-control-user rounded-4" id="alamat" name="alamat" rows="3" placeholder="Alamat Pengguna"></textarea>
+                                <select name="jenis_kelamin" class="<?= ($validation->hasError('jenis_kelamin')) ? 'is-invalid' : ''; ?> form-select px-3 py-3 form-select-md mb-3 form-control-user text-muted rounded-5">
+                                    <option selected disabled value="">Pilih Jenis Kelamin</option>
+                                    <option <?= (old('jenis_kelamin') == 'Laki-laki') ? 'selected' : ''; ?> value="Laki-laki">Laki - laki</option>
+                                    <option <?= (old('jenis_kelamin') == 'Perempuan') ? 'selected' : ''; ?> value="Perempuan">Perempuan</option>
+                                </select>
+                                <div class="pl-3 invalid-feedback">
+                                    <?= $validation->getError('jenis_kelamin'); ?>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control form-control-user rounded-4 <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" id="alamat" name="alamat" rows="3" placeholder="Alamat Pengguna"></textarea>
+                                <div class="pl-3 invalid-feedback">
+                                    <?= $validation->getError('alamat'); ?>
+                                </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">

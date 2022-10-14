@@ -40,11 +40,25 @@ class Auth extends BaseController
                 ]
             ],
             'no_telepon' => [
-                'rules' => 'required|trim',
+                'rules' => 'required|trim|numeric',
                 'errors' => [
-                    'required' => 'Nomor Telepon tidak boleh kosong'
+                    'required' => 'Nomor Telepon tidak boleh kosong',
+                    'numeric' => 'Masukkan nomor telepon yang benar'
                 ]
-            ]
+                ],
+                'jenis_kelamin' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Harap isi jenis kelamin'
+                    ]
+                    ],
+                    'alamat' => [
+                        'rules' => 'required',
+                        'errors' => [
+                            'required' => 'Alamat tidak boleh kosong'
+                        ]
+                    ]
+
         ];
 
         if (!$this->validate($rules)) {
