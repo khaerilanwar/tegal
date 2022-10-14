@@ -34,7 +34,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <select name="jenis_kelamin" class="<?= ($validation->hasError('jenis_kelamin')) ? 'is-invalid' : ''; ?> form-select px-3 py-3 form-select-md mb-3 form-control-user text-muted rounded-5">
+                                <select name="jenis_kelamin" class="<?= ($validation->hasError('jenis_kelamin')) ? 'is-invalid' : ''; ?> form-select px-3 py-3 form-select-md form-control-user text-muted rounded-5">
                                     <option selected disabled value="">Pilih Jenis Kelamin</option>
                                     <option <?= (old('jenis_kelamin') == 'Laki-laki') ? 'selected' : ''; ?> value="Laki-laki">Laki - laki</option>
                                     <option <?= (old('jenis_kelamin') == 'Perempuan') ? 'selected' : ''; ?> value="Perempuan">Perempuan</option>

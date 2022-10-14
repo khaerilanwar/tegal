@@ -52,10 +52,16 @@ class Auth extends BaseController
                         'required' => 'Harap isi jenis kelamin'
                     ]
                     ],
-                    'alamat' => [
+                'alamat' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Alamat tidak boleh kosong'
+                    ]
+                    ],
+                    'password' => [
                         'rules' => 'required',
                         'errors' => [
-                            'required' => 'Alamat tidak boleh kosong'
+                            'required' => 'Password harus diisi'
                         ]
                     ]
 
