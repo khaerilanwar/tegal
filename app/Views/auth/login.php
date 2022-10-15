@@ -46,7 +46,7 @@
             </form>
             <a href="#">Lupa Kata Sandi<br> </a>
             <div class="mt-2 text-center">
-                <a href="" class="fs-6" style="color: #59238F;">Belum punya akun? Daftar</a>
+                <a href="registrasi" class="fs-6" style="color: #59238F;">Belum punya akun? Daftar</a>
             </div>
         </div>
     </div>
