@@ -5,7 +5,7 @@
 <div class="container">
 
     <!-- Outer Row -->
-    <div class="row justify-content-center col-lg-8 mx-auto">
+    <div class="row justify-content-center col-lg-7 mx-auto">
 
         <div class="col-xl-10 col-lg-12 col-md-9">
 

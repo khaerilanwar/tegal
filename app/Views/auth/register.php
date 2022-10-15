@@ -69,7 +69,7 @@
                             <a class="small text-decoration-none" href="forgot-password.html">Lupa Kata Sandi?</a>
                         </div>
                         <div class="text-center">
-                            <a class="small text-decoration-none" href="/auth">Sudah punya akun? Masuk!</a>
+                            <a class="small text-decoration-none" href="/login">Sudah punya akun? Masuk!</a>
                         </div>
                     </div>
                 </div>
