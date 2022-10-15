@@ -91,7 +91,8 @@ class Login extends BaseController
         session()->remove('email');
         session()->remove('role_id');
 
-        session()->setFlashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert"> Alamat berhasil logged out <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
+        session()->setFlashdata('pesan', 'Berhasil logged out');
+        session()->setFlashdata('warna', 'warning');
         return redirect()->to('/login');
     }
 }
