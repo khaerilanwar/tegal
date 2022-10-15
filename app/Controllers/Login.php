@@ -70,24 +70,18 @@ class Login extends BaseController
                         return redirect()->to('user');
                     }
                 } else {
-                    session()->setFlashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    Kata Sandi Salah!
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>');
+                    session()->setFlashdata('pesan', 'Kata Sandi Salah!');
+                    session()->setFlashdata('warna', 'danger');
                     return redirect()->to('/login');
                 }
             } else {
-                session()->setFlashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-            Alamat email belum di aktivasi
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>');
+                session()->setFlashdata('pesan', 'Alamat email belum di aktivasi');
+                session()->setFlashdata('warna', 'warning');
                 return redirect()->to('/login');
             }
         } else {
-            session()->setFlashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-        Alamat email belum terdaftar
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>');
+            session()->setFlashdata('pesan', 'Email belum terdaftar');
+            session()->setFlashdata('warna', 'warning');
             return redirect()->to('/login');
         }
     }
