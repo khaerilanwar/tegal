@@ -91,7 +91,9 @@ class Registrasi extends BaseController
             'jenis_kelamin' => htmlspecialchars($this->request->getPost('jenis_kelamin')),
             'alamat' => htmlspecialchars($this->request->getPost('alamat')),
             'password' => $password,
-            'role' => 'Pengguna'
+            'gambar' => 'default.jpg',
+            'is_active' => 1,
+            'role_id' => 2
         ];
 
         $this->userModel->insert($data);

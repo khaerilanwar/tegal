@@ -65,30 +65,35 @@ class Login extends BaseController
                     session()->set($data);
 
                     if ($user['role_id'] == 1) {
-                        redirect('admin');
+                        return redirect()->to('admin');
                     } else {
-                        redirect('user');
+                        return redirect()->to('user');
                     }
                 } else {
                     session()->setFlashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
                     Kata Sandi Salah!
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>');
-                    redirect('login');
+                    return redirect()->to('/login');
                 }
             } else {
                 session()->setFlashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
             Alamat email belum di aktivasi
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>');
-                redirect('login');
+                return redirect()->to('/login');
             }
         } else {
             session()->setFlashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
         Alamat email belum terdaftar
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>');
-            redirect('login');
+            return redirect()->to('/login');
         }
+    }
+
+    public function logout()
+    {
+        session()->unset;
     }
 }
