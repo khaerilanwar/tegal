@@ -98,10 +98,8 @@ class Registrasi extends BaseController
 
         $this->userModel->insert($data);
 
-        session()->setFlashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>Berhasil Registrasi!</strong> Silahkan melakukan login.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>');
+        session()->setFlashdata('pesan', 'Berhasil Registrasi!');
+        session()->setFlashdata('warna', 'success');
 
         return redirect()->to('/login');
     }
