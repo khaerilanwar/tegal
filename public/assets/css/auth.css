@@ -1,0 +1,217 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: url(../img/bg-login.jpg) no-repeat;
+    height: 100vh;
+    font-family: sans-serif;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden
+}
+@media screen and (max-width: 600px){
+    body{background-size: cover;}
+}
+
+#particles-js{height: 100%}
+
+.alert-cs {
+    width: 100%;
+}
+
+.bg-login {
+    background: url(../img/bg-login.jpg) no-repeat;
+}
+
+.loginBox{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 80vh;
+    min-height: 200px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 40px;
+    box-sizing: border-box;
+    box-shadow: 0 0 30px 12px rgba(255, 255, 255, 0.4);
+}
+
+.img-user{
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 20px
+}
+
+.loginBox h3{
+    margin: 0;
+    padding: 0 0 20px;
+    color: #000;
+    text-align: center
+}
+
+.loginBox input{
+    width: 100%;
+}
+
+.loginBox input[type="text"], .loginBox input[type="password"]{
+    border: none;
+    border-bottom: 2px solid #262626;
+    outline: none;
+    height: 40px;
+    color: #000;
+    background: transparent;
+    font-size: 16px;
+    padding-left: 20px;
+    box-sizing: border-box
+}
+
+.loginBox input[type="text"]:hover, .loginBox input[type="password"]:hover{
+    color: #000;
+    border: 1px solid #1746A2;
+    box-shadow: 0 0 5px rgba(0,255,0,.3), 0 0 10px rgba(0,255,0,.2), 0 0 15px rgba(0,255,0,.1), 0 2px 0 black
+}
+
+.loginBox input[type="text"]:focus, .loginBox input[type="password"]:focus{
+    border-bottom: 2px solid #1746A2
+}
+
+.inputBox{
+    position: relative
+}
+
+.inputBox span{
+    position: absolute;
+    top: 10px;
+    color: #262626
+}
+
+.loginBox form button{
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    background: #59238F;
+    color: #fff;
+    border-radius: 20px;
+    cursor: pointer
+}
+
+.loginBox a{
+    color: #262626;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    display: block
+}
+
+.loginBox a:hover{
+    text-decoration: underline;
+}
+
+
+/* CSS VIEWS REGISTER */
+
+.register{
+    /* background: -webkit-linear-gradient(left, #3931af, #00c6ff); */
+    margin-top: 3%;
+    padding: 3%;
+}
+.register-left{
+    text-align: center;
+    color: #fff;
+    margin-top: 4%;
+}
+.register-left input{
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    width: 60%;
+    background: #f8f9fa;
+    font-weight: bold;
+    color: #383d41;
+    margin-top: 30%;
+    margin-bottom: 3%;
+    cursor: pointer;
+}
+
+.register-right{
+    background: #f8f9fa;
+    border-top-left-radius: 5% 5%;
+    border-top-right-radius: 5% 5%;
+    border-bottom-left-radius: 5% 5%;
+    border-bottom-right-radius: 5% 5%;
+}
+.register-left img{
+    margin-top: 15%;
+    margin-bottom: 5%;
+    width: 25%;
+    -webkit-animation: mover 2s infinite  alternate;
+    animation: mover 1s infinite  alternate;
+}
+@-webkit-keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+@keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+
+.register-left p{
+    font-weight: lighter;
+    padding: 12%;
+    margin-top: -9%;
+}
+.register .register-form{
+    /* padding: 10% 5%; */
+    padding-top: 9%;
+    padding-bottom: 6%;
+    margin-top: 10%;
+}
+.btnRegister{
+    float: right;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #0062cc;
+    color: #fff;
+    font-weight: 600;
+    width: 50%;
+    cursor: pointer;
+}
+
+.register .nav-tabs{
+    margin-top: 3%;
+    border: none;
+    background: #0062cc;
+    border-radius: 1.5rem;
+    width: 28%;
+    float: right;
+}
+.register .nav-tabs .nav-link{
+    padding: 2%;
+    height: 34px;
+    font-weight: 600;
+    color: #fff;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+}
+.register .nav-tabs .nav-link:hover{
+    border: none;
+}
+.register .nav-tabs .nav-link.active{
+    width: 100px;
+    color: #0062cc;
+    border: 2px solid #0062cc;
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+}
+.register-heading{
+    text-align: center;
+    margin-top: 4%;
+    margin-bottom: -15%;
+    color: #495057;
+}
