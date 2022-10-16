@@ -7,7 +7,7 @@
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <h3 class="register-heading text-dark">Pendaftaran Akun</h3>
-                    <form action="" method="post">
+                    <form action="/registrasi/save" method="post">
                         <?= csrf_field(); ?>
                         <div class="row register-form px-4">
                             <div class="col-md-6">
