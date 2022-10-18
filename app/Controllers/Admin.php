@@ -6,6 +6,6 @@ class Admin extends BaseController
 {
     public function index()
     {
-        echo "Halaman Admin";
+        return view('layouts/adm_template');
     }
 }
