@@ -15,6 +15,10 @@ class Registrasi extends BaseController
 
     public function index()
     {
+        if (session()->email && session()->role_id == 1) {
+            return redirect()->to('admin');
+        }
+
         $data = [
             'title' => 'Form Registrasi User',
             'validation' => \Config\Services::validation()

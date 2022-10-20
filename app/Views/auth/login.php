@@ -1,4 +1,4 @@
-<?php $this->extend('layouts/auth_temp'); ?>
+<?php $this->extend('layouts/auth_template'); ?>
 
 <?php $this->section('content'); ?>
 <div class="container">
@@ -16,13 +16,13 @@
         <form action="/login/masuk" method="post">
             <?= csrf_field(); ?>
             <div class="inputBox mb-4">
-                <input id="email" class="<?= ($validation->hasError('email')) ? 'is-invalid' : ''; ?>" value="<?= old('email'); ?>" type="text" name="email" placeholder="Masukkan Email">
+                <input id="email" class="<?= ($validation->hasError('email')) ? 'is-invalid' : ''; ?>" type="text" name="email" value="<?= old('email'); ?>" placeholder="Masukkan Email">
                 <div class="pl-3 invalid-feedback">
                     <?= $validation->getError('email'); ?>
                 </div>
             </div>
             <div class="inputBox mb-4">
-                <input class="<?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" id="password" value="<?= old('password'); ?>" type="password" name="password" placeholder="Kata Sandi">
+                <input class="<?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" id="password" type="password" name="password" placeholder="Kata Sandi">
                 <div class="pl-3 invalid-feedback">
                     <?= $validation->getError('password'); ?>
                 </div>

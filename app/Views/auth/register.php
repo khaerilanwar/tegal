@@ -1,4 +1,4 @@
-<?php $this->extend('layouts/auth_temp'); ?>
+<?php $this->extend('layouts/auth_template'); ?>
 
 <?php $this->section('content'); ?>
 <div class="container register">

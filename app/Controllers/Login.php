@@ -15,6 +15,10 @@ class Login extends BaseController
 
     public function index()
     {
+        if (session()->email && session()->role_id == 1) {
+            return redirect()->to('admin');
+        }
+
         $data = [
             'title' => 'Login | Kabupaten Tegal',
             'validation' => \Config\Services::validation()
@@ -45,8 +49,8 @@ class Login extends BaseController
             return redirect()->to('/login')->withInput();
         }
 
-        $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
+        $email = htmlspecialchars($this->request->getPost('email'));
+        $password = htmlspecialchars($this->request->getPost('password'));
 
         $user = $this->userModel->where('email', $email)->first();
 
@@ -72,27 +76,17 @@ class Login extends BaseController
                 } else {
                     session()->setFlashdata('pesan', 'Kata Sandi Salah!');
                     session()->setFlashdata('warna', 'danger');
-                    return redirect()->to('/login');
+                    return redirect()->to('/login')->withInput();
                 }
             } else {
                 session()->setFlashdata('pesan', 'Alamat email belum di aktivasi');
                 session()->setFlashdata('warna', 'warning');
-                return redirect()->to('/login');
+                return redirect()->to('/login')->withInput();
             }
         } else {
             session()->setFlashdata('pesan', 'Email belum terdaftar');
             session()->setFlashdata('warna', 'warning');
-            return redirect()->to('/login');
+            return redirect()->to('/login')->withInput();
         }
-    }
-
-    public function logout()
-    {
-        session()->remove('email');
-        session()->remove('role_id');
-
-        session()->setFlashdata('pesan', 'Berhasil logged out');
-        session()->setFlashdata('warna', 'warning');
-        return redirect()->to('/login');
     }
 }
