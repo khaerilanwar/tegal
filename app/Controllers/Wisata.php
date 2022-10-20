@@ -15,14 +15,26 @@ class Wisata extends BaseController
 
     public function index()
     {
+        $keyword = $this->request->getGet('cari');
+        if ($keyword) {
+            $wisata = $this->wisataModel->asArray()->like('nama_wisata', $keyword)->orLike('lokasi', $keyword)->findAll();
+        } else {
+            $wisata = $this->wisataModel->getWisata();
+        }
+
         $data = [
             'title' => 'Pariwisata Kabupaten Tegal',
-            'wisata' => $this->wisataModel->getWisata()
+            'wisata' => $wisata
         ];
+
+        if ($keyword) {
+            return view('wisata/result', $data);
+        }
+
         return view('wisata/index', $data);
     }
 
-    public function details()
+    public function detail()
     {
         return view('wisata/detail');
     }

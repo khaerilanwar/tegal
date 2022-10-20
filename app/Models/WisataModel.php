@@ -8,6 +8,8 @@ class WisataModel extends Model
 {
     protected $table = 'wisata';
 
+    protected $allowedFields = ['nama_wisata', 'harga', 'lokasi', 'maps', 'alamat', 'deskripsi'];
+
     public function getWisata()
     {
         return $this->findAll();
