@@ -35,7 +35,7 @@ abstract class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = [];
+    protected $helpers = ['tegal'];
 
     /**
      * Constructor.
@@ -51,6 +51,6 @@ abstract class BaseController extends Controller
 
         session();
 
-        $this->datakita = \Config\Database::connect();
+        $this->db = \Config\Database::connect();
     }
 }

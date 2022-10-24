@@ -36,6 +36,9 @@
     <!-- Main CSS-->
     <link href="/assets/bs-4/css/theme.css" rel="stylesheet" media="all">
 
+    <!-- FONT AWESOME ONLINE -->
+    <script src="https://kit.fontawesome.com/addf044e73.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body class="animsition">
@@ -57,53 +60,30 @@
                                     <i class="fas fa-tachometer-alt"></i>Dashboard
                                     <span class="bot-line"></span>
                                 </a>
-                                <ul class="header3-sub-list list-unstyled">
-                                    <li>
-                                        <a href="index.html">Dashboard 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="index2.html">Dashboard 2</a>
-                                    </li>
-                                </ul>
                             </li>
                             <li>
                                 <a href="#">
                                     <i class="fas fa-shopping-basket"></i>
-                                    <span class="bot-line"></span>eCommerce</a>
+                                    <span class="bot-line"></span>Pariwisata
+                                </a>
                             </li>
                             <li>
                                 <a href="table.html">
                                     <i class="fas fa-trophy"></i>
-                                    <span class="bot-line"></span>Features</a>
+                                    <span class="bot-line"></span>Penginapan
+                                </a>
                             </li>
                             <li class="has-sub">
                                 <a href="#">
                                     <i class="fas fa-copy"></i>
-                                    <span class="bot-line"></span>Pages</a>
-                                <ul class="header3-sub-list list-unstyled">
-                                    <li>
-                                        <a href="login.html">Login</a>
-                                    </li>
-                                    <li>
-                                        <a href="register.html">Register</a>
-                                    </li>
-                                    <li>
-                                        <a href="forget-pass.html">Forget Password</a>
-                                    </li>
-                                </ul>
+                                    <span class="bot-line"></span>Kuliner
+                                </a>
                             </li>
                             <li class="has-sub">
                                 <a href="#">
                                     <i class="fas fa-desktop"></i>
-                                    <span class="bot-line"></span>UI Elements</a>
-                                <ul class="header3-sub-list list-unstyled">
-                                    <li>
-                                        <a href="card.html">Cards</a>
-                                    </li>
-                                    <li>
-                                        <a href="alert.html">Alerts</a>
-                                    </li>
-                                </ul>
+                                    <span class="bot-line"></span>Jasa
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -136,23 +116,23 @@
                         <div class="account-wrap">
                             <div class="account-item account-item--style2 clearfix js-item-menu">
                                 <div class="image">
-                                    <img src="/assets/img/<?= $user['gambar']; ?>" alt="<?= $user['nama']; ?>" />
+                                    <img src="/assets/img/<?= $admin['gambar']; ?>" alt="<?= $admin['nama']; ?>" />
                                 </div>
                                 <div class="content">
-                                    <a class="js-acc-btn" href="#"><?= $user['nama']; ?></a>
+                                    <a class="js-acc-btn" href="#"><?= $admin['nama']; ?></a>
                                 </div>
                                 <div class="account-dropdown js-dropdown">
                                     <div class="info clearfix">
                                         <div class="image">
                                             <a href="#">
-                                                <img src="/assets/img/<?= $user['gambar']; ?>" alt="<?= $user['nama']; ?>" />
+                                                <img src="/assets/img/<?= $admin['gambar']; ?>" alt="<?= $admin['nama']; ?>" />
                                             </a>
                                         </div>
                                         <div class="content">
                                             <h5 class="name">
-                                                <a href="#"><?= $user['nama']; ?></a>
+                                                <a href="#"><?= $admin['nama']; ?></a>
                                             </h5>
-                                            <span class="email"><?= $user['email']; ?></span>
+                                            <span class="email"><?= $admin['email']; ?></span>
                                         </div>
                                     </div>
                                     <div class="account-dropdown__body">
@@ -163,10 +143,6 @@
                                         <div class="account-dropdown__item">
                                             <a href="#">
                                                 <i class="zmdi zmdi-settings"></i>Setting</a>
-                                        </div>
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-money-box"></i>Billing</a>
                                         </div>
                                     </div>
                                     <div class="account-dropdown__footer">

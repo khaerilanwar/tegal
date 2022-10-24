@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h1 class="title-4">Selamat Datang
-                    <span><?= $user['nama']; ?>!</span>
+                    <span><?= $admin['nama']; ?>!</span>
                 </h1>
                 <hr class="line-seprate">
             </div>
@@ -67,131 +67,77 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="title-5 m-b-35">data table</h3>
+                <h1 class="title-5 m-b-35">Daftar Pengguna</h1>
                 <div class="table-data__tool">
                     <div class="table-data__tool-left">
-                        <div class="rs-select2--light rs-select2--md">
-                            <select class="js-select2" name="property">
-                                <option selected="selected">All Properties</option>
-                                <option value="">Option 1</option>
-                                <option value="">Option 2</option>
-                            </select>
-                            <div class="dropDownSelect2"></div>
-                        </div>
-                        <div class="rs-select2--light rs-select2--sm">
-                            <select class="js-select2" name="time">
-                                <option selected="selected">Today</option>
-                                <option value="">3 Days</option>
-                                <option value="">1 Week</option>
-                            </select>
-                            <div class="dropDownSelect2"></div>
-                        </div>
-                        <button class="au-btn-filter">
-                            <i class="zmdi zmdi-filter-list"></i>filters</button>
+                        <form action="" method="get">
+                            <div class="rs-select2--light rs-select2--md">
+                                Cari Berdasarkan
+                            </div>
+                            <div class="rs-select2--light rs-select2--sm">
+                                <select class="js-select2" name="based">
+                                    <option value="nama">Nama</option>
+                                    <option value="email">Email</option>
+                                    <option value="no_telp">Telepon</option>
+                                    <option value="alamat">Alamat</option>
+                                </select>
+                                <div class="dropDownSelect2"></div>
+                            </div>
+                            <div class="rs-select2--light rs-select2--lg">
+                                <div class="input-group ml-3">
+                                    <input type="text" id="input1-group2" name="user" placeholder="Cari Pengguna" class="form-control py-2">
+                                    <div class="input-group-btn">
+                                        <button type="submit" class="btn btn-primary py-2">
+                                            <i class="fa fa-search"></i> Cari
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     <div class="table-data__tool-right">
-                        <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                            <i class="zmdi zmdi-plus"></i>add item</button>
-                        <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
-                            <select class="js-select2" name="type">
-                                <option selected="selected">Export</option>
-                                <option value="">Option 1</option>
-                                <option value="">Option 2</option>
-                            </select>
-                            <div class="dropDownSelect2"></div>
-                        </div>
+                        <button type="button" class="au-btn au-btn-icon au-btn--green au-btn--small" data-toggle="modal" data-target="#mediumModal">
+                            <i class="zmdi zmdi-plus"></i>Tambah User</button>
                     </div>
                 </div>
-                <div class="table-responsive table-responsive-data2">
-                    <table class="table table-data2">
+                <div class="table-responsive table--no-card m-b-30" style="overflow: hidden;">
+                    <table class="table table-borderless table-striped table-earning">
                         <thead>
                             <tr>
-                                <th>
-                                    <label class="au-checkbox">
-                                        <input type="checkbox">
-                                        <span class="au-checkmark"></span>
-                                    </label>
-                                </th>
-                                <th>name</th>
-                                <th>email</th>
-                                <th>description</th>
-                                <th>date</th>
-                                <th>status</th>
-                                <th>price</th>
+                                <th>Nama</th>
+                                <th>Email</th>
+                                <th>No. Telepon</th>
+                                <th>Alamat</th>
+                                <th>Role</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="tr-shadow">
-                                <td>
-                                    <label class="au-checkbox">
-                                        <input type="checkbox">
-                                        <span class="au-checkmark"></span>
-                                    </label>
-                                </td>
-                                <td>Lori Lynch</td>
-                                <td>
-                                    <span class="block-email">lori@example.com</span>
-                                </td>
-                                <td class="desc">Samsung S8 Black</td>
-                                <td>2018-09-27 02:12</td>
-                                <td>
-                                    <span class="status--process">Processed</span>
-                                </td>
-                                <td>$679.00</td>
-                                <td>
-                                    <div class="table-data-feature">
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                            <i class="zmdi zmdi-mail-send"></i>
-                                        </button>
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                            <i class="zmdi zmdi-edit"></i>
+                            <?php foreach ($user as $u) : ?>
+                                <tr>
+                                    <td><?= $u['nama']; ?></td>
+                                    <td><?= $u['email']; ?></td>
+                                    <td><?= $u['no_telp']; ?></td>
+                                    <td><?= $u['alamat']; ?></td>
+                                    <td><?= $u['role_id'] == 1 ? 'Administrator' : 'Pengguna'; ?></td>
+                                    <td>
+                                        <a href="" class="px-2" data-toggle="tooltip" title="Edit">
+                                            <i class="fa-sharp fa-solid fa-pen-to-square text-success h5"></i>
+                                        </a>
+
+                                        <a href="" class="px-2" data-toggle="tooltip" title="Edit">
+                                            <i class="fa-solid fa-trash text-danger h5"></i>
+                                        </a>
+
+                                        <!-- <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <i class="fa-sharp fa-solid fa-pen-to-square"></i>
                                         </button>
                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                            <i class="zmdi zmdi-delete"></i>
-                                        </button>
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                            <i class="zmdi zmdi-more"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="spacer"></tr>
-                            <tr class="tr-shadow">
-                                <td>
-                                    <label class="au-checkbox">
-                                        <input type="checkbox">
-                                        <span class="au-checkmark"></span>
-                                    </label>
-                                </td>
-                                <td>Lori Lynch</td>
-                                <td>
-                                    <span class="block-email">lyn@example.com</span>
-                                </td>
-                                <td class="desc">iPhone X 256Gb Black</td>
-                                <td>2018-09-25 19:03</td>
-                                <td>
-                                    <span class="status--denied">Denied</span>
-                                </td>
-                                <td>$1199.00</td>
-                                <td>
-                                    <div class="table-data-feature">
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                            <i class="zmdi zmdi-mail-send"></i>
-                                        </button>
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                            <i class="zmdi zmdi-edit"></i>
-                                        </button>
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                            <i class="zmdi zmdi-delete"></i>
-                                        </button>
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                            <i class="zmdi zmdi-more"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="spacer"></tr>
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button> -->
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
@@ -200,5 +146,99 @@
     </div>
 </section>
 <!-- END DATA TABLE-->
+
+
+<!-- MODAL -->
+<!-- modal medium -->
+<div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="mediumModalLabel">Tambah Data Pengguna</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/admin/tambahUser" method="post">
+                    <?= csrf_field(); ?>
+                    <div class="row form-group">
+                        <div class="col col-md-6">
+                            <label for="nama" class=" form-control-label">Nama Lengkap</label>
+                            <input type="text" id="nama" name="nama" placeholder="Nama Lengkap" class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : ''; ?>">
+                            <div class="pl-3 invalid-feedback">
+                                <?= $validation->getError('nama'); ?>
+                            </div>
+                        </div>
+                        <div class="col col-md-6">
+                            <label for="email" class=" form-control-label">Alamat Email</label>
+                            <input type="text" id="email" name="email" placeholder="Alamat Email" class="form-control <?= ($validation->hasError('email')) ? 'is-invalid' : ''; ?>">
+                            <div class="pl-3 invalid-feedback">
+                                <?= $validation->getError('email'); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-6">
+                            <label for="no_telp" class=" form-control-label">Nomor Telepon</label>
+                            <input type="text" id="no_telp" name="no_telp" placeholder="Nomor Telepon" class="form-control <?= ($validation->hasError('no_telp')) ? 'is-invalid' : ''; ?>">
+                            <div class="pl-3 invalid-feedback">
+                                <?= $validation->getError('no_telp'); ?>
+                            </div>
+                        </div>
+                        <div class="col col-md-6">
+                            <label class=" form-control-label d-block">Jenis Kelamin</label>
+                            <div class="text-center">
+                                <div class="form-check form-check-inline mx-3">
+                                    <input class="form-check-input" type="radio" value="Laki-laki" name="jenis_kelamin" id="flexRadioDefault1" checked>
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Laki - laki
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline mx-3">
+                                    <input class="form-check-input" type="radio" value="Perempuan" name="jenis_kelamin" id="flexRadioDefault2">
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Perempuan
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-6">
+                            <label for="password" class="form-control-label">Kata Sandi</label>
+                            <input type="text" id="password" name="password" placeholder="Kata Sandi" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>">
+                            <div class="pl-3 invalid-feedback">
+                                <?= $validation->getError('password'); ?>
+                            </div>
+                        </div>
+                        <div class="col col-md-6">
+                            <label for="repassword" class=" form-control-label">Konfirmasi Kata Sandi</label>
+                            <input type="text" id="repassword" name="repassword" placeholder="Konfirmasi Kata Sandi" class="form-control <?= ($validation->hasError('repassword')) ? 'is-invalid' : ''; ?>">
+                            <div class="pl-3 invalid-feedback">
+                                <?= $validation->getError('repassword'); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-12">
+                            <label for="alamat" class="form-control-label">Alamat</label>
+                            <textarea name="alamat" id="alamat" rows="3" placeholder="Alamat" class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>"></textarea>
+                            <div class="pl-3 invalid-feedback">
+                                <?= $validation->getError('alamat'); ?>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-primary">Tambah User</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal medium -->
+<!-- END MODAL -->
 
 <?php $this->endSection(); ?>
