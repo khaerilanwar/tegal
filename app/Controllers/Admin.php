@@ -110,7 +110,7 @@ class Admin extends BaseController
         ];
 
         if (!$this->validate($rules)) {
-            return redirect()->to('/registrasi')->withInput();
+            return redirect()->to('/admin')->withInput();
         }
 
         $password = htmlspecialchars($this->request->getPost('password'));
@@ -129,6 +129,37 @@ class Admin extends BaseController
             'role_id' => 2
         ];
 
+        session()->setFlashdata('pesan', 'User berhasil ditambahkan!');
+        session()->setFlashdata('warna', 'success');
+
         $this->userModel->insert($data);
+        return redirect()->to('/admin');
+    }
+
+    public function hapus($id)
+    {
+        $this->userModel->delete($id);
+        session()->setFlashdata('pesan', 'User berhasil dihapus!');
+        session()->setFlashdata('warna', 'success');
+
+        return redirect()->to('/admin');
+    }
+
+    public function edit($id)
+    {
+        $data = [
+            'nama' => $this->request->getPost('nama'),
+            'email' => $this->request->getPost('email'),
+            'no_telp' => $this->request->getPost('no_telepon'),
+            'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
+            'alamat' => $this->request->getPost('alamat')
+        ];
+
+        $this->userModel->update($id, $data);
+
+        session()->setFlashdata('pesan', 'User berhasil diubah!');
+        session()->setFlashdata('warna', 'success');
+
+        return redirect()->to('/admin');
     }
 }
