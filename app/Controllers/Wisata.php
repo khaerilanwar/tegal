@@ -38,4 +38,11 @@ class Wisata extends BaseController
     {
         return view('wisata/detail');
     }
+
+    public function pesanTiket()
+    {
+        cekLogin();
+
+        return view('wisata/pesanTiket');
+    }
 }

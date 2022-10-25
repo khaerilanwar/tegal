@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Kabupaten Tegal</title>
+    <title><?= $title; ?></title>
 
     <!-- FAVICON TEGAL -->
     <link rel="shortcut icon" href="/assets/img/ikon-tegal.ico" type="image/x-icon">

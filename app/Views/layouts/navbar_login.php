@@ -5,11 +5,11 @@
         </a>
 
         <ul class="nav nav-pills col-sm-7 d-flex justify-content-center">
-            <li class="nav-item"><a href="/home" class="nav-link fs-5 text-white">Home</a></li>
-            <li class="nav-item"><a href="/wisata" class="nav-link fs-5 text-white active">Pariwisata</a></li>
-            <li class="nav-item"><a href="/kuliner" class="nav-link fs-5 text-white">Kuliner</a></li>
-            <li class="nav-item"><a href="/penginapan" class="nav-link fs-5 text-white">Penginapan</a></li>
-            <li class="nav-item"><a href="/jasa" class="nav-link fs-5 text-white">Jasa</a></li>
+            <li class="nav-item"><a href="/home" class="nav-link fs-5 text-white <?= preg_match('/Home/', $title) ? 'active' : ''; ?>">Home</a></li>
+            <li class="nav-item"><a href="/wisata" class="nav-link fs-5 text-white <?= preg_match('/Pariwisata/', $title) ? 'active' : ''; ?>">Pariwisata</a></li>
+            <li class="nav-item"><a href="/kuliner" class="nav-link fs-5 text-white <?= preg_match('/Puliner/', $title) ? 'active' : ''; ?>">Kuliner</a></li>
+            <li class="nav-item"><a href="/penginapan" class="nav-link fs-5 text-white <?= preg_match('/Penginapan/', $title) ? 'active' : ''; ?>">Penginapan</a></li>
+            <li class="nav-item"><a href="/jasa" class="nav-link fs-5 text-white <?= preg_match('/Jasa/', $title) ? 'active' : ''; ?>">Jasa</a></li>
         </ul>
 
         <div class="col-sm-3 d-flex justify-content-center">

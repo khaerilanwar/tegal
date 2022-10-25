@@ -14,16 +14,18 @@
 
 <div class="container mb-5">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
-        <div class="col-sm d-flex justify-content-center">
-            <div class="card" style="width: 18rem;">
-                <img src="/assets/img/montir.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Montir Panggilan</h5>
-                    <p class="card-text">Temukan montir panggilan di sekitar anda</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+        <?php foreach ($jasa as $j) : ?>
+            <div class="col-sm d-flex justify-content-center">
+                <div class="card" style="width: 18rem;">
+                    <img src="/assets/img/<?= $j['gambar']; ?>" class="card-img-top" alt="<?= $j['nama_jasa']; ?>">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $j['nama_jasa']; ?></h5>
+                        <p class="card-text text-truncate"><?= $j['deskripsi']; ?></p>
+                        <a href="#" class="btn btn-primary float-end">Hubungi</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php endforeach; ?>
     </div>
 </div>
 
