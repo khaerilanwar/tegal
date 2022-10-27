@@ -21,7 +21,7 @@ $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
-$routes->setAutoRoute(true);
+// $routes->setAutoRoute(true);
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
@@ -37,7 +37,18 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->delete('/admin/(:num)', 'Admin::hapus/$1');
+
+// ROUTES ADMIN
+// ADMIN DASHBOARD
+$routes->get('/dashboard', 'Admin\Dashboard::index');
+$routes->post('/dashboard/tambahUser', 'Admin\Dashboard::tambahUser');
+$routes->post('/dashboard/edit/(:num)', 'Admin\Dashboard::edit/$1');
+$routes->delete('/dashboard/(:num)', 'Admin\Dashboard::hapus/$1');
+
+// ADMIN PARIWISATA
+$routes->get('/pariwisata', 'Admin\Pariwisata::index');
+$routes->post('/pariwisata/edit/(:num)', 'Admin\Pariwisata::edit/$1');
+$routes->delete('/pariwisata/(:num)', 'Admin\Pariwisata::hapus/$1');
 
 /*
  * --------------------------------------------------------------------

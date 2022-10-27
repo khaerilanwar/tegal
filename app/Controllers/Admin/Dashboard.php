@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Admin;
+
+use App\Controllers\BaseController;
 
 use App\Models\UserModel;
 
-class Admin extends BaseController
+class Dashboard extends BaseController
 {
     protected $userModel;
 
@@ -47,7 +49,7 @@ class Admin extends BaseController
         // $user = $this->builder->get()->getResultArray();
 
         $data = [
-            'title' => 'Administrator | Kabupaten Tegal',
+            'title' => 'Dashboard Kabupaten Tegal',
             'validation' => \Config\Services::validation(),
             'admin' => $admin,
             'user' => $user
@@ -110,7 +112,7 @@ class Admin extends BaseController
         ];
 
         if (!$this->validate($rules)) {
-            return redirect()->to('/admin')->withInput();
+            return redirect()->to('/dashboard')->withInput();
         }
 
         $password = htmlspecialchars($this->request->getPost('password'));
@@ -133,7 +135,7 @@ class Admin extends BaseController
         session()->setFlashdata('warna', 'success');
 
         $this->userModel->insert($data);
-        return redirect()->to('/admin');
+        return redirect()->to('/dashboard');
     }
 
     public function hapus($id)
@@ -142,7 +144,7 @@ class Admin extends BaseController
         session()->setFlashdata('pesan', 'User berhasil dihapus!');
         session()->setFlashdata('warna', 'success');
 
-        return redirect()->to('/admin');
+        return redirect()->to('/dashboard');
     }
 
     public function edit($id)
@@ -160,6 +162,6 @@ class Admin extends BaseController
         session()->setFlashdata('pesan', 'User berhasil diubah!');
         session()->setFlashdata('warna', 'success');
 
-        return redirect()->to('/admin');
+        return redirect()->to('/dashboard');
     }
 }

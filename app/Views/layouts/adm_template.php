@@ -55,31 +55,31 @@
                     </div>
                     <div class="header__navbar">
                         <ul class="list-unstyled">
-                            <li class="has-sub active">
-                                <a href="#">
+                            <li class="<?= preg_match('/Dashboard/', $title) ? 'active' : ''; ?>">
+                                <a href="/dashboard">
                                     <i class="fas fa-tachometer-alt"></i>Dashboard
                                     <span class="bot-line"></span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
+                            <li class="<?= preg_match('/Pariwisata/', $title) ? 'active' : ''; ?>">
+                                <a href="/pariwisata">
                                     <i class="fas fa-shopping-basket"></i>
                                     <span class="bot-line"></span>Pariwisata
                                 </a>
                             </li>
-                            <li>
+                            <li class="<?= preg_match('/Penginapan/', $title) ? 'active' : ''; ?>">
                                 <a href="table.html">
                                     <i class="fas fa-trophy"></i>
                                     <span class="bot-line"></span>Penginapan
                                 </a>
                             </li>
-                            <li class="has-sub">
+                            <li class="<?= preg_match('/Kuliner/', $title) ? 'active' : ''; ?>">
                                 <a href="#">
                                     <i class="fas fa-copy"></i>
                                     <span class="bot-line"></span>Kuliner
                                 </a>
                             </li>
-                            <li class="has-sub">
+                            <li class="<?= preg_match('/Jasa/', $title) ? 'active' : ''; ?>">
                                 <a href="#">
                                     <i class="fas fa-desktop"></i>
                                     <span class="bot-line"></span>Jasa
