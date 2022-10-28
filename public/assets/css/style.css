@@ -12,6 +12,10 @@
     background-color: #083AA9;
 }
 
+.bg-abu {
+    background-color: #F2F2F2;
+}
+
 .btn-biru{
     --bs-btn-color:#fff;
     --bs-btn-bg:#083AA9;

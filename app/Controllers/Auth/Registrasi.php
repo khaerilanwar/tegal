@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Auth;
+
+use App\Controllers\BaseController;
 
 use App\Models\UserModel;
 
@@ -11,13 +13,12 @@ class Registrasi extends BaseController
     public function __construct()
     {
         $this->userModel = new UserModel();
+        helper('tegal');
+        cekSession();
     }
 
     public function index()
     {
-        if (session()->email && session()->role_id == 1) {
-            return redirect()->to('admin');
-        }
 
         $data = [
             'title' => 'Form Registrasi User',

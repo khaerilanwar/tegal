@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\User;
+
+use App\Controllers\BaseController;
 
 use App\Models\jasaModel;
 
@@ -11,13 +13,16 @@ class Jasa extends BaseController
     public function __construct()
     {
         $this->jasaModel = new jasaModel();
+        helper('tegal');
+        cekLogin();
     }
 
     public function index()
     {
         $data = [
             'title' => 'Jasa | Kabupaten Tegal',
-            'jasa' => $this->jasaModel->findAll()
+            'jasa' => $this->jasaModel->findAll(),
+            'user' => $this->user
         ];
 
         return view('jasa/index', $data);

@@ -38,6 +38,18 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+// ROUTES AUTENTIFIKASI
+// ROUTES LOGIN
+$routes->get('/login', 'Auth\Login::index');
+$routes->post('/login/masuk', 'Auth\Login::masuk');
+
+// ROUTES LOGOUT
+$routes->get('/logout', 'Auth\Logout::index');
+
+// ROUTES REGISTRASI
+$routes->get('/registrasi', 'Auth\Registrasi::index');
+$routes->post('/registrasi/save', 'Auth\Registrasi::save');
+
 // ROUTES ADMIN
 // ADMIN DASHBOARD
 $routes->get('/dashboard', 'Admin\Dashboard::index');
@@ -49,6 +61,14 @@ $routes->delete('/dashboard/(:num)', 'Admin\Dashboard::hapus/$1');
 $routes->get('/pariwisata', 'Admin\Pariwisata::index');
 $routes->post('/pariwisata/edit/(:num)', 'Admin\Pariwisata::edit/$1');
 $routes->delete('/pariwisata/(:num)', 'Admin\Pariwisata::hapus/$1');
+
+// ROUTES USER
+// ROUTES WISATA
+$routes->get('/wisata', 'User\Wisata::index');
+$routes->get('/wisata/pesantiket', 'User\Wisata::pesanTiket');
+
+// ROUTES JASA
+$routes->get('/jasa', 'User\Jasa::index');
 
 /*
  * --------------------------------------------------------------------

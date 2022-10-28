@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Auth;
+
+use App\Controllers\BaseController;
 
 use App\Models\UserModel;
 
@@ -11,14 +13,12 @@ class Login extends BaseController
     public function __construct()
     {
         $this->userModel = new UserModel();
+        helper('tegal');
+        cekSession();
     }
 
     public function index()
     {
-        if (session()->email && session()->role_id == 1) {
-            return redirect()->to('admin');
-        }
-
         $data = [
             'title' => 'Login | Kabupaten Tegal',
             'validation' => \Config\Services::validation()
@@ -69,9 +69,9 @@ class Login extends BaseController
                     session()->set($data);
 
                     if ($user['role_id'] == 1) {
-                        return redirect()->to('admin');
+                        return redirect()->to('dashboard');
                     } else {
-                        return redirect()->to('user');
+                        return redirect()->to('wisata');
                     }
                 } else {
                     session()->setFlashdata('pesan', 'Kata Sandi Salah!');
