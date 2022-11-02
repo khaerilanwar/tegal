@@ -24,8 +24,9 @@ class Dashboard extends BaseController
         $cari = $this->request->getGet('user');
 
         // Query data admin
-        $builder = $this->db->table('user');
-        $admin = $builder->getWhere(['email' => 'khaerilanwar1992@gmail.com'])->getRowArray();
+        // $builder = $this->db->table('user');
+        // $admin = $builder->getWhere(['email' => 'khaerilanwar1992@gmail.com'])->getRowArray();
+        $admin = $this->build->getWhere(['email' => 'khaerilanwar1992@gmail.com'])->getRowArray();
 
         // $wisata = $this->wisataModel->asArray()->like('nama_wisata', $keyword)->orLike('lokasi', $keyword)->findAll();
 

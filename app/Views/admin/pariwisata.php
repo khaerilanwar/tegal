@@ -110,7 +110,7 @@
 </section>
 
 <!-- MODAL -->
-<!-- Modal Add User -->
+<!-- Modal Add Wisata -->
 <div class="modal fade" id="addWisataModal" tabindex="-1" role="dialog" aria-labelledby="addWisataModalLabel" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -124,143 +124,120 @@
                 <form action="/pariwisata/tambahWisata" method="post">
                     <?= csrf_field(); ?>
                     <div class="row form-group">
+                        <!-- Nama Wisata -->
                         <div class="col col-md-6">
-                            <label for="nama" class=" form-control-label">Nama Lengkap</label>
-                            <input type="text" id="nama" name="nama" placeholder="Nama Lengkap" class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : ''; ?>">
-                            <div class="pl-3 invalid-feedback">
-                                <?= $validation->getError('nama'); ?>
-                            </div>
+                            <label for="nama_wisata" class="form-control-label">Nama Pariwisata</label>
+                            <input type="text" id="nama_wisata" name="nama_wisata" placeholder="Nama Objek Wisata" class="form-control">
                         </div>
+                        <!-- Harga Wisata -->
                         <div class="col col-md-6">
-                            <label for="email" class=" form-control-label">Alamat Email</label>
-                            <input type="text" id="email" name="email" placeholder="Alamat Email" class="form-control <?= ($validation->hasError('email')) ? 'is-invalid' : ''; ?>">
-                            <div class="pl-3 invalid-feedback">
-                                <?= $validation->getError('email'); ?>
-                            </div>
+                            <label for="harga" class="form-control-label">Harga Tiket Wisata</label>
+                            <input type="text" id="harga" name="harga" placeholder="Harga Tiket Masuk" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <!-- Lokasi Wisata -->
+                        <div class="col col-md-6">
+                            <label for="lokasi" class=" form-control-label">Lokasi Pariwisata</label>
+                            <input type="text" id="lokasi" name="lokasi" placeholder="Lokasi Pariwisata" class="form-control">
+                        </div>
+                        <!-- Gambar Pariwisata -->
+                        <div class="col col-md-6">
+                            <label for="gambar" class="form-control-label">Upload Gambar</label>
+                            <input type="text" id="gambar" name="gambar" placeholder="Gambar" class="form-control">
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col col-md-6">
-                            <label for="no_telepon" class=" form-control-label">Nomor Telepon</label>
-                            <input type="text" id="no_telepon" name="no_telepon" placeholder="Nomor Telepon" class="form-control <?= ($validation->hasError('no_telp')) ? 'is-invalid' : ''; ?>">
-                            <div class="pl-3 invalid-feedback">
-                                <?= $validation->getError('no_telp'); ?>
-                            </div>
+                            <label for="deskripsi" class="form-control-label">Deskripsi Pariwisata</label>
+                            <textarea name="deskripsi" id="deskripsi" rows="3" placeholder="Deskripsi Wisata" class="form-control"></textarea>
                         </div>
                         <div class="col col-md-6">
-                            <label class=" form-control-label d-block">Jenis Kelamin</label>
-                            <div class="text-center">
-                                <div class="form-check form-check-inline mx-3">
-                                    <input class="form-check-input" type="radio" value="Laki-laki" name="jenis_kelamin" id="flexRadioDefault1" checked>
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                        Laki - laki
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline mx-3">
-                                    <input class="form-check-input" type="radio" value="Perempuan" name="jenis_kelamin" id="flexRadioDefault2">
-                                    <label class="form-check-label" for="flexRadioDefault2">
-                                        Perempuan
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col col-md-6">
-                            <label for="password" class="form-control-label">Kata Sandi</label>
-                            <input type="password" id="password" name="password" placeholder="Kata Sandi" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>">
-                            <div class="pl-3 invalid-feedback">
-                                <?= $validation->getError('password'); ?>
-                            </div>
-                        </div>
-                        <div class="col col-md-6">
-                            <label for="repassword" class=" form-control-label">Konfirmasi Kata Sandi</label>
-                            <input type="password" id="repassword" name="repassword" placeholder="Konfirmasi Kata Sandi" class="form-control <?= ($validation->hasError('repassword')) ? 'is-invalid' : ''; ?>">
-                            <div class="pl-3 invalid-feedback">
-                                <?= $validation->getError('repassword'); ?>
-                            </div>
+                            <label for="alamat" class="form-control-label">Alamat Pariwisata</label>
+                            <textarea name="alamat" id="alamat" rows="3" placeholder="Alamat Wisata Wisata" class="form-control"></textarea>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col col-md-12">
-                            <label for="alamat" class="form-control-label">Alamat</label>
-                            <textarea name="alamat" id="alamat" rows="3" placeholder="Alamat" class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>"></textarea>
-                            <div class="pl-3 invalid-feedback">
-                                <?= $validation->getError('alamat'); ?>
-                            </div>
+                            <label for="maps" class="form-control-label">Frame Maps Wisata</label>
+                            <textarea name="maps" id="maps" rows="3" placeholder="Frame Maps Wisata" class="form-control"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Tambah User</button>
+                        <button type="submit" class="btn btn-primary">Tambah Wisata</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-<!-- End Modal Add User -->
+<!-- End Modal Add Wisata -->
 
 <?php foreach ($wisata as $w) : ?>
-    <!-- Modal Edit User -->
+    <!-- Modal Add Wisata -->
     <div class="modal fade" id="editWisataModal<?= $w['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="editWisataModalLabel" aria-hidden="true" data-backdrop="static">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="mediumModalLabel">Edit Objek Wisata</h3>
+                    <h3 class="modal-title" id="mediumModalLabel">Tambah Objek Wisata</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="/pariwisata/edit/<?= $w['id']; ?>" method="post">
+                    <form action="/pariwisata/edit/<?= $w['id'] ?>" method="post">
                         <?= csrf_field(); ?>
                         <div class="row form-group">
+                            <!-- Nama Wisata -->
                             <div class="col col-md-6">
-                                <label for="nama" class=" form-control-label">Nama Objek Wisata</label>
-                                <input type="text" id="nama" name="nama" value="<?= $w['nama_wisata']; ?>" placeholder="Nama Pariwisata" class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : ''; ?>">
-                                <div class="pl-3 invalid-feedback">
-                                    <?= $validation->getError('nama'); ?>
-                                </div>
+                                <label for="nama_wisata" class="form-control-label">Nama Pariwisata</label>
+                                <input value="<?= $w['nama_wisata']; ?>" type="text" id="nama_wisata" name="nama_wisata" placeholder="Nama Objek Wisata" class="form-control">
                             </div>
+                            <!-- Harga Wisata -->
                             <div class="col col-md-6">
-                                <label for="harga" class=" form-control-label">Harka Tiket Masuk</label>
-                                <input type="text" value="<?= $w['harga']; ?>" id="harga" name="harga" placeholder="Harga Tiket Masuk" class="form-control <?= ($validation->hasError('email')) ? 'is-invalid' : ''; ?>">
-                                <div class="pl-3 invalid-feedback">
-                                    <?= $validation->getError('harga'); ?>
-                                </div>
+                                <label for="harga" class="form-control-label">Harga Tiket Wisata</label>
+                                <input value="<?= $w['harga']; ?>" type="text" id="harga" name="harga" placeholder="Harga Tiket Masuk" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <!-- Lokasi Wisata -->
+                            <div class="col col-md-6">
+                                <label for="lokasi" class=" form-control-label">Lokasi Pariwisata</label>
+                                <input value="<?= $w['lokasi']; ?>" type="text" id="lokasi" name="lokasi" placeholder="Lokasi Pariwisata" class="form-control">
+                            </div>
+                            <!-- Gambar Pariwisata -->
+                            <div class="col col-md-6">
+                                <label for="gambar" class="form-control-label">Upload Gambar</label>
+                                <input value="<?= $w['gambar']; ?>" type="text" id="gambar" name="gambar" placeholder="Gambar" class="form-control">
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-6">
-                                <label for="lokasi" class=" form-control-label">Lokasi Tempat Pariwisata</label>
-                                <input type="text" value="<?= $w['lokasi']; ?>" id="lokasi" name="lokasi" placeholder="Lokasi Tempat Pariwisata" class="form-control <?= ($validation->hasError('no_telp')) ? 'is-invalid' : ''; ?>">
-                                <div class="pl-3 invalid-feedback">
-                                    <?= $validation->getError('lokasi'); ?>
-                                </div>
+                                <label for="deskripsi" class="form-control-label">Deskripsi Pariwisata</label>
+                                <textarea name="deskripsi" id="deskripsi" rows="3" placeholder="Deskripsi Wisata" class="form-control"><?= $w['deskripsi']; ?></textarea>
                             </div>
-                        </div>
-                        <div class="row form-group">
+                            <div class="col col-md-6">
+                                <label for="alamat" class="form-control-label">Alamat Pariwisata</label>
+                                <textarea name="alamat" id="alamat" rows="3" placeholder="Alamat Wisata Wisata" class="form-control"><?= $w['alamat']; ?></textarea>
+                            </div>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-12">
-                                <label for="maps" class="form-control-label">Frame Google Maps</label>
-                                <textarea name="maps" id="maps" rows="3" placeholder="maps" class="form-control <?= ($validation->hasError('maps')) ? 'is-invalid' : ''; ?>"><?= $w['maps']; ?></textarea>
-                                <div class="pl-3 invalid-feedback">
-                                    <?= $validation->getError('maps'); ?>
-                                </div>
+                                <label for="maps" class="form-control-label">Frame Maps Wisata</label>
+                                <textarea name="maps" id="maps" rows="3" placeholder="Frame Maps Wisata" class="form-control"><?= $w['maps']; ?></textarea>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-primary">Selesai</button>
+                            <button type="submit" class="btn btn-primary">Edit Wisata</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <!-- End Modal Edit User -->
+    <!-- End Modal Add Wisata -->
 <?php endforeach; ?>
 <!-- END MODAL -->
 

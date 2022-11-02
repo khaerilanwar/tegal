@@ -55,7 +55,7 @@ abstract class BaseController extends Controller
         $email = session()->email;
         $builder = $db->table('user');
         $this->user = $builder->getWhere(['email' => $email])->getRowArray();
-        // $builder = $this->db->table('user');
+        $this->build = $db->table('user');
         // $this->user = \Config\Database::connect()->table('user');
     }
 }

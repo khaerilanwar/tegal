@@ -60,6 +60,7 @@ $routes->delete('/dashboard/(:num)', 'Admin\Dashboard::hapus/$1');
 // ADMIN PARIWISATA
 $routes->get('/pariwisata', 'Admin\Pariwisata::index');
 $routes->post('/pariwisata/edit/(:num)', 'Admin\Pariwisata::edit/$1');
+$routes->post('/pariwisata/tambahWisata', 'Admin\Pariwisata::tambahWisata');
 $routes->delete('/pariwisata/(:num)', 'Admin\Pariwisata::hapus/$1');
 
 // ROUTES USER

@@ -24,8 +24,8 @@ class Pariwisata extends BaseController
         $cari = $this->request->getGet('wisata');
 
         // Query data admin
-        $builder = $this->db->table('user');
-        $admin = $builder->getWhere(['email' => 'khaerilanwar1992@gmail.com'])->getRowArray();
+        // $builder = $this->db->table('user');
+        $admin = $this->build->getWhere(['email' => 'khaerilanwar1992@gmail.com'])->getRowArray();
 
         switch ($dasar) {
             case 'nama_wisata':
@@ -73,17 +73,39 @@ class Pariwisata extends BaseController
         // 'nama_wisata', 'harga', 'lokasi', 'maps', 'alamat', 'deskripsi'
 
         $data = [
-            'nama_wisata' => $this->request->getPost('nama_wisata'),
-            'harga' => $this->request->getPost('harga'),
-            'lokasi' => $this->request->getPost('lokasi'),
-            'maps' => $this->request->getPost('maps'),
-            'alamat' => $this->request->getPost('alamat'),
-            'deskripsi' => $this->request->getPost('deskripsi')
+            'nama_wisata' => htmlspecialchars($this->request->getPost('nama_wisata')),
+            'harga' => htmlspecialchars($this->request->getPost('harga')),
+            'lokasi' => htmlspecialchars($this->request->getPost('lokasi')),
+            'maps' => htmlspecialchars($this->request->getPost('maps')),
+            'alamat' => htmlspecialchars($this->request->getPost('alamat')),
+            'deskripsi' => htmlspecialchars($this->request->getPost('deskripsi')),
+            'gambar' => htmlspecialchars($this->request->getPost('gambar'))
         ];
 
         $this->wisataModel->update($id, $data);
 
         session()->setFlashdata('pesan', 'Objek Wisata berhasil diubah!');
+        session()->setFlashdata('warna', 'success');
+
+        return redirect()->to('/pariwisata');
+    }
+
+    public function tambahWisata()
+    {
+        $data = [
+            'nama_wisata' => htmlspecialchars($this->request->getPost('nama_wisata')),
+            'harga' => htmlspecialchars($this->request->getPost('harga')),
+            'lokasi' => htmlspecialchars($this->request->getPost('lokasi')),
+            'gambar' => htmlspecialchars($this->request->getPost('gambar')),
+            'deskripsi' => htmlspecialchars($this->request->getPost('deskripsi')),
+            'alamat' => htmlspecialchars($this->request->getPost('alamat')),
+            'maps' => htmlspecialchars($this->request->getPost('maps')),
+            'slug' => url_title(htmlspecialchars($this->request->getPost('nama_wisata')), '-', true)
+        ];
+
+        $this->wisataModel->insert($data);
+
+        session()->setFlashdata('pesan', 'Objek Wisata berhasil ditambah!');
         session()->setFlashdata('warna', 'success');
 
         return redirect()->to('/pariwisata');
