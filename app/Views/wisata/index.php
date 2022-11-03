@@ -88,7 +88,7 @@
                                 <div class="btn-group">
                                     <span class="fs-5 fw-bold"><?= number_format($data['harga'], 0, '', '.') ?> / Orang</span>
                                 </div>
-                                <a href="/wisata/pesantiket?objek=<?= $data['id']; ?>" class="btn btn-primary p-2">Pesan Tiket</a>
+                                <a href="/wisata/pesantiket?idwisata=<?= $data['id']; ?>" class="btn btn-primary p-2">Pesan Tiket</a>
                             </div>
                         </div>
                     </div>

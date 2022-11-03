@@ -13,8 +13,6 @@ class Jasa extends BaseController
     public function __construct()
     {
         $this->jasaModel = new jasaModel();
-        helper('tegal');
-        cekLogin();
     }
 
     public function index()

@@ -29,6 +29,17 @@
 
 
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function total() {
+            var jumlahTiket, hargaTiket, hasil;
+            jumlahTiket = parseInt(document.getElementById('jumlah_tiket').value);
+            hargaTiket = parseInt(document.getElementById('harga').value);
+            if (jumlahTiket > 0) {
+                hasil = jumlahTiket * hargaTiket;
+                document.getElementById('harga_total').value = hasil;
+            }
+        }
+    </script>
 </body>
 
 </html>
