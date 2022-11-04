@@ -2658,6 +2658,7 @@ section {
     align-items: center;
     position: relative;
     z-index: 3;
+    margin-left: 7em;
 }
 
 .header__navbar ul {
@@ -2733,7 +2734,8 @@ section {
 }
 
 .header__navbar ul li.active > a {
-    color: #4272d7;
+    color: #fff;
+    background-color: #1363DF;
 }
 
 .header__navbar ul li.active > a .bot-line {

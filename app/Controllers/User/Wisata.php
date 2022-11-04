@@ -5,6 +5,7 @@ namespace App\Controllers\User;
 use App\Controllers\BaseController;
 use App\Models\PesananModel;
 use App\Models\WisataModel;
+use CodeIgniter\I18n\Time;
 
 class Wisata extends BaseController
 {
@@ -60,21 +61,11 @@ class Wisata extends BaseController
 
     public function pesan()
     {
-        // 'no_pesanan'
-        // 'customer'
-        // 'email_cust'
-        // 'tanggal_pesan'
-        // 'nama_wisata'
-        // 'tanggal_datang'
-        // 'jumlah_tiket'
-        // 'payment'
-        // 'harga_total'
-
         $data = [
             'no_pesanan' => random_string('num'),
             'customer' => htmlspecialchars($this->request->getPost('customer')),
             'email_cust' => htmlspecialchars($this->request->getPost('email')),
-            'tanggal_pesan' => date('Y-m-d'),
+            'tanggal_pesan' => Time::now(),
             'nama_wisata' => htmlspecialchars($this->request->getPost('nama_wisata')),
             'tanggal_datang' => htmlspecialchars($this->request->getPost('tanggal_datang')),
             'jumlah_tiket' => htmlspecialchars($this->request->getPost('jumlah_tiket')),
@@ -88,6 +79,7 @@ class Wisata extends BaseController
 
     public function pesanTiket()
     {
+        cekLogin();
         $id = $this->request->getGet('idwisata');
 
         // $email = session()->email;
