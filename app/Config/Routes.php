@@ -70,6 +70,9 @@ $routes->get('/wisata/pesantiket', 'User\Wisata::pesanTiket');
 $routes->post('/wisata/pesan', 'User\Wisata::pesan');
 $routes->get('/wisata/bayar/(:num)', 'User\Wisata::bayar/$1');
 
+// ROUTES USER
+$routes->get('/pasang-iklan', 'User\Iklan::index');
+
 // ROUTES JASA
 $routes->get('/jasa', 'User\Jasa::index');
 
