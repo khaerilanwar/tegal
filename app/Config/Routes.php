@@ -68,6 +68,7 @@ $routes->delete('/pariwisata/(:num)', 'Admin\Pariwisata::hapus/$1');
 $routes->get('/wisata', 'User\Wisata::index');
 $routes->get('/wisata/pesantiket', 'User\Wisata::pesanTiket');
 $routes->post('/wisata/pesan', 'User\Wisata::pesan');
+$routes->get('/wisata/bayar/(:num)', 'User\Wisata::bayar/$1');
 
 // ROUTES JASA
 $routes->get('/jasa', 'User\Jasa::index');

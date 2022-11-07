@@ -61,8 +61,9 @@ class Wisata extends BaseController
 
     public function pesan()
     {
+        $no_pesan = random_string('num');
         $data = [
-            'no_pesanan' => random_string('num'),
+            'no_pesanan' => $no_pesan,
             'customer' => htmlspecialchars($this->request->getPost('customer')),
             'email_cust' => htmlspecialchars($this->request->getPost('email')),
             'tanggal_pesan' => Time::now(),
@@ -74,7 +75,7 @@ class Wisata extends BaseController
         ];
 
         $this->pesananModel->insert($data);
-        return redirect()->to('/wisata');
+        return redirect()->to("/wisata/bayar/$no_pesan");
     }
 
     public function pesanTiket()
@@ -92,5 +93,15 @@ class Wisata extends BaseController
             'user' => $this->user
         ];
         return view('wisata/pesanTiket', $data);
+    }
+
+    public function bayar($kode)
+    {
+        $data = [
+            'title' => 'Pembayaran Tiket Wisata',
+            'bayar' => $this->pesananModel->find($kode)
+        ];
+
+        return view('wisata/bayar', $data);
     }
 }
