@@ -10,7 +10,36 @@
 
 <body>
     <h1>Halaman Pembayaran</h1>
-    <span><?= $bayar['nama_wisata']; ?></span>
+    <table>
+        <tr>
+            <td>No. Pesanan</td>
+            <td><?= $bayar['no_pesanan']; ?></td>
+        </tr>
+        <tr>
+            <td>Tanggal Pesan</td>
+            <td><?= $bayar['tanggal_pesan']; ?></td>
+        </tr>
+        <tr>
+            <td>Email Customer</td>
+            <td><?= $bayar['email_cust']; ?></td>
+        </tr>
+        <tr>
+            <td>Nama Wisata</td>
+            <td><?= $bayar['nama_wisata']; ?></td>
+        </tr>
+        <tr>
+            <td>Jumlah Tiket</td>
+            <td><?= $bayar['jumlah_tiket']; ?></td>
+        </tr>
+        <tr>
+            <td>Total Harga</td>
+            <td><?= $bayar['harga_total']; ?></td>
+        </tr>
+        <tr>
+            <td>Metode Pembayaran</td>
+            <td><?= $bayar['via']; ?></td>
+        </tr>
+    </table>
 </body>
 
 </html>

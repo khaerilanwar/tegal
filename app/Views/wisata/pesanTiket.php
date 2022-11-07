@@ -45,10 +45,10 @@
                             <label for="payment" class="form-label">Metode Pembayaran</label>
                             <select class="form-select" id="payment" name="payment">
                                 <option selected disabled>Pilih Pembayaran...</option>
-                                <option value="Dana">Dana</option>
-                                <option value="Shopeepay">Shopeepay</option>
-                                <option value="Bank BRI">Bank BRI</option>
-                                <option value="Bank BNI">Bank BNI</option>
+                                <option value="1">Dana</option>
+                                <option value="2">Shopeepay</option>
+                                <option value="3">Bank BRI</option>
+                                <option value="4">Bank BCA</option>
                             </select>
                         </div>
                         <div class="col-12">

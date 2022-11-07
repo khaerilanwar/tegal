@@ -16,7 +16,7 @@ class PesananModel extends Model
         'nama_wisata',
         'tanggal_datang',
         'jumlah_tiket',
-        'payment',
+        'id_payment',
         'harga_total'
     ];
 }

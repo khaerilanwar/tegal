@@ -70,7 +70,7 @@ class Wisata extends BaseController
             'nama_wisata' => htmlspecialchars($this->request->getPost('nama_wisata')),
             'tanggal_datang' => htmlspecialchars($this->request->getPost('tanggal_datang')),
             'jumlah_tiket' => htmlspecialchars($this->request->getPost('jumlah_tiket')),
-            'payment' => htmlspecialchars($this->request->getPost('payment')),
+            'id_payment' => htmlspecialchars($this->request->getPost('payment')),
             'harga_total' => htmlspecialchars($this->request->getPost('harga_total'))
         ];
 
@@ -97,9 +97,16 @@ class Wisata extends BaseController
 
     public function bayar($kode)
     {
+        $db = \Config\Database::connect();
+        $builder = $db->table('pesanan');
+        $builder->select('*');
+        $builder->join('pembayaran', 'pembayaran.id = pesanan.id_payment');
+        $query = $builder->where('no_pesanan', $kode);
+        // $query = $builder->get()->where('no_pesanan', $kode)->getRowArray();
+
         $data = [
             'title' => 'Pembayaran Tiket Wisata',
-            'bayar' => $this->pesananModel->find($kode)
+            'bayar' => $query
         ];
 
         return view('wisata/bayar', $data);
