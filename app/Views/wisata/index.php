@@ -78,7 +78,7 @@
                         <img class="bd-placeholder-img card-img-top" src="/assets/img/<?= $data['gambar']; ?>" width="100%" height="225">
 
                         <div class="card-body">
-                            <a class="text-decoration-none text-dark" href="/wisata/details">
+                            <a class="text-decoration-none text-dark" href="/wisata/detail/<?= $data['slug']; ?>">
                                 <h5><?= $data['nama_wisata']; ?> | <?= $data['lokasi']; ?></h5>
                                 <div class="text-truncate card-text mb-3">
                                     <?= $data['deskripsi']; ?>

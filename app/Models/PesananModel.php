@@ -6,6 +6,7 @@ use CodeIgniter\Model;
 
 class PesananModel extends Model
 {
+    protected $useAutoIncrement = false;
     protected $primaryKey = 'no_pesanan';
     protected $table = 'pesanan';
     protected $allowedFields = [

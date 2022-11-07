@@ -12,7 +12,7 @@
     <h1>Halaman Pembayaran</h1>
     <table>
         <tr>
-            <td>No. Pesanan</td>
+            <td style="padding-right: 6em;">No. Pesanan</td>
             <td><?= $bayar['no_pesanan']; ?></td>
         </tr>
         <tr>
@@ -36,7 +36,11 @@
             <td><?= $bayar['harga_total']; ?></td>
         </tr>
         <tr>
-            <td>Metode Pembayaran</td>
+            <td>Nomor</td>
+            <td><?= $bayar['detail']; ?></td>
+        </tr>
+        <tr>
+            <td>Metode</td>
             <td><?= $bayar['via']; ?></td>
         </tr>
     </table>

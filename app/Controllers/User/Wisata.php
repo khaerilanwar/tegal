@@ -54,9 +54,23 @@ class Wisata extends BaseController
         return view('wisata/index', $data);
     }
 
-    public function detail()
+    public function detail($slug)
     {
-        return view('wisata/detail');
+        $wisata = $this->wisataModel->where(['slug' => $slug])->first();
+        $nama_wisata = $wisata['nama_wisata'];
+
+        $data = [
+            'title' => "Pariwisata $nama_wisata",
+            'wisata' => $wisata,
+            'user' => $this->user
+        ];
+
+        // jika komik tidak ada di tabel
+        if (empty($data['wisata'])) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Halaman Tidak Ditemukan.');
+        }
+
+        return view('wisata/detail', $data);
     }
 
     public function pesan()
@@ -101,8 +115,7 @@ class Wisata extends BaseController
         $builder = $db->table('pesanan');
         $builder->select('*');
         $builder->join('pembayaran', 'pembayaran.id = pesanan.id_payment');
-        $query = $builder->where('no_pesanan', $kode);
-        // $query = $builder->get()->where('no_pesanan', $kode)->getRowArray();
+        $query = $builder->getWhere(['no_pesanan' => $kode])->getRowArray();
 
         $data = [
             'title' => 'Pembayaran Tiket Wisata',
