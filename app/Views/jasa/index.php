@@ -17,7 +17,7 @@
         <?php foreach ($jasa as $j) : ?>
             <div class="col-sm d-flex justify-content-center">
                 <div class="card" style="width: 18rem;">
-                    <img src="/assets/img/<?= $j['gambar']; ?>" class="card-img-top" alt="<?= $j['nama_jasa']; ?>">
+                    <img src="/assets/img/<?= $j['gambar']; ?>" class="card-img-top" alt="<?= $j['nama_jasa']; ?>" height="250">
                     <div class="card-body">
                         <h5 class="card-title"><?= $j['nama_jasa']; ?></h5>
                         <p class="card-text text-truncate"><?= $j['deskripsi']; ?></p>
