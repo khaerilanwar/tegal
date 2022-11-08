@@ -7,7 +7,7 @@
         </a>
 
         <ul class="pe-5 nav col-sm-4 justify-content-end">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Home</a></li>
+            <li class="nav-item"><a href="/home/home.php" class="nav-link px-2 text-white">Home</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Pariwisata</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Kuliner</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Penginapan</a></li>

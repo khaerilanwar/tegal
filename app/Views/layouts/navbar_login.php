@@ -5,8 +5,8 @@
         </a>
 
         <ul class="nav nav-pills col-sm-7 d-flex justify-content-center">
-            <li class="nav-item"><a href="/home" class="nav-link fs-5 text-white">Home</a></li>
-            <li class="nav-item"><a href="/wisata" class="nav-link fs-5 text-white active">Pariwisata</a></li>
+            <li class="nav-item"><a href="/Views/home" class="nav-link fs-5 text-white active">Home</a></li>
+            <li class="nav-item"><a href="/wisata" class="nav-link fs-5 text-white ">Pariwisata</a></li>
             <li class="nav-item"><a href="/kuliner" class="nav-link fs-5 text-white">Kuliner</a></li>
             <li class="nav-item"><a href="/penginapan" class="nav-link fs-5 text-white">Penginapan</a></li>
             <li class="nav-item"><a href="/jasa" class="nav-link fs-5 text-white">Jasa</a></li>
