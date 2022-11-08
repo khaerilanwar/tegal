@@ -3,7 +3,7 @@
         <div class="col d-flex justify-content-center pt-5" id="form">
             <div class="col-md-4 col-lg-6 py-5">
                 <h3 class="mb-4 text-center">Pasang Iklan Jasamu</h3>
-                <form method="post" action="/wisata/pesan">
+                <form method="post" action="/pasang-iklan/addJasa" enctype="multipart/form-data">
                     <div class="row my-5">
                         <div class="col-12 mb-3">
                             <label for="nama_jasa" class="form-label">Nama Jasa</label>
@@ -34,12 +34,12 @@
 
                         <div class="col-12 mb-3">
                             <label class="form-label" for="inputGroupFile02">Gambar Jasa Kamu</label>
-                            <input type="file" class="form-control" id="inputGroupFile02">
+                            <input type="file" name="gambar" class="form-control" id="inputGroupFile02">
                         </div>
 
                         <div class="col-12 mb-3">
                             <label for="maps" class="form-label">Frame Maps</label>
-                            <textarea name="maps" class="form-control" id="maps" rows="4" placeholder="Deskripsi Jasa Kamu"></textarea>
+                            <textarea name="maps" class="form-control" id="maps" rows="4" placeholder="Frame Maps Kamu"></textarea>
                         </div>
 
                     </div>
