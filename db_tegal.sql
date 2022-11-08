@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2022 at 08:07 AM
+-- Generation Time: Nov 08, 2022 at 12:56 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -43,7 +43,8 @@ CREATE TABLE `jasa` (
 
 INSERT INTO `jasa` (`id`, `nama_jasa`, `bidang_jasa`, `deskripsi`, `gambar`, `harga`, `maps`) VALUES
 (1, 'Laundry bang anwar', 'cleaning', 'Premium hadir untuk memberikan solusi laundry anda, memahami kebutuhan anda dengan pelayanan team kami yang ramah serta profesional bekerja sesuai SOP (Standard Operating Procedures), Orange Laundry Premium hadir sebagai one stop laundry service yang mema', 'laundry.jpg', 30000, '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.1328562557314!2d109.03626971455866!3d-6.874681095032153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6fbba48f00d7a5%3A0x8aa01b8c2b5a860f!2szZZ...*21*21*21%20Kedai%20Coffee!5e0!3m2!1sid!2sid!4v1666518018455!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>'),
-(2, 'Laundry cyntia', 'cleaning', 'Premium hadir untuk memberikan solusi laundry anda, memahami kebutuhan anda dengan pelayanan team kami yang ramah serta profesional bekerja sesuai SOP (Standard Operating Procedures), Orange Laundry Premium hadir sebagai one stop laundry service yang mema', 'laundry.jpg', 30000, '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63378.12587036862!2d109.0034387384113!3d-6.874679818246503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6fb95f6a6f357f%3A0xc08a399f73155b55!2sTegal%20Laundry!5e0!3m2!1sid!2sid!4v1666518345939!5m2!1sid!2sid\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>');
+(2, 'Laundry cyntia', 'cleaning', 'Premium hadir untuk memberikan solusi laundry anda, memahami kebutuhan anda dengan pelayanan team kami yang ramah serta profesional bekerja sesuai SOP (Standard Operating Procedures), Orange Laundry Premium hadir sebagai one stop laundry service yang mema', 'laundry.jpg', 30000, '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63378.12587036862!2d109.0034387384113!3d-6.874679818246503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6fb95f6a6f357f%3A0xc08a399f73155b55!2sTegal%20Laundry!5e0!3m2!1sid!2sid!4v1666518345939!5m2!1sid!2sid\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>'),
+(3, 'Service Komputer', 'elektronik', 'Service Komputer', '1667906500_df5c2f67d3153960f289.jpg', 70000, 'dsadsadsad');
 
 -- --------------------------------------------------------
 
@@ -78,7 +79,9 @@ CREATE TABLE `pembayaran` (
 
 INSERT INTO `pembayaran` (`id`, `via`, `detail`) VALUES
 (1, 'Dana', '085870627026'),
-(2, 'Bank BRI', '123456789964');
+(2, 'Shopeepay', '085870627026'),
+(3, 'Bank BRI', '123456789964'),
+(4, 'Bank BCA', '2343240294320');
 
 -- --------------------------------------------------------
 
@@ -96,6 +99,34 @@ CREATE TABLE `penginapan` (
   `maps` text NOT NULL,
   `kamar_tersedia` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pesanan`
+--
+
+CREATE TABLE `pesanan` (
+  `no_pesanan` int(25) NOT NULL,
+  `customer` varchar(128) NOT NULL,
+  `email_cust` varchar(128) NOT NULL,
+  `tanggal_pesan` date NOT NULL,
+  `nama_wisata` varchar(100) NOT NULL,
+  `tanggal_datang` date NOT NULL,
+  `jumlah_tiket` int(5) NOT NULL,
+  `id_payment` int(2) NOT NULL,
+  `harga_total` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pesanan`
+--
+
+INSERT INTO `pesanan` (`no_pesanan`, `customer`, `email_cust`, `tanggal_pesan`, `nama_wisata`, `tanggal_datang`, `jumlah_tiket`, `id_payment`, `harga_total`) VALUES
+(2698234, 'Silenggang', 'ayaa@gmail.com', '2022-11-07', 'Curug Bengkawah', '2022-11-23', 4, 3, '40000'),
+(765615377, 'Dunia oy oy', 'ayaa@gmail.com', '2022-11-07', 'Clirit View', '2022-11-28', 2, 1, '40000'),
+(1725345133, 'Team Sakti', 'ayaa@gmail.com', '2022-11-07', 'Curug Putri', '2022-11-21', 15, 4, '150000'),
+(2105244915, 'Mas Anwar', 'ayaa@gmail.com', '2022-11-07', 'Curug Cantel', '2022-11-29', 5, 2, '75000');
 
 -- --------------------------------------------------------
 
@@ -126,7 +157,7 @@ INSERT INTO `user` (`id`, `nama`, `email`, `no_telp`, `jenis_kelamin`, `alamat`,
 (5, 'Krisdiana', 'krisdiana@gmail.com', '081257800047', 'Perempuan', 'Gamprit, Brebes', '$2y$10$aEeWfdCY0kJ0a/qNt5zkyOm4P9UOV5HRLh1FebyOr.CjHzlSh9vCS', 'default.jpg', 1, 2),
 (13, 'Gita Iftah Royani', 'gita123@gmail.com', '081257800047', 'Perempuan', 'dadas', '$2y$10$cLYBqRTcrUzVHNB8Pgj7UeNTkC5Z.ykxJhbrso.jcGMH4tJFDSqi6', 'default.jpg', 1, 2),
 (14, 'Adduru Nafisah', 'adudu@gmail.com', '081187900098', 'Perempuan', 'Pasarbatang, Brebes', '$2y$10$nwtp6qxzU05Ns9n1D2ATt.J8QhRwPyf44aoFAVAHcRJimE/Refs7G', 'default.jpg', 1, 2),
-(15, 'Nurul Rahmanda', 'nurul@gmail.com', '081257800047', 'Perempuan', 'Tegal', '$2y$10$j.G9liu1KMg019dIULhizur4Hx5TgzNbQCkcaeZKAz36zemG8Qgey', 'default.jpg', 1, 2),
+(15, 'Nurul Rahmanda Afrianisa', 'nurul@gmail.com', '081257800047', 'Perempuan', 'Tegal', '$2y$10$j.G9liu1KMg019dIULhizur4Hx5TgzNbQCkcaeZKAz36zemG8Qgey', 'default.jpg', 1, 2),
 (16, 'Nihayatul Fathiyah', 'ayaa@gmail.com', '085870627026', 'Perempuan', 'Banjaratma, Brebes', '$2y$10$rq7jHuxN2Nsgy2tfegk7FOC1V1Zq0hn7zA3vQE1MSaqROvrELmGEy', 'default.jpg', 1, 2);
 
 -- --------------------------------------------------------
@@ -187,6 +218,12 @@ ALTER TABLE `penginapan`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `pesanan`
+--
+ALTER TABLE `pesanan`
+  ADD PRIMARY KEY (`no_pesanan`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -206,7 +243,7 @@ ALTER TABLE `wisata`
 -- AUTO_INCREMENT for table `jasa`
 --
 ALTER TABLE `jasa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `kuliner`
@@ -218,7 +255,7 @@ ALTER TABLE `kuliner`
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `penginapan`
