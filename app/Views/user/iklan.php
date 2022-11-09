@@ -30,4 +30,70 @@
 
 <?= $this->include($partial); ?>
 
+<?php if ($partial == 'user/partial/index') : ?>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center mb-5">Iklan Anda</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-5">
+        <span>Cari Berdasarkan</span>
+        <form action="" method="get">
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <!-- TABEL IKLAN -->
+        <table class="table">
+          <thead class="table-light">
+            <th>No.</th>
+            <th>Nama</th>
+            <th>Bidang Jasa</th>
+            <th>Harga</th>
+            <th>Gambar</th>
+          </thead>
+          <tbody>
+            <?php $i = 1; ?>
+            <?php foreach ($dataIklan as $iklan) : ?>
+              <tr class="align-middle">
+                <td><?= $i; ?></td>
+                <td><?= $iklan['nama_jasa']; ?></td>
+                <td><?= $iklan['bidang_jasa']; ?></td>
+                <td> Rp. <?= number_format($iklan['harga'], 0, '', '.') ?></td>
+                <td>
+                  <img src="assets/img/<?= $iklan['gambar']; ?>" class="rounded" alt="<?= $iklan['nama_jasa']; ?>" width="70">
+                </td>
+                <td>
+                  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editModal<?= $iklan['id']; ?>">
+                    Edit
+                  </button>
+
+                  <form action="/pasang-iklan/<?= $iklan['id']; ?>" method="post" class="d-inline">
+                    <?= csrf_field(); ?>
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('apakah anda yakin ?')">Hapus</button>
+                  </form>
+                </td>
+              </tr>
+              <?php $i++; ?>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+        <!-- END TABEL IKLAN -->
+      </div>
+    </div>
+  </div>
+
+<?php endif; ?>
+
 <?php $this->endSection(); ?>

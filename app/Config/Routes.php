@@ -74,6 +74,8 @@ $routes->get('/wisata/detail/(:any)', 'User\Wisata::detail/$1');
 // ROUTES USER
 $routes->get('/pasang-iklan', 'User\Iklan::index');
 $routes->post('/pasang-iklan/addJasa', 'User\Iklan::addJasa');
+$routes->delete('/pasang-iklan/(:num)', 'User\Iklan::hapus/$1');
+$routes->post('/pasang-iklan/update/(:num)', 'User\Iklan::update/$1');
 
 // ROUTES JASA
 $routes->get('/jasa', 'User\Jasa::index');
