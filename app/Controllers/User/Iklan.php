@@ -11,6 +11,8 @@ class Iklan extends BaseController
 
     public function __construct()
     {
+        helper('tegal');
+        cekLogin();
         $this->jasaModel = new jasaModel();
     }
 
