@@ -63,6 +63,10 @@ $routes->post('/pariwisata/edit/(:num)', 'Admin\Pariwisata::edit/$1');
 $routes->post('/pariwisata/tambahWisata', 'Admin\Pariwisata::tambahWisata');
 $routes->delete('/pariwisata/(:num)', 'Admin\Pariwisata::hapus/$1');
 
+// ADMIN  LAYANAN
+$routes->get('/layanan', 'Admin\Layanan::index');
+$routes->delete('/layanan/(:num)', 'Admin\Layanan::hapus/$1');
+
 // ROUTES USER
 // ROUTES WISATA
 $routes->get('/wisata', 'User\Wisata::index');

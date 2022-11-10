@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class jasaModel extends Model
+class JasaModel extends Model
 {
     protected $table = 'jasa';
     protected $allowedFields = [

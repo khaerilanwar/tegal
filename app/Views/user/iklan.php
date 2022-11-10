@@ -38,19 +38,37 @@
         <h1 class="text-center mb-5">Iklan Anda</h1>
       </div>
     </div>
-    <div class="row">
-      <div class="col-5">
-        <span>Cari Berdasarkan</span>
-        <form action="" method="get">
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-        </form>
+
+    <form action="" method="get">
+      <div class="row mb-4">
+        <div class="col-7">
+          <div class="row">
+            <div class="col-3">
+              Cari Berdasarkan
+            </div>
+            <div class="col-3">
+              <select class="form-select" aria-label="Default select example">
+                <option selected>Menu</option>
+                <option value="Kuliner">Kuliner</option>
+                <option value="Penginapan">Penginapan</option>
+                <option value="Jasa">Jasa</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <div class="input-group ml-3">
+                <input type="text" id="input1-group2" name="user" placeholder="Cari Pengguna" class="form-control py-2">
+                <div class="input-group-btn">
+                  <button type="submit" class="btn btn-primary py-2">
+                    <i class="fa fa-search"></i> Cari
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </form>
+
     <div class="row">
       <div class="col">
         <!-- TABEL IKLAN -->
