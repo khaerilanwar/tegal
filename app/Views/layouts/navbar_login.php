@@ -51,7 +51,7 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">
+                        <li><a class="dropdown-item" href="/profil">
                                 <div class="row">
                                     <div class="col-2">
                                         <i class="fa-solid fa-user"></i>
