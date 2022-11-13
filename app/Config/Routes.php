@@ -77,6 +77,9 @@ $routes->get('/pasang-iklan', 'User\Iklan::index');
 // ROUTES JASA
 $routes->get('/jasa', 'User\Jasa::index');
 
+//ROUTES KULINER
+$routes->get('/kuliner','User\Kuliner::index');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
