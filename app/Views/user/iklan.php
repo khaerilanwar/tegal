@@ -30,4 +30,140 @@
 
 <?= $this->include($partial); ?>
 
+<?php if ($partial == 'user/partial/index') : ?>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center mb-5">Iklan Anda</h1>
+      </div>
+    </div>
+
+    <form action="" method="get">
+      <div class="row mb-4">
+        <div class="col-7">
+          <div class="row">
+            <div class="col-3">
+              Cari Berdasarkan
+            </div>
+            <div class="col-3">
+              <select class="form-select" aria-label="Default select example">
+                <option selected>Menu</option>
+                <option value="Kuliner">Kuliner</option>
+                <option value="Penginapan">Penginapan</option>
+                <option value="Jasa">Jasa</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <div class="input-group ml-3">
+                <input type="text" id="input1-group2" name="user" placeholder="Cari Pengguna" class="form-control py-2">
+                <div class="input-group-btn">
+                  <button type="submit" class="btn btn-primary py-2">
+                    <i class="fa fa-search"></i> Cari
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="row">
+      <div class="col">
+        <!-- TABEL IKLAN -->
+        <table class="table">
+          <thead class="table-light">
+            <th>No.</th>
+            <th>Nama</th>
+            <th>Bidang Jasa</th>
+            <th>Harga</th>
+            <th>Gambar</th>
+          </thead>
+          <tbody>
+            <?php $i = 1; ?>
+            <?php foreach ($dataIklan as $iklan) : ?>
+              <tr class="align-middle">
+                <td><?= $i; ?></td>
+                <td><?= $iklan['nama_jasa']; ?></td>
+                <td><?= $iklan['bidang_jasa']; ?></td>
+                <td> Rp. <?= number_format($iklan['harga'], 0, '', '.') ?></td>
+                <td>
+                  <img src="assets/img/<?= $iklan['gambar']; ?>" class="rounded" alt="<?= $iklan['nama_jasa']; ?>" width="70">
+                </td>
+                <td>
+                  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editModal<?= $iklan['id']; ?>">
+                    Edit
+                  </button>
+
+                  <form action="/pasang-iklan/<?= $iklan['id']; ?>" method="post" class="d-inline">
+                    <?= csrf_field(); ?>
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('apakah anda yakin ?')">Hapus</button>
+                  </form>
+                </td>
+              </tr>
+              <?php $i++; ?>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+        <!-- END TABEL IKLAN -->
+      </div>
+    </div>
+  </div>
+
+<?php endif; ?>
+
+<?php foreach ($dataIklan as $iklan) : ?>
+  <!-- Modal -->
+  <div class="modal fade" id="editModal<?= $iklan['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Iklan Jasa</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/pasang-iklan/update/<?= $iklan['id']; ?>" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="gambarLama" value="<?= $iklan['gambar']; ?>">
+            <div class="row mb-3">
+              <div class="col-6">
+                <div class="row">
+                  <div class="col mb-3">
+                    <label for="nama_jasa" class="form-label">Nama Jasa Kamu</label>
+                    <input value="<?= $iklan['nama_jasa']; ?>" type="text" class="form-control" id="nama_jasa" name="nama_jasa" placeholder="Nama Jasa">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <label for="harga" class="form-label">Harga Jasa Kamu</label>
+                    <input value="<?= $iklan['harga']; ?>" type="text" class="form-control" id="harga" name="harga" placeholder="Harga Jasa Kamu">
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <label for="gambar" class="form-label">Upload Gambar Jasa</label>
+                <input type="file" name="gambar" class="form-control" id="gambar" onchange="previewImg()">
+                <img src="/assets/img/<?= $iklan['gambar']; ?>" width="80" id="img-prv" class="img-thumbnail img-preview mt-2 mx-auto d-block">
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="deskripsi" class="form-label">Deskripsi Jasa Kamu</label>
+              <textarea name="deskripsi" class="form-control" id="deskripsi" rows="3" placeholder="Deskripsi Jasa Kamu"><?= $iklan['deskripsi']; ?></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="maps" class="form-label">Maps Jasa Kamu</label>
+              <textarea name="maps" class="form-control" id="maps" rows="3" placeholder="Alamat Maps Jasa Kamu"><?= $iklan['maps']; ?></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+              <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+<?php endforeach; ?>
+
 <?php $this->endSection(); ?>

@@ -27,7 +27,6 @@
 
     <?= $this->include('layouts/footer'); ?>
 
-
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <script>
         function total() {
@@ -37,6 +36,22 @@
             if (jumlahTiket > 0) {
                 hasil = jumlahTiket * hargaTiket;
                 document.getElementById('harga_total').value = hasil;
+            }
+        }
+    </script>
+
+    <script>
+        // SCRIPT JAVASCRIPT UNTUK MEMBUAT PREVIEW GAMBAR YANG DI UPLOAD
+        function previewImg() {
+            const gambar = document.querySelector('#gambar');
+            // const sampulLabel = document.querySelector('.custom-f')
+            const imgPreview = document.querySelector('.img-preview');
+            const fileGambar = new FileReader();
+
+            fileGambar.readAsDataURL(gambar.files[0]);
+
+            fileGambar.onload = function(e) {
+                imgPreview.src = e.target.result;
             }
         }
     </script>

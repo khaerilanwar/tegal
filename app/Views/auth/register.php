@@ -39,18 +39,14 @@
                                         <?= $validation->getError('email'); ?>
                                     </div>
                                 </div>
-                                <div class="form-group mb-3 d-flex justify-content-evenly">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" value="Laki-laki" name="jenis_kelamin" id="flexRadioDefault1" checked>
-                                        <label class="form-check-label" for="flexRadioDefault1">
-                                            Laki - laki
-                                        </label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" value="Perempuan" name="jenis_kelamin" id="flexRadioDefault2">
-                                        <label class="form-check-label" for="flexRadioDefault2">
-                                            Perempuan
-                                        </label>
+                                <div class="form-group mb-3">
+                                    <select class="form-select text-muted <?= ($validation->hasError('jenis_kelamin')) ? 'is-invalid' : ''; ?>" name="jenis_kelamin" aria-label="Default select example">
+                                        <option selected disabled>Jenis Kelamin</option>
+                                        <option value="Laki-laki" <?= old('jenis_kelamin') == 'Laki-laki' ? 'selected' : ''; ?>>Laki-laki</option>
+                                        <option value="Perempuan" <?= old('jenis_kelamin') == 'Perempuan' ? 'selected' : ''; ?>>Perempuan</option>
+                                    </select>
+                                    <div class="pl-3 invalid-feedback">
+                                        <?= $validation->getError('jenis_kelamin'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group mb-3">

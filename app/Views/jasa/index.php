@@ -17,11 +17,16 @@
         <?php foreach ($jasa as $j) : ?>
             <div class="col-sm d-flex justify-content-center">
                 <div class="card" style="width: 18rem;">
-                    <img src="/assets/img/<?= $j['gambar']; ?>" class="card-img-top" alt="<?= $j['nama_jasa']; ?>">
+                    <img src="/assets/img/<?= $j['gambar']; ?>" class="card-img-top" alt="<?= $j['nama_jasa']; ?>" height="250">
                     <div class="card-body">
                         <h5 class="card-title"><?= $j['nama_jasa']; ?></h5>
                         <p class="card-text text-truncate"><?= $j['deskripsi']; ?></p>
-                        <a href="#" class="btn btn-primary float-end">Hubungi</a>
+                        <?php
+                            $nomor = str_replace($j['nomor_user'][0], '62', $j['nomor_user']);
+                            $text = 'Haloo! Saya Tertarik dengan jasa anda !';
+                            $text = urlencode($text);
+                            ?>
+                        <a href="https://api.whatsapp.com/send/?phone=<?= $nomor; ?>&text=<?= $text; ?>" class="btn btn-primary float-end">Hubungi</a>
                     </div>
                 </div>
             </div>

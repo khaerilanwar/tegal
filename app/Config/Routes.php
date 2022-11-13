@@ -63,6 +63,10 @@ $routes->post('/pariwisata/edit/(:num)', 'Admin\Pariwisata::edit/$1');
 $routes->post('/pariwisata/tambahWisata', 'Admin\Pariwisata::tambahWisata');
 $routes->delete('/pariwisata/(:num)', 'Admin\Pariwisata::hapus/$1');
 
+// ADMIN  LAYANAN
+$routes->get('/layanan', 'Admin\Layanan::index');
+$routes->delete('/layanan/(:num)', 'Admin\Layanan::hapus/$1');
+
 // ROUTES USER
 // ROUTES WISATA
 $routes->get('/wisata', 'User\Wisata::index');
@@ -72,7 +76,14 @@ $routes->get('/wisata/bayar/(:num)', 'User\Wisata::bayar/$1');
 $routes->get('/wisata/detail/(:any)', 'User\Wisata::detail/$1');
 
 // ROUTES USER
+// PROFIL USER
+$routes->get('/profil', 'User\Profile::index');
+
+// IKLAN JASA
 $routes->get('/pasang-iklan', 'User\Iklan::index');
+$routes->post('/pasang-iklan/addJasa', 'User\Iklan::addJasa');
+$routes->delete('/pasang-iklan/(:num)', 'User\Iklan::hapus/$1');
+$routes->post('/pasang-iklan/update/(:num)', 'User\Iklan::update/$1');
 
 // ROUTES JASA
 $routes->get('/jasa', 'User\Jasa::index');
