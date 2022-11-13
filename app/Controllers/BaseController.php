@@ -35,7 +35,7 @@ abstract class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = [];
+    protected $helpers = ['tegal'];
 
     /**
      * Constructor.
@@ -50,5 +50,12 @@ abstract class BaseController extends Controller
         // E.g.: $this->session = \Config\Services::session();
 
         session();
+
+        $db = \Config\Database::connect();
+        $email = session()->email;
+        $builder = $db->table('user');
+        $this->user = $builder->getWhere(['email' => $email])->getRowArray();
+        $this->build = $db->table('user');
+        // $this->user = \Config\Database::connect()->table('user');
     }
 }
