@@ -6,6 +6,12 @@ use App\Controllers\BaseController;
 
 class Profile extends BaseController
 {
+    public function __construct()
+    {
+        helper('tegal');
+        cekLogin();
+    }
+
     public function index()
     {
         $data = [
@@ -14,5 +20,15 @@ class Profile extends BaseController
         ];
 
         return view('user/profile', $data);
+    }
+
+    public function editProfile()
+    {
+        $data = [
+            'title' => 'Profil',
+            'user' => $this->user
+        ];
+
+        return view('user/editProfile', $data);
     }
 }

@@ -4,6 +4,7 @@
             <div class="col-md-4 col-lg-6 py-5">
                 <h3 class="mb-4 text-center">Pasang Iklan Jasamu</h3>
                 <form method="post" action="/pasang-iklan/addJasa" enctype="multipart/form-data">
+                    <input type="hidden" name="nomor_user" value="<?= $user['no_telp']; ?>">
                     <div class="row my-5">
                         <div class="col-12 mb-3">
                             <label for="nama_jasa" class="form-label">Nama Jasa</label>

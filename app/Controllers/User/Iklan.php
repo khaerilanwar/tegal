@@ -151,6 +151,7 @@ class Iklan extends BaseController
         $this->jasaModel->save([
             'nama_jasa' => $this->request->getPost('nama_jasa'),
             'user_email' => session()->email,
+            'nomor_user' => $this->request->getPost('nomor_user'),
             'bidang_jasa' => $this->request->getPost('bidang_jasa'),
             'deskripsi' => $this->request->getPost('deskripsi'),
             'harga' => $this->request->getPost('harga'),

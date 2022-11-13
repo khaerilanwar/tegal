@@ -87,15 +87,6 @@
             </div>
 
         <?php endif; ?>
-
-        <!-- <div class="col-sm-3">
-            <div>
-                <img src="/assets/img/anwar.jpeg" alt="Khaeril Anwar">
-            </div>
-            <div>
-                <h5>Muhammad Khaeril Anwar</h5>
-            </div>
-        </div> -->
     </header>
 </div>
 <div class="mt-5 pt-4"></div>

@@ -10,6 +10,7 @@ class JasaModel extends Model
     protected $allowedFields = [
         'nama_jasa',
         'user_email',
+        'nomor_user',
         'bidang_jasa',
         'deskripsi',
         'gambar',

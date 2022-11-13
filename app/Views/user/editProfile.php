@@ -7,7 +7,7 @@
         <div class="col-6 mx-auto">
             <h1 class="my-5 text-center">EDIT PROFIL PENGGUNA</h1>
 
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="/profil/edit" method="post" enctype="multipart/form-data">
 
                 <div class="mb-3 row">
                     <label for="nama" class="col-sm-3 col-form-label">Nama</label>
