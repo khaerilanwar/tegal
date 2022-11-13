@@ -89,10 +89,6 @@ class Iklan extends BaseController
 
     public function addJasa()
     {
-        // nama_jasa, bidang_jasa, harga, deskripsi, gambar, maps
-
-        // dd($this->request->getVar('gambar'));
-
         $rules = [
             'nama_jasa' => [
                 'rules' => 'required|trim',
