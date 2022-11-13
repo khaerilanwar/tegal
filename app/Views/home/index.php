@@ -37,10 +37,10 @@
             <div class="text-center mb-5 animate-box">
                 <h1>Website Tegal Official</h1>
                 <p>Kami menyediakan berbagai</p>
-                <a class="btn btn-outline-info mx-3" href="#"> Pariwisata </a>
-                <a class="btn btn-outline-info mx-3" href="#">Kuliner </a>
-                <a class="btn btn-outline-info mx-3" href="#">Penginapan </a>
-                <a class="btn btn-outline-info mx-3" href="#">Jasa </a>
+                <a class="btn btn-outline-info mx-3" href="#pariwisata"> Pariwisata </a>
+                <a class="btn btn-outline-info mx-3" href="#kuliner">Kuliner </a>
+                <a class="btn btn-outline-info mx-3" href="#penginapan">Penginapan </a>
+                <a class="btn btn-outline-info mx-3" href="#jasa">Jasa </a>
 
             </div>
         </div>
@@ -48,25 +48,8 @@
     <div class="mb-5"></div>
     <div class="container">
         <div class="row row-bottom-padded-md">
-            <h1 class="animate-box badge rounded-pill bg-primary fs-5">PARIWISATA </h1>
-            <?php for ($i = 0; $i < 8; $i++) : ?>
-                <div class="col-xs-6 col-sm-3">
-                    <div class="fh5co-blog animate-box">
-                        <a href="#"><img class="img-responsive shadow-sm p-3 mb-5 bg-body rounded" src="/assets/img/3dpantai.jpg" alt=""></a>
-                        <div class="blog-text">
-                            <div class="prod-title">
-                                <h3><a href="#">3000% Discount to Travel</a></h3>
-                                <span class="posted_by">Sep. 15th</span>
-                                <span class="comment"><a href="">21<i class="icon-bubble2"></i></a></span>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p><a href="#">Learn More...</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php endfor; ?>
-            <div class="mb-5"></div>
-            <h1 class="animate-box badge rounded-pill bg-primary fs-5">KULINER</h1>
+            <div id="pariwisata" class="mb-5"></div>
+            <h1 class="animate-box badge rounded-pill mt-5 bg-primary fs-5">PARIWISATA </h1>
             <?php for ($i = 0; $i < 8; $i++) : ?>
                 <div class="col-xs-6 col-sm-3">
                     <div class="fh5co-blog animate-box">
@@ -83,8 +66,8 @@
                     </div>
                 </div>
             <?php endfor; ?>
-            <div class="mb-5"></div>
-            <h1 class="animate-box badge rounded-pill bg-primary fs-5">PENGINAPAN</h1>
+            <div id="kuliner" class="mb-5"></div>
+            <h1 class="animate-box badge rounded-pill mt-5 bg-primary fs-5">KULINER</h1>
             <?php for ($i = 0; $i < 8; $i++) : ?>
                 <div class="col-xs-6 col-sm-3">
                     <div class="fh5co-blog animate-box">
@@ -101,8 +84,26 @@
                     </div>
                 </div>
             <?php endfor; ?>
-            <div class="mb-5"></div>
-            <h1 class="animate-box badge rounded-pill bg-primary fs-5">JASA</h1>
+            <div class="mb-5" id="penginapan"></div>
+            <h1 class="animate-box badge rounded-pill mt-5 bg-primary fs-5">PENGINAPAN</h1>
+            <?php for ($i = 0; $i < 8; $i++) : ?>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="fh5co-blog animate-box">
+                        <a href="#"><img class="img-responsive" src="/assets/img/3dpantai.jpg" alt=""></a>
+                        <div class="blog-text">
+                            <div class="prod-title">
+                                <h3><a href="#">3000% Discount to Travel</a></h3>
+                                <span class="posted_by">Sep. 15th</span>
+                                <span class="comment"><a href="">21<i class="icon-bubble2"></i></a></span>
+                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                <p><a href="#">Learn More...</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endfor; ?>
+            <div id="jasa" class="mb-5"></div>
+            <h1 class="animate-box badge rounded-pill mt-5 bg-primary fs-5">JASA</h1>
             <?php for ($i = 0; $i < 8; $i++) : ?>
                 <div class="col-xs-6 col-sm-3">
                     <div class="fh5co-blog animate-box">
