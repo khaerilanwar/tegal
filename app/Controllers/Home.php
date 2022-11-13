@@ -6,6 +6,11 @@ class Home extends BaseController
 {
     public function index()
     {
-        return view('home/index');
+        $data = [
+            'title' => 'Home | Kabupaten Tegal',
+
+        ];
+
+        return view('home/index', $data);
     }
 }

@@ -24,6 +24,8 @@
 
     <?= $this->renderSection('content'); ?>
 
+    <?= $this->include('layouts/footer'); ?>
+
 
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
 </body>
