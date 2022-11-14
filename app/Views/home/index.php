@@ -35,7 +35,7 @@
     <div class="container">
         <div class="text-center">
             <div class="text-center mb-5 animate-box">
-                <h1>Website Tegal Official</h1>
+                <h1 class="fw-bolder">Website Tegal Official</h1>
                 <p>Kami menyediakan berbagai</p>
                 <a class="btn btn-outline-info mx-3" href="#pariwisata"> Pariwisata </a>
                 <a class="btn btn-outline-info mx-3" href="#kuliner">Kuliner </a>
@@ -45,12 +45,16 @@
             </div>
         </div>
     </div>
+    <div class="text-center animate-box shadow-sm p-3 mb-1 bg-body rounded">
+        <h1 class="c-page-title">For Information</h1>
+        <p class="fw-normal mb-5">Hallo Sobat! Di website ini kami menyediakan berbagai kebutuhan mengenai Tegal, Kalian mampu menyexplore isi tegal dari mulai Pariwisata lokal di tegal, Kuliner asli dari tegal, Penginapan sekitar Tegal dengan variasi harga bahkan kami menyuguhkan Jasa yang ada di Tegal.</p>
+    </div>
     <div class="mb-5"></div>
     <div class="container">
         <div class="row row-bottom-padded-md">
             <div id="pariwisata" class="mb-5"></div>
             <h1 class="animate-box badge rounded-pill mt-5 bg-primary fs-5">PARIWISATA </h1>
-            <?php for ($i = 0; $i < 8; $i++) : ?>
+            <?php for ($i = 0; $i < 4; $i++) : ?>
                 <div class="col-xs-6 col-sm-3">
                     <div class="fh5co-blog animate-box">
                         <a href="#"><img class="img-responsive" src="/assets/img/3dpantai.jpg" alt=""></a>
@@ -60,7 +64,7 @@
                                 <span class="posted_by">Sep. 15th</span>
                                 <span class="comment"><a href="">21<i class="icon-bubble2"></i></a></span>
                                 <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p><a href="#">Learn More...</a></p>
+                                <p> <a href="#" class="btn btn-primary">Lihat Selengkapnya</a></p>
                             </div>
                         </div>
                     </div>
@@ -68,7 +72,7 @@
             <?php endfor; ?>
             <div id="kuliner" class="mb-5"></div>
             <h1 class="animate-box badge rounded-pill mt-5 bg-primary fs-5">KULINER</h1>
-            <?php for ($i = 0; $i < 8; $i++) : ?>
+            <?php for ($i = 0; $i < 4; $i++) : ?>
                 <div class="col-xs-6 col-sm-3">
                     <div class="fh5co-blog animate-box">
                         <a href="#"><img class="img-responsive" src="/assets/img/3dpantai.jpg" alt=""></a>
@@ -78,7 +82,7 @@
                                 <span class="posted_by">Sep. 15th</span>
                                 <span class="comment"><a href="">21<i class="icon-bubble2"></i></a></span>
                                 <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p><a href="#">Learn More...</a></p>
+                                <p><a href="#" class="btn btn-primary">Lihat Selengkapnya</a></p>
                             </div>
                         </div>
                     </div>
@@ -86,7 +90,7 @@
             <?php endfor; ?>
             <div class="mb-5" id="penginapan"></div>
             <h1 class="animate-box badge rounded-pill mt-5 bg-primary fs-5">PENGINAPAN</h1>
-            <?php for ($i = 0; $i < 8; $i++) : ?>
+            <?php for ($i = 0; $i < 4; $i++) : ?>
                 <div class="col-xs-6 col-sm-3">
                     <div class="fh5co-blog animate-box">
                         <a href="#"><img class="img-responsive" src="/assets/img/3dpantai.jpg" alt=""></a>
@@ -96,7 +100,7 @@
                                 <span class="posted_by">Sep. 15th</span>
                                 <span class="comment"><a href="">21<i class="icon-bubble2"></i></a></span>
                                 <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p><a href="#">Learn More...</a></p>
+                                <p><a href="#" class="btn btn-primary">Lihat Selengkapnya</a></p>
                             </div>
                         </div>
                     </div>
@@ -104,7 +108,7 @@
             <?php endfor; ?>
             <div id="jasa" class="mb-5"></div>
             <h1 class="animate-box badge rounded-pill mt-5 bg-primary fs-5">JASA</h1>
-            <?php for ($i = 0; $i < 8; $i++) : ?>
+            <?php for ($i = 0; $i < 4; $i++) : ?>
                 <div class="col-xs-6 col-sm-3">
                     <div class="fh5co-blog animate-box">
                         <a href="#"><img class="img-responsive" src="/assets/img/3dpantai.jpg" alt=""></a>
@@ -114,7 +118,7 @@
                                 <span class="posted_by">Sep. 15th</span>
                                 <span class="comment"><a href="">21<i class="icon-bubble2"></i></a></span>
                                 <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p><a href="#">Learn More...</a></p>
+                                <p><a href="#" class="btn btn-primary">Lihat Selengkapnya</a></p>
                             </div>
                         </div>
                     </div>
