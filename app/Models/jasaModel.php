@@ -9,6 +9,7 @@ class JasaModel extends Model
     protected $table = 'jasa';
     protected $allowedFields = [
         'nama_jasa',
+        'slug',
         'user_email',
         'nomor_user',
         'bidang_jasa',

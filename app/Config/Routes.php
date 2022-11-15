@@ -81,15 +81,18 @@ $routes->get('/profil', 'User\Profile::index');
 
 // IKLAN JASA
 $routes->get('/pasang-iklan', 'User\Iklan::index');
-$routes->post('/pasang-iklan/addJasa', 'User\Iklan::addJasa');
 $routes->delete('/pasang-iklan/(:num)', 'User\Iklan::hapus/$1');
 $routes->post('/pasang-iklan/update/(:num)', 'User\Iklan::update/$1');
 
 // ROUTES JASA
 $routes->get('/jasa', 'User\Jasa::index');
+$routes->post('/jasa/addJasa', 'User\Jasa::addJasa');
+$routes->get('/jasa/detail/(:any)', 'User\Jasa::detail/$1');
 
 //ROUTES KULINER
-$routes->get('/kuliner','User\Kuliner::index');
+$routes->get('/kuliner', 'User\Kuliner::index');
+$routes->post('/kuliner/addKuliner', 'User\Kuliner::addKuliner');
+$routes->get('/kuliner/detail/(:any)', 'User\Kuliner::detail/$1');
 
 /*
  * --------------------------------------------------------------------

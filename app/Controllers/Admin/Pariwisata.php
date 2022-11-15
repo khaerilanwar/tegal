@@ -24,7 +24,6 @@ class Pariwisata extends BaseController
         $cari = $this->request->getGet('wisata');
 
         // Query data admin
-        // $builder = $this->db->table('user');
         $admin = $this->build->getWhere(['email' => 'khaerilanwar1992@gmail.com'])->getRowArray();
 
         switch ($dasar) {
