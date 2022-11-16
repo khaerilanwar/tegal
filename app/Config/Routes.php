@@ -78,6 +78,10 @@ $routes->get('/wisata/detail/(:any)', 'User\Wisata::detail/$1');
 // ROUTES USER
 // PROFIL USER
 $routes->get('/profil', 'User\Profile::index');
+$routes->get('/profil/edit-profile', 'User\Profile::editProfile');
+$routes->get('/profil/ubah-password', 'User\Profile::ubahPassword');
+$routes->post('/profil/ubahPass', 'User\Profile::ubahKatasandi');
+$routes->post('/profil/edit/(:num)', 'User\Profile::edit/$1');
 
 // IKLAN JASA
 $routes->get('/pasang-iklan', 'User\Iklan::index');
@@ -102,6 +106,7 @@ $routes->post('/pasang-iklan/update/(:num)', 'User\Iklan::update/$1');
 
 // ROUTES PENGINAPAN
 $routes->get('/penginapan', 'User\penginapan::index');
+$routes->get('/penginapan/detail/(:any)', 'User\Penginapan::detail/$1');
 
 /*
  * --------------------------------------------------------------------

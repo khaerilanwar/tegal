@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class penginapanModel extends Model
+class PenginapanModel extends Model
 {
     protected $table = 'penginapan';
     protected $allowedFields = [

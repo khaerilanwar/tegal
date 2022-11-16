@@ -76,9 +76,18 @@ class Jasa extends BaseController
         return view('jasa/index', $data);
     }
 
-    public function detail()
+    public function detail($slug)
     {
-        return view('jasa/jasa');
+        $jasa = $this->jasaModel->where(['slug' => $slug])->first();
+        $nama = $jasa['nama_jasa'];
+
+        $data = [
+            'title' => "Jasa $nama",
+            'jasa' => $jasa,
+            'user' => $this->user
+        ];
+
+        return view('jasa/detail', $data);
     }
 
     public function addJasa()
@@ -107,6 +116,12 @@ class Jasa extends BaseController
                 'rules' => 'required',
                 'errors' => [
                     'required' => 'Deskripsi harus diisi',
+                ]
+            ],
+            'alamat' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Alamat harus diisi',
                 ]
             ],
             'maps' => [
@@ -140,13 +155,15 @@ class Jasa extends BaseController
 
         $this->jasaModel->save([
             'nama_jasa' => $this->request->getPost('nama_jasa'),
+            'slug' => url_title($this->request->getPost('nama_jasa'), '-', true),
             'user_email' => session()->email,
             'nomor_user' => $this->request->getPost('nomor_user'),
             'bidang_jasa' => $this->request->getPost('bidang_jasa'),
             'deskripsi' => $this->request->getPost('deskripsi'),
             'harga' => $this->request->getPost('harga'),
             'maps' => $this->request->getPost('maps'),
-            'gambar' => $namaGambar
+            'gambar' => $namaGambar,
+            'alamat' => $this->request->getPost('alamat')
         ]);
 
         return redirect()->to('/pasang-iklan');

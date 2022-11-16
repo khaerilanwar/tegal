@@ -5,7 +5,7 @@
                 <h3 class="mb-4 text-center">Pasang Iklan Jasamu</h3>
                 <form method="post" action="/jasa/addJasa" enctype="multipart/form-data">
                     <input type="hidden" name="nomor_user" value="<?= $user['no_telp']; ?>">
-                    <div class="row my-5">
+                    <div class="row mt-5 mb-3">
                         <div class="col-12 mb-3">
                             <label for="nama_jasa" class="form-label">Nama Jasa</label>
                             <input type="text" value="<?= old('nama_jasa'); ?>" class="form-control <?= ($validation->hasError('nama_jasa')) ? 'is-invalid' : ''; ?>" id="nama_jasa" name="nama_jasa" placeholder="Nama Jasa Kamu">
@@ -31,9 +31,17 @@
 
                         <div class="col-12 mb-3">
                             <label for="harga" class="form-label">Harga</label>
-                            <input type="text value=" <?= old('harga'); ?>"" class="form-control <?= ($validation->hasError('harga')) ? 'is-invalid' : ''; ?>" id="harga" name="harga" placeholder="Harga Jasa Kamu">
+                            <input type="text" value="<?= old('harga'); ?>" class="form-control <?= ($validation->hasError('harga')) ? 'is-invalid' : ''; ?>" id="harga" name="harga" placeholder="Harga Jasa Kamu">
                             <div class="pl-3 invalid-feedback">
                                 <?= $validation->getError('harga'); ?>
+                            </div>
+                        </div>
+
+                        <div class="col-12 mb-3">
+                            <label for="alamat" class="form-label">Alamat</label>
+                            <textarea name="alamat" class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" id="alamat" rows="3" placeholder="Alamat Jasa Kamu"><?= old('deskripsi'); ?></textarea>
+                            <div class="pl-3 invalid-feedback">
+                                <?= $validation->getError('alamat'); ?>
                             </div>
                         </div>
 

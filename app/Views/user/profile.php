@@ -4,8 +4,8 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-6 mx-auto">
-            <h1 class="my-5 text-center">PROFIL PENGGUNA</h1>
+        <div class="col-7 mx-auto">
+            <h1 class="my-5 text-center">Profil Pengguna</h1>
 
             <form action="" method="post">
 
@@ -47,8 +47,11 @@
             </form>
 
             <div class="row my-4">
-                <div class="col-md-3 offset-md-9">
+                <div class="col-md-3 offset-md-5">
                     <a href="/profil/edit-profile" class="btn btn-success w-100">Edit Profil</a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/profil/ubah-password" class="btn btn-secondary w-100">Ubah Kata Sandi</a>
                 </div>
             </div>
 

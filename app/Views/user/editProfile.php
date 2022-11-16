@@ -4,53 +4,57 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-6 mx-auto">
-            <h1 class="my-5 text-center">EDIT PROFIL PENGGUNA</h1>
+        <div class="col-7 mx-auto">
+            <h1 class="my-5 text-center">Edit Profil Pengguna</h1>
 
-            <form action="/profil/edit" method="post" enctype="multipart/form-data">
+            <form action="/profil/edit/<?= $user['id']; ?>" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="gambarLama" value="<?= $user['gambar']; ?>">
 
                 <div class="mb-3 row">
                     <label for="nama" class="col-sm-3 col-form-label">Nama</label>
                     <div class="col-sm-9">
-                        <input class="form-control" type="text" id="nama" name="nama" value="<?= $user['nama']; ?>" aria-label="readonly input example" readonly>
+                        <input class="form-control" type="text" id="nama" name="nama" value="<?= $user['nama']; ?>">
                     </div>
                 </div>
 
                 <div class="mb-3 row">
                     <label for="email" class="col-sm-3 col-form-label">Email</label>
                     <div class="col-sm-9">
-                        <input class="form-control" type="text" name="email" id="email" value="<?= $user['email']; ?>" aria-label="readonly input example" readonly>
+                        <input class="form-control" type="text" name="email" id="email" value="<?= $user['email']; ?>">
                     </div>
                 </div>
 
                 <div class="mb-3 row">
                     <label for="no_telp" class="col-sm-3 col-form-label">Nomor Telepon</label>
                     <div class="col-sm-9">
-                        <input class="form-control" type="text" name="no_telp" id="no_telp" value="<?= $user['no_telp']; ?>" aria-label="readonly input example" readonly>
+                        <input class="form-control" type="text" name="no_telp" id="no_telp" value="<?= $user['no_telp']; ?>">
                     </div>
                 </div>
 
                 <div class="mb-3 row">
                     <label for="alamat" class="col-sm-3 col-form-label">Alamat</label>
                     <div class="col-sm-9">
-                        <textarea class="form-control" id="alamat" name="alamat" rows="5" readonly><?= $user['alamat']; ?></textarea>
+                        <textarea class="form-control" id="alamat" name="alamat" rows="5"><?= $user['alamat']; ?></textarea>
                     </div>
                 </div>
 
                 <div class="mb-3 row">
-                    <label for="alamat" class="col-sm-3 col-form-label">Foto Profil</label>
-                    <div class="col-sm-9">
-                        <img src="assets/img/<?= $user['gambar'] ?>" alt="<?= $user['nama']; ?>" width="100">
+                    <label class="col-sm-3 col-form-label" for="gambar">Gambar Jasa Kamu</label>
+                    <div class="col-sm-2">
+                        <img src="/assets/img/<?= $user['gambar']; ?>" width="100" id="img-prv" class="img-preview mt-2">
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="file" name="gambar" class="form-control" id="gambar" onchange="previewImg()">
                     </div>
                 </div>
 
+                <div class="row my-4">
+                    <div class="col-md-3 offset-md-9">
+                        <button type="submit" class="btn btn-success w-100">Simpan Perubahan</button>
+                    </div>
+                </div>
             </form>
 
-            <div class="row my-4">
-                <div class="col-md-3 offset-md-9">
-                    <a href="/profil/edit-profile" class="btn btn-success w-100">Edit Profil</a>
-                </div>
-            </div>
 
         </div>
     </div>

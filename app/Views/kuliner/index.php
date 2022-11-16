@@ -64,9 +64,7 @@
                             <img class="bd-placeholder-img card-img-top" src="/assets/img/<?= $k['gambar']; ?>" width="50%" height="195">
                             <div class="card-body">
                                 <h5><?= $k['nama_kuliner']; ?></h5>
-                                <p class="card-text"> <?= $k['alamat']; ?></p>
-
-                                <p></p>
+                                <p class="card-text mb-4"> <?= $k['alamat']; ?></p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <span class="fs-5 fw-bold"> Rp. <?= number_format($k['harga'], 0, '', '.') ?></span>

@@ -6,9 +6,7 @@
     <img class="d-block mx-auto mb-4" src="/assets/img/brand-tegal.png" alt="" width="72">
     <h1 class="display-5 fw-bold">Jasa-jasa atau Pelayanan di Kota Tegal</h1>
     <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4">Berikut beberapa rekomendasi jasa yang ada di kota tegal.
-            mempermudah
-        </p>
+        <p class="lead mb-4">Berikut beberapa rekomendasi jasa yang ada di kota tegal.</p>
     </div>
     <h3 class="mb-4">Kategori Pelayanan Kota Tegal</h3>
     <div class="row">
@@ -54,26 +52,36 @@
 
 <?php endif; ?>
 
-<div class="container mb-5">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
-        <?php foreach ($jasa as $j) : ?>
-            <div class="col-sm d-flex justify-content-center">
-                <div class="card" style="width: 18rem;">
-                    <img src="/assets/img/<?= $j['gambar']; ?>" class="card-img-top" alt="<?= $j['nama_jasa']; ?>" height="250">
-                    <div class="card-body">
-                        <h5 class="card-title"><?= $j['nama_jasa']; ?></h5>
-                        <p class="card-text text-truncate"><?= $j['deskripsi']; ?></p>
+<!-- ALBUM  -->
+<div class="album py-5 bg-light">
+    <div class="container mb-5">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+            <?php foreach ($jasa as $j) : ?>
+                <!-- PERALBUM SATU FOTO -->
+                <div class="col-sm">
+                    <div class="card shadow-sm">
+                        <img class="bd-placeholder-img card-img-top" src="/assets/img/<?= $j['gambar']; ?>" width="50%" height="195">
+                        <a class="text-decoration-none text-dark" href="/jasa/detail/<?= $j['slug']; ?>">
+                            <div class="card-body">
+                                <h5><?= $j['nama_jasa']; ?></h5>
+                                <p class="card-text mb-4"> <?= $j['alamat']; ?></p>
+                                <div class="d-flex justify-content-between align-items-center">
+                        </a>
                         <?php
                             $nomor = str_replace($j['nomor_user'][0], '62', $j['nomor_user']);
-                            $text = 'Haloo! Saya Tertarik dengan jasa anda !';
+                            $text = "Haloo, saya ingin memesan " . $j['bidang_jasa'] . " anda!";
                             $text = urlencode($text);
                             ?>
                         <a target="_blank" href="https://api.whatsapp.com/send/?phone=<?= $nomor; ?>&text=<?= $text; ?>" class="btn btn-primary float-end">Hubungi</a>
                     </div>
                 </div>
-            </div>
-        <?php endforeach; ?>
+        </div>
     </div>
+<?php endforeach; ?>
 </div>
+</div>
+</div>
+<!-- END ALBUM -->
 
 <?php $this->endSection(); ?>

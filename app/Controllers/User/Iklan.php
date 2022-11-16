@@ -5,11 +5,13 @@ namespace App\Controllers\User;
 use App\Controllers\BaseController;
 use App\Models\jasaModel;
 use App\Models\KulinerModel;
+use App\Models\PenginapanModel;
 
 class Iklan extends BaseController
 {
     protected $jasaModel;
     protected $kulinerModel;
+    protected $penginapanModel;
     protected $jasa;
     protected $kuliner;
     protected $penginapan;
@@ -20,6 +22,7 @@ class Iklan extends BaseController
         cekLogin();
         $this->jasaModel = new jasaModel();
         $this->kulinerModel = new KulinerModel();
+        $this->penginapanModel = new PenginapanModel();
         $this->jasa = \Config\Database::connect()->table('jasa');
         $this->kuliner = \Config\Database::connect()->table('kuliner');
         $this->penginapan = \Config\Database::connect()->table('penginapan');
@@ -41,9 +44,9 @@ class Iklan extends BaseController
                 break;
             case 'penginapan':
                 if ($search) {
-                    $dataIklan = $this->kulinerModel->asArray()->like('nama_kuliner', $search)->findAll();
+                    $dataIklan = $this->penginapanModel->asArray()->like('nama_penginapan', $search)->findAll();
                 } else {
-                    $dataIklan = $this->kuliner->getWhere(['user_email' => session()->email])->getResultArray();
+                    $dataIklan = $this->penginapan->getWhere(['user_email' => session()->email])->getResultArray();
                 }
                 break;
             case 'jasa':
@@ -56,6 +59,7 @@ class Iklan extends BaseController
             default:
                 $dataJasa = $this->jasa->getWhere(['user_email' => session()->email])->getResultArray();
                 $dataKuliner = $this->kuliner->getWhere(['user_email' => session()->email])->getResultArray();
+                $dataPenginapan = $this->penginapan->getWhere(['user_email' => session()->email])->getResultArray();
         }
 
         if ($menu == 'kuliner') {
@@ -86,7 +90,8 @@ class Iklan extends BaseController
                 'dataIklan' => false,
                 'validation' => \Config\Services::validation(),
                 'dataJasa' => $dataJasa,
-                'dataKuliner' => $dataKuliner
+                'dataKuliner' => $dataKuliner,
+                'dataPenginapan' => $dataPenginapan
             ];
         }
 
@@ -132,13 +137,14 @@ class Iklan extends BaseController
 
             return redirect()->to('/pasang-iklan?menu=kuliner');
         } elseif ($menu == 'penginapan') {
-            $this->kulinerModel->update($id, [
-                'nama_jasa' => $this->request->getPost('nama_kuliner'),
+            $this->penginapanModel->update($id, [
+                'nama_jasa' => $this->request->getPost('nama_penginapan'),
                 'deskripsi' => $this->request->getPost('deskripsi'),
                 'harga' => $this->request->getPost('harga'),
                 'maps' => $this->request->getPost('maps'),
                 'gambar' => $namaGambar
             ]);
+            return redirect()->to('/pasang-iklan?menu=penginapan');
         }
     }
 
