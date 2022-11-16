@@ -18,7 +18,7 @@
   </symbol>
 </svg>
 
-<div class="px-4 pt-5 my-5 text-center">
+<div class="px-4 my-5 text-center">
   <h1 class="display-6 fw-bold">Majukan UMKM Kota Tegal</h1>
   <div class="col-lg-6 mx-auto">
     <p class="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
@@ -38,114 +38,353 @@
         <h1 class="text-center mb-5">Iklan Anda</h1>
       </div>
     </div>
-    <div class="row">
-      <div class="col-5">
-        <span>Cari Berdasarkan</span>
-        <form action="" method="get">
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-        </form>
+
+    <form action="" method="get">
+      <div class="row mb-4">
+        <div class="col-8">
+          <div class="row mb-3">
+            <div class="col">
+              <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+              <span class="ms-2">Cari Berdasarkan</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-2">
+              <select class="form-select p-2" name="menu" aria-label="Default select example">
+                <option value="kuliner" <?= $displayIklan == 'kuliner' ? 'selected' : ''; ?>>Kuliner</option>
+                <option value="penginapan" <?= $displayIklan == 'penginapan' ? 'selected' : ''; ?>>Penginapan</option>
+                <option value="jasa" <?= $displayIklan == 'jasa' ? 'selected' : ''; ?>>Jasa</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <div class="input-group ml-3">
+                <input type="text" id="input1-group2" name="produk" placeholder="Nama Produk/Jasa" class="form-control py-2" autocomplete="off">
+                <div class="input-group-btn">
+                  <button type="submit" class="btn btn-primary py-2">
+                    <i class="fa fa-search"></i> Cari
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+              <a href="/pasang-iklan" class="btn btn-success">Refresh</a>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </form>
+
     <div class="row">
       <div class="col">
-        <!-- TABEL IKLAN -->
-        <table class="table">
-          <thead class="table-light">
-            <th>No.</th>
-            <th>Nama</th>
-            <th>Bidang Jasa</th>
-            <th>Harga</th>
-            <th>Gambar</th>
-          </thead>
-          <tbody>
-            <?php $i = 1; ?>
-            <?php foreach ($dataIklan as $iklan) : ?>
-              <tr class="align-middle">
-                <td><?= $i; ?></td>
-                <td><?= $iklan['nama_jasa']; ?></td>
-                <td><?= $iklan['bidang_jasa']; ?></td>
-                <td> Rp. <?= number_format($iklan['harga'], 0, '', '.') ?></td>
-                <td>
-                  <img src="assets/img/<?= $iklan['gambar']; ?>" class="rounded" alt="<?= $iklan['nama_jasa']; ?>" width="70">
-                </td>
-                <td>
-                  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editModal<?= $iklan['id']; ?>">
-                    Edit
-                  </button>
+        <?php if ($dataIklan) : ?>
+          <?php $i = 1; ?>
+          <?php
+              if (array_key_exists('nama_jasa', $dataIklan[0])) {
+                $field = ['nama_jasa', 'bidang_jasa', 'Bidang Jasa'];
+              } elseif (array_key_exists('nama_kuliner', $dataIklan[0])) {
+                $field = ['nama_kuliner', 'jenis_kuliner', 'Jenis Kuliner'];
+              } else {
+                $field = ['nama_penginapan', 'tipe_kamar'];
+              }
+              ?>
+          <!-- TABEL IKLAN -->
+          <table class="table">
+            <thead class="table-light">
+              <th>No.</th>
+              <th>Nama</th>
+              <th><?= $field[2]; ?></th>
+              <th>Harga</th>
+              <th>Gambar</th>
+              <th></th>
+            </thead>
+            <tbody>
+              <?php foreach ($dataIklan as $iklan) : ?>
+                <tr class="align-middle">
+                  <td><?= $i; ?></td>
+                  <td><?= $iklan[$field[0]]; ?></td>
+                  <td><?= $iklan[$field[1]]; ?></td>
+                  <td> Rp. <?= number_format($iklan['harga'], 0, '', '.') ?></td>
+                  <td>
+                    <img src="assets/img/<?= $iklan['gambar']; ?>" class="rounded" alt="<?= $iklan[$field[0]]; ?>" width="70">
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editModal<?= $iklan['id']; ?>">
+                      Edit
+                    </button>
 
-                  <form action="/pasang-iklan/<?= $iklan['id']; ?>" method="post" class="d-inline">
-                    <?= csrf_field(); ?>
-                    <input type="hidden" name="_method" value="DELETE">
-                    <button type="submit" class="btn btn-danger" onclick="return confirm('apakah anda yakin ?')">Hapus</button>
-                  </form>
-                </td>
-              </tr>
-              <?php $i++; ?>
-            <?php endforeach; ?>
-          </tbody>
-        </table>
-        <!-- END TABEL IKLAN -->
+                    <form action="/pasang-iklan/<?= $iklan['id']; ?>" method="post" class="d-inline">
+                      <?= csrf_field(); ?>
+                      <input type="hidden" name="_method" value="DELETE">
+                      <button type="submit" class="btn btn-danger" onclick="return confirm('apakah anda yakin ?')">Hapus</button>
+                    </form>
+                  </td>
+                </tr>
+                <?php $i++; ?>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+          <!-- END TABEL IKLAN -->
+
+        <?php else : ?>
+
+          <h2 class="text-center my-3">Iklan Kuliner</h2>
+          <!-- TABEL KULINER -->
+          <table class="table">
+            <thead class="table-light">
+              <th>No.</th>
+              <th>Nama</th>
+              <th>Jenis Kuliner</th>
+              <th>Harga</th>
+              <th>Gambar</th>
+              <th></th>
+            </thead>
+            <tbody>
+
+              <?php $i = 1; ?>
+              <?php foreach ($dataKuliner as $kuliner) : ?>
+                <tr class="align-middle">
+                  <td><?= $i; ?></td>
+                  <td><?= $kuliner['nama_kuliner']; ?></td>
+                  <td><?= $kuliner['jenis_kuliner']; ?></td>
+                  <td> Rp. <?= number_format($kuliner['harga'], 0, '', '.') ?></td>
+                  <td>
+                    <img src="assets/img/<?= $kuliner['gambar']; ?>" class="rounded" alt="<?= $kuliner['nama_kuliner']; ?>" width="70">
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editModalKuliner<?= $kuliner['id']; ?>">
+                      Edit
+                    </button>
+
+                    <form action="/pasang-iklan/<?= $kuliner['id']; ?>" method="post" class="d-inline">
+                      <?= csrf_field(); ?>
+                      <input type="hidden" name="_method" value="DELETE">
+                      <button type="submit" class="btn btn-danger" onclick="return confirm('apakah anda yakin ?')">Hapus</button>
+                    </form>
+                  </td>
+                </tr>
+                <?php $i++; ?>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+          <!-- END TABEL KULINER -->
+
+          <h2 class="text-center mt-5 mb-3">Iklan Pelayanan Jasa</h2>
+          <!-- TABEL KULINER -->
+          <table class="table">
+            <thead class="table-light">
+              <th>No.</th>
+              <th>Nama</th>
+              <th>Bidang Jasa</th>
+              <th>Harga</th>
+              <th>Gambar</th>
+              <th></th>
+            </thead>
+            <tbody>
+
+              <?php $i = 1; ?>
+              <?php foreach ($dataJasa as $jasa) : ?>
+                <tr class="align-middle">
+                  <td><?= $i; ?></td>
+                  <td><?= $jasa['nama_jasa']; ?></td>
+                  <td><?= $jasa['bidang_jasa']; ?></td>
+                  <td> Rp. <?= number_format($jasa['harga'], 0, '', '.') ?></td>
+                  <td>
+                    <img src="assets/img/<?= $jasa['gambar']; ?>" class="rounded" alt="<?= $jasa['nama_jasa']; ?>" width="70">
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editModalJasa<?= $jasa['id']; ?>">
+                      Edit
+                    </button>
+
+                    <form action="/pasang-iklan/<?= $jasa['id']; ?>" method="post" class="d-inline">
+                      <?= csrf_field(); ?>
+                      <input type="hidden" name="_method" value="DELETE">
+                      <button type="submit" class="btn btn-danger" onclick="return confirm('apakah anda yakin ?')">Hapus</button>
+                    </form>
+                  </td>
+                </tr>
+                <?php $i++; ?>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+          <!-- END TABEL KULINER -->
+
+        <?php endif; ?>
+
+
+
       </div>
     </div>
   </div>
 
 <?php endif; ?>
 
-<?php foreach ($dataIklan as $iklan) : ?>
-  <!-- Modal -->
-  <div class="modal fade" id="editModal<?= $iklan['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Iklan Jasa</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form action="/pasang-iklan/update/<?= $iklan['id']; ?>" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="gambarLama" value="<?= $iklan['gambar']; ?>">
-            <div class="row mb-3">
-              <div class="col-6">
-                <div class="row">
-                  <div class="col mb-3">
-                    <label for="nama_jasa" class="form-label">Nama Jasa Kamu</label>
-                    <input value="<?= $iklan['nama_jasa']; ?>" type="text" class="form-control" id="nama_jasa" name="nama_jasa" placeholder="Nama Jasa">
+<?php if ($dataIklan) : ?>
+  <?php
+    if (array_key_exists('nama_jasa', $dataIklan[0])) {
+      $field = ['nama_jasa', 'bidang_jasa', 'Nama Jasa', 'Jasa', 'jasa'];
+    } elseif (array_key_exists('nama_kuliner', $dataIklan[0])) {
+      $field = ['nama_kuliner', 'jenis_kuliner', 'Nama Kuliner', 'Kuliner', 'kuliner'];
+    } else {
+      $field = ['nama_penginapan', 'tipe_kamar'];
+    }
+    ?>
+  <?php foreach ($dataIklan as $iklan) : ?>
+    <!-- Modal -->
+    <div class="modal fade" id="editModal<?= $iklan['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Iklan <?= $field[3]; ?></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/pasang-iklan/update/<?= $iklan['id']; ?>?menu=<?= $field[4] ?>" method="post" enctype="multipart/form-data">
+              <input type="hidden" name="gambarLama" value="<?= $iklan['gambar']; ?>">
+              <div class="row mb-3">
+                <div class="col-6">
+                  <div class="row">
+                    <div class="col mb-3">
+                      <label for="<?= $field[0]; ?>" class="form-label">Nama <?= $field[3]; ?> Kamu</label>
+                      <input value="<?= $iklan[$field[0]]; ?>" type="text" class="form-control" id="<?= $field[0]; ?>" name="<?= $field[0]; ?>" placeholder="<?= $field[2]; ?>">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <label for="harga" class="form-label">Harga <?= $field[3]; ?> Kamu</label>
+                      <input value="<?= $iklan['harga']; ?>" type="text" class="form-control" id="harga" name="harga" placeholder="Harga Jasa Kamu">
+                    </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col">
-                    <label for="harga" class="form-label">Harga Jasa Kamu</label>
-                    <input value="<?= $iklan['harga']; ?>" type="text" class="form-control" id="harga" name="harga" placeholder="Harga Jasa Kamu">
-                  </div>
+                <div class="col-6">
+                  <label for="gambar" class="form-label">Upload Gambar <?= $field[3]; ?></label>
+                  <input type="file" name="gambar" class="form-control" id="gambar" onchange="previewImg()">
+                  <img src="/assets/img/<?= $iklan['gambar']; ?>" width="80" id="img-prv" class="img-thumbnail img-preview mt-2 mx-auto d-block">
                 </div>
               </div>
-              <div class="col-6">
-                <label for="gambar" class="form-label">Upload Gambar Jasa</label>
-                <input type="file" name="gambar" class="form-control" id="gambar" onchange="previewImg()">
-                <img src="/assets/img/<?= $iklan['gambar']; ?>" width="80" id="img-prv" class="img-thumbnail img-preview mt-2 mx-auto d-block">
+              <div class="mb-3">
+                <label for="deskripsi" class="form-label">Deskripsi <?= $field[3]; ?> Kamu</label>
+                <textarea name="deskripsi" class="form-control" id="deskripsi" rows="3" placeholder="Deskripsi <?= $field[3]; ?> Kamu"><?= $iklan['deskripsi']; ?></textarea>
               </div>
-            </div>
-            <div class="mb-3">
-              <label for="deskripsi" class="form-label">Deskripsi Jasa Kamu</label>
-              <textarea name="deskripsi" class="form-control" id="deskripsi" rows="3" placeholder="Deskripsi Jasa Kamu"><?= $iklan['deskripsi']; ?></textarea>
-            </div>
-            <div class="mb-3">
-              <label for="maps" class="form-label">Maps Jasa Kamu</label>
-              <textarea name="maps" class="form-control" id="maps" rows="3" placeholder="Alamat Maps Jasa Kamu"><?= $iklan['maps']; ?></textarea>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-              <button type="submit" class="btn btn-primary">Simpan</button>
-            </div>
-          </form>
+              <div class="mb-3">
+                <label for="maps" class="form-label">Maps <?= $field[3]; ?> Kamu</label>
+                <textarea name="maps" class="form-control" id="maps" rows="3" placeholder="Alamat Maps <?= $field[3]; ?> Kamu"><?= $iklan['maps']; ?></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-<?php endforeach; ?>
+  <?php endforeach; ?>
+
+<?php else : ?>
+  <?php foreach ($dataJasa as $jasa) : ?>
+    <!-- Modal -->
+    <div class="modal fade" id="editModalJasa<?= $jasa['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Iklan Jasa</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/pasang-iklan/update/<?= $jasa['id']; ?>?menu=jasa" method="post" enctype="multipart/form-data">
+              <input type="hidden" name="gambarLama" value="<?= $jasa['gambar']; ?>">
+              <div class="row mb-3">
+                <div class="col-6">
+                  <div class="row">
+                    <div class="col mb-3">
+                      <label for="nama_jasa" class="form-label">Nama Jasa Kamu</label>
+                      <input value="<?= $jasa['nama_jasa']; ?>" type="text" class="form-control" id="nama_jasa" name="nama_jasa" placeholder="Nama Jasa">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <label for="harga" class="form-label">Harga Jasa Kamu</label>
+                      <input value="<?= $jasa['harga']; ?>" type="text" class="form-control" id="harga" name="harga" placeholder="Harga Jasa Kamu">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <label for="gambar" class="form-label">Upload Gambar Jasa</label>
+                  <input type="file" name="gambar" class="form-control" id="gambar" onchange="previewImg()">
+                  <img src="/assets/img/<?= $jasa['gambar']; ?>" width="80" id="img-prv" class="img-thumbnail img-preview mt-2 mx-auto d-block">
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="deskripsi" class="form-label">Deskripsi Jasa Kamu</label>
+                <textarea name="deskripsi" class="form-control" id="deskripsi" rows="3" placeholder="Deskripsi Jasa Kamu"><?= $jasa['deskripsi']; ?></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="maps" class="form-label">Maps Jasa Kamu</label>
+                <textarea name="maps" class="form-control" id="maps" rows="3" placeholder="Alamat Maps Jasa Kamu"><?= $jasa['maps']; ?></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php endforeach; ?>
+
+  <?php foreach ($dataKuliner as $kuliner) : ?>
+    <!-- Modal -->
+    <div class="modal fade" id="editModalKuliner<?= $kuliner['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Iklan Kuliner</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/pasang-iklan/update/<?= $kuliner['id']; ?>?menu=kuliner" method="post" enctype="multipart/form-data">
+              <input type="hidden" name="gambarLama" value="<?= $kuliner['gambar']; ?>">
+              <div class="row mb-3">
+                <div class="col-6">
+                  <div class="row">
+                    <div class="col mb-3">
+                      <label for="nama_kuliner" class="form-label">Nama Jasa Kamu</label>
+                      <input value="<?= $kuliner['nama_kuliner']; ?>" type="text" class="form-control" id="nama_kuliner" name="nama_kuliner" placeholder="Nama Kuliner">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <label for="harga" class="form-label">Harga Kuliner Kamu</label>
+                      <input value="<?= $kuliner['harga']; ?>" type="text" class="form-control" id="harga" name="harga" placeholder="Harga Jasa Kamu">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <label for="gambar" class="form-label">Upload Gambar Jasa</label>
+                  <input type="file" name="gambar" class="form-control" id="gambar" onchange="previewImg()">
+                  <img src="/assets/img/<?= $kuliner['gambar']; ?>" width="80" id="img-prv" class="img-thumbnail img-preview mt-2 mx-auto d-block">
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="deskripsi" class="form-label">Deskripsi Kuliner Kamu</label>
+                <textarea name="deskripsi" class="form-control" id="deskripsi" rows="3" placeholder="Deskripsi Kuliner Kamu"><?= $kuliner['deskripsi']; ?></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="maps" class="form-label">Maps Kuliner Kamu</label>
+                <textarea name="maps" class="form-control" id="maps" rows="3" placeholder="Alamat Maps Jasa Kamu"><?= $kuliner['maps']; ?></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php endforeach; ?>
+<?php endif; ?>
 
 <?php $this->endSection(); ?>

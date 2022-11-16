@@ -24,7 +24,6 @@ class Pariwisata extends BaseController
         $cari = $this->request->getGet('wisata');
 
         // Query data admin
-        // $builder = $this->db->table('user');
         $admin = $this->build->getWhere(['email' => 'khaerilanwar1992@gmail.com'])->getRowArray();
 
         switch ($dasar) {
@@ -40,14 +39,6 @@ class Pariwisata extends BaseController
             default:
                 $wisata = $this->wisataModel->findAll();
         }
-
-        // ?based=nama_wisata&wisata=curug
-
-        // if ($dasar && $cari) {
-        // return redirect()->to('/pariwisata?based=' . $dasar . '&wisata=' . $cari);
-        //     header("Location: pariwisata?based=$dasar&wisata=$cari");
-        //     die;
-        // }
 
         $data = [
             'title' => "Pariwisata Kabupaten Tegal",

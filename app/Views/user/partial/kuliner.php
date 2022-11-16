@@ -16,6 +16,7 @@
                                 <option selected disabled>Pilih Kuliner...</option>
                                 <option value="Makanan">Makanan</option>
                                 <option value="Minuman">Minuman</option>
+                                <option value="Camilan">Camilan</option>
                             </select>
                         </div>
 

@@ -7,7 +7,7 @@
         <ul class="nav nav-pills col-sm-6 d-flex justify-content-center">
             <li class="nav-item"><a href="/home" class="nav-link fs-5 text-white <?= preg_match('/Home/', $title) ? 'active' : ''; ?>">Home</a></li>
             <li class="nav-item"><a href="/wisata" class="nav-link fs-5 text-white <?= preg_match('/Pariwisata/', $title) ? 'active' : ''; ?>">Pariwisata</a></li>
-            <li class="nav-item"><a href="/kuliner" class="nav-link fs-5 text-white <?= preg_match('/Puliner/', $title) ? 'active' : ''; ?>">Kuliner</a></li>
+            <li class="nav-item"><a href="/kuliner" class="nav-link fs-5 text-white <?= preg_match('/Kuliner/', $title) ? 'active' : ''; ?>">Kuliner</a></li>
             <li class="nav-item"><a href="/penginapan" class="nav-link fs-5 text-white <?= preg_match('/Penginapan/', $title) ? 'active' : ''; ?>">Penginapan</a></li>
             <li class="nav-item"><a href="/jasa" class="nav-link fs-5 text-white <?= preg_match('/Jasa/', $title) ? 'active' : ''; ?>">Jasa</a></li>
         </ul>
@@ -51,7 +51,7 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">
+                        <li><a class="dropdown-item" href="/profil">
                                 <div class="row">
                                     <div class="col-2">
                                         <i class="fa-solid fa-user"></i>
@@ -87,15 +87,6 @@
             </div>
 
         <?php endif; ?>
-
-        <!-- <div class="col-sm-3">
-            <div>
-                <img src="/assets/img/anwar.jpeg" alt="Khaeril Anwar">
-            </div>
-            <div>
-                <h5>Muhammad Khaeril Anwar</h5>
-            </div>
-        </div> -->
     </header>
 </div>
 <div class="mt-5 pt-4"></div>

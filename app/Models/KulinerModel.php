@@ -4,18 +4,19 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class JasaModel extends Model
+class KulinerModel extends Model
 {
-    protected $table = 'jasa';
+    protected $table = 'kuliner';
     protected $allowedFields = [
-        'nama_jasa',
+        'nama_kuliner',
         'slug',
         'user_email',
         'nomor_user',
-        'bidang_jasa',
+        'jenis_kuliner',
         'deskripsi',
         'gambar',
         'harga',
-        'maps'
+        'maps',
+        'alamat'
     ];
 }

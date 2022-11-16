@@ -42,9 +42,14 @@ CREATE TABLE `jasa` (
 --
 
 INSERT INTO `jasa` (`id`, `nama_jasa`, `bidang_jasa`, `deskripsi`, `gambar`, `harga`, `maps`) VALUES
+<<<<<<< HEAD
+(1, 'Laundry bang anwar', 'cleaning', 'Premium hadir untuk memberikan solusi laundry anda, memahami kebutuhan anda dengan pelayanan team kami yang ramah serta profesional bekerja sesuai SOP (Standard Operating Procedures), Orange Laundry Premium hadir sebagai one stop laundry service yang mema', 'laundry.jpg', 30000, '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.1328562557314!2d109.03626971455866!3d-6.874681095032153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6fbba48f00d7a5%3A0x8aa01b8c2b5a860f!2szZZ...*21*21*21%20Kedai%20Coffee!5e0!3m2!1sid!2sid!4v1666518018455!5m2!1sid!2sid\" en=\"\width=\"600\" height=\"450\" style=\"border:0;\" allowfullscre" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>'),
+(2, 'Laundry cyntia', 'cleaning', 'Premium hadir untuk memberikan solusi laundry anda, memahami kebutuhan anda dengan pelayanan team kami yang ramah serta profesional bekerja sesuai SOP (Standard Operating Procedures), Orange Laundry Premium hadir sebagai one stop laundry service yang mema', 'laundry.jpg', 30000, '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63378.12587036862!2d109.0034387384113!3d-6.874679818246503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6fb95f6a6f357f%3A0xc08a399f73155b55!2sTegal%20Laundry!5e0!3m2!1sid!2sid!4v1666518345939!5m2!1sid!2sid\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>');
+=======
 (1, 'Laundry bang anwar', 'cleaning', 'Premium hadir untuk memberikan solusi laundry anda, memahami kebutuhan anda dengan pelayanan team kami yang ramah serta profesional bekerja sesuai SOP (Standard Operating Procedures), Orange Laundry Premium hadir sebagai one stop laundry service yang mema', 'laundry.jpg', 30000, '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.1328562557314!2d109.03626971455866!3d-6.874681095032153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6fbba48f00d7a5%3A0x8aa01b8c2b5a860f!2szZZ...*21*21*21%20Kedai%20Coffee!5e0!3m2!1sid!2sid!4v1666518018455!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>'),
 (2, 'Laundry cyntia', 'cleaning', 'Premium hadir untuk memberikan solusi laundry anda, memahami kebutuhan anda dengan pelayanan team kami yang ramah serta profesional bekerja sesuai SOP (Standard Operating Procedures), Orange Laundry Premium hadir sebagai one stop laundry service yang mema', 'laundry.jpg', 30000, '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63378.12587036862!2d109.0034387384113!3d-6.874679818246503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6fb95f6a6f357f%3A0xc08a399f73155b55!2sTegal%20Laundry!5e0!3m2!1sid!2sid!4v1666518345939!5m2!1sid!2sid\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>'),
 (3, 'Service Komputer', 'elektronik', 'Service Komputer', '1667906500_df5c2f67d3153960f289.jpg', 70000, 'dsadsadsad');
+>>>>>>> 758fe356b46416c3ba8267ceb402b22605c86323
 
 -- --------------------------------------------------------
 
@@ -55,13 +60,13 @@ INSERT INTO `jasa` (`id`, `nama_jasa`, `bidang_jasa`, `deskripsi`, `gambar`, `ha
 CREATE TABLE `kuliner` (
   `id` int(11) NOT NULL,
   `nama_kuliner` varchar(128) NOT NULL,
-  `jenis_kuliner` varchar(128) NOT NULL,
+  `jenis_kuliner` varchar(128) enum ('makanan','minuman','camilan')NOT NULL,
   `harga` int(10) NOT NULL,
   `deskripsi` text NOT NULL,
   `gambar` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
+--
 
 --
 -- Table structure for table `pembayaran`

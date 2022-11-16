@@ -80,7 +80,7 @@
                                 </a>
                             </li>
                             <li class="<?= preg_match('/Jasa/', $title) ? 'active' : ''; ?>">
-                                <a href="#">
+                                <a href="/layanan">
                                     <i class="fas fa-desktop"></i>
                                     <span class="bot-line"></span>Jasa
                                 </a>
@@ -169,7 +169,7 @@
                                 <i class="fas fa-copy"></i>Kuliner</a>
                         </li>
                         <li class="has-sub">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="/layanan">
                                 <i class="fas fa-desktop"></i>Jasa</a>
                         </li>
                     </ul>
