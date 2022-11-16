@@ -80,6 +80,15 @@ $routes->post('/pasang-iklan/update/(:num)', 'User\Iklan::update/$1');
 // ROUTES JASA
 $routes->get('/jasa', 'User\Jasa::index');
 
+// ROUTES USER
+$routes->get('/pasang-iklan', 'User\Iklan::index');
+$routes->post('/pasang-iklan/addpenginapan', 'User\Iklan::addpenginapan');
+$routes->delete('/pasang-iklan/(:num)', 'User\Iklan::hapus/$1');
+$routes->post('/pasang-iklan/update/(:num)', 'User\Iklan::update/$1');
+
+// ROUTES PENGINAPAN
+$routes->get('/penginapan', 'User\penginapan::index');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
