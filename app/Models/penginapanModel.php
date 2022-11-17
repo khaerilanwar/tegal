@@ -9,12 +9,14 @@ class PenginapanModel extends Model
     protected $table = 'penginapan';
     protected $allowedFields = [
         'nama_penginapan',
+        'slug',
+        'jenis_penginapan',
+        'nomor_user',
         'user_email',
-        'tipe_kamar',
         'harga',
         'deskripsi',
         'gambar',
-        'peta',
-        'kamar tersedia'
+        'alamat',
+        'maps'
     ];
 }

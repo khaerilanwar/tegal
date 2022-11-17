@@ -2,13 +2,13 @@
     <div class="row">
         <div class="col d-flex justify-content-center pt-5" id="form">
             <div class="col-md-4 col-lg-6 py-5">
-                <h3 class="mb-4 text-center">Pasang Iklan Kulinermu</h3>
+                <h3 class="mb-4 text-center">Pasang Iklan Penginapan</h3>
                 <form method="post" action="/penginapan/addPenginapan" enctype="multipart/form-data">
                     <input type="hidden" name="nomor_user" value="<?= $user['no_telp']; ?>">
                     <div class="row mt-5 mb-3">
                         <div class="col-12 mb-3">
                             <label for="nama_penginapan" class="form-label">Nama Penginapan</label>
-                            <input type="text" value="<?= old('nama_penginapan'); ?>" class="form-control <?= ($validation->hasError('nama_penginapan')) ? 'is-invalid' : ''; ?>" id="nama_penginapan" name="nama_penginapan" placeholder="Nama Kuliner Kamu">
+                            <input type="text" value="<?= old('nama_penginapan'); ?>" class="form-control <?= ($validation->hasError('nama_penginapan')) ? 'is-invalid' : ''; ?>" id="nama_penginapan" name="nama_penginapan" placeholder="Nama Penginapan Kamu">
                             <div class="pl-3 invalid-feedback">
                                 <?= $validation->getError('nama_penginapan'); ?>
                             </div>

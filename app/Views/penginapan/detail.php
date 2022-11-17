@@ -8,7 +8,7 @@
         <div class="container px-5">
             <img src="/assets/img/<?= $penginapan['gambar']; ?>" class="img-fluid rounded-3 shadow mb-4" alt="<?= $penginapan['nama_penginapan']; ?>" width="500">
         </div>
-        <p class="lead my-4 text-center"><?= preg_replace('/\s\s+/', '<br/>', $penginapan['deskripsi']) ?></p>
+        <p class="lead my-4" style="text-align: justify;"><?= preg_replace('/\s\s+/', '<br/>', $penginapan['deskripsi']) ?></p>
         <div class="row mt-5">
             <div class="col-md-5 offset-md-1">
                 <h5 class="d-inline">Harga Rp. <?= number_format($penginapan['harga'], 0, '', '.') ?></h5>

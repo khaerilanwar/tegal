@@ -5,7 +5,7 @@
 <div class="jumbotron jumbotron-fluid bg-light">
     <div class="container text-center">
         <img src="/assets/img/brand-tegal.png" alt="Kabupaten Tegal" width="80">
-        <h2 class="display-4 my-3">Penyedia Layanan Jasa Kabupaten Tegal</h2>
+        <h2 class="display-4 my-3">Aneka Kuliner Kabupaten Tegal</h2>
         <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas mollitia tenetur quia recusandae suscipit illum adipisci quam! Voluptatem facere dicta voluptatibus quaerat voluptatum totam culpa tempora nesciunt autem dolor? Repudiandae?</p>
     </div>
 </div>
@@ -15,7 +15,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="title-6 m-b-35">Daftar Penyedia Layanan Kabupaten Tegal</h3>
+                <h3 class="title-6 m-b-35">Daftar Kuliner Kabupaten Tegal</h3>
                 <div class="row">
                     <div class="col-md-6">
                         <?php if (session()->getFlashdata('pesan')) : ?>
@@ -36,9 +36,9 @@
                             </div>
                             <div class="rs-select2--light rs-select2--sm">
                                 <select class="js-select2" name="based">
-                                    <option value="nama_jasa">Nama</option>
-                                    <option value="bidang_jasa">Bidang</option>
-                                    <option value="user_email">User</option>
+                                    <option value="nama_kuliner">Nama</option>
+                                    <option value="jenis_kuliner">Jenis</option>
+                                    <option value="email_user">User</option>
                                 </select>
                                 <div class="dropDownSelect2"></div>
                             </div>
@@ -61,8 +61,8 @@
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>Nama Jasa</th>
-                                <th>Bidang Jasa</th>
+                                <th>Nama Kuliner</th>
+                                <th>Jenis Kuliner</th>
                                 <th>Harga</th>
                                 <th>Email User</th>
                                 <th></th>
@@ -70,15 +70,15 @@
                         </thead>
                         <tbody>
                             <?php $i = 1; ?>
-                            <?php foreach ($jasa as $j) : ?>
+                            <?php foreach ($kuliner as $k) : ?>
                                 <tr>
                                     <td><?= $i; ?></td>
-                                    <td><?= $j['nama_jasa']; ?></td>
-                                    <td><?= $j['bidang_jasa']; ?></td>
-                                    <td><?= number_format($j['harga'], 0, '', '.') ?></td>
-                                    <td><?= $j['user_email']; ?></td>
+                                    <td><?= $k['nama_kuliner']; ?></td>
+                                    <td><?= $k['jenis_kuliner']; ?></td>
+                                    <td><?= number_format($k['harga'], 0, '', '.') ?></td>
+                                    <td><?= $k['user_email']; ?></td>
                                     <td>
-                                        <form action="/layanan/<?= $j['id']; ?>" method="post" class="d-inline">
+                                        <form action="/kuliner-tegal/<?= $k['id']; ?>" method="post" class="d-inline">
                                             <?= csrf_field(); ?>
                                             <input type="hidden" name="_method" value="DELETE">
                                             <button type="submit" onclick="return confirm('apakah anda yakin ?')" class="btn btn-danger">Hapus</button>

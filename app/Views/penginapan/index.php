@@ -50,7 +50,7 @@
                             <img class="bd-placeholder-img card-img-top" src="/assets/img/<?= $j['gambar']; ?>" width="50%" height="195">
                             <div class="card-body">
                                 <h5><?= $j['nama_penginapan']; ?></h5>
-                                <p class="card-text mb-4"> <?= $j['alamat']; ?></p>
+                                <p class="card-text mb-4 text-truncate"> <?= $j['alamat']; ?></p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <span class="fs-5 fw-bold"> Rp. <?= number_format($j['harga'], 0, '', '.') ?></span>

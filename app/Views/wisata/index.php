@@ -50,20 +50,22 @@
 </div>
 <!-- END JUDUL -->
 
-<!-- TOMBOL CARI -->
-<div class="container position-relative my-4">
+<div class="container mt-5">
     <div class="row">
-        <div class="col-sm-4 position-absolute top-0 end-0">
+        <div class="col-md-4 offset-md-8">
             <form action="" method="get">
-                <div class="input-group">
-                    <input type="text" class="form-control rounded" name="cari" placeholder="Cari wisata ..." aria-label="Search" aria-describedby="search-addon" />
-                    <button type="submit" class="btn btn-outline-primary">Cari</button>
+                <div class="input-group ml-3">
+                    <input type="text" id="input1-group2" name="cari" placeholder="Cari Wisata .." class="form-control" autocomplete="off">
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-search"></i> Cari
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
-<!-- END TOMBOL CARI -->
 
 <!-- ALBUM  -->
 <div class="album py-5 bg-light">

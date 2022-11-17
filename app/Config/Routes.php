@@ -67,6 +67,14 @@ $routes->delete('/pariwisata/(:num)', 'Admin\Pariwisata::hapus/$1');
 $routes->get('/layanan', 'Admin\Layanan::index');
 $routes->delete('/layanan/(:num)', 'Admin\Layanan::hapus/$1');
 
+// ADMIN  KULINER
+$routes->get('/kuliner-tegal', 'Admin\Kuliner::index');
+$routes->delete('/kuliner-tegal/(:num)', 'Admin\Kuliner::hapus/$1');
+
+// ADMIN  PENGINAPAN
+$routes->get('/penginapan-tegal', 'Admin\Penginapan::index');
+$routes->delete('/penginapan-tegal/(:num)', 'Admin\Penginapan::hapus/$1');
+
 // ROUTES USER
 // ROUTES WISATA
 $routes->get('/wisata', 'User\Wisata::index');
@@ -107,6 +115,7 @@ $routes->post('/pasang-iklan/update/(:num)', 'User\Iklan::update/$1');
 // ROUTES PENGINAPAN
 $routes->get('/penginapan', 'User\penginapan::index');
 $routes->get('/penginapan/detail/(:any)', 'User\Penginapan::detail/$1');
+$routes->post('/penginapan/addPenginapan', 'User\Penginapan::addPenginapan');
 
 /*
  * --------------------------------------------------------------------

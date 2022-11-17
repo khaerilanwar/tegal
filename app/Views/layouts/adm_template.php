@@ -68,13 +68,13 @@
                                 </a>
                             </li>
                             <li class="<?= preg_match('/Penginapan/', $title) ? 'active' : ''; ?>">
-                                <a href="table.html">
+                                <a href="/penginapan-tegal">
                                     <i class="fas fa-trophy"></i>
                                     <span class="bot-line"></span>Penginapan
                                 </a>
                             </li>
                             <li class="<?= preg_match('/Kuliner/', $title) ? 'active' : ''; ?>">
-                                <a href="#">
+                                <a href="/kuliner-tegal">
                                     <i class="fas fa-copy"></i>
                                     <span class="bot-line"></span>Kuliner
                                 </a>
@@ -161,11 +161,11 @@
                                 <i class="fas fa-chart-bar"></i>Pariwisata</a>
                         </li>
                         <li>
-                            <a href="table.html">
+                            <a href="/penginapan-tegal">
                                 <i class="fas fa-table"></i>Penginapan</a>
                         </li>
                         <li class="has-sub">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="/kuliner-tegal">
                                 <i class="fas fa-copy"></i>Kuliner</a>
                         </li>
                         <li class="has-sub">

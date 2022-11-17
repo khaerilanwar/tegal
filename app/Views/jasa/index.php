@@ -65,7 +65,7 @@
                         <a class="text-decoration-none text-dark" href="/jasa/detail/<?= $j['slug']; ?>">
                             <div class="card-body">
                                 <h5><?= $j['nama_jasa']; ?></h5>
-                                <p class="card-text mb-4"> <?= $j['alamat']; ?></p>
+                                <p class="card-text mb-4 text-truncate"> <?= $j['alamat']; ?></p>
                                 <div class="d-flex justify-content-between align-items-center">
                         </a>
                         <?php
