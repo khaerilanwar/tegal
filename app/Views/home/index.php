@@ -47,7 +47,7 @@
     </div>
     <div class="text-center animate-box shadow-sm p-3 mb-1 bg-body rounded">
         <h1 class="c-page-title">For Information</h1>
-        <p class="fw-normal mb-5">Hallo Sobat! Di website ini kami menyediakan berbagai kebutuhan mengenai Tegal, Kalian mampu menyexplore isi tegal dari mulai Pariwisata lokal di tegal, Kuliner asli dari tegal, Penginapan sekitar Tegal dengan variasi harga bahkan kami menyuguhkan Jasa yang ada di Tegal.</p>
+        <p class="fw-normal mb-5">Hallo Sobat! Di website ini kami menyediakan berbagai kebutuhan mengenai Tegal, Kalian mampu menyexplore isi tegal dari mulai Pariwisata lokal di tegal, Kuliner asli dari tegal, Penginapan sekitar Tegal dengan variasi harga bahkan kami menyuguhkan Jasa yang ada di Tegal. Kami harap dengan terciptanya website kami bisa membantu kalangan usaha dan umkm lokal termasuk di Tegal, sehingga bisa mempermudah wisatawan dan warga lokal dalam mencari informasi,jasa,kuliner,penginapan bahkan tiket wisata.</p>
     </div>
     <div class="mb-5"></div>
     <div class="container">
@@ -119,17 +119,24 @@
                                 <span class="comment"><a href="">21<i class="icon-bubble2"></i></a></span>
                                 <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                                 <p><a href="#" class="btn btn-primary">Lihat Selengkapnya</a></p>
+
                             </div>
                         </div>
                     </div>
                 </div>
             <?php endfor; ?>
-
             <div class="clearfix visible-md-block"></div>
         </div>
-
+        <div class="animate-box text-center">
+            <h3 class="text-primary">Kunjungi Maps Tegal</h3>
+        </div>
+        <div>
+            <a href="https://www.google.com/maps/place/Tegal,+Kota+Tegal,+Jawa+Tengah/data=!4m2!3m1!1s0x2e6fb9dfbf3264c3:0x3027a76e352bbe0?sa=X&ved=2ahUKEwiEp-C8urr7AhUhHrcAHdvvAbgQ8gF6BAgQEAE" target="_blank">
+                <img class="img-responsive animate-box rounded mx-auto d-block" src="/assets/img/maps.PNG"></a>
+        </div>
     </div>
 </div>
+
 
 
 </div>
