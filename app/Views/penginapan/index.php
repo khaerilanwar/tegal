@@ -42,12 +42,13 @@
     <div class="container mb-5">
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+            <?php $i = 1 + (8 * ($currentPage - 1)); ?>
             <?php foreach ($penginapan as $j) : ?>
                 <!-- PERALBUM SATU FOTO -->
                 <div class="col-sm">
                     <div class="card shadow-sm">
                         <a class="text-decoration-none text-dark" href="/penginapan/detail/<?= $j['slug']; ?>">
-                            <img class="bd-placeholder-img card-img-top" src="/assets/img/<?= $j['gambar']; ?>" width="50%" height="195">
+                            <img class="bd-placeholder-img card-img-top" src="/assets/img/<?= $j['gambar']; ?>" height="250">
                             <div class="card-body">
                                 <h5><?= $j['nama_penginapan']; ?></h5>
                                 <p class="card-text mb-4 text-truncate"> <?= $j['alamat']; ?></p>
@@ -67,6 +68,7 @@
                 </div>
             <?php endforeach; ?>
         </div>
+        <?= $pager->links('penginapan', 'pagination'); ?>
     </div>
 </div>
 <!-- END ALBUM -->

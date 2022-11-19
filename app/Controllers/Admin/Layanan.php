@@ -12,6 +12,9 @@ class Layanan extends BaseController
     public function __construct()
     {
         $this->jasaModel = new JasaModel();
+        helper('tegal');
+        cekLogin();
+        cekAdmin();
     }
 
     public function index()

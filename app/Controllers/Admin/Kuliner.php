@@ -12,6 +12,9 @@ class Kuliner extends BaseController
     public function __construct()
     {
         $this->kulinerModel = new KulinerModel();
+        helper('tegal');
+        cekLogin();
+        cekAdmin();
     }
 
     public function index()

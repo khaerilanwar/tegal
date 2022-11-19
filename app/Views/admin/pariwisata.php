@@ -72,6 +72,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php $i = 1 + (10 * ($currentPage - 1)); ?>
                             <?php foreach ($wisata as $w) : ?>
                                 <tr>
                                     <td><?= $w['nama_wisata']; ?></td>
@@ -103,7 +104,7 @@
                         </tbody>
                     </table>
                 </div>
-
+                <?= $pager->links('wisataAdmin', 'pagination'); ?>
             </div>
         </div>
     </div>

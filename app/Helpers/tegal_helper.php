@@ -2,11 +2,19 @@
 
 function cekLogin()
 {
-    // return dd(session()->email);
     if (!session()->email && !session()->role_id) {
         session()->setFlashdata('pesan', 'Silakan Login Dulu!');
         session()->setFlashdata('warna', 'warning');
         header('Location: /login');
+        exit;
+    }
+}
+
+function cekAdmin()
+{
+    $user = \Config\Database::connect()->table('user')->getWhere(['email' => session()->email])->getRowArray();
+    if ($user['role_id'] != 1) {
+        header('Location: /wisata');
         exit;
     }
 }

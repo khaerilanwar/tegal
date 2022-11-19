@@ -69,10 +69,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $i = 1; ?>
+                            <?php $i = 1 + (10 * ($currentPage - 1)); ?>
                             <?php foreach ($penginapan as $p) : ?>
                                 <tr>
-                                    <td><?= $i; ?></td>
+                                    <td><?= $i++; ?></td>
                                     <td><?= $p['nama_penginapan']; ?></td>
                                     <td><?= $p['jenis_penginapan']; ?></td>
                                     <td><?= number_format($p['harga'], 0, '', '.') ?></td>
@@ -85,12 +85,11 @@
                                         </form>
                                     </td>
                                 </tr>
-                                <?php $i++; ?>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
-
+                <?= $pager->links('penginapanAdmin', 'pagination'); ?>
             </div>
         </div>
     </div>

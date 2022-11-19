@@ -17,42 +17,45 @@ class Kuliner extends BaseController
 
     public function index()
     {
+        $currentPage = $this->request->getGet('page') ? $this->request->getGet('page') : 1;
         $menu = $this->request->getGet('menu');
         $nama = $this->request->getGet('nama');
 
         switch ($menu) {
             case 'makanan':
                 if ($nama) {
-                    $kuliner = $this->kulinerModel->where('jenis_kuliner', $menu)->asArray()->like('nama_kuliner', $nama)->findAll();
+                    $kuliner = $this->kulinerModel->where('jenis_kuliner', $menu)->like('nama_kuliner', $nama);
                 } else {
-                    $kuliner = $this->kulinerModel->where('jenis_kuliner', $menu)->findAll();
+                    $kuliner = $this->kulinerModel->where('jenis_kuliner', $menu);
                 }
                 break;
             case 'minuman':
                 if ($nama) {
-                    $kuliner = $this->kulinerModel->where('jenis_kuliner', $menu)->asArray()->like('nama_kuliner', $nama)->findAll();
+                    $kuliner = $this->kulinerModel->where('jenis_kuliner', $menu)->like('nama_kuliner', $nama);
                 } else {
-                    $kuliner = $this->kulinerModel->where('jenis_kuliner', $menu)->findAll();
+                    $kuliner = $this->kulinerModel->where('jenis_kuliner', $menu);
                 }
                 break;
             case 'camilan':
                 if ($nama) {
-                    $kuliner = $this->kulinerModel->where('jenis_kuliner', $menu)->asArray()->like('nama_kuliner', $nama)->findAll();
+                    $kuliner = $this->kulinerModel->where('jenis_kuliner', $menu)->like('nama_kuliner', $nama);
                 } else {
-                    $kuliner = $this->kulinerModel->where('jenis_kuliner', $menu)->findAll();
+                    $kuliner = $this->kulinerModel->where('jenis_kuliner', $menu);
                 }
                 break;
             default:
                 if ($nama) {
-                    $kuliner = $this->kulinerModel->like('nama_kuliner', $nama)->findAll();
+                    $kuliner = $this->kulinerModel->like('nama_kuliner', $nama);
                 } else {
-                    $kuliner = $this->kulinerModel->findAll();
+                    $kuliner = $this->kulinerModel;
                 }
         }
 
         $data = [
             'title' => 'Kuliner Kota Tegal',
-            'kuliner' => $kuliner,
+            'kuliner' => $kuliner->paginate(8, 'kuliner'),
+            'pager' => $this->kulinerModel->pager,
+            'currentPage' => $currentPage,
             'menuGet' => $menu,
             'user' => $this->user
         ];
@@ -138,17 +141,31 @@ class Kuliner extends BaseController
         $fileGambar->move('assets/img', $namaGambar);
 
         $this->kulinerModel->save([
-            'nama_kuliner' => $this->request->getPost('nama_kuliner'),
-            'slug' => url_title($this->request->getPost('nama_kuliner'), '-', true),
+            'nama_kuliner' => htmlspecialchars($this->request->getPost('nama_kuliner')),
+            'slug' => url_title(htmlspecialchars($this->request->getPost('nama_kuliner')), '-', true),
             'user_email' => session()->email,
-            'nomor_user' => $this->request->getPost('nomor_user'),
-            'jenis_kuliner' => $this->request->getPost('jenis_kuliner'),
-            'deskripsi' => $this->request->getPost('deskripsi'),
-            'harga' => $this->request->getPost('harga'),
-            'alamat' => $this->request->getPost('alamat'),
-            'maps' => $this->request->getPost('maps'),
+            'nomor_user' => htmlspecialchars($this->request->getPost('nomor_user')),
+            'jenis_kuliner' => htmlspecialchars($this->request->getPost('jenis_kuliner')),
+            'deskripsi' => htmlspecialchars($this->request->getPost('deskripsi')),
+            'harga' => htmlspecialchars($this->request->getPost('harga')),
+            'alamat' => htmlspecialchars($this->request->getPost('alamat')),
+            'maps' => htmlspecialchars($this->request->getPost('maps')),
             'gambar' => $namaGambar
         ]);
+
+        return redirect()->to('/pasang-iklan');
+    }
+
+    public function hapus($id)
+    {
+        $kuliner = $this->kulinerModel->find($id);
+
+        if ($kuliner['gambar'] != 'anwar.jpeg') {
+            // hapus gambar
+            unlink('assets/img/' . $kuliner['gambar']);
+        }
+
+        $this->kulinerModel->delete($id);
 
         return redirect()->to('/pasang-iklan');
     }

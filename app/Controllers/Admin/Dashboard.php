@@ -3,18 +3,27 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-
+use App\Models\JasaModel;
+use App\Models\KulinerModel;
+use App\Models\PenginapanModel;
 use App\Models\UserModel;
 
 class Dashboard extends BaseController
 {
     protected $userModel;
+    protected $jasaModel;
+    protected $kulinerModel;
+    protected $penginapanModel;
 
     public function __construct()
     {
         helper('tegal');
         cekLogin();
+        cekAdmin();
         $this->userModel = new UserModel();
+        $this->jasaModel =  new JasaModel();
+        $this->kulinerModel = new KulinerModel();
+        $this->penginapanModel = new PenginapanModel();
     }
 
     public function index()
@@ -53,7 +62,11 @@ class Dashboard extends BaseController
             'title' => 'Dashboard Kabupaten Tegal',
             'validation' => \Config\Services::validation(),
             'admin' => $admin,
-            'user' => $user
+            'user' => $user,
+            'lenUser' => count($this->userModel->findAll()),
+            'lenJasa' => count($this->jasaModel->findAll()),
+            'lenKuliner' => count($this->kulinerModel->findAll()),
+            'lenPenginapan' => count($this->penginapanModel->findAll())
         ];
 
         return view('admin/index', $data);

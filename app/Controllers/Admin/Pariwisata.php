@@ -15,10 +15,12 @@ class Pariwisata extends BaseController
         $this->wisataModel = new WisataModel();
         helper('tegal');
         cekLogin();
+        cekAdmin();
     }
 
     public function index()
     {
+        $currentPage = $this->request->getGet('page_wisataAdmin') ? $this->request->getGet('page_wisataAdmin') : 1;
         // Mengambil inputan cari user
         $dasar = $this->request->getGet('based');
         $cari = $this->request->getGet('wisata');
@@ -28,23 +30,25 @@ class Pariwisata extends BaseController
 
         switch ($dasar) {
             case 'nama_wisata':
-                $wisata = $this->wisataModel->asArray()->like('nama_wisata', $cari)->findAll();
+                $wisata = $this->wisataModel->asArray()->like('nama_wisata', $cari);
                 break;
             case 'lokasi':
-                $wisata = $this->wisataModel->asArray()->like('lokasi', $cari)->findAll();
+                $wisata = $this->wisataModel->asArray()->like('lokasi', $cari);
                 break;
             case 'alamat':
-                $wisata = $this->wisataModel->asArray()->like('alamat', $cari)->findAll();
+                $wisata = $this->wisataModel->asArray()->like('alamat', $cari);
                 break;
             default:
-                $wisata = $this->wisataModel->findAll();
+                $wisata = $this->wisataModel;
         }
 
         $data = [
             'title' => "Pariwisata Kabupaten Tegal",
             'admin' => $admin,
             'validation' => \Config\Services::validation(),
-            'wisata' => $wisata
+            'wisata' => $wisata->paginate(10, 'wisataAdmin'),
+            'pager' => $this->penginapanModel->pager,
+            'currentPage' => $currentPage
         ];
 
         return view('admin/pariwisata', $data);

@@ -64,17 +64,21 @@ class Iklan extends BaseController
 
         if ($menu == 'kuliner') {
             $part = 'user/partial/kuliner';
+            $title = 'Pasang Iklan Kuliner';
         } elseif ($menu == 'penginapan') {
             $part = 'user/partial/penginapan';
+            $title = 'Pasang Iklan Penginapan';
         } elseif ($menu == 'jasa') {
             $part = 'user/partial/jasa';
+            $title = 'Pasang Iklan Jasa';
         } else {
             $part = 'user/partial/index';
+            $title = 'Pasang Iklan Anda';
         }
 
         if ($displayIklan) {
             $data = [
-                'title' => 'Pasang Iklan Anda',
+                'title' => $title,
                 'user' => $this->user,
                 'partial' => $part,
                 'dataIklan' => $dataIklan,
@@ -83,7 +87,7 @@ class Iklan extends BaseController
             ];
         } else {
             $data = [
-                'title' => 'Pasang Iklan Anda',
+                'title' => $title,
                 'user' => $this->user,
                 'displayIklan' => false,
                 'partial' => $part,
@@ -118,30 +122,30 @@ class Iklan extends BaseController
 
         if ($menu == 'jasa') {
             $this->jasaModel->update($id, [
-                'nama_jasa' => $this->request->getPost('nama_jasa'),
-                'deskripsi' => $this->request->getPost('deskripsi'),
-                'harga' => $this->request->getPost('harga'),
-                'maps' => $this->request->getPost('maps'),
+                'nama_jasa' => htmlspecialchars($this->request->getPost('nama_jasa')),
+                'deskripsi' => htmlspecialchars($this->request->getPost('deskripsi')),
+                'harga' => htmlspecialchars($this->request->getPost('harga')),
+                'maps' => htmlspecialchars($this->request->getPost('maps')),
                 'gambar' => $namaGambar
             ]);
 
             return redirect()->to('/pasang-iklan?menu=jasa');
         } elseif ($menu == 'kuliner') {
             $this->kulinerModel->update($id, [
-                'nama_jasa' => $this->request->getPost('nama_kuliner'),
-                'deskripsi' => $this->request->getPost('deskripsi'),
-                'harga' => $this->request->getPost('harga'),
-                'maps' => $this->request->getPost('maps'),
+                'nama_jasa' => htmlspecialchars($this->request->getPost('nama_kuliner')),
+                'deskripsi' => htmlspecialchars($this->request->getPost('deskripsi')),
+                'harga' => htmlspecialchars($this->request->getPost('harga')),
+                'maps' => htmlspecialchars($this->request->getPost('maps')),
                 'gambar' => $namaGambar
             ]);
 
             return redirect()->to('/pasang-iklan?menu=kuliner');
         } elseif ($menu == 'penginapan') {
             $this->penginapanModel->update($id, [
-                'nama_jasa' => $this->request->getPost('nama_penginapan'),
-                'deskripsi' => $this->request->getPost('deskripsi'),
-                'harga' => $this->request->getPost('harga'),
-                'maps' => $this->request->getPost('maps'),
+                'nama_jasa' => htmlspecialchars($this->request->getPost('nama_penginapan')),
+                'deskripsi' => htmlspecialchars($this->request->getPost('deskripsi')),
+                'harga' => htmlspecialchars($this->request->getPost('harga')),
+                'maps' => htmlspecialchars($this->request->getPost('maps')),
                 'gambar' => $namaGambar
             ]);
             return redirect()->to('/pasang-iklan?menu=penginapan');

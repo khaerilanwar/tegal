@@ -72,12 +72,12 @@
     <div class="container" id="cari">
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
-
+            <?php $i = 1 + (8 * ($currentPage - 1)); ?>
             <?php foreach ($wisata as $data) : ?>
                 <!-- PERALBUM SATU FOTO -->
                 <div class="col-sm-3">
                     <div class="card shadow-sm">
-                        <img class="bd-placeholder-img card-img-top" src="/assets/img/<?= $data['gambar']; ?>" width="100%" height="225">
+                        <img class="bd-placeholder-img card-img-top" src="/assets/img/<?= $data['gambar']; ?>" height="250">
 
                         <div class="card-body">
                             <a class="text-decoration-none text-dark" href="/wisata/detail/<?= $data['slug']; ?>">
@@ -97,8 +97,8 @@
                 </div>
                 <!-- END PERALBUM SATU FOTO -->
             <?php endforeach; ?>
-
         </div>
+        <?= $pager->links('wisata', 'pagination'); ?>
     </div>
 </div>
 <!-- END ALBUM -->

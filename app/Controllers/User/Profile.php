@@ -56,10 +56,10 @@ class Profile extends BaseController
         }
 
         $this->userModel->update($id, [
-            'nama' => $this->request->getPost('nama'),
-            'email' => $this->request->getPost('email'),
-            'no_telp' => $this->request->getPost('no_telp'),
-            'alamat' => $this->request->getPost('alamat'),
+            'nama' => htmlspecialchars($this->request->getPost('nama')),
+            'email' => htmlspecialchars($this->request->getPost('email')),
+            'no_telp' => htmlspecialchars($this->request->getPost('no_telp')),
+            'alamat' => htmlspecialchars($this->request->getPost('alamat')),
             'gambar' => $namaGambar
         ]);
 
@@ -107,8 +107,8 @@ class Profile extends BaseController
         if (!$this->validate($rules)) {
             return redirect()->to('/profil/ubah-password')->withInput();
         } else {
-            $currentPassword = $this->request->getPost('currentPassword');
-            $newPassword = $this->request->getPost('newPassword');
+            $currentPassword = htmlspecialchars($this->request->getPost('currentPassword'));
+            $newPassword = htmlspecialchars($this->request->getPost('newPassword'));
             if (!password_verify($currentPassword, $this->user['password'])) {
                 // KASIH PESAN KESALAHAN
                 session()->setFlashdata('pesan', 'Kata sandi salah');

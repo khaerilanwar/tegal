@@ -23,8 +23,8 @@
         <div class="row">
             <div class="col-md-6 col-lg-3">
                 <div class="statistic__item statistic__item--green">
-                    <h2 class="number">10,368</h2>
-                    <span class="desc">members online</span>
+                    <h2 class="number"><?= $lenUser; ?></h2>
+                    <span class="desc">Pengguna</span>
                     <div class="icon">
                         <i class="zmdi zmdi-account-o"></i>
                     </div>
@@ -32,28 +32,28 @@
             </div>
             <div class="col-md-6 col-lg-3">
                 <div class="statistic__item statistic__item--orange">
-                    <h2 class="number">388,688</h2>
-                    <span class="desc">items sold</span>
+                    <h2 class="number"><?= $lenJasa; ?></h2>
+                    <span class="desc">Iklan Jasa</span>
                     <div class="icon">
-                        <i class="zmdi zmdi-shopping-cart"></i>
+                        <i class="zmdi zmdi-library"></i>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
                 <div class="statistic__item statistic__item--blue">
-                    <h2 class="number">1,086</h2>
-                    <span class="desc">this week</span>
+                    <h2 class="number"><?= $lenKuliner; ?></h2>
+                    <span class="desc">Iklan Kuliner</span>
                     <div class="icon">
-                        <i class="zmdi zmdi-calendar-note"></i>
+                        <i class="zmdi zmdi-cutlery"></i>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
                 <div class="statistic__item statistic__item--red">
-                    <h2 class="number">$1,060,386</h2>
-                    <span class="desc">total earnings</span>
+                    <h2 class="number"><?= $lenPenginapan; ?></h2>
+                    <span class="desc">Iklan Penginapan</span>
                     <div class="icon">
-                        <i class="zmdi zmdi-money"></i>
+                        <i class="zmdi zmdi-hotel"></i>
                     </div>
                 </div>
             </div>

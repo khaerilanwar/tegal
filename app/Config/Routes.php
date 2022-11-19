@@ -91,31 +91,28 @@ $routes->get('/profil/ubah-password', 'User\Profile::ubahPassword');
 $routes->post('/profil/ubahPass', 'User\Profile::ubahKatasandi');
 $routes->post('/profil/edit/(:num)', 'User\Profile::edit/$1');
 
-// IKLAN JASA
+// USER IKLAN
 $routes->get('/pasang-iklan', 'User\Iklan::index');
-$routes->delete('/pasang-iklan/(:num)', 'User\Iklan::hapus/$1');
 $routes->post('/pasang-iklan/update/(:num)', 'User\Iklan::update/$1');
 
 // ROUTES JASA
 $routes->get('/jasa', 'User\Jasa::index');
 $routes->post('/jasa/addJasa', 'User\Jasa::addJasa');
 $routes->get('/jasa/detail/(:any)', 'User\Jasa::detail/$1');
+$routes->delete('/jasa/(:num)', 'User\Jasa::hapus/$1');
 
 //ROUTES KULINER
 $routes->get('/kuliner', 'User\Kuliner::index');
 $routes->post('/kuliner/addKuliner', 'User\Kuliner::addKuliner');
 $routes->get('/kuliner/detail/(:any)', 'User\Kuliner::detail/$1');
-
-// ROUTES USER
-$routes->get('/pasang-iklan', 'User\Iklan::index');
-$routes->post('/pasang-iklan/addpenginapan', 'User\Iklan::addpenginapan');
-$routes->delete('/pasang-iklan/(:num)', 'User\Iklan::hapus/$1');
-$routes->post('/pasang-iklan/update/(:num)', 'User\Iklan::update/$1');
+$routes->delete('/kuliner/(:num)', 'User\Kuliner::hapus/$1');
 
 // ROUTES PENGINAPAN
 $routes->get('/penginapan', 'User\penginapan::index');
 $routes->get('/penginapan/detail/(:any)', 'User\Penginapan::detail/$1');
 $routes->post('/penginapan/addPenginapan', 'User\Penginapan::addPenginapan');
+$routes->delete('/penginapan/(:num)', 'User\Penginapan::hapus/$1');
+
 
 /*
  * --------------------------------------------------------------------

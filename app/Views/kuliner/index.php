@@ -56,12 +56,13 @@
     <div class="container mb-5">
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+            <?php $i = 1 + (8 * ($currentPage - 1)); ?>
             <?php foreach ($kuliner as $k) : ?>
                 <!-- PERALBUM SATU FOTO -->
                 <div class="col-sm">
                     <div class="card shadow-sm">
                         <a class="text-decoration-none text-dark" href="/kuliner/detail/<?= $k['slug']; ?>">
-                            <img class="bd-placeholder-img card-img-top" src="/assets/img/<?= $k['gambar']; ?>" width="50%" height="195">
+                            <img class="bd-placeholder-img card-img-top" src="/assets/img/<?= $k['gambar']; ?>" height="250">
                             <div class="card-body">
                                 <h5><?= $k['nama_kuliner']; ?></h5>
                                 <p class="card-text mb-4 text-truncate"> <?= $k['alamat']; ?></p>
@@ -74,13 +75,14 @@
                                         $text = "Haloo, saya ingin memesan " . $k['jenis_kuliner'] . " anda!";
                                         $text = urlencode($text);
                                         ?>
-                                    <a target="_blank" href="https://api.whatsapp.com/send/?phone=<?= $nomor; ?>&text=<?= $text; ?>" class="btn btn-primary float-end">Info & Pemesanan</a>
                                 </div>
+                                <a target="_blank" href="https://api.whatsapp.com/send/?phone=<?= $nomor; ?>&text=<?= $text; ?>" class="btn btn-primary float-end">Info & Pemesanan</a>
                             </div>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
+        <?= $pager->links('kuliner', 'pagination'); ?>
     </div>
 </div>
 <!-- END ALBUM -->

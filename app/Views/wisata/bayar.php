@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title; ?></title>
+    <!-- FAVICON TEGAL -->
+    <link rel="shortcut icon" href="/assets/img/ikon-tegal.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -33,10 +35,10 @@
         </tr>
         <tr>
             <td>Total Harga</td>
-            <td><?= $bayar['harga_total']; ?></td>
+            <td>Rp. <?= number_format($bayar['harga_total'], 0, '', '.') ?></td>
         </tr>
         <tr>
-            <td>Nomor</td>
+            <td>Bayar di</td>
             <td><?= $bayar['detail']; ?></td>
         </tr>
         <tr>

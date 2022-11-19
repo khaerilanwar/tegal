@@ -19,56 +19,59 @@ class Jasa extends BaseController
 
     public function index()
     {
+        $currentPage = $this->request->getGet('page') ? $this->request->getGet('page') : 1;
         $bidang = $this->request->getGet('bidang');
         $nama = $this->request->getGet('nama');
 
         switch ($bidang) {
             case 'elektronik':
                 if ($nama) {
-                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->asArray()->like('nama_jasa', $nama)->findAll();
+                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->like('nama_jasa', $nama);
                 } else {
-                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->findAll();
+                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang);
                 }
                 break;
             case 'pendidikan':
                 if ($nama) {
-                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->asArray()->like('nama_jasa', $nama)->findAll();
+                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->like('nama_jasa', $nama);
                 } else {
-                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->findAll();
+                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang);
                 }
                 break;
             case 'cleaning':
                 if ($nama) {
-                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->asArray()->like('nama_jasa', $nama)->findAll();
+                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->like('nama_jasa', $nama);
                 } else {
-                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->findAll();
+                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang);
                 }
                 break;
             case 'otomotif':
                 if ($nama) {
-                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->asArray()->like('nama_jasa', $nama)->findAll();
+                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->like('nama_jasa', $nama);
                 } else {
-                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->findAll();
+                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang);
                 }
                 break;
             case 'kesehatan':
                 if ($nama) {
-                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->asArray()->like('nama_jasa', $nama)->findAll();
+                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->like('nama_jasa', $nama);
                 } else {
-                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->findAll();
+                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang);
                 }
                 break;
             default:
                 if ($nama) {
-                    $jasa = $this->jasaModel->like('nama_jasa', $nama)->findAll();
+                    $jasa = $this->jasaModel->like('nama_jasa', $nama);
                 } else {
-                    $jasa = $this->jasaModel->findAll();
+                    $jasa = $this->jasaModel;
                 }
         }
 
         $data = [
             'title' => 'Jasa Kota Tegal',
-            'jasa' => $jasa,
+            'jasa' => $jasa->paginate(8, 'jasa'),
+            'pager' => $this->jasaModel->pager,
+            'currentPage' => $currentPage,
             'bidangGet' => $bidang,
             'user' => $this->user
         ];
@@ -154,17 +157,31 @@ class Jasa extends BaseController
         $fileGambar->move('assets/img', $namaGambar);
 
         $this->jasaModel->save([
-            'nama_jasa' => $this->request->getPost('nama_jasa'),
-            'slug' => url_title($this->request->getPost('nama_jasa'), '-', true),
+            'nama_jasa' => htmlspecialchars($this->request->getPost('nama_jasa')),
+            'slug' => url_title(htmlspecialchars($this->request->getPost('nama_jasa')), '-', true),
             'user_email' => session()->email,
-            'nomor_user' => $this->request->getPost('nomor_user'),
-            'bidang_jasa' => $this->request->getPost('bidang_jasa'),
-            'deskripsi' => $this->request->getPost('deskripsi'),
-            'harga' => $this->request->getPost('harga'),
-            'maps' => $this->request->getPost('maps'),
+            'nomor_user' => htmlspecialchars($this->request->getPost('nomor_user')),
+            'bidang_jasa' => htmlspecialchars($this->request->getPost('bidang_jasa')),
+            'deskripsi' => htmlspecialchars($this->request->getPost('deskripsi')),
+            'harga' => htmlspecialchars($this->request->getPost('harga')),
+            'maps' => htmlspecialchars($this->request->getPost('maps')),
             'gambar' => $namaGambar,
-            'alamat' => $this->request->getPost('alamat')
+            'alamat' => htmlspecialchars($this->request->getPost('alamat'))
         ]);
+
+        return redirect()->to('/pasang-iklan');
+    }
+
+    public function hapus($id)
+    {
+        $jasa = $this->jasaModel->find($id);
+
+        if ($jasa['gambar'] != 'anwar.jpeg') {
+            // hapus gambar
+            unlink('assets/img/' . $jasa['gambar']);
+        }
+
+        $this->jasaModel->delete($id);
 
         return redirect()->to('/pasang-iklan');
     }

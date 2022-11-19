@@ -80,11 +80,11 @@
           <?php $i = 1; ?>
           <?php
               if (array_key_exists('nama_jasa', $dataIklan[0])) {
-                $field = ['nama_jasa', 'bidang_jasa', 'Bidang Jasa'];
+                $field = ['nama_jasa', 'bidang_jasa', 'Bidang Jasa', 'jasa'];
               } elseif (array_key_exists('nama_kuliner', $dataIklan[0])) {
-                $field = ['nama_kuliner', 'jenis_kuliner', 'Jenis Kuliner'];
+                $field = ['nama_kuliner', 'jenis_kuliner', 'Jenis Kuliner', 'kuliner'];
               } else {
-                $field = ['nama_penginapan', 'jenis_penginapan', 'Jenis Penginapan'];
+                $field = ['nama_penginapan', 'jenis_penginapan', 'Jenis Penginapan', 'penginapan'];
               }
               ?>
           <!-- TABEL IKLAN -->
@@ -112,7 +112,7 @@
                       Edit
                     </button>
 
-                    <form action="/pasang-iklan/<?= $iklan['id']; ?>" method="post" class="d-inline">
+                    <form action="/<?= $field[3]; ?>/<?= $iklan['id']; ?>" method="post" class="d-inline">
                       <?= csrf_field(); ?>
                       <input type="hidden" name="_method" value="DELETE">
                       <button type="submit" class="btn btn-danger" onclick="return confirm('apakah anda yakin ?')">Hapus</button>
@@ -136,7 +136,7 @@
             <div class="container">
               <div class="row">
                 <div class="col">
-                  <h2>Anda belum memasang iklan</h2>
+                  <h2 class="text-center my-4">Anda belum memasang iklan</h2>
                 </div>
               </div>
             </div>
@@ -172,7 +172,7 @@
                           Edit
                         </button>
 
-                        <form action="/pasang-iklan/<?= $kuliner['id']; ?>" method="post" class="d-inline">
+                        <form action="/kuliner/<?= $kuliner['id']; ?>" method="post" class="d-inline">
                           <?= csrf_field(); ?>
                           <input type="hidden" name="_method" value="DELETE">
                           <button type="submit" class="btn btn-danger" onclick="return confirm('apakah anda yakin ?')">Hapus</button>
@@ -215,7 +215,7 @@
                           Edit
                         </button>
 
-                        <form action="/pasang-iklan/<?= $jasa['id']; ?>" method="post" class="d-inline">
+                        <form action="/jasa/<?= $jasa['id']; ?>" method="post" class="d-inline">
                           <?= csrf_field(); ?>
                           <input type="hidden" name="_method" value="DELETE">
                           <button type="submit" class="btn btn-danger" onclick="return confirm('apakah anda yakin ?')">Hapus</button>
@@ -258,7 +258,7 @@
                           Edit
                         </button>
 
-                        <form action="/pasang-iklan/<?= $penginapan['id']; ?>" method="post" class="d-inline">
+                        <form action="/penginapan/<?= $penginapan['id']; ?>" method="post" class="d-inline">
                           <?= csrf_field(); ?>
                           <input type="hidden" name="_method" value="DELETE">
                           <button type="submit" class="btn btn-danger" onclick="return confirm('apakah anda yakin ?')">Hapus</button>
@@ -428,7 +428,7 @@
                   </div>
                 </div>
                 <div class="col-6">
-                  <label for="gambar" class="form-label">Upload Gambar Jasa</label>
+                  <label for="gambar" class="form-label">Upload Gambar Kuliner</label>
                   <input type="file" name="gambar" class="form-control" id="gambar" onchange="previewImg()">
                   <img src="/assets/img/<?= $kuliner['gambar']; ?>" width="80" id="img-prv" class="img-thumbnail img-preview mt-2 mx-auto d-block">
                 </div>

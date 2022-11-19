@@ -8,7 +8,11 @@
             <div class="py-5 text-center">
                 <img class="d-block mx-auto mb-3 " src="/assets/img/brand-tegal.png" alt="<?= $wisata['nama_wisata']; ?>" width="72">
                 <h2>Pesan Tiket <?= $wisata['nama_wisata']; ?></h2>
-                <p class="lead"><?= $wisata['deskripsi']; ?></p>
+                <div class="row mt-3">
+                    <div class="col-md-8 offset-md-2">
+                        <p class="lead text-center"><?= $wisata['deskripsi']; ?></p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -19,7 +23,7 @@
         <div class="col d-flex justify-content-center border">
             <div class="col-md-4 col-lg-5 py-5">
                 <h3 class="mb-4 text-center">Pemesanan Tiket Wisata</h3>
-                <form class="needs-validation" method="post" action="/wisata/pesan">
+                <form class="needs-validation" method="post" action="/wisata/pesan" target="_blank">
                     <div class="row my-5">
 
                         <input type="hidden" id="harga" name="harga" onload="total()" value="<?= $wisata['harga']; ?>">

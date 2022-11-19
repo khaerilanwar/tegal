@@ -52,35 +52,37 @@
 
 <?php endif; ?>
 
+
 <!-- ALBUM  -->
 <div class="album py-5 bg-light">
     <div class="container mb-5">
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+            <?php $i = 1 + (8 * ($currentPage - 1)); ?>
             <?php foreach ($jasa as $j) : ?>
                 <!-- PERALBUM SATU FOTO -->
                 <div class="col-sm">
                     <div class="card shadow-sm">
-                        <img class="bd-placeholder-img card-img-top" src="/assets/img/<?= $j['gambar']; ?>" width="50%" height="195">
                         <a class="text-decoration-none text-dark" href="/jasa/detail/<?= $j['slug']; ?>">
+                            <img class="bd-placeholder-img card-img-top" src="/assets/img/<?= $j['gambar']; ?>" height="250">
                             <div class="card-body">
                                 <h5><?= $j['nama_jasa']; ?></h5>
                                 <p class="card-text mb-4 text-truncate"> <?= $j['alamat']; ?></p>
                                 <div class="d-flex justify-content-between align-items-center">
-                        </a>
-                        <?php
-                            $nomor = str_replace($j['nomor_user'][0], '62', $j['nomor_user']);
-                            $text = "Haloo, saya ingin memesan " . $j['bidang_jasa'] . " anda!";
-                            $text = urlencode($text);
-                            ?>
-                        <a target="_blank" href="https://api.whatsapp.com/send/?phone=<?= $nomor; ?>&text=<?= $text; ?>" class="btn btn-primary float-end">Hubungi</a>
+                                    <?php
+                                        $nomor = str_replace($j['nomor_user'][0], '62', $j['nomor_user']);
+                                        $text = "Haloo, saya ingin memesan " . $j['bidang_jasa'] . " anda!";
+                                        $text = urlencode($text);
+                                        ?>
+                                </div>
+                                <a target="_blank" href="https://api.whatsapp.com/send/?phone=<?= $nomor; ?>&text=<?= $text; ?>" class="btn btn-primary float-end">Hubungi</a>
+                            </div>
                     </div>
                 </div>
+            <?php endforeach; ?>
         </div>
+        <?= $pager->links('jasa', 'pagination'); ?>
     </div>
-<?php endforeach; ?>
-</div>
-</div>
 </div>
 <!-- END ALBUM -->
 

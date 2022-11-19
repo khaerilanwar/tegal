@@ -17,35 +17,40 @@ class Penginapan extends BaseController
 
     public function index()
     {
+        $currentPage = $this->request->getGet('page') ? $this->request->getGet('page') : 1;
         $kategori = $this->request->getGet('kategori');
         $nama = $this->request->getGet('nama');
 
         switch ($kategori) {
             case 'hotel':
                 if ($nama) {
-                    $penginapan = $this->penginapanModel->where('jenis_penginapan', $kategori)->asArray()->like('nama_penginapan', $nama)->findAll();
+                    // $penginapan = $this->penginapanModel->where('jenis_penginapan', $kategori)->asArray()->like('nama_penginapan', $nama);
+                    $penginapan = $this->penginapanModel->where('jenis_penginapan', $kategori)->like('nama_penginapan', $nama);
                 } else {
-                    $penginapan = $this->penginapanModel->where('jenis_penginapan', $kategori)->findAll();
+                    $penginapan = $this->penginapanModel->where('jenis_penginapan', $kategori);
                 }
                 break;
             case 'villa':
                 if ($nama) {
-                    $penginapan = $this->penginapanModel->where('jenis_penginapan', $kategori)->asArray()->like('nama_penginapan', $nama)->findAll();
+                    // $penginapan = $this->penginapanModel->where('jenis_penginapan', $kategori)->asArray()->like('nama_penginapan', $nama);
+                    $penginapan = $this->penginapanModel->where('jenis_penginapan', $kategori)->like('nama_penginapan', $nama);
                 } else {
-                    $penginapan = $this->penginapanModel->where('jenis_penginapan', $kategori)->findAll();
+                    $penginapan = $this->penginapanModel->where('jenis_penginapan', $kategori);
                 }
                 break;
             default:
                 if ($nama) {
-                    $penginapan = $this->penginapanModel->like('nama_penginapan', $nama)->findAll();
+                    $penginapan = $this->penginapanModel->like('nama_penginapan', $nama);
                 } else {
-                    $penginapan = $this->penginapanModel->findAll();
+                    $penginapan = $this->penginapanModel;
                 }
         }
 
         $data = [
             'title' => 'Penginapan Kabupaten Tegal',
-            'penginapan' => $penginapan,
+            'penginapan' => $penginapan->paginate(8, 'penginapan'),
+            'pager' => $this->penginapanModel->pager,
+            'currentPage' => $currentPage,
             'kategoriGet' => $kategori,
             'user' => $this->user
         ];
@@ -131,17 +136,31 @@ class Penginapan extends BaseController
         $fileGambar->move('assets/img', $namaGambar);
 
         $this->penginapanModel->save([
-            'nama_penginapan' => $this->request->getPost('nama_penginapan'),
-            'slug' => url_title($this->request->getPost('nama_penginapan'), '-', true),
+            'nama_penginapan' => htmlspecialchars($this->request->getPost('nama_penginapan')),
+            'slug' => url_title(htmlspecialchars($this->request->getPost('nama_penginapan')), '-', true),
             'user_email' => session()->email,
-            'nomor_user' => $this->request->getPost('nomor_user'),
-            'jenis_penginapan' => $this->request->getPost('jenis_penginapan'),
-            'deskripsi' => $this->request->getPost('deskripsi'),
-            'harga' => $this->request->getPost('harga'),
-            'alamat' => $this->request->getPost('alamat'),
-            'maps' => $this->request->getPost('maps'),
+            'nomor_user' => htmlspecialchars($this->request->getPost('nomor_user')),
+            'jenis_penginapan' => htmlspecialchars($this->request->getPost('jenis_penginapan')),
+            'deskripsi' => htmlspecialchars($this->request->getPost('deskripsi')),
+            'harga' => htmlspecialchars($this->request->getPost('harga')),
+            'alamat' => htmlspecialchars($this->request->getPost('alamat')),
+            'maps' => htmlspecialchars($this->request->getPost('maps')),
             'gambar' => $namaGambar
         ]);
+
+        return redirect()->to('/pasang-iklan');
+    }
+
+    public function hapus($id)
+    {
+        $penginapan = $this->penginapanModel->find($id);
+
+        if ($penginapan['gambar'] != 'anwar.jpeg') {
+            // hapus gambar
+            unlink('assets/img/' . $penginapan['gambar']);
+        }
+
+        $this->penginapanModel->delete($id);
 
         return redirect()->to('/pasang-iklan');
     }

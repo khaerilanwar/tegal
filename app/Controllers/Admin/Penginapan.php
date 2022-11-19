@@ -12,17 +12,23 @@ class Penginapan extends BaseController
     public function __construct()
     {
         $this->penginapanModel = new PenginapanModel();
+        helper('tegal');
+        cekLogin();
+        cekAdmin();
     }
 
     public function index()
     {
+        $currentPage = $this->request->getGet('page_penginapanAdmin') ? $this->request->getGet('page_penginapanAdmin') : 1;
         // QUERY DATA ADMIN
         $admin = $this->build->getWhere(['email' => 'khaerilanwar1992@gmail.com'])->getRowArray();
 
         $data = [
             'title' => "Penginapan Kabupaten Tegal",
             'admin' => $admin,
-            'penginapan' => $this->penginapanModel->findAll()
+            'penginapan' => $this->penginapanModel->paginate(10, 'penginapanAdmin'),
+            'pager' => $this->penginapanModel->pager,
+            'currentPage' => $currentPage
         ];
 
         return view('admin/penginapan', $data);
