@@ -69,7 +69,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $i = 1; ?>
+                            <?php $i = 1 + (10 * ($currentPage - 1)); ?>
                             <?php foreach ($kuliner as $k) : ?>
                                 <tr>
                                     <td><?= $i; ?></td>
@@ -90,7 +90,7 @@
                         </tbody>
                     </table>
                 </div>
-
+                <?= $pager->links('kulinerAdmin', 'pagination'); ?>
             </div>
         </div>
     </div>

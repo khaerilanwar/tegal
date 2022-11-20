@@ -47,7 +47,7 @@ class Pariwisata extends BaseController
             'admin' => $admin,
             'validation' => \Config\Services::validation(),
             'wisata' => $wisata->paginate(10, 'wisataAdmin'),
-            'pager' => $this->penginapanModel->pager,
+            'pager' => $this->wisataModel->pager,
             'currentPage' => $currentPage
         ];
 

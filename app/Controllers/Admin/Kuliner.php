@@ -19,13 +19,16 @@ class Kuliner extends BaseController
 
     public function index()
     {
+        $currentPage = $this->request->getGet('page_kulinerAdmin') ? $this->request->getGet('page_kulinerAdmin') : 1;
         // QUERY DATA ADMIN
         $admin = $this->build->getWhere(['email' => 'khaerilanwar1992@gmail.com'])->getRowArray();
 
         $data = [
             'title' => "Aneka Kuliner Kabupaten Tegal",
             'admin' => $admin,
-            'kuliner' => $this->kulinerModel->findAll()
+            'kuliner' => $this->kulinerModel->paginate(10, 'kulinerAdmin'),
+            'pager' => $this->kulinerModel->pager,
+            'currentPage' => $currentPage
         ];
 
         return view('admin/kuliner', $data);
