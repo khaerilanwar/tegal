@@ -23,7 +23,7 @@
         <div class="col d-flex justify-content-center border">
             <div class="col-md-4 col-lg-5 py-5">
                 <h3 class="mb-4 text-center">Pemesanan Tiket Wisata</h3>
-                <form class="needs-validation" method="post" action="/wisata/pesan" target="_blank">
+                <form class="needs-validation" method="post" action="/wisata/pesan">
                     <div class="row my-5">
 
                         <input type="hidden" id="harga" name="harga" onload="total()" value="<?= $wisata['harga']; ?>">

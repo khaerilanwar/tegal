@@ -14,6 +14,7 @@ class Wisata extends BaseController
 
     public function __construct()
     {
+        helper('text');
         $this->wisataModel = new WisataModel();
         $this->pesananModel = new PesananModel();
     }
@@ -65,6 +66,7 @@ class Wisata extends BaseController
     public function pesan()
     {
         $no_pesan = random_string('num');
+
         $data = [
             'no_pesanan' => $no_pesan,
             'customer' => htmlspecialchars($this->request->getPost('customer')),
@@ -78,6 +80,9 @@ class Wisata extends BaseController
         ];
 
         $this->pesananModel->insert($data);
+        //     echo "<script type=\"text/javascript\">
+        //     window.open('/wisata/bayar/$no_pesan', '_blank')
+        // </script>";
         return redirect()->to("/wisata/bayar/$no_pesan");
     }
 

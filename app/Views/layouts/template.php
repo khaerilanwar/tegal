@@ -18,9 +18,26 @@
     <!-- FONT AWESOME -->
     <script src="https://kit.fontawesome.com/addf044e73.js" crossorigin="anonymous"></script>
 
-    <!-- CUSTOM CSS -->
-    <style>
-    </style>
+    <?php if (preg_match('/Home/', $title)) : ?>
+        <!-- Animate.css -->
+        <link rel="stylesheet" href="/assets/css/animate.css">
+        <!-- Icomoon Icon Fonts-->
+        <link rel="stylesheet" href="/assets/css/icomoon.css">
+        <!-- Bootstrap  -->
+        <!-- <link rel="stylesheet" href="/assets/css/2bootstrap.css"> -->
+        <!-- Superfish -->
+        <link rel="stylesheet" href="/assets/css/superfish.css">
+        <!-- Magnific Popup -->
+        <link rel="stylesheet" href="/assets/css/magnific-popup.css">
+        <!-- Date Picker -->
+        <link rel="stylesheet" href="/assets/css/bootstrap-datepicker.min.css">
+
+        <link rel="stylesheet" href="/assets/css/2style.css">
+
+
+        <!-- Modernizr JS -->
+        <script src="/assets/js/modernizr-2.6.2.min.js"></script>
+    <?php endif; ?>
 </head>
 
 <body>

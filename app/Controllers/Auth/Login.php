@@ -71,7 +71,7 @@ class Login extends BaseController
                     if ($user['role_id'] == 1) {
                         return redirect()->to('dashboard');
                     } else {
-                        return redirect()->to('wisata');
+                        return redirect()->to('/');
                     }
                 } else {
                     session()->setFlashdata('pesan', 'Kata Sandi Salah!');

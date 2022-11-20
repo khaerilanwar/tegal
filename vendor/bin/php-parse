@@ -13,7 +13,11 @@
 namespace Composer;
 
 $GLOBALS['_composer_bin_dir'] = __DIR__;
+<<<<<<< HEAD
 $GLOBALS['_composer_autoload_path'] = __DIR__ . '/..'.'/autoload.php';
+=======
+$GLOBALS['_composer_autoload_path'] = __DIR__ . '/../../../../..'.'/xampp/htdocs/tegal/vendor/autoload.php';
+>>>>>>> origin/views_home
 
 if (PHP_VERSION_ID < 80000) {
     if (!class_exists('Composer\BinProxyWrapper')) {

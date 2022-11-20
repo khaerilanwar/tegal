@@ -15,8 +15,8 @@
         <?php if (session()->email == false) : ?>
 
             <div class="col-sm-3 d-flex justify-content-center">
-                <a href="login" class="btn fs-5 btn-outline-light me-2">Login</a>
-                <a href="registrasi" class="btn fs-5 btn-primary">Sign-up</a>
+                <a href="/login" class="btn fs-5 btn-outline-light me-2">Login</a>
+                <a href="/registrasi" class="btn fs-5 btn-primary">Sign-up</a>
             </div>
 
         <?php else : ?>

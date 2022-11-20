@@ -52,8 +52,10 @@
 
                         <div class="col-12 mb-3">
                             <label class="form-label" for="inputGroupFile02">Gambar Penginapan Kamu</label>
-                            <input type="file" name="gambar" class="form-control <?= ($validation->hasError('gambar')) ? 'is-invalid' : ''; ?>" id="gambar" onchange="previewImg()">
-                            <img src="/assets/img/anwar.jpeg" width="100" id="img-prv" class="img-thumbnail img-preview mt-2">
+                            <input type="file" name="gambar" id="file-ip-1" class="form-control  <?= ($validation->hasError('gambar')) ? 'is-invalid' : ''; ?>" onchange="showPreview(event);">
+                            <div class="preview d-flex justify-content-center">
+                                <img id="file-ip-1-preview" style="display: none;" class="img-prvw mt-2 rounded img-thumbnail" width="150">
+                            </div>
                             <div class="pl-3 invalid-feedback">
                                 <?= $validation->getError('gambar'); ?>
                             </div>

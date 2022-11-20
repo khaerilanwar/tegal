@@ -36,7 +36,7 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/', 'User\Home::index');
 
 // ROUTES AUTENTIFIKASI
 // ROUTES LOGIN
@@ -84,6 +84,9 @@ $routes->get('/wisata/bayar/(:num)', 'User\Wisata::bayar/$1');
 $routes->get('/wisata/detail/(:any)', 'User\Wisata::detail/$1');
 
 // ROUTES USER
+// ROUTES HOME
+$routes->get('/home', 'User\Home::index');
+
 // PROFIL USER
 $routes->get('/profil', 'User\Profile::index');
 $routes->get('/profil/edit-profile', 'User\Profile::editProfile');
