@@ -75,8 +75,8 @@
                                         $text = "Haloo, saya ingin memesan " . $k['jenis_kuliner'] . " anda!";
                                         $text = urlencode($text);
                                         ?>
+                                    <a target="_blank" href="https://api.whatsapp.com/send/?phone=<?= $nomor; ?>&text=<?= $text; ?>" class="btn btn-primary float-end">Info & Pemesanan</a>
                                 </div>
-                                <a target="_blank" href="https://api.whatsapp.com/send/?phone=<?= $nomor; ?>&text=<?= $text; ?>" class="btn btn-primary float-end">Info & Pemesanan</a>
                             </div>
                     </div>
                 </div>
