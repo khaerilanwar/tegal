@@ -7,11 +7,11 @@
         </a>
 
         <ul class="pe-5 nav col-sm-4 justify-content-end">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Pariwisata</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Kuliner</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Penginapan</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Jasa</a></li>
+            <li class="nav-item"><a href="/" class="nav-link px-2 text-white">Home</a></li>
+            <li class="nav-item"><a href="/wisata" class="nav-link px-2 text-white">Pariwisata</a></li>
+            <li class="nav-item"><a href="/kuliner" class="nav-link px-2 text-white">Kuliner</a></li>
+            <li class="nav-item"><a href="/penginapan" class="nav-link px-2 text-white">Penginapan</a></li>
+            <li class="nav-item"><a href="/jasa" class="nav-link px-2 text-white">Jasa</a></li>
         </ul>
     </footer>
 </div>
