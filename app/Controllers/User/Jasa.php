@@ -184,6 +184,7 @@ class Jasa extends BaseController
         }
 
         $this->jasaModel->delete($id);
+        session()->setFlashdata('hapusIklan', 'Data iklan berhasil dihapus!');
 
         return redirect()->to('/pasang-iklan');
     }

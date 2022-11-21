@@ -81,6 +81,12 @@
         </script>
     <?php endif; ?>
 
+    <?php if (session()->getFlashdata('hapusIklan')) : ?>
+        <script>
+            swal("Berhasil!", "<?= session()->getFlashdata('hapusIklan'); ?>!", "success");
+        </script>
+    <?php endif; ?>
+
     <script>
         function total() {
             var jumlahTiket, hargaTiket, hasil;

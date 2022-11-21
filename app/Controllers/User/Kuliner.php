@@ -168,6 +168,7 @@ class Kuliner extends BaseController
         }
 
         $this->kulinerModel->delete($id);
+        session()->setFlashdata('hapusIklan', 'Data iklan berhasil dihapus!');
 
         return redirect()->to('/pasang-iklan');
     }

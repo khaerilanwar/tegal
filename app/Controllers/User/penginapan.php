@@ -163,6 +163,7 @@ class Penginapan extends BaseController
         }
 
         $this->penginapanModel->delete($id);
+        session()->setFlashdata('hapusIklan', 'Data iklan berhasil dihapus!');
 
         return redirect()->to('/pasang-iklan');
     }
