@@ -169,6 +169,8 @@ class Jasa extends BaseController
             'alamat' => htmlspecialchars($this->request->getPost('alamat'))
         ]);
 
+        session()->setFlashdata('addJasa', 'Berhasil menambahkan iklan Jasa');
+
         return redirect()->to('/pasang-iklan');
     }
 

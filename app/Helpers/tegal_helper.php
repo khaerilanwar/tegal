@@ -14,7 +14,7 @@ function cekAdmin()
 {
     $user = \Config\Database::connect()->table('user')->getWhere(['email' => session()->email])->getRowArray();
     if ($user['role_id'] != 1) {
-        header('Location: /wisata');
+        header('Location: /home');
         exit;
     }
 }
@@ -25,7 +25,7 @@ function cekSession()
         header('Location: /dashboard');
         exit;
     } elseif (session()->email && session()->role_id == 2) {
-        header('Location: /wisata');
+        header('Location: /home');
         exit;
     }
 }

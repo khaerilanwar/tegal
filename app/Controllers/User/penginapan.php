@@ -148,6 +148,8 @@ class Penginapan extends BaseController
             'gambar' => $namaGambar
         ]);
 
+        session()->setFlashdata('addPenginapan', 'Berhasil menambahkan iklan Penginapan');
+
         return redirect()->to('/pasang-iklan');
     }
 

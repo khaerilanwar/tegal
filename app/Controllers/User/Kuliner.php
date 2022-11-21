@@ -153,6 +153,8 @@ class Kuliner extends BaseController
             'gambar' => $namaGambar
         ]);
 
+        session()->setFlashdata('addKuliner', 'Berhasil menambahkan iklan Kuliner');
+
         return redirect()->to('/pasang-iklan');
     }
 

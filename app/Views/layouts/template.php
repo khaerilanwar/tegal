@@ -49,6 +49,38 @@
     <?= $this->include('layouts/footer'); ?>
 
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <?php if (session()->getFlashdata('addJasa')) : ?>
+        <script>
+            swal("Berhasil!", "<?= session()->getFlashdata('addJasa'); ?>!", "success");
+        </script>
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('addKuliner')) : ?>
+        <script>
+            swal("Berhasil!", "<?= session()->getFlashdata('addKuliner'); ?>!", "success");
+        </script>
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('addPenginapan')) : ?>
+        <script>
+            swal("Berhasil!", "<?= session()->getFlashdata('addPenginapan'); ?>!", "success");
+        </script>
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('ubahProfil')) : ?>
+        <script>
+            swal("Berhasil!", "<?= session()->getFlashdata('ubahProfil'); ?>!", "success");
+        </script>
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('ubahSandi')) : ?>
+        <script>
+            swal("Berhasil!", "<?= session()->getFlashdata('ubahSandi'); ?>!", "success");
+        </script>
+    <?php endif; ?>
+
     <script>
         function total() {
             var jumlahTiket, hargaTiket, hasil;

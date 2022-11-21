@@ -63,6 +63,8 @@ class Profile extends BaseController
             'gambar' => $namaGambar
         ]);
 
+        session()->setFlashdata('ubahProfil', 'Mengubah data pengguna');
+
         return redirect()->to('profil');
     }
 
@@ -126,9 +128,8 @@ class Profile extends BaseController
                         'password' => $password_hash
                     ]);
 
-                    session()->setFlashdata('pesan', 'Kata sandi berhasil diubah');
-                    session()->setFlashdata('warna', 'success');
-                    return redirect()->to('/profil/ubah-password');
+                    session()->setFlashdata('ubahSandi', 'Mengubah kata sandi');
+                    return redirect()->to('/profil');
                 }
             }
         }
