@@ -470,7 +470,7 @@
                   <div class="row">
                     <div class="col mb-3">
                       <label for="nama_penginapan" class="form-label">Nama Penginapan Kamu</label>
-                      <input value="<?= $penginapan['nama_penginapan']; ?>" type="text" class="form-control" id="nama_penginapan" name="nama_kuliner" placeholder="Nama Penginapan">
+                      <input value="<?= $penginapan['nama_penginapan']; ?>" type="text" class="form-control" id="nama_penginapan" name="nama_penginapan" placeholder="Nama Penginapan">
                     </div>
                   </div>
                   <div class="row">

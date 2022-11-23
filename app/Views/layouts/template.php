@@ -51,6 +51,12 @@
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+    <?php if (session()->getFlashdata('update')) : ?>
+        <script>
+            swal("Berhasil!", "<?= session()->getFlashdata('update'); ?>!", "success");
+        </script>
+    <?php endif; ?>
+
     <?php if (session()->getFlashdata('addJasa')) : ?>
         <script>
             swal("Berhasil!", "<?= session()->getFlashdata('addJasa'); ?>!", "success");

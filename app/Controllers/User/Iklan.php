@@ -123,7 +123,7 @@ class Iklan extends BaseController
                 unlink('assets/img/' . $this->request->getPost('gambarLama'));
             } catch (Exception $e) {
                 session()->setFlashdata('gagalUpdate', 'Gagal update data');
-                redirect()->to('/pasang-iklan');
+                return redirect()->to('/pasang-iklan');
             }
         }
 
@@ -136,6 +136,7 @@ class Iklan extends BaseController
                 'gambar' => $namaGambar
             ]);
 
+            session()->setFlashdata('update', 'Data berhasil diupdate!');
             return redirect()->to('/pasang-iklan?menu=jasa');
         } elseif ($menu == 'kuliner') {
             $this->kulinerModel->update($id, [
@@ -146,6 +147,7 @@ class Iklan extends BaseController
                 'gambar' => $namaGambar
             ]);
 
+            session()->setFlashdata('update', 'Data berhasil diupdate!');
             return redirect()->to('/pasang-iklan?menu=kuliner');
         } elseif ($menu == 'penginapan') {
             $this->penginapanModel->update($id, [
@@ -155,6 +157,8 @@ class Iklan extends BaseController
                 'maps' => htmlspecialchars($this->request->getPost('maps')),
                 'gambar' => $namaGambar
             ]);
+            
+            session()->setFlashdata('update', 'Data berhasil diupdate!');
             return redirect()->to('/pasang-iklan?menu=penginapan');
         }
     }
