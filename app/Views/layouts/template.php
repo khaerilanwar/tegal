@@ -87,6 +87,12 @@
         </script>
     <?php endif; ?>
 
+    <?php if (session()->getFlashdata('gagalUpdate')) : ?>
+        <script>
+            swal("Gagal!", "<?= session()->getFlashdata('gagalUpdate'); ?>!", "error");
+        </script>
+    <?php endif; ?>
+
     <script>
         function total() {
             var jumlahTiket, hargaTiket, hasil;

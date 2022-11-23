@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\jasaModel;
 use App\Models\KulinerModel;
 use App\Models\PenginapanModel;
+use Exception;
 
 class Iklan extends BaseController
 {
@@ -117,7 +118,13 @@ class Iklan extends BaseController
             // pindahkan gambar
             $fileGambar->move('assets/img', $namaGambar);
             // hapus file lama
-            unlink('assets/img/' . $this->request->getPost('gambarLama'));
+            // unlink('assets/img/' . $this->request->getPost('gambarLama'));
+            try {
+                unlink('assets/img/' . $this->request->getPost('gambarLama'));
+            } catch (Exception $e) {
+                session()->setFlashdata('gagalUpdate', 'Gagal update data');
+                redirect()->to('/pasang-iklan');
+            }
         }
 
         if ($menu == 'jasa') {
@@ -132,7 +139,7 @@ class Iklan extends BaseController
             return redirect()->to('/pasang-iklan?menu=jasa');
         } elseif ($menu == 'kuliner') {
             $this->kulinerModel->update($id, [
-                'nama_jasa' => htmlspecialchars($this->request->getPost('nama_kuliner')),
+                'nama_kuliner' => htmlspecialchars($this->request->getPost('nama_kuliner')),
                 'deskripsi' => htmlspecialchars($this->request->getPost('deskripsi')),
                 'harga' => htmlspecialchars($this->request->getPost('harga')),
                 'maps' => htmlspecialchars($this->request->getPost('maps')),
@@ -142,7 +149,7 @@ class Iklan extends BaseController
             return redirect()->to('/pasang-iklan?menu=kuliner');
         } elseif ($menu == 'penginapan') {
             $this->penginapanModel->update($id, [
-                'nama_jasa' => htmlspecialchars($this->request->getPost('nama_penginapan')),
+                'nama_penginapan' => htmlspecialchars($this->request->getPost('nama_penginapan')),
                 'deskripsi' => htmlspecialchars($this->request->getPost('deskripsi')),
                 'harga' => htmlspecialchars($this->request->getPost('harga')),
                 'maps' => htmlspecialchars($this->request->getPost('maps')),
