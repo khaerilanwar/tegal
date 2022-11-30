@@ -24,25 +24,23 @@ class Penginapan extends BaseController
         switch ($kategori) {
             case 'hotel':
                 if ($nama) {
-                    // $penginapan = $this->penginapanModel->where('jenis_penginapan', $kategori)->asArray()->like('nama_penginapan', $nama);
-                    $penginapan = $this->penginapanModel->where('jenis_penginapan', $kategori)->like('nama_penginapan', $nama);
+                    $penginapan = $this->penginapanModel->orderBy('nama_penginapan', 'RANDOM')->where('jenis_penginapan', $kategori)->like('nama_penginapan', $nama);
                 } else {
-                    $penginapan = $this->penginapanModel->where('jenis_penginapan', $kategori);
+                    $penginapan = $this->penginapanModel->orderBy('nama_penginapan', 'RANDOM')->where('jenis_penginapan', $kategori);
                 }
                 break;
             case 'villa':
                 if ($nama) {
-                    // $penginapan = $this->penginapanModel->where('jenis_penginapan', $kategori)->asArray()->like('nama_penginapan', $nama);
-                    $penginapan = $this->penginapanModel->where('jenis_penginapan', $kategori)->like('nama_penginapan', $nama);
+                    $penginapan = $this->penginapanModel->orderBy('nama_penginapan', 'RANDOM')->where('jenis_penginapan', $kategori)->like('nama_penginapan', $nama);
                 } else {
-                    $penginapan = $this->penginapanModel->where('jenis_penginapan', $kategori);
+                    $penginapan = $this->penginapanModel->orderBy('nama_penginapan', 'RANDOM')->where('jenis_penginapan', $kategori);
                 }
                 break;
             default:
                 if ($nama) {
-                    $penginapan = $this->penginapanModel->like('nama_penginapan', $nama);
+                    $penginapan = $this->penginapanModel->orderBy('nama_penginapan', 'RANDOM')->like('nama_penginapan', $nama);
                 } else {
-                    $penginapan = $this->penginapanModel;
+                    $penginapan = $this->penginapanModel->orderBy('nama_penginapan', 'RANDOM');
                 }
         }
 
@@ -52,7 +50,7 @@ class Penginapan extends BaseController
             'pager' => $this->penginapanModel->pager,
             'currentPage' => $currentPage,
             'kategoriGet' => $kategori,
-            'user' => $this->user
+            'user' => $this->user,
         ];
 
         return view('penginapan/index', $data);
@@ -113,9 +111,8 @@ class Penginapan extends BaseController
                 ]
             ],
             'gambar' => [
-                'rules' => 'uploaded[gambar]|max_size[gambar,2048]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
+                'rules' => 'max_size[gambar,2048]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
                 'errors' => [
-                    'uploaded' => 'file belum diunggah',
                     'max_size' => 'Ukuran gambar terlalu besar',
                     'is_image' => 'Yang anda pilih bukan gambar',
                     'mime_in' => 'Yang anda pilih bukan gambar',
@@ -129,11 +126,19 @@ class Penginapan extends BaseController
 
         $fileGambar = $this->request->getFile('gambar');
 
-        // generate nama gambar
-        $namaGambar = $fileGambar->getRandomName();
+        if ($fileGambar->getError() == 0) {
+            // generate nama gambar
+            $namaGambar = $fileGambar->getRandomName();
 
-        // pindahkan file ke folder img
-        $fileGambar->move('assets/img', $namaGambar);
+            // pindahkan file ke folder img
+            $fileGambar->move('assets/img', $namaGambar);
+        } else {
+            if ($this->request->getPost('jenis_penginapan') == 'Hotel') {
+                $namaGambar = 'hotel.jpg';
+            } elseif ($this->request->getPost('jenis_penginapan') == 'Villa') {
+                $namaGambar = 'villa.jpg';
+            }
+        }
 
         $this->penginapanModel->save([
             'nama_penginapan' => htmlspecialchars($this->request->getPost('nama_penginapan')),
@@ -157,7 +162,8 @@ class Penginapan extends BaseController
     {
         $penginapan = $this->penginapanModel->find($id);
 
-        if ($penginapan['gambar'] != 'anwar.jpeg') {
+        $imgDefault = ['hotel.jpg', 'villa.jpg'];
+        if (!in_array($penginapan['gambar'], $imgDefault)) {
             // hapus gambar
             unlink('assets/img/' . $penginapan['gambar']);
         }

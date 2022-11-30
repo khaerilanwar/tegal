@@ -24,30 +24,30 @@ class Kuliner extends BaseController
         switch ($menu) {
             case 'makanan':
                 if ($nama) {
-                    $kuliner = $this->kulinerModel->where('jenis_kuliner', $menu)->like('nama_kuliner', $nama);
+                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('jenis_kuliner', $menu)->like('nama_kuliner', $nama);
                 } else {
-                    $kuliner = $this->kulinerModel->where('jenis_kuliner', $menu);
+                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('jenis_kuliner', $menu);
                 }
                 break;
             case 'minuman':
                 if ($nama) {
-                    $kuliner = $this->kulinerModel->where('jenis_kuliner', $menu)->like('nama_kuliner', $nama);
+                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('jenis_kuliner', $menu)->like('nama_kuliner', $nama);
                 } else {
-                    $kuliner = $this->kulinerModel->where('jenis_kuliner', $menu);
+                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('jenis_kuliner', $menu);
                 }
                 break;
             case 'camilan':
                 if ($nama) {
-                    $kuliner = $this->kulinerModel->where('jenis_kuliner', $menu)->like('nama_kuliner', $nama);
+                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('jenis_kuliner', $menu)->like('nama_kuliner', $nama);
                 } else {
-                    $kuliner = $this->kulinerModel->where('jenis_kuliner', $menu);
+                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('jenis_kuliner', $menu);
                 }
                 break;
             default:
                 if ($nama) {
-                    $kuliner = $this->kulinerModel->like('nama_kuliner', $nama);
+                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->like('nama_kuliner', $nama);
                 } else {
-                    $kuliner = $this->kulinerModel;
+                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM');
                 }
         }
 
@@ -118,9 +118,10 @@ class Kuliner extends BaseController
                 ]
             ],
             'gambar' => [
-                'rules' => 'uploaded[gambar]|max_size[gambar,2048]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
+                // 'rules' => 'uploaded[gambar]|max_size[gambar,2048]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
+                'rules' => 'max_size[gambar,2048]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
                 'errors' => [
-                    'uploaded' => 'file belum diunggah',
+                    // 'uploaded' => 'file belum diunggah',
                     'max_size' => 'Ukuran gambar terlalu besar',
                     'is_image' => 'Yang anda pilih bukan gambar',
                     'mime_in' => 'Yang anda pilih bukan gambar',
@@ -134,11 +135,21 @@ class Kuliner extends BaseController
 
         $fileGambar = $this->request->getFile('gambar');
 
-        // generate nama gambar
-        $namaGambar = $fileGambar->getRandomName();
+        if ($fileGambar->getError() == 0) {
+            // generate nama gambar
+            $namaGambar = $fileGambar->getRandomName();
 
-        // pindahkan file ke folder img
-        $fileGambar->move('assets/img', $namaGambar);
+            // pindahkan file ke folder img
+            $fileGambar->move('assets/img', $namaGambar);
+        } else {
+            if ($this->request->getPost('jenis_kuliner') == 'Makanan') {
+                $namaGambar = 'makanan.jpg';
+            } elseif ($this->request->getPost('jenis_kuliner') == 'Minuman') {
+                $namaGambar = 'minuman.jpeg';
+            } elseif ($this->request->getPost('jenis_kuliner') == 'Camilan') {
+                $namaGambar = 'camilan.jpg';
+            }
+        }
 
         $this->kulinerModel->save([
             'nama_kuliner' => htmlspecialchars($this->request->getPost('nama_kuliner')),
@@ -162,7 +173,8 @@ class Kuliner extends BaseController
     {
         $kuliner = $this->kulinerModel->find($id);
 
-        if ($kuliner['gambar'] != 'anwar.jpeg') {
+        $imgDefault = ['makanan.jpg', 'minuman.jpeg', 'camilan.jpg'];
+        if (!in_array($kuliner['gambar'], $imgDefault)) {
             // hapus gambar
             unlink('assets/img/' . $kuliner['gambar']);
         }

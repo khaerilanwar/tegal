@@ -28,10 +28,10 @@ class Home extends BaseController
         $data = [
             'title' => 'Home Kabupaten Tegal',
             'user' => $this->user,
-            'jasa' => $this->jasa->limit(4)->get()->getResultArray(),
-            'wisata' => $this->wisata->limit(4)->get()->getResultArray(),
-            'kuliner' => $this->kuliner->limit(4)->get()->getResultArray(),
-            'penginapan' => $this->penginapan->limit(4)->get()->getResultArray()
+            'jasa' => $this->jasa->limit(4)->orderBy('nama_jasa', 'RANDOM')->get()->getResultArray(),
+            'wisata' => $this->wisata->limit(4)->orderBy('nama_wisata', 'RANDOM')->get()->getResultArray(),
+            'kuliner' => $this->kuliner->limit(4)->orderBy('nama_kuliner', 'RANDOM')->get()->getResultArray(),
+            'penginapan' => $this->penginapan->limit(4)->orderBy('nama_penginapan', 'RANDOM')->get()->getResultArray()
         ];
 
         return view('home/index', $data);
