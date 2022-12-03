@@ -80,7 +80,8 @@ $routes->delete('/penginapan-tegal/(:num)', 'Admin\Penginapan::hapus/$1');
 $routes->get('/wisata', 'User\Wisata::index');
 $routes->get('/wisata/pesantiket', 'User\Wisata::pesanTiket');
 $routes->post('/wisata/pesan', 'User\Wisata::pesan');
-$routes->get('/wisata/bayar/(:num)', 'User\Wisata::bayar/$1');
+$routes->get('/wisata/tagihan/(:num)', 'User\Wisata::tagihan/$1');
+$routes->get('/wisata/cetak-tagihan/(:num)', 'User\Wisata::cetakTagihan/$1');
 $routes->get('/wisata/detail/(:any)', 'User\Wisata::detail/$1');
 
 // ROUTES USER

@@ -80,10 +80,8 @@ class Wisata extends BaseController
         ];
 
         $this->pesananModel->insert($data);
-        //     echo "<script type=\"text/javascript\">
-        //     window.open('/wisata/bayar/$no_pesan', '_blank')
-        // </script>";
-        return redirect()->to("/wisata/bayar/$no_pesan");
+
+        return redirect()->to("wisata/tagihan/$no_pesan");
     }
 
     public function pesanTiket()
@@ -99,7 +97,7 @@ class Wisata extends BaseController
         return view('wisata/pesanTiket', $data);
     }
 
-    public function bayar($kode)
+    public function tagihan($kode)
     {
         $db = \Config\Database::connect();
         $builder = $db->table('pesanan');
@@ -108,8 +106,26 @@ class Wisata extends BaseController
         $query = $builder->getWhere(['no_pesanan' => $kode])->getRowArray();
 
         $data = [
-            'title' => 'Pembayaran Tiket Wisata',
-            'bayar' => $query
+            'title' => 'Tagihan Tiket Wisata',
+            'bayar' => $query,
+            'wisata' => $this->wisataModel->where('nama_wisata', $query['nama_wisata'])->first(),
+            'user' => $this->user
+        ];
+
+        return view('wisata/bayarTiket', $data);
+    }
+
+    public function cetakTagihan($kode)
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('pesanan');
+        $builder->select('*');
+        $builder->join('pembayaran', 'pembayaran.id = pesanan.id_payment');
+        $query = $builder->getWhere(['no_pesanan' => $kode])->getRowArray();
+
+        $data = [
+            'title' => 'Cetak Tagihan Tiket Wisata',
+            'bayar' => $query,
         ];
 
         return view('wisata/bayar', $data);

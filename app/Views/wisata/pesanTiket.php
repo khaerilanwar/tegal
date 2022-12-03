@@ -20,7 +20,7 @@
 
 <div class="container-fluid bg-abu">
     <div class="row">
-        <div class="col d-flex justify-content-center border">
+        <div class="col d-flex justify-content-center">
             <div class="col-md-4 col-lg-5 py-5">
                 <h3 class="mb-4 text-center">Pemesanan Tiket Wisata</h3>
                 <form class="needs-validation" method="post" action="/wisata/pesan">
