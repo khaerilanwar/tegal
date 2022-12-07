@@ -5,18 +5,12 @@
 <!-- CAROUSEL SLIDE OTOMATIS -->
 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="3000">
-            <img src="/assets/img/restoran.jpg" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item" data-bs-interval="3000">
-            <img src="/assets/img/flores.jpg" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item" data-bs-interval="3000">
-            <img src="/assets/img/Bali.jpg" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item" data-bs-interval="3000">
-            <img src="/assets/img/bali_2.jpg" class="d-block w-100" alt="...">
-        </div>
+        <?php $slide = ['restoran.jpg', 'flores.jpg', 'Bali.jpg', 'bali_2.jpg', 'gapura.jpg', 'laut-wisata.jpg'] ?>
+        <?php for ($i = 0; $i < count($slide); $i++) : ?>
+            <div class="carousel-item active" data-bs-interval="3000">
+                <img src="/assets/img/<?= $slide[$i]; ?>" class="d-block w-100" alt="...">
+            </div>
+        <?php endfor; ?>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

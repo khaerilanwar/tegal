@@ -64,7 +64,7 @@
                 <div class="col-sm">
                     <div class="card shadow-sm">
                         <a class="text-decoration-none text-dark" href="/jasa/detail/<?= $j['slug']; ?>">
-                            <img class="bd-placeholder-img card-img-top" src="/assets/img/<?= $j['gambar']; ?>" height="250">
+                            <img class="bd-placeholder-img card-img-top size-img" src="/assets/img/<?= $j['gambar']; ?>" height="270">
                             <div class="card-body">
                                 <h5><?= $j['nama_jasa']; ?></h5>
                                 <p class="card-text mb-4 text-truncate"> <?= $j['alamat']; ?></p>

@@ -22,31 +22,28 @@
         <?php else : ?>
 
             <div class="col-sm-3">
-                <div class="btn-group float-end me-3">
-                    <button type="button" class="btn" style="border: 0;" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                <div class="btn-group float-end me-3 dropdown">
+                    <button class="btn border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img class="d-inline rounded-circle" src="/assets/img/<?= $user['gambar']; ?>" width="45" height="45" alt="<?= $user['nama']; ?>">
                         <span class="d-inline text-white ps-2"><?= $user['nama']; ?></span>
-                        <i class="fa-solid fa-circle-chevron-down ms-2 text-white fs-5"></i>
+                        <!-- <i class="fa-solid fa-circle-chevron-down ms-2 text-white fs-5"></i> -->
+                        <i class="fa-solid fa-caret-down ms-2 text-white fs-6"></i>
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-lg-end me-3" style="width: 100%;">
+
+                    <ul class="dropdown-menu">
                         <li>
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="/assets/img/<?= $user['gambar']; ?>" alt="" class="ms-2 mt-1" width="40">
-                                </div>
-                                <div class="col-9">
-                                    <div class="row">
-                                        <div class="col">
-                                            <h6><?= $user['nama']; ?></h6>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <span><?= $user['email']; ?></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+                            <table class="mx-3">
+                                <tr>
+                                    <td rowspan="2">
+                                        <img src="/assets/img/<?= $user['gambar']; ?>" alt="<?= $user['nama']; ?>" class="me-3" width="45">
+                                    </td>
+                                    <td class="fw-bold"><?= $user['nama']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td><?= $user['email']; ?></td>
+                                </tr>
+                            </table>
                         </li>
                         <li>
                             <hr class="dropdown-divider">

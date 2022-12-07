@@ -3,16 +3,18 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-
+use App\Models\PesananModel;
 use App\Models\WisataModel;
 
 class Pariwisata extends BaseController
 {
     protected $wisataModel;
+    protected $pesananModel;
 
     public function __construct()
     {
         $this->wisataModel = new WisataModel();
+        $this->pesananModel = new PesananModel();
         helper('tegal');
         cekLogin();
         cekAdmin();
@@ -30,16 +32,16 @@ class Pariwisata extends BaseController
 
         switch ($dasar) {
             case 'nama_wisata':
-                $wisata = $this->wisataModel->asArray()->like('nama_wisata', $cari);
+                $wisata = $this->wisataModel->orderBy('id', 'desc')->asArray()->like('nama_wisata', $cari);
                 break;
             case 'lokasi':
-                $wisata = $this->wisataModel->asArray()->like('lokasi', $cari);
+                $wisata = $this->wisataModel->orderBy('id', 'desc')->asArray()->like('lokasi', $cari);
                 break;
             case 'alamat':
-                $wisata = $this->wisataModel->asArray()->like('alamat', $cari);
+                $wisata = $this->wisataModel->orderBy('id', 'desc')->asArray()->like('alamat', $cari);
                 break;
             default:
-                $wisata = $this->wisataModel;
+                $wisata = $this->wisataModel->orderBy('id', 'desc');
         }
 
         $data = [
@@ -52,6 +54,25 @@ class Pariwisata extends BaseController
         ];
 
         return view('admin/pariwisata', $data);
+    }
+
+    public function pesananTiket()
+    {
+        $currentPage = $this->request->getGet('page_tiketAdmin') ? $this->request->getGet('page_tiketAdmin') : 1;
+
+        // Query data admin
+        $admin = $this->build->getWhere(['email' => 'khaerilanwar1992@gmail.com'])->getRowArray();
+
+        $data = [
+            'title' => "Pariwisata Kabupaten Tegal",
+            'admin' => $admin,
+            'validation' => \Config\Services::validation(),
+            'pesanan' => $this->pesananModel->paginate(10, 'tiketAdmin'),
+            'pager' => $this->pesananModel->pager,
+            'currentPage' => $currentPage
+        ];
+
+        return view('admin/pesananTiket', $data);
     }
 
     public function hapus($id)
@@ -67,6 +88,26 @@ class Pariwisata extends BaseController
     {
         // 'nama_wisata', 'harga', 'lokasi', 'maps', 'alamat', 'deskripsi'
 
+        $fileGambar = $this->request->getFile('gambar');
+
+        // cek gambar apakah tetap gambar lama
+        if ($fileGambar->getError() ==  4) {
+            $namaGambar = $this->request->getPost('gambarLama');
+        } else {
+            // generate nama file random
+            $namaGambar = $fileGambar->getRandomName();
+            // pindahkan gambar
+            $fileGambar->move('assets/img', $namaGambar);
+            // hapus file lama
+            // unlink('assets/img/' . $this->request->getPost('gambarLama'));
+            try {
+                unlink('assets/img/' . $this->request->getPost('gambarLama'));
+            } catch (Exception $e) {
+                session()->setFlashdata('gagalUpdate', 'Gagal update data');
+                return redirect()->to('/pasang-iklan');
+            }
+        }
+
         $data = [
             'nama_wisata' => htmlspecialchars($this->request->getPost('nama_wisata')),
             'harga' => htmlspecialchars($this->request->getPost('harga')),
@@ -74,24 +115,35 @@ class Pariwisata extends BaseController
             'maps' => htmlspecialchars($this->request->getPost('maps')),
             'alamat' => htmlspecialchars($this->request->getPost('alamat')),
             'deskripsi' => htmlspecialchars($this->request->getPost('deskripsi')),
-            'gambar' => htmlspecialchars($this->request->getPost('gambar'))
+            'gambar' => $namaGambar
         ];
 
         $this->wisataModel->update($id, $data);
 
-        session()->setFlashdata('pesan', 'Objek Wisata berhasil diubah!');
-        session()->setFlashdata('warna', 'success');
+        session()->setFlashdata('editWisata', 'Objek Wisata berhasil diubah!');
 
         return redirect()->to('/pariwisata');
     }
 
     public function tambahWisata()
     {
+        $fileGambar = $this->request->getFile('gambar');
+
+        if ($fileGambar->getError() == 0) {
+            // generate nama gambar
+            $namaGambar = $fileGambar->getRandomName();
+
+            // pindahkan file ke folder img
+            $fileGambar->move('assets/img', $namaGambar);
+        } else {
+            $namaGambar = 'wisata.jpeg';
+        }
+
         $data = [
             'nama_wisata' => htmlspecialchars($this->request->getPost('nama_wisata')),
             'harga' => htmlspecialchars($this->request->getPost('harga')),
             'lokasi' => htmlspecialchars($this->request->getPost('lokasi')),
-            'gambar' => htmlspecialchars($this->request->getPost('gambar')),
+            'gambar' => $namaGambar,
             'deskripsi' => htmlspecialchars($this->request->getPost('deskripsi')),
             'alamat' => htmlspecialchars($this->request->getPost('alamat')),
             'maps' => htmlspecialchars($this->request->getPost('maps')),
@@ -100,8 +152,7 @@ class Pariwisata extends BaseController
 
         $this->wisataModel->insert($data);
 
-        session()->setFlashdata('pesan', 'Objek Wisata berhasil ditambah!');
-        session()->setFlashdata('warna', 'success');
+        session()->setFlashdata('tambahWisata', 'Objek Wisata berhasil ditambah!');
 
         return redirect()->to('/pariwisata');
     }

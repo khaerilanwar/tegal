@@ -81,6 +81,7 @@ class Wisata extends BaseController
 
         $this->pesananModel->insert($data);
 
+        session()->setFlashdata('pesanTiket', 'Berhasil Pesan Tiket!');
         return redirect()->to("wisata/tagihan/$no_pesan");
     }
 

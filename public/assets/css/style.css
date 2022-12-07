@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
+
+.dropdown-menu {
+    min-width: max-content;
+}
+
+
 .font-acme {
     font-family: 'Acme', sans-serif;
 }
@@ -14,6 +20,11 @@
 
 .bg-abu {
     background-color: #F2F2F2;
+}
+
+.size-img {
+    object-fit: cover;
+    object-position: center;
 }
 
 .btn-biru{

@@ -39,6 +39,9 @@
     <!-- FONT AWESOME ONLINE -->
     <script src="https://kit.fontawesome.com/addf044e73.js" crossorigin="anonymous"></script>
 
+    <!-- SWEET ALERT -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </head>
 
 <body class="animsition">
@@ -61,11 +64,19 @@
                                     <span class="bot-line"></span>
                                 </a>
                             </li>
-                            <li class="<?= preg_match('/Pariwisata/', $title) ? 'active' : ''; ?>">
-                                <a href="/pariwisata">
-                                    <i class="fas fa-shopping-basket"></i>
-                                    <span class="bot-line"></span>Pariwisata
+                            <li class="has-sub">
+                                <a href="#">
+                                    <i class="fas fa-shopping-basket"></i>Pariwisata
+                                    <span class="bot-line"></span>
                                 </a>
+                                <ul class="header3-sub-list list-unstyled">
+                                    <li>
+                                        <a href="/pariwisata/tempat-wisata">Daftar Pariwisata</a>
+                                    </li>
+                                    <li>
+                                        <a href="/pariwisata/pesanan-tiket">Daftar Pesan Tiket</a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="<?= preg_match('/Penginapan/', $title) ? 'active' : ''; ?>">
                                 <a href="/penginapan-tegal">
@@ -242,6 +253,42 @@
         </div>
 
     </div>
+
+    <?php if (session()->getFlashdata('editWisata')) : ?>
+        <script>
+            swal("Berhasil!", "<?= session()->getFlashdata('editWisata'); ?>!", "success");
+        </script>
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('tambahWisata')) : ?>
+        <script>
+            swal("Berhasil!", "<?= session()->getFlashdata('tambahWisata'); ?>!", "success");
+        </script>
+    <?php endif; ?>
+
+    <script>
+        function showPreview(event) {
+            if (event.target.files.length > 0) {
+                var src = URL.createObjectURL(event.target.files[0]);
+                var preview = document.getElementById("file-ip-1-preview");
+                preview.src = src;
+                preview.style.display = "block";
+            }
+        }
+
+        function previewImg() {
+            const gambar = document.querySelector('#gambar');
+            // const sampulLabel = document.querySelector('.custom-f')
+            const imgPreview = document.querySelector('.img-preview');
+            const fileGambar = new FileReader();
+
+            fileGambar.readAsDataURL(gambar.files[0]);
+
+            fileGambar.onload = function(e) {
+                imgPreview.src = e.target.result;
+            }
+        }
+    </script>
 
     <!-- Jquery JS-->
     <script src="/assets/bs-4/vendor/jquery-3.2.1.min.js"></script>

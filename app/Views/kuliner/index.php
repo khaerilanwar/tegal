@@ -62,7 +62,7 @@
                 <div class="col-sm">
                     <div class="card shadow-sm">
                         <a class="text-decoration-none text-dark" href="/kuliner/detail/<?= $k['slug']; ?>">
-                            <img class="bd-placeholder-img card-img-top" src="/assets/img/<?= $k['gambar']; ?>" height="250">
+                            <img class="bd-placeholder-img card-img-top size-img" src="/assets/img/<?= $k['gambar']; ?>" height="270">
                             <div class="card-body">
                                 <h5><?= $k['nama_kuliner']; ?></h5>
                                 <p class="card-text mb-4 text-truncate"> <?= $k['alamat']; ?></p>

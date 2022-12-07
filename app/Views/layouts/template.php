@@ -99,6 +99,12 @@
         </script>
     <?php endif; ?>
 
+    <?php if (session()->getFlashdata('pesanTiket')) : ?>
+        <script>
+            swal("Berhasil!", "<?= session()->getFlashdata('pesanTiket'); ?>!", "success");
+        </script>
+    <?php endif; ?>
+
     <script>
         function total() {
             var jumlahTiket, hargaTiket, hasil;

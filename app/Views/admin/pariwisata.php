@@ -122,7 +122,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/pariwisata/tambahWisata" method="post">
+                <form action="/pariwisata/tambahWisata" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <div class="row form-group">
                         <!-- Nama Wisata -->
@@ -145,7 +145,10 @@
                         <!-- Gambar Pariwisata -->
                         <div class="col col-md-6">
                             <label for="gambar" class="form-control-label">Upload Gambar</label>
-                            <input type="text" id="gambar" name="gambar" placeholder="Gambar" class="form-control">
+                            <input type="file" name="gambar" id="file-ip-1" class="form-control" onchange="showPreview(event);">
+                            <div class="preview d-flex justify-content-center">
+                                <img id="file-ip-1-preview" style="display: none;" class="img-prvw mt-2 rounded img-thumbnail" width="100">
+                            </div>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -181,14 +184,15 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="mediumModalLabel">Tambah Objek Wisata</h3>
+                    <h3 class="modal-title" id="mediumModalLabel">Edit Objek Wisata</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="/pariwisata/edit/<?= $w['id'] ?>" method="post">
+                    <form action="/pariwisata/edit/<?= $w['id'] ?>" method="post" enctype="multipart/form-data">
                         <?= csrf_field(); ?>
+                        <input type="hidden" name="gambarLama" value="<?= $w['gambar']; ?>">
                         <div class="row form-group">
                             <!-- Nama Wisata -->
                             <div class="col col-md-6">
@@ -210,7 +214,10 @@
                             <!-- Gambar Pariwisata -->
                             <div class="col col-md-6">
                                 <label for="gambar" class="form-control-label">Upload Gambar</label>
-                                <input value="<?= $w['gambar']; ?>" type="text" id="gambar" name="gambar" placeholder="Gambar" class="form-control">
+                                <input type="file" name="gambar" id="gambar" class="form-control" onchange="previewImg()">
+                                <div class="preview d-flex justify-content-center">
+                                    <img src="assets/img/<?= $w['gambar']; ?>" class="img-preview mt-2 rounded img-thumbnail" width="100">
+                                </div>
                             </div>
                         </div>
                         <div class="row form-group">
