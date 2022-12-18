@@ -60,14 +60,29 @@ class Pariwisata extends BaseController
     {
         $currentPage = $this->request->getGet('page_tiketAdmin') ? $this->request->getGet('page_tiketAdmin') : 1;
 
+        // Mengambil inputan cari user
+        $dasar = $this->request->getGet('based');
+        $cari = $this->request->getGet('pesanan');
+
         // Query data admin
         $admin = $this->build->getWhere(['email' => 'khaerilanwar1992@gmail.com'])->getRowArray();
 
+        switch ($dasar) {
+            case 'customer':
+                $pesanan = $this->pesananModel->orderBy('tanggal_pesan', 'desc')->asArray()->like('customer', $cari);
+                break;
+            case 'no_pesanan':
+                $pesanan = $this->pesananModel->orderBy('tanggal_pesan', 'desc')->asArray()->like('no_pesanan', $cari);
+                break;
+            default:
+                $pesanan = $this->pesananModel->orderBy('tanggal_pesan', 'desc');
+        }
+
         $data = [
-            'title' => "Pariwisata Kabupaten Tegal",
+            'title' => "Pesanan Tiket Pariwisata Kabupaten Tegal",
             'admin' => $admin,
             'validation' => \Config\Services::validation(),
-            'pesanan' => $this->pesananModel->paginate(10, 'tiketAdmin'),
+            'pesanan' => $pesanan->paginate(10, 'tiketAdmin'),
             'pager' => $this->pesananModel->pager,
             'currentPage' => $currentPage
         ];
@@ -75,13 +90,19 @@ class Pariwisata extends BaseController
         return view('admin/pesananTiket', $data);
     }
 
-    public function hapus($id)
+    public function hapus($id, $jenis)
     {
-        $this->wisataModel->delete($id);
-        session()->setFlashdata('pesan', 'Objek Wisata berhasil dihapus!');
-        session()->setFlashdata('warna', 'success');
+        if ($jenis == 'wisata') {
+            $this->wisataModel->delete($id);
+            session()->setFlashdata('hapus', 'Data berhasil dihapus!');
 
-        return redirect()->to('/pariwisata');
+            return redirect()->to('/pariwisata');
+        } else {
+            $this->pesananModel->delete($id);
+            session()->setFlashdata('hapus', 'Data berhasil dihapus!');
+
+            return redirect()->to('/pariwisata/pesanan-tiket');
+        }
     }
 
     public function edit($id)

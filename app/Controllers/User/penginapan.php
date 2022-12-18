@@ -24,23 +24,23 @@ class Penginapan extends BaseController
         switch ($kategori) {
             case 'hotel':
                 if ($nama) {
-                    $penginapan = $this->penginapanModel->orderBy('nama_penginapan', 'RANDOM')->where('jenis_penginapan', $kategori)->like('nama_penginapan', $nama);
+                    $penginapan = $this->penginapanModel->orderBy('nama_penginapan', 'RANDOM')->where('jenis_penginapan', $kategori)->where('status', 1)->like('nama_penginapan', $nama);
                 } else {
-                    $penginapan = $this->penginapanModel->orderBy('nama_penginapan', 'RANDOM')->where('jenis_penginapan', $kategori);
+                    $penginapan = $this->penginapanModel->orderBy('nama_penginapan', 'RANDOM')->where('jenis_penginapan', $kategori)->where('status', 1);
                 }
                 break;
             case 'villa':
                 if ($nama) {
-                    $penginapan = $this->penginapanModel->orderBy('nama_penginapan', 'RANDOM')->where('jenis_penginapan', $kategori)->like('nama_penginapan', $nama);
+                    $penginapan = $this->penginapanModel->orderBy('nama_penginapan', 'RANDOM')->where('jenis_penginapan', $kategori)->where('status', 1)->like('nama_penginapan', $nama);
                 } else {
-                    $penginapan = $this->penginapanModel->orderBy('nama_penginapan', 'RANDOM')->where('jenis_penginapan', $kategori);
+                    $penginapan = $this->penginapanModel->orderBy('nama_penginapan', 'RANDOM')->where('jenis_penginapan', $kategori)->where('status', 1);
                 }
                 break;
             default:
                 if ($nama) {
-                    $penginapan = $this->penginapanModel->orderBy('nama_penginapan', 'RANDOM')->like('nama_penginapan', $nama);
+                    $penginapan = $this->penginapanModel->orderBy('nama_penginapan', 'RANDOM')->where('status', 1)->like('nama_penginapan', $nama);
                 } else {
-                    $penginapan = $this->penginapanModel->orderBy('nama_penginapan', 'RANDOM');
+                    $penginapan = $this->penginapanModel->orderBy('nama_penginapan', 'RANDOM')->where('status', 1);
                 }
         }
 
@@ -150,7 +150,8 @@ class Penginapan extends BaseController
             'harga' => htmlspecialchars($this->request->getPost('harga')),
             'alamat' => htmlspecialchars($this->request->getPost('alamat')),
             'maps' => htmlspecialchars($this->request->getPost('maps')),
-            'gambar' => $namaGambar
+            'gambar' => $namaGambar,
+            'status' => 0
         ]);
 
         session()->setFlashdata('addPenginapan', 'Berhasil menambahkan iklan Penginapan');

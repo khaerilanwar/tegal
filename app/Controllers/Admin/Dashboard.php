@@ -145,8 +145,7 @@ class Dashboard extends BaseController
             'role_id' => 2
         ];
 
-        session()->setFlashdata('pesan', 'User berhasil ditambahkan!');
-        session()->setFlashdata('warna', 'success');
+        session()->setFlashdata('success', 'User berhasil ditambahkan!');
 
         $this->userModel->insert($data);
         return redirect()->to('/dashboard');
@@ -155,8 +154,7 @@ class Dashboard extends BaseController
     public function hapus($id)
     {
         $this->userModel->delete($id);
-        session()->setFlashdata('pesan', 'User berhasil dihapus!');
-        session()->setFlashdata('warna', 'success');
+        session()->setFlashdata('hapus', 'User berhasil dihapus!');
 
         return redirect()->to('/dashboard');
     }
@@ -173,8 +171,7 @@ class Dashboard extends BaseController
 
         $this->userModel->update($id, $data);
 
-        session()->setFlashdata('pesan', 'User berhasil diubah!');
-        session()->setFlashdata('warna', 'success');
+        session()->setFlashdata('ubahData', 'User berhasil diubah!');
 
         return redirect()->to('/dashboard');
     }

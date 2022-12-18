@@ -41,7 +41,7 @@
                         <img class="bd-placeholder-img card-img-top" src="/assets/img/<?= $data['gambar']; ?>" width="100%" height="225">
 
                         <div class="card-body">
-                            <a class="text-decoration-none text-dark" href="/wisata/details">
+                            <a class="text-decoration-none text-dark" href="/wisata/detail/<?= $data['slug']; ?>">
                                 <h5><?= $data['nama_wisata']; ?> | <?= $data['lokasi']; ?></h5>
                                 <div class="text-truncate card-text mb-3">
                                     <?= $data['deskripsi']; ?>
@@ -51,7 +51,7 @@
                                 <div class="btn-group">
                                     <span class="fs-6 fw-bold">HTM <?= number_format($data['harga'], 0, '', '.') ?> / Orang</span>
                                 </div>
-                                <a href="" class="btn btn-primary p-2">Pesan Tiket</a>
+                                <a href="/wisata/pesantiket?idwisata=<?= $data['id']; ?>" class="btn btn-primary p-2">Pesan Tiket</a>
                             </div>
                         </div>
                     </div>

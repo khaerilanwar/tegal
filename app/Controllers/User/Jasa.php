@@ -26,44 +26,44 @@ class Jasa extends BaseController
         switch ($bidang) {
             case 'elektronik':
                 if ($nama) {
-                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->like('nama_jasa', $nama);
+                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->where('status', 1)->like('nama_jasa', $nama);
                 } else {
-                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang);
+                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->where('status', 1);
                 }
                 break;
             case 'pendidikan':
                 if ($nama) {
-                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->like('nama_jasa', $nama);
+                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->where('status', 1)->like('nama_jasa', $nama);
                 } else {
-                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang);
+                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->where('status', 1);
                 }
                 break;
             case 'cleaning':
                 if ($nama) {
-                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->like('nama_jasa', $nama);
+                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->where('status', 1)->like('nama_jasa', $nama);
                 } else {
-                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang);
+                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->where('status', 1);
                 }
                 break;
             case 'otomotif':
                 if ($nama) {
-                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->like('nama_jasa', $nama);
+                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->where('status', 1)->like('nama_jasa', $nama);
                 } else {
-                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang);
+                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->where('status', 1);
                 }
                 break;
             case 'kesehatan':
                 if ($nama) {
-                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->like('nama_jasa', $nama);
+                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->where('status', 1)->like('nama_jasa', $nama);
                 } else {
-                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang);
+                    $jasa = $this->jasaModel->where('bidang_jasa', $bidang)->where('status', 1);
                 }
                 break;
             default:
                 if ($nama) {
-                    $jasa = $this->jasaModel->like('nama_jasa', $nama);
+                    $jasa = $this->jasaModel->where('status', 1)->like('nama_jasa', $nama);
                 } else {
-                    $jasa = $this->jasaModel;
+                    $jasa = $this->jasaModel->where('status', 1);
                 }
         }
 
@@ -166,6 +166,7 @@ class Jasa extends BaseController
             'harga' => htmlspecialchars($this->request->getPost('harga')),
             'maps' => htmlspecialchars($this->request->getPost('maps')),
             'gambar' => $namaGambar,
+            'status' => 0,
             'alamat' => htmlspecialchars($this->request->getPost('alamat'))
         ]);
 

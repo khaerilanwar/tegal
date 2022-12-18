@@ -15,19 +15,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="title-6 m-b-35">Daftar Kuliner Kabupaten Tegal</h3>
-                <div class="row">
-                    <div class="col-md-6">
-                        <?php if (session()->getFlashdata('pesan')) : ?>
-                            <div class="alert alert-<?= session()->getFlashdata('warna'); ?> alert-dismissible fade show" role="alert">
-                                <?= session()->getFlashdata('pesan'); ?>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                </div>
+                <h3 class="title-6 m-b-35 text-dark">Daftar Kuliner Kabupaten Tegal</h3>
                 <div class="table-data__tool">
                     <div class="table-data__tool-left">
                         <form action="" method="get">
@@ -38,13 +26,13 @@
                                 <select class="js-select2" name="based">
                                     <option value="nama_kuliner">Nama</option>
                                     <option value="jenis_kuliner">Jenis</option>
-                                    <option value="email_user">User</option>
+                                    <option value="user_email">User</option>
                                 </select>
                                 <div class="dropDownSelect2"></div>
                             </div>
                             <div class="rs-select2--light rs-select2--lg">
                                 <div class="input-group ml-3">
-                                    <input type="text" id="input1-group2" name="wisata" placeholder="Cari Objek Wisata" class="form-control py-2">
+                                    <input type="text" id="input1-group2" name="kuliner" placeholder="Cari Kuliner" class="form-control py-2">
                                     <div class="input-group-btn">
                                         <button type="submit" class="btn btn-primary py-2">
                                             <i class="fa fa-search"></i> Cari
@@ -72,13 +60,13 @@
                             <?php $i = 1 + (10 * ($currentPage - 1)); ?>
                             <?php foreach ($kuliner as $k) : ?>
                                 <tr>
-                                    <td><?= $i; ?></td>
-                                    <td><?= $k['nama_kuliner']; ?></td>
-                                    <td><?= $k['jenis_kuliner']; ?></td>
-                                    <td><?= number_format($k['harga'], 0, '', '.') ?></td>
-                                    <td><?= $k['user_email']; ?></td>
+                                    <td class="align-middle"><?= $i; ?></td>
+                                    <td class="align-middle"><?= $k['nama_kuliner']; ?></td>
+                                    <td class="align-middle"><?= $k['jenis_kuliner']; ?></td>
+                                    <td class="align-middle"><?= number_format($k['harga'], 0, '', '.') ?></td>
+                                    <td class="align-middle"><?= $k['user_email']; ?></td>
                                     <td>
-                                        <form action="/kuliner-tegal/<?= $k['id']; ?>" method="post" class="d-inline">
+                                        <form action="/kuliner-tegal/<?= $k['id']; ?>/daftar" method="post" class="d-inline">
                                             <?= csrf_field(); ?>
                                             <input type="hidden" name="_method" value="DELETE">
                                             <button type="submit" onclick="return confirm('apakah anda yakin ?')" class="btn btn-danger">Hapus</button>

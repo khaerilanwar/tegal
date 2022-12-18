@@ -24,15 +24,14 @@
                             </div>
                             <div class="rs-select2--light rs-select2--sm">
                                 <select class="js-select2" name="based">
-                                    <option value="nama_wisata">Nama</option>
-                                    <option value="lokasi">Lokasi</option>
-                                    <option value="alamat">Alamat</option>
+                                    <option value="customer">Customer</option>
+                                    <option value="no_pesanan">No. Pesan</option>
                                 </select>
                                 <div class="dropDownSelect2"></div>
                             </div>
                             <div class="rs-select2--light rs-select2--lg">
                                 <div class="input-group ml-3">
-                                    <input type="text" id="input1-group2" name="wisata" placeholder="Cari Objek Wisata" class="form-control py-2">
+                                    <input type="text" id="input1-group2" name="pesanan" placeholder="Cari Pesanan" class="form-control py-2">
                                     <div class="input-group-btn">
                                         <button type="submit" class="btn btn-primary py-2">
                                             <i class="fa fa-search"></i> Cari
@@ -81,10 +80,10 @@
                                             }
                                             ?></td>
                                     <td>
-                                        <form action="/pariwisata/<?= $p['no_pesanan']; ?>" method="post" class="d-inline">
+                                        <form action="/pariwisata/<?= $p['no_pesanan']; ?>/tiket" method="post" class="d-inline">
                                             <?= csrf_field(); ?>
                                             <input type="hidden" name="_method" value="DELETE">
-                                            <button type="submit" onclick="return confirm('apakah anda yakin ?')"><i class="fa-solid fa-trash text-danger h5 px-2" data-toggle="tooltip" title="Hapus"></i></button>
+                                            <button type="submit" onclick="return confirm('apakah anda yakin ?')" class="btn btn-danger">Hapus</button>
                                         </form>
                                     </td>
                                 </tr>

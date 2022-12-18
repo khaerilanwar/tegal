@@ -5,7 +5,7 @@
 <div class="px-4 my-5 text-center">
     <h1 class="display-5 fw-bold"><?= $wisata['nama_wisata']; ?>, <?= $wisata['lokasi']; ?></h1>
     <div class="col-lg-6 mx-auto">
-        <p class="lead mt-4 mb-3">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+        <p class="lead mt-4 mb-4"><?= $wisata['deskripsi']; ?></p>
         <h5 class="mb-4">Harga Tiket Rp. <?= number_format($wisata['harga'], 0, '', '.') ?></h5>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
             <a href="/wisata/pesantiket?idwisata=<?= $wisata['id']; ?>" class="btn btn-primary btn-lg px-4 me-sm-3">Pesan Tiket</a>

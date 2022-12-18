@@ -127,7 +127,8 @@
 
         <?php else : ?>
 
-          <?php if (
+          <?php
+              if (
                 count($dataJasa) < 1 &&
                 count($dataKuliner) < 1 &&
                 count($dataPenginapan) < 1

@@ -24,30 +24,30 @@ class Kuliner extends BaseController
         switch ($menu) {
             case 'makanan':
                 if ($nama) {
-                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('jenis_kuliner', $menu)->like('nama_kuliner', $nama);
+                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('jenis_kuliner', $menu)->where('status', 1)->like('nama_kuliner', $nama);
                 } else {
                     $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('jenis_kuliner', $menu);
                 }
                 break;
             case 'minuman':
                 if ($nama) {
-                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('jenis_kuliner', $menu)->like('nama_kuliner', $nama);
+                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('jenis_kuliner', $menu)->where('status', 1)->like('nama_kuliner', $nama);
                 } else {
-                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('jenis_kuliner', $menu);
+                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('jenis_kuliner', $menu)->where('status', 1);
                 }
                 break;
             case 'camilan':
                 if ($nama) {
-                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('jenis_kuliner', $menu)->like('nama_kuliner', $nama);
+                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('jenis_kuliner', $menu)->where('status', 1)->like('nama_kuliner', $nama);
                 } else {
-                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('jenis_kuliner', $menu);
+                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('jenis_kuliner', $menu)->where('status', 1);
                 }
                 break;
             default:
                 if ($nama) {
-                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->like('nama_kuliner', $nama);
+                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('status', 1)->like('nama_kuliner', $nama);
                 } else {
-                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM');
+                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('status', 1);
                 }
         }
 
@@ -161,7 +161,8 @@ class Kuliner extends BaseController
             'harga' => htmlspecialchars($this->request->getPost('harga')),
             'alamat' => htmlspecialchars($this->request->getPost('alamat')),
             'maps' => htmlspecialchars($this->request->getPost('maps')),
-            'gambar' => $namaGambar
+            'gambar' => $namaGambar,
+            'status' => 0
         ]);
 
         session()->setFlashdata('addKuliner', 'Berhasil menambahkan iklan Kuliner');

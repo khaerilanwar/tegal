@@ -5,7 +5,7 @@
 <!-- CAROUSEL SLIDE OTOMATIS -->
 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-        <?php $slide = ['restoran.jpg', 'flores.jpg', 'Bali.jpg', 'bali_2.jpg', 'gapura.jpg'] ?>
+        <?php $slide = ['restoran.jpg', 'flores.jpg', 'Bali.jpg', 'gapura.jpg'] ?>
         <?php for ($i = 0; $i < count($slide); $i++) : ?>
             <div class="carousel-item active" data-bs-interval="3000">
                 <img src="/assets/img/<?= $slide[$i]; ?>" class="d-block w-100" alt="...">
@@ -76,7 +76,7 @@
 
                         <div class="card-body">
                             <a class="text-decoration-none text-dark" href="/wisata/detail/<?= $data['slug']; ?>">
-                                <h5><?= $data['nama_wisata']; ?> | <?= $data['lokasi']; ?></h5>
+                                <h5 class="text-truncate"><?= $data['nama_wisata']; ?>, <?= $data['lokasi']; ?></h5>
                                 <div class="text-truncate card-text mb-3">
                                     <?= $data['deskripsi']; ?>
                                 </div>

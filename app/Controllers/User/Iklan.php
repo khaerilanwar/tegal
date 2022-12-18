@@ -38,29 +38,30 @@ class Iklan extends BaseController
         switch ($displayIklan) {
             case 'kuliner':
                 if ($search) {
-                    $dataIklan = $this->kulinerModel->asArray()->like('nama_kuliner', $search)->findAll();
+                    // $dataIklan = $this->kulinerModel->asArray()->like('nama_kuliner', $search)->findAll();
+                    $dataIklan = $this->kulinerModel->where('status', 1)->where('user_email', session()->email)->asArray()->like('nama_kuliner', $search)->findAll();
                 } else {
-                    $dataIklan = $this->kuliner->getWhere(['user_email' => session()->email])->getResultArray();
+                    $dataIklan = $this->kuliner->getWhere(['user_email' => session()->email, 'status' => 1])->getResultArray();
                 }
                 break;
             case 'penginapan':
                 if ($search) {
-                    $dataIklan = $this->penginapanModel->asArray()->like('nama_penginapan', $search)->findAll();
+                    $dataIklan = $this->penginapanModel->where('status', 1)->where('user_email', session()->email)->asArray()->like('nama_penginapan', $search)->findAll();
                 } else {
-                    $dataIklan = $this->penginapan->getWhere(['user_email' => session()->email])->getResultArray();
+                    $dataIklan = $this->penginapan->getWhere(['user_email' => session()->email, 'status' => 1])->getResultArray();
                 }
                 break;
             case 'jasa':
                 if ($search) {
-                    $dataIklan = $this->jasaModel->asArray()->like('nama_jasa', $search)->findAll();
+                    $dataIklan = $this->jasaModel->where('status', 1)->where('user_email', session()->email)->asArray()->like('nama_jasa', $search)->findAll();
                 } else {
-                    $dataIklan = $this->jasa->getWhere(['user_email' => session()->email])->getResultArray();
+                    $dataIklan = $this->jasa->getWhere(['user_email' => session()->email, 'status' => 1])->getResultArray();
                 }
                 break;
             default:
-                $dataJasa = $this->jasa->getWhere(['user_email' => session()->email])->getResultArray();
-                $dataKuliner = $this->kuliner->getWhere(['user_email' => session()->email])->getResultArray();
-                $dataPenginapan = $this->penginapan->getWhere(['user_email' => session()->email])->getResultArray();
+                $dataJasa = $this->jasa->getWhere(['user_email' => session()->email, 'status' => 1])->getResultArray();
+                $dataKuliner = $this->kuliner->getWhere(['user_email' => session()->email, 'status' => 1])->getResultArray();
+                $dataPenginapan = $this->penginapan->getWhere(['user_email' => session()->email, 'status' => 1])->getResultArray();
         }
 
         if ($menu == 'kuliner') {
@@ -85,6 +86,9 @@ class Iklan extends BaseController
                 'dataIklan' => $dataIklan,
                 'displayIklan' => $displayIklan,
                 'validation' => \Config\Services::validation(),
+                'dataJasa' => [],
+                'dataKuliner' => [],
+                'dataPenginapan' => [],
             ];
         } else {
             $data = [
@@ -96,7 +100,7 @@ class Iklan extends BaseController
                 'validation' => \Config\Services::validation(),
                 'dataJasa' => $dataJasa,
                 'dataKuliner' => $dataKuliner,
-                'dataPenginapan' => $dataPenginapan
+                'dataPenginapan' => $dataPenginapan,
             ];
         }
 
@@ -157,7 +161,7 @@ class Iklan extends BaseController
                 'maps' => htmlspecialchars($this->request->getPost('maps')),
                 'gambar' => $namaGambar
             ]);
-            
+
             session()->setFlashdata('update', 'Data berhasil diupdate!');
             return redirect()->to('/pasang-iklan?menu=penginapan');
         }

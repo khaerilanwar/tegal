@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="mb-3 row">
-                    <label class="col-sm-3 col-form-label" for="gambar">Gambar Jasa Kamu</label>
+                    <label class="col-sm-3 col-form-label" for="gambar">Gambar Profil Kamu</label>
                     <div class="col-sm-2">
                         <img src="/assets/img/<?= $user['gambar']; ?>" width="100" id="img-prv" class="img-preview mt-2">
                     </div>

@@ -63,6 +63,11 @@ class Profile extends BaseController
             'gambar' => $namaGambar
         ]);
 
+        $data = [
+            'title' => 'Profil Pengguna',
+            'user' => $this->user
+        ];
+
         session()->setFlashdata('ubahProfil', 'Mengubah data pengguna');
 
         return redirect()->to('profil');

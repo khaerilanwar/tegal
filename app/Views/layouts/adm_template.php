@@ -60,41 +60,65 @@
                         <ul class="list-unstyled">
                             <li class="<?= preg_match('/Dashboard/', $title) ? 'active' : ''; ?>">
                                 <a href="/dashboard">
-                                    <i class="fas fa-tachometer-alt"></i>Dashboard
+                                    <i class="fa-solid fa-gauge"></i>Dashboard
                                     <span class="bot-line"></span>
                                 </a>
                             </li>
-                            <li class="has-sub">
+                            <li class="has-sub <?= preg_match('/Pariwisata/', $title) ? 'active' : ''; ?>">
                                 <a href="#">
-                                    <i class="fas fa-shopping-basket"></i>Pariwisata
+                                    <i class="fa-solid fa-plane-departure"></i>Pariwisata
                                     <span class="bot-line"></span>
                                 </a>
                                 <ul class="header3-sub-list list-unstyled">
                                     <li>
-                                        <a href="/pariwisata/tempat-wisata">Daftar Pariwisata</a>
+                                        <a href="/pariwisata">Daftar Pariwisata</a>
                                     </li>
                                     <li>
                                         <a href="/pariwisata/pesanan-tiket">Daftar Pesan Tiket</a>
                                     </li>
                                 </ul>
                             </li>
-                            <li class="<?= preg_match('/Penginapan/', $title) ? 'active' : ''; ?>">
-                                <a href="/penginapan-tegal">
-                                    <i class="fas fa-trophy"></i>
-                                    <span class="bot-line"></span>Penginapan
+                            <li class="has-sub <?= preg_match('/Penginapan/', $title) ? 'active' : ''; ?>">
+                                <a href="#">
+                                    <i class="fa-solid fa-bed"></i>Penginapan
+                                    <span class="bot-line"></span>
                                 </a>
+                                <ul class="header3-sub-list list-unstyled">
+                                    <li>
+                                        <a href="/penginapan-tegal/">Daftar Penginapan</a>
+                                    </li>
+                                    <li>
+                                        <a href="/penginapan-tegal/confirm">Konfirmasi Iklan</a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li class="<?= preg_match('/Kuliner/', $title) ? 'active' : ''; ?>">
-                                <a href="/kuliner-tegal">
-                                    <i class="fas fa-copy"></i>
-                                    <span class="bot-line"></span>Kuliner
+                            <li class="has-sub <?= preg_match('/Kuliner/', $title) ? 'active' : ''; ?>">
+                                <a href="#">
+                                    <i class="fa-solid fa-utensils"></i>Kuliner
+                                    <span class="bot-line"></span>
                                 </a>
+                                <ul class="header3-sub-list list-unstyled">
+                                    <li>
+                                        <a href="/kuliner-tegal/">Daftar Kuliner</a>
+                                    </li>
+                                    <li>
+                                        <a href="/kuliner-tegal/confirm">Konfirmasi Iklan</a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li class="<?= preg_match('/Jasa/', $title) ? 'active' : ''; ?>">
-                                <a href="/layanan">
-                                    <i class="fas fa-desktop"></i>
-                                    <span class="bot-line"></span>Jasa
+                            <li class="has-sub <?= preg_match('/Jasa/', $title) ? 'active' : ''; ?>">
+                                <a href="#">
+                                    <i class="fa-brands fa-servicestack"></i>Jasa
+                                    <span class="bot-line"></span>
                                 </a>
+                                <ul class="header3-sub-list list-unstyled">
+                                    <li>
+                                        <a href="/layanan">Daftar Layanan</a>
+                                    </li>
+                                    <li>
+                                        <a href="/layanan/confirm">Konfirmasi Iklan</a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </div>
@@ -263,6 +287,36 @@
     <?php if (session()->getFlashdata('tambahWisata')) : ?>
         <script>
             swal("Berhasil!", "<?= session()->getFlashdata('tambahWisata'); ?>!", "success");
+        </script>
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('hapus')) : ?>
+        <script>
+            swal("Berhasil!", "<?= session()->getFlashdata('hapus'); ?>!", "success");
+        </script>
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('success')) : ?>
+        <script>
+            swal("Berhasil!", "<?= session()->getFlashdata('success'); ?>!", "success");
+        </script>
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('ubahData')) : ?>
+        <script>
+            swal("Berhasil!", "<?= session()->getFlashdata('ubahData'); ?>!", "success");
+        </script>
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('konfirmasi')) : ?>
+        <script>
+            swal("Berhasil!", "<?= session()->getFlashdata('konfirmasi'); ?>!", "success");
+        </script>
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('hapusIklan')) : ?>
+        <script>
+            swal("Berhasil!", "<?= session()->getFlashdata('hapusIklan'); ?>!", "success");
         </script>
     <?php endif; ?>
 

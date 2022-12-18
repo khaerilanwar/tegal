@@ -5,7 +5,7 @@
 <!-- CAROUSEL SLIDE OTOMATIS -->
 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-        <?php $slide = ['restoran.jpg', 'flores.jpg', 'Bali.jpg', 'bali_2.jpg', 'gapura.jpg', 'laut-wisata.jpg'] ?>
+        <?php $slide = ['restoran.jpg', 'flores.jpg', 'Bali.jpg', 'gapura.jpg', 'laut-wisata.jpg'] ?>
         <?php for ($i = 0; $i < count($slide); $i++) : ?>
             <div class="carousel-item active" data-bs-interval="3000">
                 <img src="/assets/img/<?= $slide[$i]; ?>" class="d-block w-100" alt="...">
@@ -54,7 +54,7 @@
             <?php foreach ($wisata as $w) : ?>
                 <div class="col-xs-6 col-sm-3">
                     <div class="fh5co-blog animate-box">
-                        <a href="#"><img class="img-responsive" src="/assets/img/<?= $w['gambar']; ?>" alt="<?= $w['nama_wisata']; ?>" height="250"></a>
+                        <a href="#"><img class="img-responsive" src="/assets/img/<?= $w['gambar']; ?>" alt="<?= $w['nama_wisata']; ?>" height="270"></a>
                         <div class="blog-text">
                             <div class="prod-title">
                                 <h3><?= $w['nama_wisata']; ?></h3>
@@ -70,7 +70,7 @@
             <?php foreach ($kuliner as $k) : ?>
                 <div class="col-xs-6 col-sm-3">
                     <div class="fh5co-blog animate-box">
-                        <a href="#"><img class="img-responsive" src="/assets/img/<?= $k['gambar']; ?>" alt="<?= $k['nama_kuliner'] ?>" height="250"></a>
+                        <a href="#"><img class="img-responsive" src="/assets/img/<?= $k['gambar']; ?>" alt="<?= $k['nama_kuliner'] ?>" height="270"></a>
                         <div class="blog-text">
                             <div class="prod-title">
                                 <h3><?= $k['nama_kuliner']; ?></h3>
@@ -86,7 +86,7 @@
             <?php foreach ($penginapan as $p) : ?>
                 <div class="col-xs-6 col-sm-3">
                     <div class="fh5co-blog animate-box">
-                        <a href="#"><img class="img-responsive" src="/assets/img/<?= $p['gambar']; ?>" alt="<?= $p['nama_penginapan']; ?>" height="250"></a>
+                        <a href="#"><img class="img-responsive" src="/assets/img/<?= $p['gambar']; ?>" alt="<?= $p['nama_penginapan']; ?>" height="270"></a>
                         <div class="blog-text">
                             <div class="prod-title">
                                 <h3><?= $p['nama_penginapan']; ?></h3>
@@ -102,7 +102,7 @@
             <?php foreach ($jasa as $j) : ?>
                 <div class="col-xs-6 col-sm-3">
                     <div class="fh5co-blog animate-box">
-                        <a href="#"><img class="img-responsive" src="/assets/img/<?= $j['gambar']; ?>" alt="<?= $j['nama_jasa']; ?>" height="250"></a>
+                        <a href="#"><img class="img-responsive" src="/assets/img/<?= $j['gambar']; ?>" alt="<?= $j['nama_jasa']; ?>" height="270"></a>
                         <div class="blog-text">
                             <div class="prod-title">
                                 <h3><?= $j['nama_jasa']; ?></h3>

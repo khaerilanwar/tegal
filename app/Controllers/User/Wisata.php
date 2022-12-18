@@ -90,6 +90,10 @@ class Wisata extends BaseController
         cekLogin();
         $id = $this->request->getGet('idwisata');
 
+        if (!$id) {
+            return redirect()->back();
+        }
+
         $data = [
             'title' => 'Pesan Tiket Pariwisata Kabupaten Tegal',
             'wisata' => $this->wisataModel->find($id),

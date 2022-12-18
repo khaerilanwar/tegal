@@ -36,7 +36,7 @@
                             <table class="mx-3">
                                 <tr>
                                     <td rowspan="2">
-                                        <img src="/assets/img/<?= $user['gambar']; ?>" alt="<?= $user['nama']; ?>" class="me-3" width="45">
+                                        <img src="/assets/img/<?= $user['gambar']; ?>" alt="<?= $user['nama']; ?>" class="me-3 rounded-circle" width="45">
                                     </td>
                                     <td class="fw-bold"><?= $user['nama']; ?></td>
                                 </tr>

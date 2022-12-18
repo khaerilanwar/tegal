@@ -17,6 +17,7 @@ class PenginapanModel extends Model
         'deskripsi',
         'gambar',
         'alamat',
-        'maps'
+        'maps',
+        'status'
     ];
 }

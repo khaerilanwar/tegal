@@ -36,7 +36,13 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'User\Home::index');
+$routes->get('/', function () {
+    if (session()->email && \Config\Database::connect()->table('user')->getWhere(['email' => session()->email])->getRowArray()['role_id'] == 1) {
+        return redirect()->to('/dashboard');
+    } else {
+        return redirect()->to('/home');
+    }
+});
 
 // ROUTES AUTENTIFIKASI
 // ROUTES LOGIN
@@ -59,23 +65,28 @@ $routes->delete('/dashboard/(:num)', 'Admin\Dashboard::hapus/$1');
 
 // ADMIN PARIWISATA
 $routes->get('/pariwisata', 'Admin\Pariwisata::index');
-$routes->get('/pariwisata/tempat-wisata', 'Admin\Pariwisata::index');
 $routes->get('/pariwisata/pesanan-tiket', 'Admin\Pariwisata::pesananTiket');
 $routes->post('/pariwisata/edit/(:num)', 'Admin\Pariwisata::edit/$1');
 $routes->post('/pariwisata/tambahWisata', 'Admin\Pariwisata::tambahWisata');
-$routes->delete('/pariwisata/(:num)', 'Admin\Pariwisata::hapus/$1');
+$routes->delete('/pariwisata/(:num)/(:any)', 'Admin\Pariwisata::hapus/$1/$2');
 
 // ADMIN  LAYANAN
 $routes->get('/layanan', 'Admin\Layanan::index');
-$routes->delete('/layanan/(:num)', 'Admin\Layanan::hapus/$1');
+$routes->put('/layanan/apply/(:num)', 'Admin\Layanan::apply/$1');
+$routes->get('/layanan/confirm', 'Admin\Layanan::confirm');
+$routes->delete('/layanan/(:num)/(:any)', 'Admin\Layanan::hapus/$1/$2');
 
 // ADMIN  KULINER
 $routes->get('/kuliner-tegal', 'Admin\Kuliner::index');
-$routes->delete('/kuliner-tegal/(:num)', 'Admin\Kuliner::hapus/$1');
+$routes->get('/kuliner-tegal/confirm', 'Admin\Kuliner::confirm');
+$routes->put('/kuliner-tegal/apply/(:num)', 'Admin\Kuliner::apply/$1');
+$routes->delete('/kuliner-tegal/(:num)/(:any)', 'Admin\Kuliner::hapus/$1/$2');
 
 // ADMIN  PENGINAPAN
 $routes->get('/penginapan-tegal', 'Admin\Penginapan::index');
-$routes->delete('/penginapan-tegal/(:num)', 'Admin\Penginapan::hapus/$1');
+$routes->get('/penginapan-tegal/confirm', 'Admin\Penginapan::confirm');
+$routes->put('/penginapan-tegal/apply/(:num)', 'Admin\Penginapan::apply/$1');
+$routes->delete('/penginapan-tegal/(:num)/(:any)', 'Admin\Penginapan::hapus/$1/$2');
 
 // ROUTES USER
 // ROUTES WISATA
@@ -88,7 +99,7 @@ $routes->get('/wisata/detail/(:any)', 'User\Wisata::detail/$1');
 
 // ROUTES USER
 // ROUTES HOME
-$routes->get('/home', 'User\Home::index');
+$routes->get('/home', 'User\Home::index', ['as' => 'home']);
 
 // PROFIL USER
 $routes->get('/profil', 'User\Profile::index');

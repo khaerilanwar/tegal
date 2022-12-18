@@ -11,11 +11,11 @@
     <h3 class="mb-4">Kategori Pelayanan Kota Tegal</h3>
     <div class="row">
         <div class="col">
-            <a href="/jasa?bidang=elektronik" class="btn btn-outline-success mx-3 px-3 fs-5 <?= $bidangGet == 'makanan' ? 'active' : ''; ?>">Elektronik</a>
-            <a href="/jasa?bidang=pendidikan" class="btn btn-outline-info mx-3 px-3 fs-5 <?= $bidangGet == 'minuman' ? 'active' : ''; ?>">Pendidikan</a>
-            <a href="/jasa?bidang=otomotif" class="btn btn-outline-warning mx-3 px-3 fs-5 <?= $bidangGet == 'camilan' ? 'active' : ''; ?>">Otomotif</a>
-            <a href="/jasa?bidang=kesehatan" class="btn btn-outline-secondary mx-3 px-3 fs-5 <?= $bidangGet == 'camilan' ? 'active' : ''; ?>">Kesehatan</a>
-            <a href="/jasa?bidang=cleaning" class="btn btn-outline-primary mx-3 px-3 fs-5 <?= $bidangGet == 'camilan' ? 'active' : ''; ?>">Cleaning</a>
+            <a href="/jasa?bidang=elektronik" class="btn btn-outline-success mx-3 px-3 fs-5 <?= $bidangGet == 'elektronik' ? 'active' : ''; ?>">Elektronik</a>
+            <a href="/jasa?bidang=pendidikan" class="btn btn-outline-info mx-3 px-3 fs-5 <?= $bidangGet == 'pendidikan' ? 'active' : ''; ?>">Pendidikan</a>
+            <a href="/jasa?bidang=otomotif" class="btn btn-outline-warning mx-3 px-3 fs-5 <?= $bidangGet == 'otomotif' ? 'active' : ''; ?>">Otomotif</a>
+            <a href="/jasa?bidang=kesehatan" class="btn btn-outline-secondary mx-3 px-3 fs-5 <?= $bidangGet == 'kesehatan' ? 'active' : ''; ?>">Kesehatan</a>
+            <a href="/jasa?bidang=cleaning" class="btn btn-outline-primary mx-3 px-3 fs-5 <?= $bidangGet == 'cleaning' ? 'active' : ''; ?>">Cleaning</a>
         </div>
     </div>
 </div>
@@ -66,7 +66,7 @@
                         <a class="text-decoration-none text-dark" href="/jasa/detail/<?= $j['slug']; ?>">
                             <img class="bd-placeholder-img card-img-top size-img" src="/assets/img/<?= $j['gambar']; ?>" height="270">
                             <div class="card-body">
-                                <h5><?= $j['nama_jasa']; ?></h5>
+                                <h5 class="text-truncate"><?= $j['nama_jasa']; ?></h5>
                                 <p class="card-text mb-4 text-truncate"> <?= $j['alamat']; ?></p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <?php

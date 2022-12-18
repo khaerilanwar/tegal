@@ -15,19 +15,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="title-6 m-b-35">Daftar Penginapan Kabupaten Tegal</h3>
-                <div class="row">
-                    <div class="col-md-6">
-                        <?php if (session()->getFlashdata('pesan')) : ?>
-                            <div class="alert alert-<?= session()->getFlashdata('warna'); ?> alert-dismissible fade show" role="alert">
-                                <?= session()->getFlashdata('pesan'); ?>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                </div>
+                <h3 class="title-6 m-b-35 text-dark">Daftar Penginapan Kabupaten Tegal</h3>
                 <div class="table-data__tool">
                     <div class="table-data__tool-left">
                         <form action="" method="get">
@@ -44,7 +32,7 @@
                             </div>
                             <div class="rs-select2--light rs-select2--lg">
                                 <div class="input-group ml-3">
-                                    <input type="text" id="input1-group2" name="wisata" placeholder="Cari Objek Wisata" class="form-control py-2">
+                                    <input type="text" id="input1-group2" name="penginapan" placeholder="Cari Penginapan" class="form-control py-2">
                                     <div class="input-group-btn">
                                         <button type="submit" class="btn btn-primary py-2">
                                             <i class="fa fa-search"></i> Cari
@@ -78,7 +66,7 @@
                                     <td><?= number_format($p['harga'], 0, '', '.') ?></td>
                                     <td><?= $p['user_email']; ?></td>
                                     <td>
-                                        <form action="/penginapan-tegal/<?= $p['id']; ?>" method="post" class="d-inline">
+                                        <form action="/penginapan-tegal/<?= $p['id']; ?>/daftar" method="post" class="d-inline">
                                             <?= csrf_field(); ?>
                                             <input type="hidden" name="_method" value="DELETE">
                                             <button type="submit" onclick="return confirm('apakah anda yakin ?')" class="btn btn-danger">Hapus</button>

@@ -16,18 +16,6 @@
         <div class="row">
             <div class="col-md-12">
                 <h1 class="title-5 m-b-35">Daftar Tempat Pariwisata Kabupaten Tegal</h1>
-                <div class="row">
-                    <div class="col-md-6">
-                        <?php if (session()->getFlashdata('pesan')) : ?>
-                            <div class="alert alert-<?= session()->getFlashdata('warna'); ?> alert-dismissible fade show" role="alert">
-                                <?= session()->getFlashdata('pesan'); ?>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                </div>
                 <div class="table-data__tool">
                     <div class="table-data__tool-left">
                         <form action="" method="get">
@@ -84,16 +72,11 @@
                                         </span>
                                     </td>
                                     <td>
-
-                                        <!-- <a href="" class="px-2" data-toggle="tooltip" title="Edit">
-                                            <i class="fa-sharp fa-solid fa-pen-to-square text-success h5"></i>
-                                        </a> -->
-
                                         <button data-toggle="modal" data-target="#editWisataModal<?= $w['id']; ?>">
                                             <i class="fa-sharp fa-solid fa-pen-to-square text-success h5 px-2" data-toggle="tooltip" title="Edit"></i>
                                         </button>
 
-                                        <form action="/pariwisata/<?= $w['id']; ?>" method="post" class="d-inline">
+                                        <form action="/pariwisata/<?= $w['id']; ?>/wisata" method="post" class="d-inline">
                                             <?= csrf_field(); ?>
                                             <input type="hidden" name="_method" value="DELETE">
                                             <button type="submit" onclick="return confirm('apakah anda yakin ?')"><i class="fa-solid fa-trash text-danger h5 px-2" data-toggle="tooltip" title="Hapus"></i></button>
@@ -216,7 +199,7 @@
                                 <label for="gambar" class="form-control-label">Upload Gambar</label>
                                 <input type="file" name="gambar" id="gambar" class="form-control" onchange="previewImg()">
                                 <div class="preview d-flex justify-content-center">
-                                    <img src="assets/img/<?= $w['gambar']; ?>" class="img-preview mt-2 rounded img-thumbnail" width="100">
+                                    <img src="/assets/img/<?= $w['gambar']; ?>" class="img-preview mt-2 rounded img-thumbnail" width="100">
                                 </div>
                             </div>
                         </div>

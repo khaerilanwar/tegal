@@ -17,6 +17,7 @@ class JasaModel extends Model
         'gambar',
         'harga',
         'maps',
-        'alamat'
+        'alamat',
+        'status'
     ];
 }
