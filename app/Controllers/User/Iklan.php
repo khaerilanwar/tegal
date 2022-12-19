@@ -3,7 +3,7 @@
 namespace App\Controllers\User;
 
 use App\Controllers\BaseController;
-use App\Models\jasaModel;
+use App\Models\JasaModel;
 use App\Models\KulinerModel;
 use App\Models\PenginapanModel;
 use Exception;
@@ -21,7 +21,7 @@ class Iklan extends BaseController
     {
         helper('tegal');
         cekLogin();
-        $this->jasaModel = new jasaModel();
+        $this->jasaModel = new JasaModel();
         $this->kulinerModel = new KulinerModel();
         $this->penginapanModel = new PenginapanModel();
         $this->jasa = \Config\Database::connect()->table('jasa');

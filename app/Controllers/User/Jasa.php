@@ -4,7 +4,7 @@ namespace App\Controllers\User;
 
 use App\Controllers\BaseController;
 
-use App\Models\jasaModel;
+use App\Models\JasaModel;
 
 class Jasa extends BaseController
 {
@@ -13,7 +13,7 @@ class Jasa extends BaseController
 
     public function __construct()
     {
-        $this->jasaModel = new jasaModel();
+        $this->jasaModel = new JasaModel();
         $this->jasa = \Config\Database::connect()->table('jasa');
     }
 
