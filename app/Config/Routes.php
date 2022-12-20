@@ -55,6 +55,7 @@ $routes->get('/logout', 'Auth\Logout::index');
 // ROUTES REGISTRASI
 $routes->get('/registrasi', 'Auth\Registrasi::index');
 $routes->post('/registrasi/save', 'Auth\Registrasi::save');
+$routes->get('/registrasi/verify', 'Auth\Registrasi::verify');
 
 // ROUTES ADMIN
 // ADMIN DASHBOARD

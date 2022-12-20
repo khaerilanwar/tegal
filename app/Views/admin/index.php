@@ -125,6 +125,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php $i = 1 + (10 * ($currentPage - 1)); ?>
                             <?php foreach ($user as $u) : ?>
                                 <tr>
                                     <td><?= $u['nama']; ?></td>
@@ -153,6 +154,7 @@
                         </tbody>
                     </table>
                 </div>
+                <?= $pager->links('dashboardAdmin', 'pagination'); ?>
             </div>
         </div>
     </div>

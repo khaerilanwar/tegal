@@ -28,6 +28,7 @@ class Dashboard extends BaseController
 
     public function index()
     {
+        $currentPage = $this->request->getGet('page_dashboardAdmin') ? $this->request->getGet('page_dashboardAdmin') : 1;
         // Mengambil inputan cari user
         $dasar = $this->request->getGet('based');
         $cari = $this->request->getGet('user');
@@ -41,19 +42,19 @@ class Dashboard extends BaseController
 
         switch ($dasar) {
             case 'nama':
-                $user = $this->userModel->asArray()->like('nama', $cari)->findAll();
+                $user = $this->userModel->asArray()->like('nama', $cari);
                 break;
             case 'email':
-                $user = $this->userModel->asArray()->like('email', $cari)->findAll();
+                $user = $this->userModel->asArray()->like('email', $cari);
                 break;
             case 'no_telp':
-                $user = $this->userModel->asArray()->like('no_telp', $cari)->findAll();
+                $user = $this->userModel->asArray()->like('no_telp', $cari);
                 break;
             case 'alamat':
-                $user = $this->userModel->asArray()->like('alamat', $cari)->findAll();
+                $user = $this->userModel->asArray()->like('alamat', $cari);
                 break;
             default:
-                $user = $this->userModel->findAll();
+                $user = $this->userModel;
         }
 
         // $user = $this->builder->get()->getResultArray();
@@ -62,7 +63,9 @@ class Dashboard extends BaseController
             'title' => 'Dashboard Kabupaten Tegal',
             'validation' => \Config\Services::validation(),
             'admin' => $admin,
-            'user' => $user,
+            'user' => $user->paginate(10, 'dashboardAdmin'),
+            'pager' => $this->userModel->pager,
+            'currentPage' => $currentPage,
             'lenUser' => count($this->userModel->findAll()),
             'lenJasa' => count($this->jasaModel->findAll()),
             'lenKuliner' => count($this->kulinerModel->findAll()),
