@@ -10,7 +10,7 @@
         </div>
         <p class="lead my-4" style="text-align: justify;"><?= preg_replace('/\s\s+/', '<br/>', $kuliner['deskripsi']) ?></p>
         <div class="row">
-            <div class="col-md-3 offset-md-2">
+            <div class="col-md-5 offset-md-1">
                 <h5 class="d-inline">Harga Rp. <?= number_format($kuliner['harga'], 0, '', '.') ?></h5>
             </div>
             <div class="col-md-5">
