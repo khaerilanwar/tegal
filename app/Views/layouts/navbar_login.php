@@ -9,7 +9,6 @@
             <li class="nav-item"><a href="/wisata" class="nav-link fs-5 text-white <?= preg_match('/Pariwisata/', $title) ? 'active' : ''; ?>">Pariwisata</a></li>
             <li class="nav-item"><a href="/kuliner" class="nav-link fs-5 text-white <?= preg_match('/Kuliner/', $title) ? 'active' : ''; ?>">Kuliner</a></li>
             <li class="nav-item"><a href="/penginapan" class="nav-link fs-5 text-white <?= preg_match('/Penginapan/', $title) ? 'active' : ''; ?>">Penginapan</a></li>
-            <li class="nav-item"><a href="/jasa" class="nav-link fs-5 text-white <?= preg_match('/Jasa/', $title) ? 'active' : ''; ?>">Jasa</a></li>
         </ul>
 
         <?php if (session()->email == false) : ?>

@@ -1,101 +1,70 @@
-<?php $this->extend('layouts/template'); ?>
+<?php $this->extend('layouts/temp'); ?>
 
 <?php $this->section('content'); ?>
 
-<!-- CAROUSEL SLIDE OTOMATIS -->
-<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        <?php $slide = ['restoran.jpg', 'flores.jpg', 'Bali.jpg', 'gapura.jpg'] ?>
-        <?php for ($i = 0; $i < count($slide); $i++) : ?>
-            <div class="carousel-item active" data-bs-interval="3000">
-                <img src="/assets/img/<?= $slide[$i]; ?>" class="d-block w-100" alt="...">
+
+<!-- Breadcrumb -->
+<!-- <nav class="flex px-5 py-3 justify-center mt-10 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700" aria-label="Breadcrumb">
+    <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <li class="inline-flex items-center">
+            <a href="#" class="inline-flex items-center text-md font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+                <svg aria-hidden="true" class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
+                </svg>
+                Home
+            </a>
+        </li>
+        <li>
+            <div class="flex items-center">
+                <svg aria-hidden="true" class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                <a href="#" class="ml-1 text-md font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white">Templates</a>
             </div>
-        <?php endfor; ?>
+        </li>
+        <li aria-current="page">
+            <div class="flex items-center">
+                <svg aria-hidden="true" class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="ml-1 text-md font-medium text-gray-500 md:ml-2 dark:text-gray-400">Flowbite</span>
+            </div>
+        </li>
+    </ol>
+</nav> -->
 
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
-<!-- END CAROUSEL SLIDE OTOMATIS -->
 
-<!-- GARIS BAWAH -->
-<div class="container-fluid bg-biru py-2 garis-bawah">
-    <div class="row">
-        <div class="col-sm">
-            <h4 class="text-white text-center">Tempat Wisata Kabupaten Tegal</h4>
-        </div>
-    </div>
-</div>
-<!-- END GARIS BAWAH -->
+<div class="container mx-auto sm:px-20 px-5">
+    <h2 class="font-heebo font-bold text-2xl md:px-3 md:text-4xl text-center my-12 dark:text-white">Jelajah dan Rekreasi
+    </h2>
 
-<!-- JUDUL -->
-<div class="container mt-5 mb-2">
-    <div class="row">
-        <div class="col-sm border-3 border-dark position-relative">
-            <h2 class="text-center font-acme pb-2">REKOMENDASI PARIWISATA KABUPATEN TEGAL</h2>
-            <div style="height: 4px;" class="w-50 position-absolute top-100 start-50 translate-middle bg-dark"></div>
-        </div>
-    </div>
-</div>
-<!-- END JUDUL -->
-
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-4 offset-md-8">
-            <form action="" method="get">
-                <div class="input-group ml-3">
-                    <input type="text" id="input1-group2" name="cari" placeholder="Cari Wisata .." class="form-control" autocomplete="off">
-                    <div class="input-group-btn">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fa fa-search"></i> Cari
-                        </button>
-                    </div>
+    <div class="flex justify-center sm:gap-9 flex-wrap">
+        <?php $i = 1 + (6 * ($currentPage - 1)); ?>
+        <?php foreach ($wisata as $data) : ?>
+            <div class="rounded-lg shadow-md p-3 mb-4">
+                <a href="/wisata/detail/<?= $data['id']; ?>" class="mb-5 block rounded-full w-80 h-80 relative overflow-hidden border-x-4 border-red-500 group">
+                    <img class="absolute h-full w-full object-cover group-hover:scale-125 transition-all duration-700" src="/assets/img/<?= $data['gambar']; ?>" alt="">
+                </a>
+                <div class="border-t-2 border-slate-700">
+                    <h3 class="font-heebo text-xl font-semibold py-2 text-center dark:text-white"><?= $data['nama_wisata']; ?></h3>
+                    <p class="text-center"><i class="fa-solid fa-location-dot dark:text-white"></i><span class="ml-2 dark:text-white"><?php
+                                                                                                                                            $alamat = $data['alamat'];
+                                                                                                                                            $alamat = explode(" ", $alamat);
+                                                                                                                                            $alamat_split = [];
+                                                                                                                                            for ($i = 0; $i < 4; $i++) {
+                                                                                                                                                $alamat_split[] = $alamat[$i];
+                                                                                                                                            }
+                                                                                                                                            $view_alamat = implode(" ", $alamat_split);
+                                                                                                                                            if ($view_alamat[-1] == "," or $view_alamat[-1] == ".") {
+                                                                                                                                                substr($view_alamat, 0, strlen($view_alamat) - 1);
+                                                                                                                                            }
+                                                                                                                                            echo $view_alamat
+                                                                                                                                            ?></span></p>
                 </div>
-            </form>
-        </div>
+            </div>
+        <?php endforeach; ?>
     </div>
 </div>
-
-<!-- ALBUM  -->
-<div class="album py-5 bg-light">
-    <div class="container" id="cari">
-
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
-            <?php $i = 1 + (8 * ($currentPage - 1)); ?>
-            <?php foreach ($wisata as $data) : ?>
-                <!-- PERALBUM SATU FOTO -->
-                <div class="col-sm-3">
-                    <div class="card shadow-sm">
-                        <img class="bd-placeholder-img card-img-top size-img" src="/assets/img/<?= $data['gambar']; ?>" height="270">
-
-                        <div class="card-body">
-                            <a class="text-decoration-none text-dark" href="/wisata/detail/<?= $data['slug']; ?>">
-                                <h5 class="text-truncate"><?= $data['nama_wisata']; ?>, <?= $data['lokasi']; ?></h5>
-                                <div class="text-truncate card-text mb-3">
-                                    <?= $data['deskripsi']; ?>
-                                </div>
-                            </a>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <span class="fs-5 fw-bold"><?= number_format($data['harga'], 0, '', '.') ?> / Orang</span>
-                                </div>
-                                <a href="/wisata/pesantiket?idwisata=<?= $data['id']; ?>" class="btn btn-primary p-2">Pesan Tiket</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- END PERALBUM SATU FOTO -->
-            <?php endforeach; ?>
-        </div>
-        <?= $pager->links('wisata', 'pagination'); ?>
-    </div>
-</div>
-<!-- END ALBUM -->
+<?= $pager->links('wisata', 'pagination'); ?>
 
 <?php $this->endSection(); ?>

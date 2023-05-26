@@ -1,34 +1,25 @@
-<?php $this->extend('layouts/template'); ?>
+<?php $this->extend('layouts/temp'); ?>
 
 <?php $this->section('content'); ?>
 
-<div class="px-4 my-5 text-center">
-    <h1 class="display-5 fw-bold"><?= $wisata['nama_wisata']; ?>, <?= $wisata['lokasi']; ?></h1>
-    <div class="col-lg-6 mx-auto">
-        <p class="lead mt-4 mb-4"><?= $wisata['deskripsi']; ?></p>
-        <h5 class="mb-4">Harga Tiket Rp. <?= number_format($wisata['harga'], 0, '', '.') ?></h5>
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-            <a href="/wisata/pesantiket?idwisata=<?= $wisata['id']; ?>" class="btn btn-primary btn-lg px-4 me-sm-3">Pesan Tiket</a>
+<section class="bg-white dark:bg-gray-900">
+    <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
+        <div class="overflow-hidden aspect-[4/3] rounded-lg shadow-lg">
+            <img class="w-full h-full object-cover" src="/assets/img/<?= $wisata['gambar']; ?>" alt="<?= $wisata['nama_wisata']; ?>">
+        </div>
+        <div class="mt-4 md:mt-0">
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"><?= $wisata['nama_wisata']; ?>, <?= $wisata['lokasi']; ?></h2>
+            <p class="mb-6 font-normal text-gray-700 md:text-lg dark:text-gray-400"><?= $wisata['deskripsi']; ?></p>
+            <p class="font-medium mb-3 text-lg dark:text-white">Harga Tiket Rp. <?= number_format($wisata['harga'], 0, '', '.') ?></p>
+            <a href="#" class="inline-flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-blue-900">
+                Pesan Tiket
+                <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+            </a>
         </div>
     </div>
-    <div class="overflow-hidden">
-        <div class="container px-5">
-            <img src="/assets/img/<?= $wisata['gambar']; ?>" class="img-fluid rounded-3 shadow mb-4" alt="Example image" width="500">
-        </div>
-    </div>
-</div>
-
-<div class="container col-xxl-8 px-4 py-5">
-    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-        <div class="col-10 col-sm-8 col-lg-6">
-            <?= htmlspecialchars_decode($wisata['maps']); ?>
-        </div>
-        <div class="col-lg-6">
-            <h1 class="display-6 fw-bold mb-5"><?= $wisata['nama_wisata']; ?></h1>
-            <p class="fs-5"><?= $wisata['alamat']; ?></p>
-        </div>
-    </div>
-</div>
+</section>
 
 
 

@@ -1,160 +1,295 @@
-<?php $this->extend('layouts/template'); ?>
+<!DOCTYPE html>
+<html lang="en">
 
-<?php $this->section('content'); ?>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pesona Tegal</title>
+    <!-- FAVICON TEGAL -->
+    <link rel="shortcut icon" href="/assets/img/ikon-tegal.ico" type="image/x-icon">
+    <!-- STYLE TAILWIND CSS -->
+    <link rel="stylesheet" href="/assets/css/tailwindstyle.css" />
+    <!-- CDN FONTAWESOME -->
+    <script src="https://kit.fontawesome.com/addf044e73.js" crossorigin="anonymous"></script>
+    <!-- CDN GOOGLE FONT HEEBO -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
 
-<!-- CAROUSEL SLIDE OTOMATIS -->
-<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        <?php $slide = ['restoran.jpg', 'flores.jpg', 'Bali.jpg', 'gapura.jpg', 'laut-wisata.jpg'] ?>
-        <?php for ($i = 0; $i < count($slide); $i++) : ?>
-            <div class="carousel-item active" data-bs-interval="3000">
-                <img src="/assets/img/<?= $slide[$i]; ?>" class="d-block w-100" alt="...">
+<body>
+    <div class="h-screen w-full">
+        <div class="-z-[49] opacity-60 absolute top-0 left-0 h-screen w-full object-cover bg-black">
+        </div>
+        <video autoplay muted loop class="-z-50 absolute top-0 left-0 h-screen w-full object-cover">
+            <source src="https://tourism.surabaya.go.id/assets/front/videos/surabaya.mp4" type="video/mp4">
+        </video>
+
+        <div class="container mx-auto flex justify-between sm:justify-around py-3">
+            <img class="w-28 ml-4" src="/assets/img/gateng.png" alt="">
+            <div class="my-auto">
+                <ul class="hidden sm:flex sm:gap-x-8">
+                    <li class="group">
+                        <a href="/home" class="transition-all duration-500 group-hover:text-blue-500 font-heebo text-lg text-white">Beranda</a>
+                        <div class="transition-all duration-500 mt-1 h-[3px] bg-slate-400 rounded-md group-hover:bg-purple-500">
+                        </div>
+                    </li>
+                    <li class="group">
+                        <a href="/wisata" class="transition-all duration-500 group-hover:text-blue-500 font-heebo text-lg text-white">Destinasi</a>
+                        <div class="transition-all duration-500 mt-1 h-[3px] bg-slate-400 rounded-md group-hover:bg-purple-500">
+                        </div>
+                    </li>
+                    <li class="group">
+                        <a href="/kuliner" class="transition-all duration-500 group-hover:text-blue-500 font-heebo text-lg text-white">Kuliner</a>
+                        <div class="transition-all duration-500 mt-1 h-[3px] bg-slate-400 rounded-md group-hover:bg-purple-500">
+                        </div>
+                    </li>
+                    <li class="group">
+                        <a href="/penginapan" class="transition-all duration-500 group-hover:text-blue-500 font-heebo text-lg text-white">Penginapan</a>
+                        <div class="transition-all duration-500 mt-1 h-[3px] bg-slate-400 rounded-md group-hover:bg-purple-500">
+                        </div>
+                    </li>
+                </ul>
             </div>
-        <?php endfor; ?>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
-<!-- END CAROUSEL SLIDE OTOMATIS -->
+            <div class="sm:hidden mr-4 my-auto flex dropdown rounded bg-[#6096B4] w-11 h-11">
+                <i class="fa-solid fa-bars text-white m-auto text-2xl cursor-pointer"></i>
+            </div>
+        </div>
+        <ul class="dropdown-menu rounded absolute left-4 right-4 hidden bg-white py-1">
+            <li class="my-2 ml-8">
+                <a class="font-heebo font-" href="#">Beranda</a>
+            </li>
+            <li class="my-2 ml-8">
+                <a class="font-heebo" href="#">Destinasi</a>
+            </li>
+            <li class="my-2 ml-8">
+                <a class="font-heebo" href="#">Kuliner</a>
+            </li>
+            <li class="my-2 ml-8">
+                <a class="font-heebo" href="#">Penginapan</a>
+            </li>
+        </ul>
 
-<!-- Isi Home-->
+        <h1 class="text-white text-center font-heebo font-bold sm:text-6xl mt-12 text-2xl">WISATA KABUPATEN BREBES</h1>
+        <h2 class="text-center text-white text-xl sm:text-[2.5rem] font-heebo mt-8">You will love every corner
+            of it</h2>
+        <h4 class="text-white text-center sm:text-lg text-sm px-5 font-heebo mt-[1.15rem]">Let's explore one of the biggest
+            city in Indonesia with
+            famous
+            name
+            called City of Heroes.</h4>
 
-<div id="fh5co-blog-section" class="fh5co-section-gray">
-    <div class="container">
-        <div class="text-center">
-            <div class="text-center mb-5 animate-box">
-                <h1 class="fw-bolder">Website Tegal Official</h1>
-                <p>Kami menyediakan berbagai</p>
-                <a class="btn btn-outline-info mx-3" href="#pariwisata"> Pariwisata </a>
-                <a class="btn btn-outline-info mx-3" href="#kuliner">Kuliner </a>
-                <a class="btn btn-outline-info mx-3" href="#penginapan">Penginapan </a>
-                <a class="btn btn-outline-info mx-3" href="#jasa">Jasa </a>
+        <div class="container mx-auto mt-[14rem]">
+            <div class="flex sm:justify-center justify-evenly sm:gap-16">
+                <a href="#" class="grid justify-items-center">
+                    <i class="fa-solid block fa-map-location-dot text-white sm:text-4xl text-2xl"></i>
+                    <span class="text-white block text-xs sm:text-lg font-heebo text-center leading-5 mt-3 font-extrabold">DESTINASI
+                        <br>
+                        WISATA</span>
+                </a>
+                <a href="#" class="grid justify-items-center">
+                    <i class="fa-solid fa-bowl-food text-white sm:text-4xl text-2xl"></i>
+                    <span class="text-white block text-xs sm:text-lg font-heebo text-center leading-5 mt-3 font-extrabold">KULINER
+                        KHAS
+                        <br>
+                        DAERAH</span>
+                </a>
+                <a href="#" class="grid justify-items-center">
+                    <i class="fa-solid fa-hotel text-white sm:text-4xl text-2xl"></i>
+                    <span class="text-white block text-xs sm:text-lg font-heebo text-center leading-5 mt-3 font-extrabold">HOTEL
+                        DAN <br>
+                        VILLA</span>
+                </a>
+                <a href="#" class="grid justify-items-center">
+                    <i class="fa-solid fa-map text-white sm:text-4xl text-2xl"></i>
+                    <span class="text-white block text-xs sm:text-lg font-heebo text-center leading-5 mt-3 font-extrabold">PETA
+                        <br>
+                        DIGITAL</span>
+                </a>
             </div>
         </div>
     </div>
-    <div class="text-center animate-box shadow-sm p-3 mb-1 bg-body rounded">
-        <h1 class="c-page-title">For Information</h1>
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <p class="fw-normal mb-5">Hallo Sobat! Di website ini kami menyediakan berbagai kebutuhan mengenai Tegal, Kalian mampu menyexplore isi tegal dari mulai Pariwisata lokal di tegal, Kuliner asli dari tegal, Penginapan sekitar Tegal dengan variasi harga bahkan kami menyuguhkan Jasa yang ada di Tegal. Kami harap dengan terciptanya website kami bisa membantu kalangan usaha dan umkm lokal termasuk di Tegal, sehingga bisa mempermudah wisatawan dan warga lokal dalam mencari informasi,jasa,kuliner,penginapan bahkan tiket wisata.</p>
+
+    <!-- JUDUL GALERI KOTA TEGAL -->
+
+    <div class="container mx-auto mt-20 sm:mb-10 mb-3">
+        <img class="mx-auto" src="/assets/img/icon-sign (1).png" alt="">
+
+        <h1 class="mt-7 sm:text-6xl text-4xl text-center text-[#6096B4] font-heebo">Start Your Best <br>Journey In Brebes
+        </h1>
+    </div>
+
+    <!-- END JUDUL GALERI KOTA TEGAL -->
+
+    <!-- GALERI KOTA TEGAL -->
+
+    <div class="container mx-auto">
+        <div class="sm:grid sm:grid-cols-2 sm:w-3/4 sm:grid-rows-2 mx-auto sm:justify-items-center">
+            <div class="sm:row-end-2 sm:row-span-2 sm:m-1 rounded-2xl sm:p-3 p-2 mb-7 w-full">
+                <div class="overflow-hidden group rounded-2xl sm:aspect-[4/3]">
+                    <img class="group-hover:scale-125 w-full h-full object-cover transition-all duration-[2000ms]" src="/assets/img/<?= $wisata[0]['gambar']; ?>" alt="">
+                </div>
+                <div class="mt-5">
+                    <span class="px-3 py-2 text-sm sm:text-lg bg-[#6096B4] text-white font-heebo rounded-lg">Pariwisata</span>
+                    <h5 class="sm:mt-3 mt-2 sm:sm:text-xl font-bold font-heebo"><?= $wisata[0]['nama_wisata']; ?></h5>
+                    <p class="sm:mt-1"><i class="fa-solid fa-location-dot"></i><span class="ml-2"><?php
+                                                                                                    $alamat = $wisata[0]['alamat'];
+                                                                                                    $alamat = explode(" ", $alamat);
+                                                                                                    $alamat_split = [];
+                                                                                                    for ($i = 0; $i < 4; $i++) {
+                                                                                                        $alamat_split[] = $alamat[$i];
+                                                                                                    }
+                                                                                                    $view_alamat = implode(" ", $alamat_split);
+                                                                                                    if ($view_alamat[-1] == "," or $view_alamat[-1] == ".") {
+                                                                                                        substr($view_alamat, 0, strlen($view_alamat) - 1);
+                                                                                                    }
+                                                                                                    echo $view_alamat
+                                                                                                    ?></span></p>
+                </div>
+            </div>
+            <div class="sm:row-start-1 sm:row-end-3 sm:m-1 rounded-2xl sm:p-3 p-2 mb-7 w-full">
+                <div class="rounded-2xl overflow-hidden group sm:aspect-[9/16]">
+                    <img class="w-full h-full object-cover group-hover:scale-125 transition-all duration-[2000ms]" src="/assets/img/<?= $wisata[1]['gambar']; ?>" alt="">
+                </div>
+                <div class="mt-5">
+                    <span class="px-3 py-2 text-sm sm:text-lg bg-[#6096B4] text-white font-heebo rounded-lg">Pariwisata</span>
+                    <h5 class="sm:mt-3 mt-2 sm:sm:text-xl font-bold font-heebo"><?= $wisata[1]['nama_wisata']; ?></h5>
+                    <p class="sm:mt-1"><i class="fa-solid fa-location-dot"></i><span class="ml-2"><?php
+                                                                                                    $alamat = $wisata[1]['alamat'];
+                                                                                                    $alamat = explode(" ", $alamat);
+                                                                                                    $alamat_split = [];
+                                                                                                    for ($i = 0; $i < 4; $i++) {
+                                                                                                        $alamat_split[] = $alamat[$i];
+                                                                                                    }
+                                                                                                    $view_alamat = implode(" ", $alamat_split);
+                                                                                                    if ($view_alamat[-1] == "," or $view_alamat[-1] == ".") {
+                                                                                                        substr($view_alamat, 0, strlen($view_alamat) - 1);
+                                                                                                    }
+                                                                                                    echo $view_alamat
+                                                                                                    ?></span></p>
+                </div>
+            </div>
+            <div class="sm:row-start-2 sm:row-end-4 sm:m-1 rounded-2xl sm:p-3 p-2 mb-7 w-full">
+                <div class="rounded-2xl overflow-hidden group sm:aspect-[9/16]">
+                    <img class="w-full h-full object-cover group-hover:scale-125 transition-all duration-[2000ms]" src="/assets/img/<?= $penginapan[0]['gambar']; ?>" alt="">
+                </div>
+                <div class="mt-5">
+                    <span class="px-3 py-2 text-sm sm:text-lg bg-[#6096B4] text-white font-heebo rounded-lg">Pariwisata</span>
+                    <h5 class="sm:mt-3 mt-2 sm:text-xl font-bold font-heebo"><?= $penginapan[0]['nama_penginapan']; ?></h5>
+                    <p class="sm:mt-1"><i class="fa-solid fa-location-dot"></i><span class="ml-2"><?php
+                                                                                                    $alamat = $penginapan[0]['alamat'];
+                                                                                                    $alamat = explode(" ", $alamat);
+                                                                                                    $alamat_split = [];
+                                                                                                    for ($i = 0; $i < 4; $i++) {
+                                                                                                        $alamat_split[] = $alamat[$i];
+                                                                                                    }
+                                                                                                    $view_alamat = implode(" ", $alamat_split);
+                                                                                                    if ($view_alamat[-1] == "," or $view_alamat[-1] == ".") {
+                                                                                                        substr($view_alamat, 0, strlen($view_alamat) - 1);
+                                                                                                    }
+                                                                                                    echo $view_alamat
+                                                                                                    ?></span></p>
+                </div>
+            </div>
+            <div class="sm:row-start-3 sm:row-end-4 sm:m-1 rounded-2xl sm:p-3 p-2 mb-7 w-full">
+                <div class="rounded-2xl overflow-hidden group sm:aspect-[4/3]">
+                    <img class="group-hover:scale-125 w-full h-full object-cover transition-all duration-[2000ms]" src="/assets/img/<?= $kuliner[0]['gambar']; ?>" alt="">
+                </div>
+                <div class="mt-5">
+                    <span class="px-3 py-2 text-sm sm:text-lg bg-[#6096B4] text-white font-heebo rounded-lg">Pariwisata</span>
+                    <h5 class="sm:mt-3 mt-2 sm:text-xl font-bold font-heebo"><?= $kuliner[0]['nama_kuliner']; ?></h5>
+                    <p class="sm:mt-1"><i class="fa-solid fa-location-dot"></i><span class="ml-2"><?php
+                                                                                                    $alamat = $kuliner[0]['alamat'];
+                                                                                                    $alamat = explode(" ", $alamat);
+                                                                                                    $alamat_split = [];
+                                                                                                    for ($i = 0; $i < 4; $i++) {
+                                                                                                        $alamat_split[] = $alamat[$i];
+                                                                                                    }
+                                                                                                    $view_alamat = implode(" ", $alamat_split);
+                                                                                                    if ($view_alamat[-1] == "," or $view_alamat[-1] == ".") {
+                                                                                                        substr($view_alamat, 0, strlen($view_alamat) - 1);
+                                                                                                    }
+                                                                                                    echo $view_alamat
+                                                                                                    ?></span></p>
+                </div>
             </div>
         </div>
     </div>
-    <div class="mb-5"></div>
-    <div class="container">
-        <div class="row row-bottom-padded-md">
-            <div id="pariwisata" class="mb-5"></div>
-            <h1 class="animate-box badge rounded-pill mt-5 bg-primary fs-5">PARIWISATA </h1>
-            <?php foreach ($wisata as $w) : ?>
-                <div class="col-xs-6 col-sm-3">
-                    <div class="fh5co-blog animate-box">
-                        <a href="#"><img class="img-responsive" src="/assets/img/<?= $w['gambar']; ?>" alt="<?= $w['nama_wisata']; ?>" height="270"></a>
-                        <div class="blog-text">
-                            <div class="prod-title">
-                                <h3><?= $w['nama_wisata']; ?></h3>
-                                <p class="text-truncate"><?= $w['deskripsi']; ?></p>
-                                <a href="/wisata/detail/<?= $w['slug']; ?>" class="btn btn-primary">Lihat Selengkapnya</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-            <div id="kuliner" class="mb-5"></div>
-            <h1 class="animate-box badge rounded-pill mt-5 bg-primary fs-5">KULINER</h1>
-            <?php foreach ($kuliner as $k) : ?>
-                <div class="col-xs-6 col-sm-3">
-                    <div class="fh5co-blog animate-box">
-                        <a href="#"><img class="img-responsive" src="/assets/img/<?= $k['gambar']; ?>" alt="<?= $k['nama_kuliner'] ?>" height="270"></a>
-                        <div class="blog-text">
-                            <div class="prod-title">
-                                <h3><?= $k['nama_kuliner']; ?></h3>
-                                <p class="text-truncate"><?= $k['deskripsi']; ?></p>
-                                <a href="/kuliner/detail/<?= $k['slug']; ?>" class="btn btn-primary">Lihat Selengkapnya</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-            <div class="mb-5" id="penginapan"></div>
-            <h1 class="animate-box badge rounded-pill mt-5 bg-primary fs-5">PENGINAPAN</h1>
-            <?php foreach ($penginapan as $p) : ?>
-                <div class="col-xs-6 col-sm-3">
-                    <div class="fh5co-blog animate-box">
-                        <a href="#"><img class="img-responsive" src="/assets/img/<?= $p['gambar']; ?>" alt="<?= $p['nama_penginapan']; ?>" height="270"></a>
-                        <div class="blog-text">
-                            <div class="prod-title">
-                                <h3><?= $p['nama_penginapan']; ?></h3>
-                                <p class="text-truncate"><?= $p['deskripsi']; ?></p>
-                                <p><a href="/penginapan/detail/<?= $p['slug']; ?>" class="btn btn-primary">Lihat Selengkapnya</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-            <div id="jasa" class="mb-5"></div>
-            <h1 class="animate-box badge rounded-pill mt-5 bg-primary fs-5">JASA</h1>
-            <?php foreach ($jasa as $j) : ?>
-                <div class="col-xs-6 col-sm-3">
-                    <div class="fh5co-blog animate-box">
-                        <a href="#"><img class="img-responsive" src="/assets/img/<?= $j['gambar']; ?>" alt="<?= $j['nama_jasa']; ?>" height="270"></a>
-                        <div class="blog-text">
-                            <div class="prod-title">
-                                <h3><?= $j['nama_jasa']; ?></h3>
-                                <p class="text-truncate"><?= $j['deskripsi']; ?></p>
-                                <p><a href="/jasa/detail/<?= $j['slug']; ?>" class="btn btn-primary">Lihat Selengkapnya</a></p>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-            <div class="clearfix visible-md-block"></div>
-        </div>
-        <div class="animate-box text-center">
-            <h3 class="text-primary">Kunjungi Maps Tegal</h3>
-        </div>
-        <div class="d-flex justify-content-center">
-            <iframe class="animate-box" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31689.336857369755!2d109.11723959999999!3d-6.8705707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6fb9dfbf3264c3%3A0x3027a76e352bbe0!2sTegal%2C%20Kota%20Tegal%2C%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1668928325284!5m2!1sid!2sid" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <!-- END GALERI KOTA TEGAL -->
+
+    <!-- SECTION EVENT KOTA TEGAL -->
+
+    <div class="container mx-auto my-16 py-12 sm:px-24 px-[0.6rem]">
+        <h2 class="font-heebo font-bold text-4xl text-center mb-8">Event Kota Tegal</h2>
+
+        <div class="grid sm:grid-cols-3 grid-cols-2 gap-5">
+            <div class="sm:col-span-3 col-span-2 h-64 flex rounded-lg group overflow-hidden relative">
+                <h3 class="z-[11] m-auto text-white font-heebo sm:text-4xl text-2xl w-2/3 text-center">Ayoo !! Berkunjung ke
+                    Kota Tegal</h3>
+                <div class="bg-black absolute top-0 left-0 w-full h-full object-cover z-10 opacity-30"></div>
+                <img class="absolute w-full h-full object-cover group-hover:scale-110 transition-all duration-1000" src="https://www.ancol.com/shared/file-manager/Event Banner/April 2023/f2c3839f-040c-48d0-b3fd-073dc4a6005d.jpg" alt="">
+            </div>
+            <div class="h-64 flex rounded-lg overflow-hidden relative group">
+                <h3 class="z-[11] m-auto text-white font-heebo text-[1.7rem] w-2/3 text-center">Waterpark Bahari</h3>
+                <div class="bg-black absolute top-0 left-0 w-full h-full object-cover z-10 opacity-30"></div>
+                <img class="absolute w-full h-full object-cover group-hover:scale-110 transition-all duration-1000" src="https://www.ancol.com/shared/file-manager/Event Banner/April 2023/344dab9b-4ea3-4ff4-8355-26c8ad4be01b.jpg" alt="">
+            </div>
+            <div class="h-64 flex rounded-lg overflow-hidden relative group">
+                <h3 class="z-[11] m-auto text-white font-heebo text-[1.7rem] w-2/3 text-center">Waterpark Bahari</h3>
+                <div class="bg-black absolute top-0 left-0 w-full h-full object-cover z-10 opacity-30"></div>
+                <img class="absolute w-full h-full object-cover group-hover:scale-110 transition-all duration-1000" src="https://www.ancol.com/shared/file-manager/Event Banner/April 2023/344dab9b-4ea3-4ff4-8355-26c8ad4be01b.jpg" alt="">
+            </div>
+            <div class="h-64 col-span-2 sm:col-span-1 flex rounded-lg overflow-hidden relative group">
+                <h3 class="z-[11] m-auto text-white font-heebo text-[1.7rem] w-2/3 text-center">Waterpark Bahari</h3>
+                <div class="bg-black absolute top-0 left-0 w-full h-full object-cover z-10 opacity-30"></div>
+                <img class="absolute w-full h-full object-cover group-hover:scale-110 transition-all duration-1000" src="https://www.ancol.com/shared/file-manager/Event Banner/April 2023/344dab9b-4ea3-4ff4-8355-26c8ad4be01b.jpg" alt="">
+            </div>
         </div>
     </div>
-</div>
 
-</div>
-<!-- END fh5co-page -->
+    <!-- END SECTION EVENT KOTA TEGAL -->
 
-</div>
-<!-- END fh5co-wrapper -->
 
-<script src="/assets/js/jquery.min.js"></script>
-<!-- jQuery Easing -->
-<script src="/assets/js/jquery.easing.1.3.js"></script>
-<!-- Bootstrap -->
-<script src="/assets/js/2bootstrap.min.js"></script>
-<!-- Waypoints -->
-<script src="/assets/js/jquery.waypoints.min.js"></script>
-<script src="/assets/js/sticky.js"></script>
+    <footer class="bg-[#6096B4] rounded-t-lg shadow dark:bg-gray-900">
+        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+            <div class="sm:flex sm:items-center sm:justify-between">
+                <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0">
+                    <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" />
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">Khaeril Anwar</span>
+                </a>
+                <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-white sm:mb-0 dark:text-gray-400">
+                    <li>
+                        <a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
+                    </li>
+                    <li>
+                        <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+                    </li>
+                    <li>
+                        <a href="#" class="mr-4 hover:underline md:mr-6 ">Licensing</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:underline">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+            <span class="block text-sm text-white sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">Kelompok 3™</a>. All Rights Reserved.</span>
+        </div>
+    </footer>
 
-<!-- Stellar -->
-<script src="/assets/js/jquery.stellar.min.js"></script>
-<!-- Superfish -->
-<script src="/assets/js/hoverIntent.js"></script>
-<script src="/assets/js/superfish.js"></script>
-<!-- Magnific Popup -->
-<script src="/assets/js/jquery.magnific-popup.min.js"></script>
-<script src="/assets/js/magnific-popup-options.js"></script>
-<!-- Date Picker -->
-<script src="/assets/js/bootstrap-datepicker.min.js"></script>
-<!-- CS Select -->
-<script src="/assets/js/classie.js"></script>
-<script src="/assets/js/selectFx.js"></script>
 
-<!-- Main JS -->
-<script src="/assets/js/main.js"></script>
 
-<?php $this->endSection(); ?>
+    <script>
+        const dropdown = document.querySelector('.dropdown');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        dropdown.addEventListener('click', function() {
+            dropdownMenu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+
+</html>

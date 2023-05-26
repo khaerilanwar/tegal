@@ -31,7 +31,7 @@ class Wisata extends BaseController
 
         $data = [
             'title' => 'Pariwisata Kabupaten Tegal',
-            'wisata' => $wisata->paginate(8, 'wisata'),
+            'wisata' => $wisata->paginate(6, 'wisata'),
             'pager' => $this->wisataModel->pager,
             'currentPage' => $currentPage,
             'user' => $this->user
@@ -44,9 +44,9 @@ class Wisata extends BaseController
         return view('wisata/index', $data);
     }
 
-    public function detail($slug)
+    public function detail($id)
     {
-        $wisata = $this->wisataModel->where(['slug' => $slug])->first();
+        $wisata = $this->wisataModel->find($id);
         $nama_wisata = $wisata['nama_wisata'];
 
         $data = [

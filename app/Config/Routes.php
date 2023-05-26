@@ -71,12 +71,6 @@ $routes->post('/pariwisata/edit/(:num)', 'Admin\Pariwisata::edit/$1');
 $routes->post('/pariwisata/tambahWisata', 'Admin\Pariwisata::tambahWisata');
 $routes->delete('/pariwisata/(:num)/(:any)', 'Admin\Pariwisata::hapus/$1/$2');
 
-// ADMIN  LAYANAN
-$routes->get('/layanan', 'Admin\Layanan::index');
-$routes->put('/layanan/apply/(:num)', 'Admin\Layanan::apply/$1');
-$routes->get('/layanan/confirm', 'Admin\Layanan::confirm');
-$routes->delete('/layanan/(:num)/(:any)', 'Admin\Layanan::hapus/$1/$2');
-
 // ADMIN  KULINER
 $routes->get('/kuliner-tegal', 'Admin\Kuliner::index');
 $routes->get('/kuliner-tegal/confirm', 'Admin\Kuliner::confirm');
@@ -112,12 +106,6 @@ $routes->post('/profil/edit/(:num)', 'User\Profile::edit/$1');
 // USER IKLAN
 $routes->get('/pasang-iklan', 'User\Iklan::index');
 $routes->post('/pasang-iklan/update/(:num)', 'User\Iklan::update/$1');
-
-// ROUTES JASA
-$routes->get('/jasa', 'User\Jasa::index');
-$routes->post('/jasa/addJasa', 'User\Jasa::addJasa');
-$routes->get('/jasa/detail/(:any)', 'User\Jasa::detail/$1');
-$routes->delete('/jasa/(:num)', 'User\Jasa::hapus/$1');
 
 //ROUTES KULINER
 $routes->get('/kuliner', 'User\Kuliner::index');
