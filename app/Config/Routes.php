@@ -86,7 +86,7 @@ $routes->delete('/penginapan-tegal/(:num)/(:any)', 'Admin\Penginapan::hapus/$1/$
 // ROUTES USER
 // ROUTES WISATA
 $routes->get('/wisata', 'User\Wisata::index');
-$routes->get('/wisata/pesantiket', 'User\Wisata::pesanTiket');
+$routes->get('/wisata/pesantiket/(:num)', 'User\Wisata::pesanTiket/$1');
 $routes->post('/wisata/pesan', 'User\Wisata::pesan');
 $routes->get('/wisata/tagihan/(:num)', 'User\Wisata::tagihan/$1');
 $routes->get('/wisata/cetak-tagihan/(:num)', 'User\Wisata::cetakTagihan/$1');
@@ -106,6 +106,14 @@ $routes->post('/profil/edit/(:num)', 'User\Profile::edit/$1');
 // USER IKLAN
 $routes->get('/pasang-iklan', 'User\Iklan::index');
 $routes->post('/pasang-iklan/update/(:num)', 'User\Iklan::update/$1');
+
+// USER MITRA
+$routes->get('/mitra', 'User\Mitra::index');
+$routes->get('/mitra/daftar', 'User\Mitra::register');
+
+// USER PESANAN
+$routes->get('/pesanan', 'User\Pesanan::index');
+$routes->get('/pesanan/riwayat', 'User\Pesanan::history');
 
 //ROUTES KULINER
 $routes->get('/kuliner', 'User\Kuliner::index');

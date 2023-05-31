@@ -7,7 +7,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        heebo: ['Heebo']
+        heebo: ['Heebo'],
+        pacifico: ['Pacifico']
       },
       colors: {
         tegal: ['#6096B4']

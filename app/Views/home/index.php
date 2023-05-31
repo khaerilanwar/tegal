@@ -132,7 +132,7 @@
                 </div>
                 <div class="mt-5">
                     <span class="px-3 py-2 text-sm sm:text-lg bg-[#6096B4] text-white font-heebo rounded-lg">Pariwisata</span>
-                    <h5 class="sm:mt-3 mt-2 sm:sm:text-xl font-bold font-heebo"><?= $wisata[0]['nama_wisata']; ?></h5>
+                    <h5 class="sm:mt-3 mt-2 sm:sm:text-xl font-bold font-heebo"><?= $wisata[0]['nama']; ?></h5>
                     <p class="sm:mt-1"><i class="fa-solid fa-location-dot"></i><span class="ml-2"><?php
                                                                                                     $alamat = $wisata[0]['alamat'];
                                                                                                     $alamat = explode(" ", $alamat);
@@ -154,7 +154,7 @@
                 </div>
                 <div class="mt-5">
                     <span class="px-3 py-2 text-sm sm:text-lg bg-[#6096B4] text-white font-heebo rounded-lg">Pariwisata</span>
-                    <h5 class="sm:mt-3 mt-2 sm:sm:text-xl font-bold font-heebo"><?= $wisata[1]['nama_wisata']; ?></h5>
+                    <h5 class="sm:mt-3 mt-2 sm:sm:text-xl font-bold font-heebo"><?= $wisata[1]['nama']; ?></h5>
                     <p class="sm:mt-1"><i class="fa-solid fa-location-dot"></i><span class="ml-2"><?php
                                                                                                     $alamat = $wisata[1]['alamat'];
                                                                                                     $alamat = explode(" ", $alamat);
@@ -176,7 +176,7 @@
                 </div>
                 <div class="mt-5">
                     <span class="px-3 py-2 text-sm sm:text-lg bg-[#6096B4] text-white font-heebo rounded-lg">Pariwisata</span>
-                    <h5 class="sm:mt-3 mt-2 sm:text-xl font-bold font-heebo"><?= $penginapan[0]['nama_penginapan']; ?></h5>
+                    <h5 class="sm:mt-3 mt-2 sm:text-xl font-bold font-heebo"><?= $penginapan[0]['nama']; ?></h5>
                     <p class="sm:mt-1"><i class="fa-solid fa-location-dot"></i><span class="ml-2"><?php
                                                                                                     $alamat = $penginapan[0]['alamat'];
                                                                                                     $alamat = explode(" ", $alamat);
@@ -198,7 +198,7 @@
                 </div>
                 <div class="mt-5">
                     <span class="px-3 py-2 text-sm sm:text-lg bg-[#6096B4] text-white font-heebo rounded-lg">Pariwisata</span>
-                    <h5 class="sm:mt-3 mt-2 sm:text-xl font-bold font-heebo"><?= $kuliner[0]['nama_kuliner']; ?></h5>
+                    <h5 class="sm:mt-3 mt-2 sm:text-xl font-bold font-heebo"><?= $kuliner[0]['nama']; ?></h5>
                     <p class="sm:mt-1"><i class="fa-solid fa-location-dot"></i><span class="ml-2"><?php
                                                                                                     $alamat = $kuliner[0]['alamat'];
                                                                                                     $alamat = explode(" ", $alamat);

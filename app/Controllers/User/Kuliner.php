@@ -18,42 +18,42 @@ class Kuliner extends BaseController
     public function index()
     {
         $currentPage = $this->request->getGet('page') ? $this->request->getGet('page') : 1;
-        $menu = $this->request->getGet('menu');
-        $nama = $this->request->getGet('nama');
+        $menu = $this->request->getGet('t');
+        $nama = $this->request->getGet('s');
 
         switch ($menu) {
             case 'makanan':
                 if ($nama) {
-                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('jenis_kuliner', $menu)->where('status', 1)->like('nama_kuliner', $nama);
+                    $kuliner = $this->kulinerModel->orderBy('nama', 'RANDOM')->where('jenis_kuliner', $menu)->where('status', 1)->like('nama', $nama);
                 } else {
-                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('jenis_kuliner', $menu);
+                    $kuliner = $this->kulinerModel->orderBy('nama', 'RANDOM')->where('jenis_kuliner', $menu);
                 }
                 break;
             case 'minuman':
                 if ($nama) {
-                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('jenis_kuliner', $menu)->where('status', 1)->like('nama_kuliner', $nama);
+                    $kuliner = $this->kulinerModel->orderBy('nama', 'RANDOM')->where('jenis_kuliner', $menu)->where('status', 1)->like('nama', $nama);
                 } else {
-                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('jenis_kuliner', $menu)->where('status', 1);
+                    $kuliner = $this->kulinerModel->orderBy('nama', 'RANDOM')->where('jenis_kuliner', $menu)->where('status', 1);
                 }
                 break;
             case 'camilan':
                 if ($nama) {
-                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('jenis_kuliner', $menu)->where('status', 1)->like('nama_kuliner', $nama);
+                    $kuliner = $this->kulinerModel->orderBy('nama', 'RANDOM')->where('jenis_kuliner', $menu)->where('status', 1)->like('nama', $nama);
                 } else {
-                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('jenis_kuliner', $menu)->where('status', 1);
+                    $kuliner = $this->kulinerModel->orderBy('nama', 'RANDOM')->where('jenis_kuliner', $menu)->where('status', 1);
                 }
                 break;
             default:
                 if ($nama) {
-                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('status', 1)->like('nama_kuliner', $nama);
+                    $kuliner = $this->kulinerModel->orderBy('nama', 'RANDOM')->where('status', 1)->like('nama', $nama);
                 } else {
-                    $kuliner = $this->kulinerModel->orderBy('nama_kuliner', 'RANDOM')->where('status', 1);
+                    $kuliner = $this->kulinerModel->orderBy('nama', 'RANDOM')->where('status', 1);
                 }
         }
 
         $data = [
             'title' => 'Kuliner Kota Tegal',
-            'kuliner' => $kuliner->paginate(8, 'kuliner'),
+            'kuliner' => $kuliner->paginate(6, 'kuliner'),
             'pager' => $this->kulinerModel->pager,
             'currentPage' => $currentPage,
             'menuGet' => $menu,
@@ -63,10 +63,10 @@ class Kuliner extends BaseController
         return view('kuliner/index', $data);
     }
 
-    public function detail($slug)
+    public function detail($id)
     {
-        $kuliner = $this->kulinerModel->where(['slug' => $slug])->first();
-        $nama = $kuliner['nama_kuliner'];
+        $kuliner = $this->kulinerModel->find($id);
+        $nama = $kuliner['nama'];
 
         $data = [
             'title' => "Kuliner $nama",
@@ -80,7 +80,7 @@ class Kuliner extends BaseController
     public function addKuliner()
     {
         $rules = [
-            'nama_kuliner' => [
+            'nama' => [
                 'rules' => 'required|trim',
                 'errors' => [
                     'required' => 'Nama kuliner harus diisi'
@@ -152,8 +152,8 @@ class Kuliner extends BaseController
         }
 
         $this->kulinerModel->save([
-            'nama_kuliner' => htmlspecialchars($this->request->getPost('nama_kuliner')),
-            'slug' => url_title(htmlspecialchars($this->request->getPost('nama_kuliner')), '-', true),
+            'nama' => htmlspecialchars($this->request->getPost('nama')),
+            'slug' => url_title(htmlspecialchars($this->request->getPost('nama')), '-', true),
             'user_email' => session()->email,
             'nomor_user' => htmlspecialchars($this->request->getPost('nomor_user')),
             'jenis_kuliner' => htmlspecialchars($this->request->getPost('jenis_kuliner')),

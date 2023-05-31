@@ -13,7 +13,6 @@ class Iklan extends BaseController
     protected $jasaModel;
     protected $kulinerModel;
     protected $penginapanModel;
-    protected $jasa;
     protected $kuliner;
     protected $penginapan;
 
@@ -21,10 +20,8 @@ class Iklan extends BaseController
     {
         helper('tegal');
         cekLogin();
-        $this->jasaModel = new JasaModel();
         $this->kulinerModel = new KulinerModel();
         $this->penginapanModel = new PenginapanModel();
-        $this->jasa = \Config\Database::connect()->table('jasa');
         $this->kuliner = \Config\Database::connect()->table('kuliner');
         $this->penginapan = \Config\Database::connect()->table('penginapan');
     }
@@ -51,15 +48,7 @@ class Iklan extends BaseController
                     $dataIklan = $this->penginapan->getWhere(['user_email' => session()->email, 'status' => 1])->getResultArray();
                 }
                 break;
-            case 'jasa':
-                if ($search) {
-                    $dataIklan = $this->jasaModel->where('status', 1)->where('user_email', session()->email)->asArray()->like('nama_jasa', $search)->findAll();
-                } else {
-                    $dataIklan = $this->jasa->getWhere(['user_email' => session()->email, 'status' => 1])->getResultArray();
-                }
-                break;
             default:
-                $dataJasa = $this->jasa->getWhere(['user_email' => session()->email, 'status' => 1])->getResultArray();
                 $dataKuliner = $this->kuliner->getWhere(['user_email' => session()->email, 'status' => 1])->getResultArray();
                 $dataPenginapan = $this->penginapan->getWhere(['user_email' => session()->email, 'status' => 1])->getResultArray();
         }
@@ -70,9 +59,6 @@ class Iklan extends BaseController
         } elseif ($menu == 'penginapan') {
             $part = 'user/partial/penginapan';
             $title = 'Pasang Iklan Penginapan';
-        } elseif ($menu == 'jasa') {
-            $part = 'user/partial/jasa';
-            $title = 'Pasang Iklan Jasa';
         } else {
             $part = 'user/partial/index';
             $title = 'Pasang Iklan Anda';
@@ -98,7 +84,6 @@ class Iklan extends BaseController
                 'partial' => $part,
                 'dataIklan' => false,
                 'validation' => \Config\Services::validation(),
-                'dataJasa' => $dataJasa,
                 'dataKuliner' => $dataKuliner,
                 'dataPenginapan' => $dataPenginapan,
             ];

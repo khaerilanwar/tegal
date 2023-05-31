@@ -17,7 +17,7 @@
     <!-- CDN GOOGLE FONT HEEBO -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
 </head>
 
 <body class="dark:bg-slate-900">
@@ -100,14 +100,18 @@
         </script>
     <?php endif; ?>
 
+    <!-- JAVASCRIPT CUSTOM -->
+    <script src="/assets/js/script.js"></script>
+
     <script>
         function total() {
             var jumlahTiket, hargaTiket, hasil;
+
             jumlahTiket = parseInt(document.getElementById('jumlah_tiket').value);
             hargaTiket = parseInt(document.getElementById('harga').value);
             if (jumlahTiket > 0) {
                 hasil = jumlahTiket * hargaTiket;
-                document.getElementById('harga_total').value = hasil;
+                document.getElementById('harga_total').value = `Rp ${hasil.toLocaleString('id-ID')}`;
             }
         }
     </script>
@@ -210,9 +214,11 @@
         const dropdown = document.querySelector('.dropdown');
         const dropdownMenu = document.querySelector('.dropdown-menu');
 
-        dropdown.addEventListener('click', function() {
-            dropdownMenu.classList.toggle('hidden');
-        });
+        if (dropdown != null) {
+            dropdown.addEventListener('click', function() {
+                dropdownMenu.classList.toggle('hidden');
+            });
+        }
     </script>
 </body>
 

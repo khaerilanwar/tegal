@@ -12,12 +12,15 @@ class PesananModel extends Model
     protected $allowedFields = [
         'no_pesanan',
         'customer',
-        'email_cust',
         'tanggal_pesan',
-        'nama_wisata',
         'tanggal_datang',
         'jumlah_tiket',
+        'jenis_pesan',
+        'id_user',
         'id_payment',
-        'harga_total'
+        'id_produk',
+        'harga_total',
+        'status',
+        'bukti'
     ];
 }

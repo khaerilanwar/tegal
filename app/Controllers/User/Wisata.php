@@ -22,9 +22,9 @@ class Wisata extends BaseController
     public function index()
     {
         $currentPage = $this->request->getGet('page') ? $this->request->getGet('page') : 1;
-        $keyword = $this->request->getGet('cari');
+        $keyword = $this->request->getGet('s');
         if ($keyword) {
-            $wisata = $this->wisataModel->like('nama_wisata', $keyword)->orLike('lokasi', $keyword);
+            $wisata = $this->wisataModel->like('nama', $keyword)->orLike('lokasi', $keyword);
         } else {
             $wisata = $this->wisataModel;
         }
@@ -37,20 +37,16 @@ class Wisata extends BaseController
             'user' => $this->user
         ];
 
-        if ($keyword) {
-            return view('wisata/result', $data);
-        }
-
         return view('wisata/index', $data);
     }
 
     public function detail($id)
     {
         $wisata = $this->wisataModel->find($id);
-        $nama_wisata = $wisata['nama_wisata'];
+        $nama = $wisata['nama'];
 
         $data = [
-            'title' => "Pariwisata $nama_wisata",
+            'title' => "Pariwisata $nama",
             'wisata' => $wisata,
             'user' => $this->user
         ];
@@ -70,13 +66,15 @@ class Wisata extends BaseController
         $data = [
             'no_pesanan' => $no_pesan,
             'customer' => htmlspecialchars($this->request->getPost('customer')),
-            'email_cust' => htmlspecialchars($this->request->getPost('email')),
             'tanggal_pesan' => Time::now(),
-            'nama_wisata' => htmlspecialchars($this->request->getPost('nama_wisata')),
             'tanggal_datang' => htmlspecialchars($this->request->getPost('tanggal_datang')),
             'jumlah_tiket' => htmlspecialchars($this->request->getPost('jumlah_tiket')),
+            'jenis_pesan' => 'wisata',
+            'id_user' => $this->user['id'],
             'id_payment' => htmlspecialchars($this->request->getPost('payment')),
-            'harga_total' => htmlspecialchars($this->request->getPost('harga_total'))
+            'id_produk' => htmlspecialchars($this->request->getPost('id_produk')),
+            'harga_total' => htmlspecialchars(preg_replace('/[^0-9]/', '', $this->request->getPost('harga_total'))),
+            'status' => 0
         ];
 
         $this->pesananModel->insert($data);
@@ -85,10 +83,9 @@ class Wisata extends BaseController
         return redirect()->to("wisata/tagihan/$no_pesan");
     }
 
-    public function pesanTiket()
+    public function pesanTiket($id)
     {
         cekLogin();
-        $id = $this->request->getGet('idwisata');
 
         if (!$id) {
             return redirect()->back();
@@ -108,12 +105,14 @@ class Wisata extends BaseController
         $builder = $db->table('pesanan');
         $builder->select('*');
         $builder->join('pembayaran', 'pembayaran.id = pesanan.id_payment');
+        $builder->join('wisata', 'wisata.id = pesanan.id_produk');
         $query = $builder->getWhere(['no_pesanan' => $kode])->getRowArray();
 
         $data = [
             'title' => 'Tagihan Tiket Wisata',
             'bayar' => $query,
-            'wisata' => $this->wisataModel->where('nama_wisata', $query['nama_wisata'])->first(),
+            // 'wisata' => $this->wisataModel->where('nama', $query['nama'])->first(),
+            // 'wisata' => $this->wisataModel->where('nama', )
             'user' => $this->user
         ];
 
@@ -124,8 +123,10 @@ class Wisata extends BaseController
     {
         $db = \Config\Database::connect();
         $builder = $db->table('pesanan');
-        $builder->select('*');
+        $builder->select('pesanan.no_pesanan, pesanan.tanggal_pesan, user.email, wisata.nama, pesanan.jumlah_tiket, pesanan.harga_total, pembayaran.detail, pembayaran.via');
         $builder->join('pembayaran', 'pembayaran.id = pesanan.id_payment');
+        $builder->join('wisata', 'wisata.id = pesanan.id_produk');
+        $builder->join('user', 'user.id = pesanan.id_user');
         $query = $builder->getWhere(['no_pesanan' => $kode])->getRowArray();
 
         $data = [

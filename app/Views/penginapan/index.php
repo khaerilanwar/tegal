@@ -1,76 +1,78 @@
-<?php $this->extend('layouts/template'); ?>
+<?php $this->extend('layouts/temp'); ?>
 
 <?php $this->section('content'); ?>
 
-<div class="px-4 pt-5 mb-5 text-center">
-    <img class="d-block mx-auto mb-4" src="/assets/img/brand-tegal.png" alt="" width="72">
-    <h1 class="display-5 fw-bold">Hotel & Penginapan di Kota Tegal</h1>
-    <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4">Rekomendasi Hotel dan penginapan yang ada di kota tegal.</p>
-    </div>
-    <h3 class="mb-4">Kategori Penginapan Kota Tegal</h3>
-    <div class="row">
-        <div class="col">
-            <a href="/penginapan?kategori=hotel" class="btn btn-outline-success mx-3 px-3 fs-5 <?= $kategoriGet == 'hotel' ? 'active' : ''; ?>">Hotel</a>
-            <a href="/penginapan?kategori=villa" class="btn btn-outline-info mx-3 px-3 fs-5 <?= $kategoriGet == 'villa' ? 'active' : ''; ?>">Aneka Villa</a>
+<div class="container mx-auto mt-10">
+
+    <form class="sm:w-1/2 mx-auto w-5/6" action="" method="get">
+        <div class="flex">
+            <label for="search-dropdown" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Your Email</label>
+            <button id="search-tipe" data-dropdown-toggle="dropdown-kategori" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600" type="button"><?= $kategoriGet ? $kategoriGet : "All categories"; ?> <svg aria-hidden="true" class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg></button>
+            <div id="dropdown-kategori" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-button">
+                    <li>
+                        <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">All categories</button>
+                    </li>
+                    <li>
+                        <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Hotel</button>
+                    </li>
+                    <li>
+                        <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Villa</button>
+                    </li>
+                </ul>
+            </div>
+            <input type="hidden" name="t" id="input-kategori">
+            <div class="relative w-full">
+                <input type="search" id="search-dropdown" name="s" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="Cari penginapan dan hotel...">
+                <button type="submit" class="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-blue-700 rounded-r-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    <span class="sr-only">Search</span>
+                </button>
+            </div>
         </div>
-    </div>
+    </form>
+
+
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-4 offset-md-8">
-            <form action="" method="get">
-                <div class="input-group ml-3">
-                    <?php if ($kategoriGet) : ?>
-                        <input type="hidden" name="kategori" value="<?= $kategoriGet; ?>">
-                    <?php endif; ?>
-                    <input type="text" id="input1-group2" name="nama" placeholder="Nama Penginapan" class="form-control" autocomplete="off">
-                    <div class="input-group-btn">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fa fa-search"></i> Cari
-                        </button>
-                    </div>
+
+<div class="container mx-auto sm:px-20 px-5">
+    <h2 class="font-heebo font-bold text-2xl md:px-3 md:text-4xl text-center my-12 dark:text-white">Penginapan dan Hotel
+    </h2>
+
+    <div class="flex justify-center sm:gap-16 flex-wrap">
+        <?php $i = 1 + (6 * ($currentPage - 1)); ?>
+        <?php foreach ($penginapan as $data) : ?>
+            <div class="rounded-lg shadow-md p-3 mb-4">
+                <a href="/penginapan/detail/<?= $data['id']; ?>" class="mb-5 block rounded-full w-80 h-80 relative overflow-hidden border-x-4 border-red-500 group">
+                    <img class="absolute h-full w-full object-cover group-hover:scale-125 transition-all duration-700" src="/assets/img/<?= $data['gambar']; ?>" alt="">
+                </a>
+                <div class="border-t-2 border-slate-700">
+                    <h3 class="font-heebo text-xl font-semibold py-2 text-center dark:text-white"><?= $data['nama']; ?></h3>
+                    <p class="text-center"><i class="fa-solid fa-location-dot dark:text-white"></i><span class="ml-2 dark:text-white"><?php
+                                                                                                                                            $alamat = $data['alamat'];
+                                                                                                                                            $alamat = explode(" ", $alamat);
+                                                                                                                                            $alamat_split = [];
+                                                                                                                                            for ($i = 0; $i < 4; $i++) {
+                                                                                                                                                $alamat_split[] = $alamat[$i];
+                                                                                                                                            }
+                                                                                                                                            $view_alamat = implode(" ", $alamat_split);
+                                                                                                                                            if ($view_alamat[-1] == "," or $view_alamat[-1] == ".") {
+                                                                                                                                                substr($view_alamat, 0, strlen($view_alamat) - 1);
+                                                                                                                                            }
+                                                                                                                                            echo $view_alamat
+                                                                                                                                            ?></span></p>
                 </div>
-            </form>
-        </div>
+            </div>
+        <?php endforeach; ?>
     </div>
 </div>
+<?= $pager->links('penginapan', 'pagination'); ?>
 
-<!-- ALBUM  -->
-<div class="album py-5 bg-light">
-    <div class="container mb-5">
-
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
-            <?php $i = 1 + (8 * ($currentPage - 1)); ?>
-            <?php foreach ($penginapan as $j) : ?>
-                <!-- PERALBUM SATU FOTO -->
-                <div class="col-sm">
-                    <div class="card shadow-sm">
-                        <a class="text-decoration-none text-dark" href="/penginapan/detail/<?= $j['slug']; ?>">
-                            <img class="bd-placeholder-img card-img-top size-img" src="/assets/img/<?= $j['gambar']; ?>" height="270">
-                            <div class="card-body">
-                                <h5 class="text-truncate"><?= $j['nama_penginapan']; ?></h5>
-                                <p class="card-text mb-4 text-truncate"> <?= $j['alamat']; ?></p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <span class="fs-5 fw-bold"> Rp. <?= number_format($j['harga'], 0, '', '.') ?></span>
-                                    </div>
-                                    <?php
-                                        $nomor = str_replace($j['nomor_user'][0], '62', $j['nomor_user']);
-                                        $text = "Haloo, saya ingin memesan kamar " . $j['nama_penginapan'] . " anda!";
-                                        $text = urlencode($text);
-                                        ?>
-                                    <a target="_blank" href="https://api.whatsapp.com/send/?phone=<?= $nomor; ?>&text=<?= $text; ?>" class="btn btn-primary float-end">Info & Booking</a>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
-        <?= $pager->links('penginapan', 'pagination'); ?>
-    </div>
-</div>
 <!-- END ALBUM -->
 
 <?php $this->endSection(); ?>

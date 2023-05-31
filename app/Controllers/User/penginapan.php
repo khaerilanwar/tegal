@@ -18,35 +18,35 @@ class Penginapan extends BaseController
     public function index()
     {
         $currentPage = $this->request->getGet('page') ? $this->request->getGet('page') : 1;
-        $kategori = $this->request->getGet('kategori');
-        $nama = $this->request->getGet('nama');
+        $kategori = $this->request->getGet('t');
+        $nama = $this->request->getGet('s');
 
         switch ($kategori) {
             case 'hotel':
                 if ($nama) {
-                    $penginapan = $this->penginapanModel->orderBy('nama_penginapan', 'RANDOM')->where('jenis_penginapan', $kategori)->where('status', 1)->like('nama_penginapan', $nama);
+                    $penginapan = $this->penginapanModel->orderBy('nama', 'RANDOM')->where('jenis_penginapan', $kategori)->where('status', 1)->like('nama', $nama);
                 } else {
-                    $penginapan = $this->penginapanModel->orderBy('nama_penginapan', 'RANDOM')->where('jenis_penginapan', $kategori)->where('status', 1);
+                    $penginapan = $this->penginapanModel->orderBy('nama', 'RANDOM')->where('jenis_penginapan', $kategori)->where('status', 1);
                 }
                 break;
             case 'villa':
                 if ($nama) {
-                    $penginapan = $this->penginapanModel->orderBy('nama_penginapan', 'RANDOM')->where('jenis_penginapan', $kategori)->where('status', 1)->like('nama_penginapan', $nama);
+                    $penginapan = $this->penginapanModel->orderBy('nama', 'RANDOM')->where('jenis_penginapan', $kategori)->where('status', 1)->like('nama', $nama);
                 } else {
-                    $penginapan = $this->penginapanModel->orderBy('nama_penginapan', 'RANDOM')->where('jenis_penginapan', $kategori)->where('status', 1);
+                    $penginapan = $this->penginapanModel->orderBy('nama', 'RANDOM')->where('jenis_penginapan', $kategori)->where('status', 1);
                 }
                 break;
             default:
                 if ($nama) {
-                    $penginapan = $this->penginapanModel->orderBy('nama_penginapan', 'RANDOM')->where('status', 1)->like('nama_penginapan', $nama);
+                    $penginapan = $this->penginapanModel->orderBy('nama', 'RANDOM')->where('status', 1)->like('nama', $nama);
                 } else {
-                    $penginapan = $this->penginapanModel->orderBy('nama_penginapan', 'RANDOM')->where('status', 1);
+                    $penginapan = $this->penginapanModel->orderBy('nama', 'RANDOM')->where('status', 1);
                 }
         }
 
         $data = [
             'title' => 'Penginapan Kabupaten Tegal',
-            'penginapan' => $penginapan->paginate(8, 'penginapan'),
+            'penginapan' => $penginapan->paginate(6, 'penginapan'),
             'pager' => $this->penginapanModel->pager,
             'currentPage' => $currentPage,
             'kategoriGet' => $kategori,
@@ -56,10 +56,10 @@ class Penginapan extends BaseController
         return view('penginapan/index', $data);
     }
 
-    public function detail($slug)
+    public function detail($id)
     {
-        $penginapan = $this->penginapanModel->where(['slug' => $slug])->first();
-        $nama = $penginapan['nama_penginapan'];
+        $penginapan = $this->penginapanModel->find($id);
+        $nama = $penginapan['nama'];
 
         $data = [
             'title' => "Penginapan $nama",
@@ -73,7 +73,7 @@ class Penginapan extends BaseController
     public function addPenginapan()
     {
         $rules = [
-            'nama_penginapan' => [
+            'nama' => [
                 'rules' => 'required|trim',
                 'errors' => [
                     'required' => 'Nama penginapan harus diisi'
@@ -141,8 +141,8 @@ class Penginapan extends BaseController
         }
 
         $this->penginapanModel->save([
-            'nama_penginapan' => htmlspecialchars($this->request->getPost('nama_penginapan')),
-            'slug' => url_title(htmlspecialchars($this->request->getPost('nama_penginapan')), '-', true),
+            'nama' => htmlspecialchars($this->request->getPost('nama')),
+            'slug' => url_title(htmlspecialchars($this->request->getPost('nama')), '-', true),
             'user_email' => session()->email,
             'nomor_user' => htmlspecialchars($this->request->getPost('nomor_user')),
             'jenis_penginapan' => htmlspecialchars($this->request->getPost('jenis_penginapan')),

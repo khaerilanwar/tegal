@@ -23,11 +23,11 @@
         </tr>
         <tr>
             <td>Email Customer</td>
-            <td><?= $bayar['email_cust']; ?></td>
+            <td><?= $bayar['email']; ?></td>
         </tr>
         <tr>
             <td>Nama Wisata</td>
-            <td><?= $bayar['nama_wisata']; ?></td>
+            <td><?= $bayar['nama']; ?></td>
         </tr>
         <tr>
             <td>Jumlah Tiket</td>
