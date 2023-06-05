@@ -198,6 +198,25 @@
             html.classList.remove('dark');
         }
 
+        // script modal mitra gabung
+        const mitraCheck = document.getElementById('mitra-checkbox');
+        const btnAccept = document.querySelector('button#mitra-accept-btn');
+
+        // pointer-events-none opacity-50 cursor-not-allowed
+        mitraCheck.addEventListener('click', function() {
+            if (mitraCheck.checked) {
+                btnAccept.classList.remove('pointer-events-none', 'opacity-50', 'cursor-not-allowed');
+            } else {
+                btnAccept.classList.add('pointer-events-none', 'opacity-50', 'cursor-not-allowed');
+            }
+        })
+
+
+        // script modal tambah produk
+        document.addEventListener("DOMContentLoaded", function(event) {
+            document.getElementById('ModalButtonTambahProduk').click();
+        });
+
         // checkbox.addEventListener('click', function() {
         //     if (checkbox.checked) {
         //         html.classList.add('dark');

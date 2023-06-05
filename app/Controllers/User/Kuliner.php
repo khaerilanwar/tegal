@@ -130,7 +130,7 @@ class Kuliner extends BaseController
         ];
 
         if (!$this->validate($rules)) {
-            return redirect()->to('/pasang-iklan?bidang=kuliner#form')->withInput();
+            return redirect()->to('/mitra')->withInput();
         }
 
         $fileGambar = $this->request->getFile('gambar');
@@ -153,21 +153,19 @@ class Kuliner extends BaseController
 
         $this->kulinerModel->save([
             'nama' => htmlspecialchars($this->request->getPost('nama')),
-            'slug' => url_title(htmlspecialchars($this->request->getPost('nama')), '-', true),
-            'user_email' => session()->email,
-            'nomor_user' => htmlspecialchars($this->request->getPost('nomor_user')),
             'jenis_kuliner' => htmlspecialchars($this->request->getPost('jenis_kuliner')),
             'deskripsi' => htmlspecialchars($this->request->getPost('deskripsi')),
             'harga' => htmlspecialchars($this->request->getPost('harga')),
             'alamat' => htmlspecialchars($this->request->getPost('alamat')),
             'maps' => htmlspecialchars($this->request->getPost('maps')),
             'gambar' => $namaGambar,
-            'status' => 0
+            'status' => 0,
+            'id_user' => $this->user['id']
         ]);
 
-        session()->setFlashdata('addKuliner', 'Berhasil menambahkan iklan Kuliner');
+        session()->setFlashdata('addKuliner', 'Menunggu konfirmasi admin');
 
-        return redirect()->to('/pasang-iklan');
+        return redirect()->to('/mitra');
     }
 
     public function hapus($id)
@@ -183,6 +181,6 @@ class Kuliner extends BaseController
         $this->kulinerModel->delete($id);
         session()->setFlashdata('hapusIklan', 'Data iklan berhasil dihapus!');
 
-        return redirect()->to('/pasang-iklan');
+        return redirect()->to('/mitra');
     }
 }

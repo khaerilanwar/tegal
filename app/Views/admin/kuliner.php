@@ -61,10 +61,10 @@
                             <?php foreach ($kuliner as $k) : ?>
                                 <tr>
                                     <td class="align-middle"><?= $i; ?></td>
-                                    <td class="align-middle"><?= $k['nama_kuliner']; ?></td>
+                                    <td class="align-middle"><?= $k['nama']; ?></td>
                                     <td class="align-middle"><?= $k['jenis_kuliner']; ?></td>
                                     <td class="align-middle"><?= number_format($k['harga'], 0, '', '.') ?></td>
-                                    <td class="align-middle"><?= $k['user_email']; ?></td>
+                                    <td class="align-middle"><?= $k['email']; ?></td>
                                     <td>
                                         <form action="/kuliner-tegal/<?= $k['id']; ?>/daftar" method="post" class="d-inline">
                                             <?= csrf_field(); ?>
@@ -78,7 +78,6 @@
                         </tbody>
                     </table>
                 </div>
-                <?= $pager->links('kulinerAdmin', 'pagination'); ?>
             </div>
         </div>
     </div>

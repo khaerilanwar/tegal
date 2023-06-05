@@ -50,6 +50,11 @@
                         <div class="transition-all duration-500 mt-1 h-[3px] bg-slate-400 rounded-md group-hover:bg-purple-500">
                         </div>
                     </li>
+                    <li class="group">
+                        <a href="/login" class="transition-all duration-500 group-hover:text-blue-500 font-heebo text-lg text-white">Masuk</a>
+                        <div class="transition-all duration-500 mt-1 h-[3px] bg-slate-400 rounded-md group-hover:bg-purple-500">
+                        </div>
+                    </li>
                 </ul>
             </div>
             <div class="sm:hidden mr-4 my-auto flex dropdown rounded bg-[#6096B4] w-11 h-11">
@@ -58,16 +63,19 @@
         </div>
         <ul class="dropdown-menu rounded absolute left-4 right-4 hidden bg-white py-1">
             <li class="my-2 ml-8">
-                <a class="font-heebo font-" href="#">Beranda</a>
+                <a class="font-heebo font-" href="/">Beranda</a>
             </li>
             <li class="my-2 ml-8">
-                <a class="font-heebo" href="#">Destinasi</a>
+                <a class="font-heebo" href="/wisata">Destinasi</a>
             </li>
             <li class="my-2 ml-8">
-                <a class="font-heebo" href="#">Kuliner</a>
+                <a class="font-heebo" href="/kuliner">Kuliner</a>
             </li>
             <li class="my-2 ml-8">
-                <a class="font-heebo" href="#">Penginapan</a>
+                <a class="font-heebo" href="/penginapan">Penginapan</a>
+            </li>
+            <li class="my-2 ml-8">
+                <a class="font-heebo" href="/login">Masuk</a>
             </li>
         </ul>
 
@@ -82,20 +90,20 @@
 
         <div class="container mx-auto mt-[14rem]">
             <div class="flex sm:justify-center justify-evenly sm:gap-16">
-                <a href="#" class="grid justify-items-center">
+                <a href="/wisata" class="grid justify-items-center">
                     <i class="fa-solid block fa-map-location-dot text-white sm:text-4xl text-2xl"></i>
                     <span class="text-white block text-xs sm:text-lg font-heebo text-center leading-5 mt-3 font-extrabold">DESTINASI
                         <br>
                         WISATA</span>
                 </a>
-                <a href="#" class="grid justify-items-center">
+                <a href="/kuliner" class="grid justify-items-center">
                     <i class="fa-solid fa-bowl-food text-white sm:text-4xl text-2xl"></i>
                     <span class="text-white block text-xs sm:text-lg font-heebo text-center leading-5 mt-3 font-extrabold">KULINER
                         KHAS
                         <br>
                         DAERAH</span>
                 </a>
-                <a href="#" class="grid justify-items-center">
+                <a href="/penginapan" class="grid justify-items-center">
                     <i class="fa-solid fa-hotel text-white sm:text-4xl text-2xl"></i>
                     <span class="text-white block text-xs sm:text-lg font-heebo text-center leading-5 mt-3 font-extrabold">HOTEL
                         DAN <br>

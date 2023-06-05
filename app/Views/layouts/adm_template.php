@@ -106,20 +106,6 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="has-sub <?= preg_match('/Jasa/', $title) ? 'active' : ''; ?>">
-                                <a href="#">
-                                    <i class="fa-brands fa-servicestack"></i>Jasa
-                                    <span class="bot-line"></span>
-                                </a>
-                                <ul class="header3-sub-list list-unstyled">
-                                    <li>
-                                        <a href="/layanan">Daftar Layanan</a>
-                                    </li>
-                                    <li>
-                                        <a href="/layanan/confirm">Konfirmasi Iklan</a>
-                                    </li>
-                                </ul>
-                            </li>
                         </ul>
                     </div>
                     <div class="header__tool">

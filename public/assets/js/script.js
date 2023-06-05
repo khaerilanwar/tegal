@@ -11,6 +11,7 @@ const searchTipePenginapan = document.getElementById("search-tipe");
 const inputKategori = document.getElementById("input-kategori");
 const parentKategori = document.querySelector("#dropdown-kategori > ul");
 const listKategori = parentKategori.querySelectorAll("li");
+const dropdownKategori = document.querySelector('#dropdown-kategori');
 
 for (let i=0; i<listKategori.length; i++) {
     listKategori[i].addEventListener("click", function() {
@@ -20,5 +21,7 @@ for (let i=0; i<listKategori.length; i++) {
 
         // menambahkan value input
         inputKategori.setAttribute("value", nilai.textContent);
+
+        dropdownKategori.classList.toggle('hidden');
     })
 }

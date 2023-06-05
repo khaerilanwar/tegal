@@ -26,26 +26,47 @@ class Penginapan extends BaseController
 
         // Query data admin
         $admin = $this->build->getWhere(['email' => 'khaerilanwar1992@gmail.com'])->getRowArray();
+        $db = \Config\Database::connect();
 
         switch ($dasar) {
             case 'nama_penginapan':
-                $penginapan = $this->penginapanModel->where('status', 1)->orderBy('id', 'desc')->asArray()->like('nama_penginapan', $cari);
+                // $penginapan = $this->penginapanModel->where('status', 1)->orderBy('id', 'desc')->asArray()->like('nama_penginapan', $cari);
+                $penginapan = $db->table('penginapan');
+                $penginapan->select('penginapan.nama, penginapan.jenis_penginapan, penginapan.harga, penginapan.id, user.email');
+                $penginapan->join('user', 'user.id = penginapan.id_user');
+                $penginapan->where('status', 1)->orderBy('id', 'desc');
+                $penginapan = $penginapan->like('penginapan.nama', $cari)->get()->getResultArray();
                 break;
             case 'jenis_penginapan':
-                $penginapan = $this->penginapanModel->where('status', 1)->orderBy('id', 'desc')->asArray()->like('jenis_penginapan', $cari);
+                // $penginapan = $this->penginapanModel->where('status', 1)->orderBy('id', 'desc')->asArray()->like('jenis_penginapan', $cari);
+                $penginapan = $db->table('penginapan');
+                $penginapan->select('penginapan.nama, penginapan.jenis_penginapan, penginapan.harga, penginapan.id, user.email');
+                $penginapan->join('user', 'user.id = penginapan.id_user');
+                $penginapan->where('status', 1)->orderBy('id', 'desc');
+                $penginapan = $penginapan->like('penginapan.jenis_penginapan', $cari)->get()->getResultArray();
                 break;
             case 'user_email':
-                $penginapan = $this->penginapanModel->where('status', 1)->orderBy('id', 'desc')->asArray()->like('user_email', $cari);
+                // $penginapan = $this->penginapanModel->where('status', 1)->orderBy('id', 'desc')->asArray()->like('user_email', $cari);
+                $penginapan = $db->table('penginapan');
+                $penginapan->select('penginapan.nama, penginapan.jenis_penginapan, penginapan.harga, penginapan.id, user.email');
+                $penginapan->join('user', 'user.id = penginapan.id_user');
+                $penginapan->where('status', 1)->orderBy('id', 'desc');
+                $penginapan = $penginapan->like('user.email', $cari)->get()->getResultArray();
                 break;
             default:
-                $penginapan = $this->penginapanModel->where('status', 1)->orderBy('id', 'desc');
+                // $penginapan = $this->penginapanModel->where('status', 1)->orderBy('id', 'desc');
+                $penginapan = $db->table('penginapan');
+                $penginapan->select('penginapan.nama, penginapan.jenis_penginapan, penginapan.harga, penginapan.id, user.email');
+                $penginapan->join('user', 'user.id = penginapan.id_user');
+                $penginapan->where('status', 1)->orderBy('id', 'desc');
+                $penginapan = $penginapan->get()->getResultArray();
         }
 
         $data = [
             'title' => "Penginapan Kabupaten Tegal",
             'admin' => $admin,
             'validation' => \Config\Services::validation(),
-            'penginapan' => $penginapan->paginate(10, 'penginapanAdmin'),
+            'penginapan' => $penginapan,
             'pager' => $this->penginapanModel->pager,
             'currentPage' => $currentPage
         ];

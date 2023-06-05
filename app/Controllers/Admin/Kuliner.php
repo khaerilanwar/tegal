@@ -27,26 +27,47 @@ class Kuliner extends BaseController
 
         // QUERY DATA ADMIN
         $admin = $this->build->getWhere(['email' => 'khaerilanwar1992@gmail.com'])->getRowArray();
+        $db = \Config\Database::connect();
 
         switch ($dasar) {
             case 'nama_kuliner':
-                $kuliner = $this->kulinerModel->where('status', 1)->orderBy('id', 'desc')->asArray()->like('nama_kuliner', $cari);
+                // $kuliner = $this->kulinerModel->where('status', 1)->orderBy('id', 'desc')->asArray()->like('nama_kuliner', $cari);
+                $kuliner = $db->table('kuliner');
+                $kuliner->select('kuliner.nama, kuliner.jenis_kuliner, kuliner.harga, kuliner.id, user.email');
+                $kuliner->join('user', 'user.id = kuliner.id_user');
+                $kuliner->where('status', 1)->orderBy('id', 'desc');
+                $kuliner = $kuliner->like('kuliner.nama', $cari)->get()->getResultArray();
                 break;
             case 'jenis_kuliner':
-                $kuliner = $this->kulinerModel->where('status', 1)->orderBy('id', 'desc')->asArray()->like('jenis_kuliner', $cari);
+                // $kuliner = $this->kulinerModel->where('status', 1)->orderBy('id', 'desc')->asArray()->like('jenis_kuliner', $cari);
+                $kuliner = $db->table('kuliner');
+                $kuliner->select('kuliner.nama, kuliner.jenis_kuliner, kuliner.harga, kuliner.id, user.email');
+                $kuliner->join('user', 'user.id = kuliner.id_user');
+                $kuliner->where('status', 1)->orderBy('id', 'desc');
+                $kuliner = $kuliner->like('kuliner.jenis_kuliner', $cari)->get()->getResultArray();
                 break;
             case 'user_email':
-                $kuliner = $this->kulinerModel->where('status', 1)->orderBy('id', 'desc')->asArray()->like('user_email', $cari);
+                // $kuliner = $this->kulinerModel->where('status', 1)->orderBy('id', 'desc')->asArray()->like('user_email', $cari);
+                $kuliner = $db->table('kuliner');
+                $kuliner->select('kuliner.nama, kuliner.jenis_kuliner, kuliner.harga, kuliner.id, user.email');
+                $kuliner->join('user', 'user.id = kuliner.id_user');
+                $kuliner->where('status', 1)->orderBy('id', 'desc');
+                $kuliner = $kuliner->like('user.email', $cari)->get()->getResultArray();
                 break;
             default:
-                $kuliner = $this->kulinerModel->where('status', 1)->orderBy('id', 'desc');
+                // $kuliner = $this->kulinerModel->where('status', 1)->orderBy('id', 'desc');
+                $kuliner = $db->table('kuliner');
+                $kuliner->select('kuliner.nama, kuliner.jenis_kuliner, kuliner.harga, kuliner.id, user.email');
+                $kuliner->join('user', 'user.id = kuliner.id_user');
+                $kuliner->where('status', 1)->orderBy('id', 'desc');
+                $kuliner = $kuliner->get()->getResultArray();
         }
 
         $data = [
             'title' => "Aneka Kuliner Kabupaten Tegal",
             'admin' => $admin,
             'validation' => \Config\Services::validation(),
-            'kuliner' => $kuliner->paginate(10, 'kulinerAdmin'),
+            'kuliner' => $kuliner,
             'pager' => $this->kulinerModel->pager,
             'currentPage' => $currentPage
         ];

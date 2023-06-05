@@ -8,16 +8,15 @@ class PenginapanModel extends Model
 {
     protected $table = 'penginapan';
     protected $allowedFields = [
-        'nama_penginapan',
-        'slug',
+        'nama',
         'jenis_penginapan',
-        'nomor_user',
-        'user_email',
         'harga',
         'deskripsi',
+        'terbooking',
         'gambar',
         'alamat',
         'maps',
-        'status'
+        'status',
+        'id_user'
     ];
 }

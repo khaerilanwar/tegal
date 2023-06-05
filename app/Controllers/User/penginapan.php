@@ -121,7 +121,7 @@ class Penginapan extends BaseController
         ];
 
         if (!$this->validate($rules)) {
-            return redirect()->to('/pasang-iklan?bidang=penginapan#form')->withInput();
+            return redirect()->to('/mitra')->withInput();
         }
 
         $fileGambar = $this->request->getFile('gambar');
@@ -142,21 +142,19 @@ class Penginapan extends BaseController
 
         $this->penginapanModel->save([
             'nama' => htmlspecialchars($this->request->getPost('nama')),
-            'slug' => url_title(htmlspecialchars($this->request->getPost('nama')), '-', true),
-            'user_email' => session()->email,
-            'nomor_user' => htmlspecialchars($this->request->getPost('nomor_user')),
             'jenis_penginapan' => htmlspecialchars($this->request->getPost('jenis_penginapan')),
             'deskripsi' => htmlspecialchars($this->request->getPost('deskripsi')),
             'harga' => htmlspecialchars($this->request->getPost('harga')),
             'alamat' => htmlspecialchars($this->request->getPost('alamat')),
             'maps' => htmlspecialchars($this->request->getPost('maps')),
             'gambar' => $namaGambar,
-            'status' => 0
+            'status' => 0,
+            'id_user' => $this->user['id']
         ]);
 
         session()->setFlashdata('addPenginapan', 'Berhasil menambahkan iklan Penginapan');
 
-        return redirect()->to('/pasang-iklan');
+        return redirect()->to('/mitra');
     }
 
     public function hapus($id)
@@ -172,6 +170,6 @@ class Penginapan extends BaseController
         $this->penginapanModel->delete($id);
         session()->setFlashdata('hapusIklan', 'Data iklan berhasil dihapus!');
 
-        return redirect()->to('/pasang-iklan');
+        return redirect()->to('/mitra');
     }
 }

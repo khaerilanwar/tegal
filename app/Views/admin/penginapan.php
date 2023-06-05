@@ -61,10 +61,10 @@
                             <?php foreach ($penginapan as $p) : ?>
                                 <tr>
                                     <td><?= $i++; ?></td>
-                                    <td><?= $p['nama_penginapan']; ?></td>
+                                    <td><?= $p['nama']; ?></td>
                                     <td><?= $p['jenis_penginapan']; ?></td>
                                     <td><?= number_format($p['harga'], 0, '', '.') ?></td>
-                                    <td><?= $p['user_email']; ?></td>
+                                    <td><?= $p['email']; ?></td>
                                     <td>
                                         <form action="/penginapan-tegal/<?= $p['id']; ?>/daftar" method="post" class="d-inline">
                                             <?= csrf_field(); ?>
@@ -77,7 +77,6 @@
                         </tbody>
                     </table>
                 </div>
-                <?= $pager->links('penginapanAdmin', 'pagination'); ?>
             </div>
         </div>
     </div>

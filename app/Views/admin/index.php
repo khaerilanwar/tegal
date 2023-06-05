@@ -31,15 +31,6 @@
                 </div>
             </div>
             <div class="col-md-6 col-lg-3">
-                <div class="statistic__item statistic__item--orange">
-                    <h2 class="number"><?= $lenJasa; ?></h2>
-                    <span class="desc">Iklan Jasa</span>
-                    <div class="icon">
-                        <i class="zmdi zmdi-library"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
                 <div class="statistic__item statistic__item--blue">
                     <h2 class="number"><?= $lenKuliner; ?></h2>
                     <span class="desc">Iklan Kuliner</span>

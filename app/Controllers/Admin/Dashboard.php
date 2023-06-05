@@ -3,7 +3,6 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-use App\Models\JasaModel;
 use App\Models\KulinerModel;
 use App\Models\PenginapanModel;
 use App\Models\UserModel;
@@ -11,7 +10,6 @@ use App\Models\UserModel;
 class Dashboard extends BaseController
 {
     protected $userModel;
-    protected $jasaModel;
     protected $kulinerModel;
     protected $penginapanModel;
 
@@ -21,7 +19,6 @@ class Dashboard extends BaseController
         cekLogin();
         cekAdmin();
         $this->userModel = new UserModel();
-        $this->jasaModel =  new JasaModel();
         $this->kulinerModel = new KulinerModel();
         $this->penginapanModel = new PenginapanModel();
     }
@@ -67,7 +64,6 @@ class Dashboard extends BaseController
             'pager' => $this->userModel->pager,
             'currentPage' => $currentPage,
             'lenUser' => count($this->userModel->findAll()),
-            'lenJasa' => count($this->jasaModel->findAll()),
             'lenKuliner' => count($this->kulinerModel->findAll()),
             'lenPenginapan' => count($this->penginapanModel->findAll())
         ];

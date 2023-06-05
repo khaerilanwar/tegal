@@ -66,23 +66,41 @@ class Pariwisata extends BaseController
 
         // Query data admin
         $admin = $this->build->getWhere(['email' => 'khaerilanwar1992@gmail.com'])->getRowArray();
+        $db = \Config\Database::connect();
 
         switch ($dasar) {
             case 'customer':
-                $pesanan = $this->pesananModel->orderBy('tanggal_pesan', 'desc')->asArray()->like('customer', $cari);
+                // $pesanan = $this->pesananModel->orderBy('tanggal_pesan', 'desc')->asArray()->like('customer', $cari);
+                $pesanan = $db->table('pesanan');
+                $pesanan->select('user.nama AS customer, pesanan.tanggal_pesan, wisata.nama AS nama_wisata, pesanan.harga_total, pembayaran.detail, pesanan.no_pesanan');
+                $pesanan->join('wisata', 'wisata.id = pesanan.id_produk');
+                $pesanan->join('user', 'user.id = pesanan.id_user');
+                $pesanan->join('pembayaran', 'pembayaran.id = pesanan.id_payment');
+                $pesanan = $pesanan->orderBy('tanggal_pesan', 'desc')->like('customer', $cari)->get()->getResultArray();
                 break;
             case 'no_pesanan':
-                $pesanan = $this->pesananModel->orderBy('tanggal_pesan', 'desc')->asArray()->like('no_pesanan', $cari);
+                // $pesanan = $this->pesananModel->orderBy('tanggal_pesan', 'desc')->asArray()->like('no_pesanan', $cari);
+                $pesanan = $db->table('pesanan');
+                $pesanan->select('user.nama AS customer, pesanan.tanggal_pesan, wisata.nama AS nama_wisata, pesanan.harga_total, pembayaran.detail, pesanan.no_pesanan');
+                $pesanan->join('wisata', 'wisata.id = pesanan.id_produk');
+                $pesanan->join('user', 'user.id = pesanan.id_user');
+                $pesanan->join('pembayaran', 'pembayaran.id = pesanan.id_payment');
+                $pesanan = $pesanan->orderBy('tanggal_pesan', 'desc')->like('no_pesanan', $cari)->get()->getResultArray();
                 break;
             default:
-                $pesanan = $this->pesananModel->orderBy('tanggal_pesan', 'desc');
+                $pesanan = $db->table('pesanan');
+                $pesanan->select('user.nama AS customer, pesanan.no_pesanan, pesanan.tanggal_pesan, wisata.nama AS nama_wisata, pesanan.harga_total, pembayaran.detail, pesanan.no_pesanan');
+                $pesanan->join('wisata', 'wisata.id = pesanan.id_produk');
+                $pesanan->join('user', 'user.id = pesanan.id_user');
+                $pesanan->join('pembayaran', 'pembayaran.id = pesanan.id_payment');
+                $pesanan = $pesanan->orderBy('tanggal_pesan', 'desc')->get()->getResultArray();
         }
 
         $data = [
             'title' => "Pesanan Tiket Pariwisata Kabupaten Tegal",
             'admin' => $admin,
             'validation' => \Config\Services::validation(),
-            'pesanan' => $pesanan->paginate(10, 'tiketAdmin'),
+            'pesanan' => $pesanan,
             'pager' => $this->pesananModel->pager,
             'currentPage' => $currentPage
         ];

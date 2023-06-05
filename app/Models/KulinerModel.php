@@ -8,16 +8,16 @@ class KulinerModel extends Model
 {
     protected $table = 'kuliner';
     protected $allowedFields = [
-        'nama_kuliner',
-        'slug',
-        'user_email',
-        'nomor_user',
+        'nama',
         'jenis_kuliner',
+        'harga',
+        'terjual',
+        'pendapatan',
         'deskripsi',
         'gambar',
-        'harga',
-        'maps',
         'alamat',
+        'maps',
+        'id_user',
         'status'
     ];
 }

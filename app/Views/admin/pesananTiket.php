@@ -63,22 +63,7 @@
                                     <td><?= $p['tanggal_pesan']; ?></td>
                                     <td><?= $p['nama_wisata']; ?></td>
                                     <td>Rp. <?= number_format($p['harga_total'], 0, '', '.'); ?></td>
-                                    <td><?php
-                                            switch ($p['id_payment']) {
-                                                case '1':
-                                                    echo "Dana";
-                                                    break;
-                                                case '2':
-                                                    echo 'ShopeePay';
-                                                    break;
-                                                case '3':
-                                                    echo 'Bank BRI';
-                                                    break;
-                                                case '4':
-                                                    echo 'Bank BCA';
-                                                    break;
-                                            }
-                                            ?></td>
+                                    <td><?= $p['detail']; ?></td>
                                     <td>
                                         <form action="/pariwisata/<?= $p['no_pesanan']; ?>/tiket" method="post" class="d-inline">
                                             <?= csrf_field(); ?>
@@ -91,7 +76,6 @@
                         </tbody>
                     </table>
                 </div>
-                <?= $pager->links('tiketAdmin', 'pagination'); ?>
             </div>
         </div>
     </div>

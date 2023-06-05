@@ -24,7 +24,7 @@
                             </div>
                             <div class="rs-select2--light rs-select2--sm">
                                 <select class="js-select2" name="based">
-                                    <option value="nama_wisata">Nama</option>
+                                    <option value="nama">Nama</option>
                                     <option value="lokasi">Lokasi</option>
                                     <option value="alamat">Alamat</option>
                                 </select>
@@ -63,7 +63,7 @@
                             <?php $i = 1 + (10 * ($currentPage - 1)); ?>
                             <?php foreach ($wisata as $w) : ?>
                                 <tr>
-                                    <td><?= $w['nama_wisata']; ?></td>
+                                    <td><?= $w['nama']; ?></td>
                                     <td><?= $w['harga']; ?></td>
                                     <td><?= $w['lokasi']; ?></td>
                                     <td>
@@ -110,8 +110,8 @@
                     <div class="row form-group">
                         <!-- Nama Wisata -->
                         <div class="col col-md-6">
-                            <label for="nama_wisata" class="form-control-label">Nama Pariwisata</label>
-                            <input type="text" id="nama_wisata" name="nama_wisata" placeholder="Nama Objek Wisata" class="form-control">
+                            <label for="nama" class="form-control-label">Nama Pariwisata</label>
+                            <input type="text" id="nama" name="nama" placeholder="Nama Objek Wisata" class="form-control">
                         </div>
                         <!-- Harga Wisata -->
                         <div class="col col-md-6">
@@ -179,8 +179,8 @@
                         <div class="row form-group">
                             <!-- Nama Wisata -->
                             <div class="col col-md-6">
-                                <label for="nama_wisata" class="form-control-label">Nama Pariwisata</label>
-                                <input value="<?= $w['nama_wisata']; ?>" type="text" id="nama_wisata" name="nama_wisata" placeholder="Nama Objek Wisata" class="form-control">
+                                <label for="nama" class="form-control-label">Nama Pariwisata</label>
+                                <input value="<?= $w['nama']; ?>" type="text" id="nama" name="nama" placeholder="Nama Objek Wisata" class="form-control">
                             </div>
                             <!-- Harga Wisata -->
                             <div class="col col-md-6">

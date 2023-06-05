@@ -104,12 +104,13 @@ $routes->post('/profil/ubahPass', 'User\Profile::ubahKatasandi');
 $routes->post('/profil/edit/(:num)', 'User\Profile::edit/$1');
 
 // USER IKLAN
-$routes->get('/pasang-iklan', 'User\Iklan::index');
-$routes->post('/pasang-iklan/update/(:num)', 'User\Iklan::update/$1');
+// $routes->get('/pasang-iklan', 'User\Iklan::index');
+// $routes->post('/pasang-iklan/update/(:num)', 'User\Iklan::update/$1');
 
 // USER MITRA
 $routes->get('/mitra', 'User\Mitra::index');
-$routes->get('/mitra/daftar', 'User\Mitra::register');
+$routes->post('/mitra/register', 'User\Mitra::register');
+$routes->post('/mitra/update/(:any)/(:num)', 'User\Mitra::update/$1/$2');
 
 // USER PESANAN
 $routes->get('/pesanan', 'User\Pesanan::index');

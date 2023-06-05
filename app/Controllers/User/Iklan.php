@@ -92,9 +92,8 @@ class Iklan extends BaseController
         return view('user/iklan', $data);
     }
 
-    public function update($id)
+    public function update($menu, $id)
     {
-        $menu = $this->request->getGet('menu');
 
         $fileGambar = $this->request->getFile('gambar');
 
@@ -112,22 +111,11 @@ class Iklan extends BaseController
                 unlink('assets/img/' . $this->request->getPost('gambarLama'));
             } catch (Exception $e) {
                 session()->setFlashdata('gagalUpdate', 'Gagal update data');
-                return redirect()->to('/pasang-iklan');
+                return redirect()->to('/mitra');
             }
         }
 
-        if ($menu == 'jasa') {
-            $this->jasaModel->update($id, [
-                'nama_jasa' => htmlspecialchars($this->request->getPost('nama_jasa')),
-                'deskripsi' => htmlspecialchars($this->request->getPost('deskripsi')),
-                'harga' => htmlspecialchars($this->request->getPost('harga')),
-                'maps' => htmlspecialchars($this->request->getPost('maps')),
-                'gambar' => $namaGambar
-            ]);
-
-            session()->setFlashdata('update', 'Data berhasil diupdate!');
-            return redirect()->to('/pasang-iklan?menu=jasa');
-        } elseif ($menu == 'kuliner') {
+        if ($menu == 'kuliner') {
             $this->kulinerModel->update($id, [
                 'nama_kuliner' => htmlspecialchars($this->request->getPost('nama_kuliner')),
                 'deskripsi' => htmlspecialchars($this->request->getPost('deskripsi')),
@@ -137,7 +125,7 @@ class Iklan extends BaseController
             ]);
 
             session()->setFlashdata('update', 'Data berhasil diupdate!');
-            return redirect()->to('/pasang-iklan?menu=kuliner');
+            return redirect()->to('/mitra');
         } elseif ($menu == 'penginapan') {
             $this->penginapanModel->update($id, [
                 'nama_penginapan' => htmlspecialchars($this->request->getPost('nama_penginapan')),
@@ -148,7 +136,7 @@ class Iklan extends BaseController
             ]);
 
             session()->setFlashdata('update', 'Data berhasil diupdate!');
-            return redirect()->to('/pasang-iklan?menu=penginapan');
+            return redirect()->to('/mitra');
         }
     }
 
