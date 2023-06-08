@@ -18,6 +18,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+
+    <style>
+        /* Menghilangkan tanda panah pada input number */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
 </head>
 
 <body class="dark:bg-slate-900">
@@ -100,6 +109,12 @@
         </script>
     <?php endif; ?>
 
+    <?php if (session()->getFlashdata('pesan')) : ?>
+        <script>
+            swal("Berhasil!", "<?= session()->getFlashdata('pesan'); ?>!", "success");
+        </script>
+    <?php endif; ?>
+
     <!-- JAVASCRIPT CUSTOM -->
     <script src="/assets/js/script.js"></script>
 
@@ -146,14 +161,6 @@
         const html = document.querySelector('html');
         const ikon = document.querySelector('#ikon');
 
-        // checkbox.addEventListener('change', function() {
-        //     if (checkbox.checked) {
-        //         sessionStorage.setItem('darkMode', 'true');
-        //     } else {
-        //         sessionStorage.removeItem('darkMode');
-        //     }
-        // });
-
         checkbox.addEventListener('change', function(event) {
             // Mendapatkan status checked checkbox
             var isChecked = event.target.checked;
@@ -198,36 +205,151 @@
             html.classList.remove('dark');
         }
 
-        // script modal mitra gabung
-        const mitraCheck = document.getElementById('mitra-checkbox');
-        const btnAccept = document.querySelector('button#mitra-accept-btn');
+        try {
+            // script modal mitra gabung
+            const mitraCheck = document.getElementById('mitra-checkbox');
+            const btnAccept = document.querySelector('button#mitra-accept-btn');
 
-        // pointer-events-none opacity-50 cursor-not-allowed
-        mitraCheck.addEventListener('click', function() {
-            if (mitraCheck.checked) {
-                btnAccept.classList.remove('pointer-events-none', 'opacity-50', 'cursor-not-allowed');
-            } else {
-                btnAccept.classList.add('pointer-events-none', 'opacity-50', 'cursor-not-allowed');
-            }
-        })
+            // pointer-events-none opacity-50 cursor-not-allowed
+            mitraCheck.addEventListener('click', function() {
+                if (mitraCheck.checked) {
+                    btnAccept.classList.remove('pointer-events-none', 'opacity-50', 'cursor-not-allowed');
+                } else {
+                    btnAccept.classList.add('pointer-events-none', 'opacity-50', 'cursor-not-allowed');
+                }
+            })
+        } catch (error) {
+
+        }
 
 
         // script modal tambah produk
         document.addEventListener("DOMContentLoaded", function(event) {
-            document.getElementById('ModalButtonTambahProduk').click();
+            try {
+                document.getElementById('ModalButtonTambahProduk').click();
+            } catch (error) {
+
+            }
         });
 
-        // checkbox.addEventListener('click', function() {
-        //     if (checkbox.checked) {
-        //         html.classList.add('dark');
-        //         tooltip.innerHTML = 'light';
-        //         ikon.classList.replace('fa-moon', 'fa-lightbulb');
-        //     } else {
-        //         ikon.classList.replace('fa-lightbulb', 'fa-moon');
-        //         tooltip.innerHTML = 'dark';
-        //         html.classList.remove('dark');
+        document.addEventListener("DOMContentLoaded", function(event) {
+            try {
+                document.getElementById('defaultModalButton').click();
+            } catch (error) {
+
+            }
+        });
+
+        // function decreaseQuantity() {
+        //     var quantityInput = document.getElementById('quantity');
+        //     var currentValue = parseInt(quantityInput.value);
+        //     if (currentValue > 1) {
+        //         quantityInput.value = currentValue - 1;
         //     }
-        // });
+        // }
+
+        const tambahKuliner = document.getElementById('tambahPesan');
+        const kurangKuliner = document.getElementById('kurangPesan');
+
+        tambahKuliner.addEventListener('click', function() {
+
+
+            var quantityInput = document.getElementById('quantity');
+            var jumlah = document.querySelector('input[name="jumlah"]');
+            var currentValue = parseInt(quantityInput.value);
+            var maxValue = parseInt(quantityInput.getAttribute('max'));
+            if (currentValue < maxValue) {
+                quantityInput.value = currentValue + 1;
+                jumlah.value = currentValue + 1;
+            }
+
+            // console.log(jumlah.value);
+            // console.log(quantityInput.value);
+
+            var kuantitas = parseInt(document.getElementById('quantity').value);
+            var totalHarga = document.querySelector('.total-harga-kuliner')
+            var hargaKuliner = parseInt(document.querySelector('span.harga-kuliner').textContent.replace(/\D/g, ''));
+
+            // UBAH ISI KONTEN HTML
+            document.querySelector('span.kuantitas-pesan').innerText = kuantitas;
+            var hasil = hargaKuliner * kuantitas;
+            totalHarga.innerText = `Rp ${hasil.toLocaleString('id-ID')}`;
+
+            const alertSaldo = document.querySelector('#saldoKurang');
+            const saldoUser = document.querySelector('input[name="saldoUser"]');
+            if (parseInt(document.querySelector('input[name="saldoUser"]').value) < parseInt(document.querySelector('.total-harga-kuliner').textContent.replace(/\D/g, ''))) {
+                alertSaldo.classList.remove('hidden');
+                alertSaldo.classList.add('flex');
+                document.querySelector('.tombolPesan').classList.add('pointer-events-none', 'opacity-50', 'cursor-not-allowed');
+            } else {
+                alertSaldo.classList.add('hidden');
+                document.querySelector('.tombolPesan').classList.remove('pointer-events-none');
+                document.querySelector('.tombolPesan').classList.remove('opacity-50');
+                document.querySelector('.tombolPesan').classList.remove('cursor-not-allowed');
+            }
+
+            // console.log(totalHarga.textContent);
+        })
+
+        kurangKuliner.addEventListener('click', function() {
+            var quantityInput = document.getElementById('quantity');
+            var jumlah = document.querySelector('input[name="jumlah"]');
+            var currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+                jumlah.value = currentValue - 1;
+            }
+
+            // console.log(jumlah.value);
+            // console.log(quantityInput.value);
+
+            var kuantitas = parseInt(document.getElementById('quantity').value);
+            var totalHarga = document.querySelector('.total-harga-kuliner')
+            var hargaKuliner = parseInt(document.querySelector('span.harga-kuliner').textContent.replace(/\D/g, ''));
+
+            // UBAH ISI KONTEN HTML
+            document.querySelector('span.kuantitas-pesan').innerText = kuantitas;
+            var hasil = hargaKuliner * kuantitas;
+            totalHarga.innerText = `Rp ${hasil.toLocaleString('id-ID')}`;
+
+            const alertSaldo = document.querySelector('#saldoKurang');
+            const saldoUser = document.querySelector('input[name="saldoUser"]');
+            if (parseInt(document.querySelector('input[name="saldoUser"]').value) < parseInt(document.querySelector('.total-harga-kuliner').textContent.replace(/\D/g, ''))) {
+                alertSaldo.classList.remove('hidden');
+                alertSaldo.classList.add('flex');
+                // pointer-events-none opacity-50 cursor-not-allowed
+                document.querySelector('.tombolPesan').classList.add('pointer-events-none', 'opacity-50', 'cursor-not-allowed');
+            } else {
+                alertSaldo.classList.add('hidden');
+                document.querySelector('.tombolPesan').classList.remove('pointer-events-none');
+                document.querySelector('.tombolPesan').classList.remove('opacity-50');
+                document.querySelector('.tombolPesan').classList.remove('cursor-not-allowed');
+            }
+
+            // console.log(totalHarga.textContent);
+
+        })
+
+        const alertSaldo = document.querySelector('#saldoKurang');
+        const saldoUser = document.querySelector('input[name="saldoUser"]');
+        if (parseInt(document.querySelector('input[name="saldoUser"]').value) < parseInt(document.querySelector('.total-harga-kuliner').textContent.replace(/\D/g, ''))) {
+            alertSaldo.classList.remove('hidden');
+            alertSaldo.classList.add('flex');
+        }
+
+        console.log(document.querySelector('input[name="jumlah"]').value)
+
+        // console.log(parseInt(document.querySelector('input[name="saldoUser"]').value));
+        // console.log(parseInt(document.querySelector('.total-harga-kuliner').textContent.replace(/\D/g, '')));
+
+        // function increaseQuantity() {
+        //     var quantityInput = document.getElementById('quantity');
+        //     var currentValue = parseInt(quantityInput.value);
+        //     var maxValue = parseInt(quantityInput.getAttribute('max'));
+        //     if (currentValue < maxValue) {
+        //         quantityInput.value = currentValue + 1;
+        //     }
+        // }
     </script>
     <script>
         const dropdown = document.querySelector('.dropdown');

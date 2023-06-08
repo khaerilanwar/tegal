@@ -28,24 +28,24 @@ class Mitra extends BaseController
         $produkKuliner = $db->table('rating')->select('kuliner.id AS id_kuliner, kuliner.harga, kuliner.maps, kuliner.alamat, kuliner.deskripsi, kuliner.gambar, kuliner.nama, kuliner.terjual, kuliner.pendapatan, kuliner.jenis_kuliner, rating.id, rating.jenis_produk')->selectAvg('rating.rate', 'rate_produk');
         $produkKuliner->join('kuliner', 'kuliner.id = rating.id_produk', 'right');
         $produkKuliner->groupBy('kuliner.id')->orderBy('kuliner.nama');
-        $produkKuliner = $produkKuliner->getWhere(['kuliner.id_user' => $this->user['id'], 'kuliner.status' => '1'])->getResultArray();
+        $produkKuliner = $produkKuliner->getWhere(['kuliner.id_user' => $this->user['id'], 'kuliner.status' => '1', 'rating.jenis_produk' => 'kuliner'])->getResultArray();
 
         $saldoMitra = $db->table('kuliner')->selectSum('pendapatan', 'saldo')->get()->getRowArray();
 
         $produkPenginapan = $db->table('penginapan')->select('*')->orderBy('nama')->getWhere(['id_user' => $this->user['id'], 'status' => '1'])->getResultArray();
 
-        if ($this->user['role_id'] == '2') {
-            $data = [
-                'title' => 'Mitra Tecation',
-                'user' => $this->user
-            ];
-        } else {
+        if ($this->user['role_id'] == '3') {
             $data = [
                 'title' => 'Mitra Tecation',
                 'user' => $this->user,
                 'produkKuliner' => $produkKuliner,
                 'produkPenginapan' => $produkPenginapan,
                 'saldo' => $saldoMitra,
+            ];
+        } else {
+            $data = [
+                'title' => 'Mitra Tecation',
+                'user' => $this->user
             ];
         }
 

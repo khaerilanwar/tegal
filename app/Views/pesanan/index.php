@@ -10,6 +10,11 @@
     </div>
 </div>
 
+<div class="container mx-auto">
+    <h4 class="font-heebo text-center dark:text-white text-xl mb-2">TecationPay</h4>
+    <h2 class="font-heebo text-center dark:text-white text-4xl font-black mb-6">Rp. <?= number_format($user['saldo'], 0, '', '.') ?></h2>
+</div>
+
 <div class="container mx-auto mb-10">
 
     <div class="w-4/5 mx-auto">
@@ -33,18 +38,18 @@
 
         <ul class="mt-4 divide-y divide-gray-200 dark:divide-gray-700">
             <?php foreach ($pesanan as $data) : ?>
-                <li class="pb-3 sm:pb-4">
-                    <a href="/pesanan/detail/<?= $data['no_pesanan']; ?>">
-                        <div class="flex items-center space-x-4">
-                            <div class="flex-shrink-0">
-                                <img class="w-8 h-8 rounded-full" src="/assets/img/<?= $data['gambar']; ?>" alt="Neil image">
-                            </div>
-                            <div class="flex-1 min-w-0">
-                                <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                                    <?= $data['nama']; ?>
-                                </p>
-                                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                                    <?php
+                <li class="pb-3 sm:pb-4 cursor-pointer">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0">
+                            <img class="w-8 h-8 rounded-full" src="/assets/img/<?= $data['gambar']; ?>" alt="Neil image">
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                                <?= $data['nama']; ?>
+                            </p>
+                            <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                                <?php
+                                    if ($data['jenis_pesan'] == 'wisata') {
                                         if ($data['status'] == '0') {
                                             echo 'Pesanan menunggu pembayaran';
                                         } elseif ($data['status'] == '1') {
@@ -52,14 +57,20 @@
                                         } elseif ($data['status'] == '2') {
                                             echo 'Pesanan sedang dikirim kurir';
                                         }
-                                        ?>
-                                </p>
-                            </div>
-                            <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                                Rp. <?= number_format($data['harga_total'], 0, '', '.') ?>
-                            </div>
+                                    } elseif ($data['jenis_pesan'] == 'kuliner') {
+                                        if ($data['status'] == '0') {
+                                            echo 'Pesanan sedang dikemas penjual';
+                                        } elseif ($data['status'] == '1') {
+                                            echo 'Pesanan sedang dikirim oleh penjual';
+                                        }
+                                    }
+                                    ?>
+                            </p>
                         </div>
-                    </a>
+                        <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                            Rp. <?= number_format($data['harga_total'], 0, '', '.') ?>
+                        </div>
+                    </div>
                 </li>
             <?php endforeach; ?>
         </ul>

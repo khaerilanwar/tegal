@@ -5,14 +5,21 @@ namespace App\Controllers\User;
 use App\Controllers\BaseController;
 
 use App\Models\KulinerModel;
+use App\Models\TefoodModel;
+use App\Models\UserModel;
+use CodeIgniter\I18n\Time;
 
 class Kuliner extends BaseController
 {
     protected $kulinerModel;
+    protected $tefoodModel;
+    protected $userModel;
 
     public function __construct()
     {
         $this->kulinerModel = new KulinerModel();
+        $this->tefoodModel = new TefoodModel();
+        $this->userModel = new UserModel();
     }
 
     public function index()
@@ -65,16 +72,55 @@ class Kuliner extends BaseController
 
     public function detail($id)
     {
+        $db = \Config\Database::connect();
+
         $kuliner = $this->kulinerModel->find($id);
         $nama = $kuliner['nama'];
+        $rating = $db->table('rating');
+        $rating->select('rating.tanggal, rating.rate, rating.review, user.nama, user.gambar');
+        $rating->join('user', 'user.id = rating.id_user');
+        $rating = $rating->getWhere(['rating.id_produk' => $id, 'rating.jenis_produk' => 'kuliner'])->getResultArray();
+
+        $rating_mean = $db->table('rating')->selectAvg('rate', 'rate_mean')->where('id_produk', $id)->get()->getRowArray();
 
         $data = [
             'title' => "Kuliner $nama",
             'kuliner' => $kuliner,
-            'user' => $this->user
+            'user' => $this->user,
+            'rating_global' => $rating_mean,
+            'rating' => $rating
         ];
 
         return view('kuliner/detail', $data);
+    }
+
+    public function pesanKuliner()
+    {
+
+        $id_produk = htmlspecialchars($this->request->getPost('idProduk'));
+        $produk = $this->kulinerModel->find($id_produk);
+        $total = htmlspecialchars($this->request->getPost('hargaProduk')) * htmlspecialchars($this->request->getPost('jumlah'));
+
+        $this->tefoodModel->save([
+            'tanggal_pesan' => Time::now(),
+            'jumlah' => htmlspecialchars($this->request->getPost('jumlah')),
+            'jenis_pesan' => 'kuliner',
+            'id_user' => $this->user['id'],
+            'id_produk' => $id_produk,
+            'harga_total' => $total,
+            'status' => 0
+        ]);
+
+        $this->userModel->update($this->user['id'], ['saldo' => $this->user['saldo'] - $total]);
+
+        $this->kulinerModel->update($id_produk, [
+            'terjual' => $produk['terjual'] + htmlspecialchars($this->request->getPost('jumlah')),
+            'pendapatan' => $produk['pendapatan'] + $total
+        ]);
+
+        session()->setFlashdata('pesan', 'Berhasil melakukan pemesanan');
+
+        return redirect()->to('/kuliner');
     }
 
     public function addKuliner()

@@ -7,7 +7,8 @@ if (maps != null) {
     maps.classList.add('my-8', 'block', 'mx-auto');
 }
 
-const searchTipePenginapan = document.getElementById("search-tipe");
+try {
+    const searchTipePenginapan = document.getElementById("search-tipe");
 const inputKategori = document.getElementById("input-kategori");
 const parentKategori = document.querySelector("#dropdown-kategori > ul");
 const listKategori = parentKategori.querySelectorAll("li");
@@ -24,4 +25,7 @@ for (let i=0; i<listKategori.length; i++) {
 
         dropdownKategori.classList.toggle('hidden');
     })
+}
+} catch (error) {
+    
 }

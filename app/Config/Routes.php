@@ -119,6 +119,7 @@ $routes->get('/pesanan/riwayat', 'User\Pesanan::history');
 //ROUTES KULINER
 $routes->get('/kuliner', 'User\Kuliner::index');
 $routes->post('/kuliner/addKuliner', 'User\Kuliner::addKuliner');
+$routes->post('/kuliner/pesanKuliner', 'User\Kuliner::pesanKuliner');
 $routes->get('/kuliner/detail/(:any)', 'User\Kuliner::detail/$1');
 $routes->delete('/kuliner/(:num)', 'User\Kuliner::hapus/$1');
 

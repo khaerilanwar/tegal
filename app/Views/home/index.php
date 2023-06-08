@@ -50,11 +50,13 @@
                         <div class="transition-all duration-500 mt-1 h-[3px] bg-slate-400 rounded-md group-hover:bg-purple-500">
                         </div>
                     </li>
-                    <li class="group">
-                        <a href="/login" class="transition-all duration-500 group-hover:text-blue-500 font-heebo text-lg text-white">Masuk</a>
-                        <div class="transition-all duration-500 mt-1 h-[3px] bg-slate-400 rounded-md group-hover:bg-purple-500">
-                        </div>
-                    </li>
+                    <?php if (session()->email == false) : ?>
+                        <li class="group">
+                            <a href="/login" class="transition-all duration-500 group-hover:text-blue-500 font-heebo text-lg text-white">Masuk</a>
+                            <div class="transition-all duration-500 mt-1 h-[3px] bg-slate-400 rounded-md group-hover:bg-purple-500">
+                            </div>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
             <div class="sm:hidden mr-4 my-auto flex dropdown rounded bg-[#6096B4] w-11 h-11">
@@ -74,9 +76,11 @@
             <li class="my-2 ml-8">
                 <a class="font-heebo" href="/penginapan">Penginapan</a>
             </li>
-            <li class="my-2 ml-8">
-                <a class="font-heebo" href="/login">Masuk</a>
-            </li>
+            <?php if (session()->email == false) : ?>
+                <li class="my-2 ml-8">
+                    <a class="font-heebo" href="/login">Masuk</a>
+                </li>
+            <?php endif; ?>
         </ul>
 
         <h1 class="text-white text-center font-heebo font-bold sm:text-6xl mt-12 text-2xl">WISATA KABUPATEN BREBES</h1>

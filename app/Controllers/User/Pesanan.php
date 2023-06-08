@@ -12,14 +12,21 @@ class Pesanan extends BaseController
 
         $db = \Config\Database::connect();
         $wisata = $db->table('pesanan');
-        $wisata->select('pesanan.harga_total, pesanan.no_pesanan, pesanan.status, wisata.gambar, wisata.nama');
+        $wisata->select('pesanan.harga_total, pesanan.jenis_pesan, pesanan.no_pesanan, pesanan.status, wisata.gambar, wisata.nama');
         $wisata->join('wisata', 'wisata.id = pesanan.id_produk');
         $wisata = $wisata->getWhere(['pesanan.id_user' => $this->user['id'], 'pesanan.status !=' => '3'])->getResultArray();
+
+        $kuliner = $db->table('tefood');
+        $kuliner->select('tefood.id_pesan AS no_pesanan, kuliner.nama, tefood.jenis_pesan, tefood.status, kuliner.gambar, tefood.harga_total');
+        $kuliner->join('kuliner', 'kuliner.id = tefood.id_produk');
+        $kuliner = $kuliner->getWhere(['tefood.id_user' => $this->user['id'], 'tefood.status !=' => '2'])->getResultArray();
+
+        $pesanan = array_merge($wisata, $kuliner);
 
         $data = [
             'title' => 'Pesanan Saya',
             'user' => $this->user,
-            'pesanan' => $wisata
+            'pesanan' => $pesanan
         ];
 
         return view('/pesanan/index', $data);

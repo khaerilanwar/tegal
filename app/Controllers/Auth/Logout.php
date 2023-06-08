@@ -10,9 +10,6 @@ class Logout extends BaseController
     {
         session()->remove('email');
         session()->remove('role_id');
-
-        session()->setFlashdata('pesan', 'Berhasil logged out');
-        session()->setFlashdata('warna', 'success');
         return redirect()->to('/login');
     }
 }
