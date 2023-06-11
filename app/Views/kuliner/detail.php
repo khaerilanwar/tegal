@@ -53,7 +53,7 @@
             <?php endif; ?>
         <?php endfor; ?>
 
-        <p class="ml-2 text-sm font-medium text-gray-900 dark:text-white"><?= number_format($rating_global['rate_mean'], 2); ?> out of 5</p>
+        <p class="ml-2 text-sm font-medium text-gray-900 dark:text-white"><?= number_format(floatval($rating_global['rate_mean']), 2); ?> out of 5</p>
     </div>
     <p class="text-sm font-medium text-gray-500 dark:text-gray-400"><?= count($rating); ?> global ratings</p>
 
@@ -88,6 +88,11 @@
                         <?php
                             $date = $review['tanggal']; // Tanggal yang ingin diubah formatnya
 
+
+                            // $date = $review['tanggal']; // Tanggal yang ingin diubah formatnya
+                            // setlocale(LC_TIME, 'id_ID');
+                            // $newDate = strftime('%d %B %Y', strtotime($date));
+                            // $newDate = date('d F Y ', strtotime($date));
                             $timestamp = strtotime($date);
                             $newDate = date('d F Y', $timestamp);
 
@@ -174,7 +179,7 @@
                         <input type="hidden" name="jumlah" value="1">
                         <input type="hidden" name="idProduk" value="<?= $kuliner['id']; ?>">
                         <input type="hidden" name="hargaProduk" value="<?= $kuliner['harga']; ?>">
-                        <button type="submit" class="text-white inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 tombolPesan">
+                        <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 tombolPesan">
                             Pesan
                         </button>
                     </form>

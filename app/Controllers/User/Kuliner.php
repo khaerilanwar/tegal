@@ -78,7 +78,7 @@ class Kuliner extends BaseController
         $nama = $kuliner['nama'];
         $rating = $db->table('rating');
         $rating->select('rating.tanggal, rating.rate, rating.review, user.nama, user.gambar');
-        $rating->join('user', 'user.id = rating.id_user');
+        $rating->join('user', 'user.id = rating.id_user')->orderBy('rating.tanggal', 'DESC');
         $rating = $rating->getWhere(['rating.id_produk' => $id, 'rating.jenis_produk' => 'kuliner'])->getResultArray();
 
         $rating_mean = $db->table('rating')->selectAvg('rate', 'rate_mean')->where('id_produk', $id)->get()->getRowArray();
@@ -105,7 +105,8 @@ class Kuliner extends BaseController
             'tanggal_pesan' => Time::now(),
             'jumlah' => htmlspecialchars($this->request->getPost('jumlah')),
             'jenis_pesan' => 'kuliner',
-            'id_user' => $this->user['id'],
+            'id_customer' => $this->user['id'],
+            'id_penjual' => $produk['id_user'],
             'id_produk' => $id_produk,
             'harga_total' => $total,
             'status' => 0
@@ -118,7 +119,7 @@ class Kuliner extends BaseController
             'pendapatan' => $produk['pendapatan'] + $total
         ]);
 
-        session()->setFlashdata('pesan', 'Berhasil melakukan pemesanan');
+        session()->setFlashdata('pesanProduk', 'Berhasil melakukan pemesanan');
 
         return redirect()->to('/kuliner');
     }

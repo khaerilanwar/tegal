@@ -69,6 +69,7 @@ $routes->get('/pariwisata', 'Admin\Pariwisata::index');
 $routes->get('/pariwisata/pesanan-tiket', 'Admin\Pariwisata::pesananTiket');
 $routes->post('/pariwisata/edit/(:num)', 'Admin\Pariwisata::edit/$1');
 $routes->post('/pariwisata/tambahWisata', 'Admin\Pariwisata::tambahWisata');
+$routes->post('/pariwisata/acc-tiket', 'Admin\Pariwisata::accTiket');
 $routes->delete('/pariwisata/(:num)/(:any)', 'Admin\Pariwisata::hapus/$1/$2');
 
 // ADMIN  KULINER
@@ -109,12 +110,17 @@ $routes->post('/profil/edit/(:num)', 'User\Profile::edit/$1');
 
 // USER MITRA
 $routes->get('/mitra', 'User\Mitra::index');
+$routes->get('/mitra/pesanan', 'User\Mitra::pesananMitra');
+$routes->get('/mitra/riwayat-pesanan', 'User\Mitra::riwayatPesan');
+$routes->post('/mitra/update-status/(:num)', 'User\Mitra::updateStatus/$1');
 $routes->post('/mitra/register', 'User\Mitra::register');
 $routes->post('/mitra/update/(:any)/(:num)', 'User\Mitra::update/$1/$2');
 
 // USER PESANAN
 $routes->get('/pesanan', 'User\Pesanan::index');
 $routes->get('/pesanan/riwayat', 'User\Pesanan::history');
+$routes->post('/pesanan/rating', 'User\Pesanan::rating');
+$routes->post('/pesanan/unggah-bukti/(:any)', 'User\Pesanan::unggahBukti/$1');
 
 //ROUTES KULINER
 $routes->get('/kuliner', 'User\Kuliner::index');
@@ -127,6 +133,7 @@ $routes->delete('/kuliner/(:num)', 'User\Kuliner::hapus/$1');
 $routes->get('/penginapan', 'User\penginapan::index');
 $routes->get('/penginapan/detail/(:any)', 'User\Penginapan::detail/$1');
 $routes->post('/penginapan/addPenginapan', 'User\Penginapan::addPenginapan');
+$routes->post('/penginapan/booking', 'User\Penginapan::pesanPenginapan');
 $routes->delete('/penginapan/(:num)', 'User\Penginapan::hapus/$1');
 
 

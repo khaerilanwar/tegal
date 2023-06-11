@@ -5,14 +5,17 @@ namespace App\Controllers\User;
 use App\Controllers\BaseController;
 
 use App\Models\PenginapanModel;
+use App\Models\PesanPenginapanModel;
 
 class Penginapan extends BaseController
 {
     protected $penginapanModel;
+    protected $bookPenginapan;
 
     public function __construct()
     {
         $this->penginapanModel = new PenginapanModel();
+        $this->bookPenginapan = new PesanPenginapanModel();
     }
 
     public function index()
@@ -68,6 +71,23 @@ class Penginapan extends BaseController
         ];
 
         return view('penginapan/detail', $data);
+    }
+
+    public function pesanPenginapan()
+    {
+        $idProduk = htmlspecialchars($this->request->getPost('id_produk'));
+
+        $this->bookPenginapan->save([
+            'tanggal_kedatangan' => htmlspecialchars($this->request->getPost('tanggal_datang')),
+            'nama_lengkap' => htmlspecialchars($this->request->getPost('nama')),
+            'jumlah' => htmlspecialchars($this->request->getPost('quantity')),
+            'id_user' => $this->user['id'],
+            'id_produk' => $idProduk
+        ]);
+
+        session()->setFlashdata('pesanProduk', 'Berhasil melakukan pemesanan');
+
+        return redirect()->to("/penginapan/detail/$idProduk");
     }
 
     public function addPenginapan()

@@ -63,8 +63,11 @@
                                     <td><?= $p['tanggal_pesan']; ?></td>
                                     <td><?= $p['nama_wisata']; ?></td>
                                     <td>Rp. <?= number_format($p['harga_total'], 0, '', '.'); ?></td>
-                                    <td><?= $p['detail']; ?></td>
+                                    <td><?= $p['via']; ?></td>
                                     <td>
+                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#buktiModal<?= $p['no_pesanan']; ?>">
+                                            Bukti
+                                        </button>
                                         <form action="/pariwisata/<?= $p['no_pesanan']; ?>/tiket" method="post" class="d-inline">
                                             <?= csrf_field(); ?>
                                             <input type="hidden" name="_method" value="DELETE">
@@ -80,5 +83,32 @@
         </div>
     </div>
 </section>
+
+<?php foreach ($pesanan as $p) : ?>
+    <!-- Modal -->
+    <div class="modal fade" id="buktiModal<?= $p['no_pesanan']; ?>" tabindex="-1" role="dialog" aria-labelledby="buktiModal<?= $p['no_pesanan']; ?>Label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="buktiModal<?= $p['no_pesanan']; ?>Label">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h4 class="text-center mb-3">Bukti Bayar</h4>
+                    <img src="/assets/img/<?= $p['bukti']; ?>" alt="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <form action="/pariwisata/acc-tiket" method="post">
+                        <input type="hidden" name="no_pesanan" value="<?= $p['no_pesanan']; ?>">
+                        <button type="submit" class="btn btn-primary">Accept</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?>
 
 <?php $this->endSection(); ?>

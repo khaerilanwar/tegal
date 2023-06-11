@@ -1,14 +1,3 @@
-<?php
-
-// dd($produkKuliner);
-// dd($produkPenginapan);
-
-?>
-
-<?php $this->extend('layouts/temp'); ?>
-
-<?php $this->section('content'); ?>
-
 <?php if ($user['role_id'] == '2') : ?>
 
     <section class="bg-white h-screen dark:bg-gray-900">
@@ -83,40 +72,10 @@
     </section>
 
     <div class="container mx-auto">
-        <h4 class="font-heebo text-center dark:text-white text-xl mb-2">Saldo Mitra</h4>
-        <h2 class="font-heebo text-center dark:text-white text-4xl font-black mb-6">Rp. <?= number_format($saldo['saldo'], 0, '', '.') ?></h2>
+        <h4 class="font-heebo text-center dark:text-white text-xl mb-2">TecationPay</h4>
+        <h2 class="font-heebo text-center dark:text-white text-4xl font-black mb-6">Rp. <?= number_format($saldo, 0, '', '.') ?></h2>
     </div>
 
-
-    <div class="container mx-auto">
-        <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
-            <ul class="flex flex-wrap justify-around -mb-px text-sm font-medium text-center" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
-                <li class="mr-2" role="presentation">
-                    <button class="inline-block p-4 border-b-2 rounded-t-lg" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Kuliner</button>
-                </li>
-                <li class="mr-2" role="presentation">
-                    <button class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Penginapan</button>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-
-    <div id="myTabContent">
-
-        <!-- PRODUK KULINER -->
-        <?= $this->include('mitra/partial/kuliner'); ?>
-        <!-- END PRODUK KULINER -->
-
-
-        <!-- PRODUK PENGINAPAN -->
-        <?= $this->include('mitra/partial/penginapan'); ?>
-        <!-- END PRODUK PENGINAPAN -->
-
-    </div>
 
 
 <?php endif; ?>
-
-
-<?php $this->endSection(); ?>

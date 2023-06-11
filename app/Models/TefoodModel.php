@@ -13,7 +13,8 @@ class TefoodModel extends Model
         'tanggal_pesan',
         'jumlah',
         'jenis_pesan',
-        'id_user',
+        'id_customer',
+        'id_penjual',
         'id_produk',
         'harga_total',
         'status'

@@ -109,9 +109,21 @@
         </script>
     <?php endif; ?>
 
-    <?php if (session()->getFlashdata('pesan')) : ?>
+    <?php if (session()->getFlashdata('pesanProduk')) : ?>
         <script>
-            swal("Berhasil!", "<?= session()->getFlashdata('pesan'); ?>!", "success");
+            swal("Berhasil!", "<?= session()->getFlashdata('pesanProduk'); ?>!", "success");
+        </script>
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('isiRating')) : ?>
+        <script>
+            swal("Berhasil!", "<?= session()->getFlashdata('isiRating'); ?>!", "success");
+        </script>
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('unggah')) : ?>
+        <script>
+            swal("Berhasil!", "<?= session()->getFlashdata('unggah'); ?>!", "success");
         </script>
     <?php endif; ?>
 
@@ -248,96 +260,104 @@
         //     }
         // }
 
-        const tambahKuliner = document.getElementById('tambahPesan');
-        const kurangKuliner = document.getElementById('kurangPesan');
+        try {
+            const tambahKuliner = document.getElementById('tambahPesan');
+            const kurangKuliner = document.getElementById('kurangPesan');
 
-        tambahKuliner.addEventListener('click', function() {
+            tambahKuliner.addEventListener('click', function() {
 
 
-            var quantityInput = document.getElementById('quantity');
-            var jumlah = document.querySelector('input[name="jumlah"]');
-            var currentValue = parseInt(quantityInput.value);
-            var maxValue = parseInt(quantityInput.getAttribute('max'));
-            if (currentValue < maxValue) {
-                quantityInput.value = currentValue + 1;
-                jumlah.value = currentValue + 1;
-            }
+                var quantityInput = document.getElementById('quantity');
+                var jumlah = document.querySelector('input[name="jumlah"]');
+                var currentValue = parseInt(quantityInput.value);
+                var maxValue = parseInt(quantityInput.getAttribute('max'));
+                if (currentValue < maxValue) {
+                    quantityInput.value = currentValue + 1;
+                    jumlah.value = currentValue + 1;
+                }
 
-            // console.log(jumlah.value);
-            // console.log(quantityInput.value);
+                // console.log(jumlah.value);
+                // console.log(quantityInput.value);
 
-            var kuantitas = parseInt(document.getElementById('quantity').value);
-            var totalHarga = document.querySelector('.total-harga-kuliner')
-            var hargaKuliner = parseInt(document.querySelector('span.harga-kuliner').textContent.replace(/\D/g, ''));
+                var kuantitas = parseInt(document.getElementById('quantity').value);
+                var totalHarga = document.querySelector('.total-harga-kuliner')
+                var hargaKuliner = parseInt(document.querySelector('span.harga-kuliner').textContent.replace(/\D/g, ''));
 
-            // UBAH ISI KONTEN HTML
-            document.querySelector('span.kuantitas-pesan').innerText = kuantitas;
-            var hasil = hargaKuliner * kuantitas;
-            totalHarga.innerText = `Rp ${hasil.toLocaleString('id-ID')}`;
+                // UBAH ISI KONTEN HTML
+                document.querySelector('span.kuantitas-pesan').innerText = kuantitas;
+                var hasil = hargaKuliner * kuantitas;
+                totalHarga.innerText = `Rp ${hasil.toLocaleString('id-ID')}`;
 
-            const alertSaldo = document.querySelector('#saldoKurang');
-            const saldoUser = document.querySelector('input[name="saldoUser"]');
-            if (parseInt(document.querySelector('input[name="saldoUser"]').value) < parseInt(document.querySelector('.total-harga-kuliner').textContent.replace(/\D/g, ''))) {
-                alertSaldo.classList.remove('hidden');
-                alertSaldo.classList.add('flex');
-                document.querySelector('.tombolPesan').classList.add('pointer-events-none', 'opacity-50', 'cursor-not-allowed');
-            } else {
-                alertSaldo.classList.add('hidden');
-                document.querySelector('.tombolPesan').classList.remove('pointer-events-none');
-                document.querySelector('.tombolPesan').classList.remove('opacity-50');
-                document.querySelector('.tombolPesan').classList.remove('cursor-not-allowed');
-            }
+                const alertSaldo = document.querySelector('#saldoKurang');
+                const saldoUser = document.querySelector('input[name="saldoUser"]');
+                if (parseInt(document.querySelector('input[name="saldoUser"]').value) < parseInt(document.querySelector('.total-harga-kuliner').textContent.replace(/\D/g, ''))) {
+                    alertSaldo.classList.remove('hidden');
+                    alertSaldo.classList.add('flex');
+                    document.querySelector('.tombolPesan').classList.add('pointer-events-none', 'opacity-50', 'cursor-not-allowed');
+                } else {
+                    alertSaldo.classList.add('hidden');
+                    document.querySelector('.tombolPesan').classList.remove('pointer-events-none');
+                    document.querySelector('.tombolPesan').classList.remove('opacity-50');
+                    document.querySelector('.tombolPesan').classList.remove('cursor-not-allowed');
+                }
 
-            // console.log(totalHarga.textContent);
-        })
+                // console.log(totalHarga.textContent);
+            })
 
-        kurangKuliner.addEventListener('click', function() {
-            var quantityInput = document.getElementById('quantity');
-            var jumlah = document.querySelector('input[name="jumlah"]');
-            var currentValue = parseInt(quantityInput.value);
-            if (currentValue > 1) {
-                quantityInput.value = currentValue - 1;
-                jumlah.value = currentValue - 1;
-            }
+            kurangKuliner.addEventListener('click', function() {
+                var quantityInput = document.getElementById('quantity');
+                var jumlah = document.querySelector('input[name="jumlah"]');
+                var currentValue = parseInt(quantityInput.value);
+                if (currentValue > 1) {
+                    quantityInput.value = currentValue - 1;
+                    jumlah.value = currentValue - 1;
+                }
 
-            // console.log(jumlah.value);
-            // console.log(quantityInput.value);
+                // console.log(jumlah.value);
+                // console.log(quantityInput.value);
 
-            var kuantitas = parseInt(document.getElementById('quantity').value);
-            var totalHarga = document.querySelector('.total-harga-kuliner')
-            var hargaKuliner = parseInt(document.querySelector('span.harga-kuliner').textContent.replace(/\D/g, ''));
+                var kuantitas = parseInt(document.getElementById('quantity').value);
+                var totalHarga = document.querySelector('.total-harga-kuliner')
+                var hargaKuliner = parseInt(document.querySelector('span.harga-kuliner').textContent.replace(/\D/g, ''));
 
-            // UBAH ISI KONTEN HTML
-            document.querySelector('span.kuantitas-pesan').innerText = kuantitas;
-            var hasil = hargaKuliner * kuantitas;
-            totalHarga.innerText = `Rp ${hasil.toLocaleString('id-ID')}`;
+                // UBAH ISI KONTEN HTML
+                document.querySelector('span.kuantitas-pesan').innerText = kuantitas;
+                var hasil = hargaKuliner * kuantitas;
+                totalHarga.innerText = `Rp ${hasil.toLocaleString('id-ID')}`;
 
-            const alertSaldo = document.querySelector('#saldoKurang');
-            const saldoUser = document.querySelector('input[name="saldoUser"]');
-            if (parseInt(document.querySelector('input[name="saldoUser"]').value) < parseInt(document.querySelector('.total-harga-kuliner').textContent.replace(/\D/g, ''))) {
-                alertSaldo.classList.remove('hidden');
-                alertSaldo.classList.add('flex');
-                // pointer-events-none opacity-50 cursor-not-allowed
-                document.querySelector('.tombolPesan').classList.add('pointer-events-none', 'opacity-50', 'cursor-not-allowed');
-            } else {
-                alertSaldo.classList.add('hidden');
-                document.querySelector('.tombolPesan').classList.remove('pointer-events-none');
-                document.querySelector('.tombolPesan').classList.remove('opacity-50');
-                document.querySelector('.tombolPesan').classList.remove('cursor-not-allowed');
-            }
+                const alertSaldo = document.querySelector('#saldoKurang');
+                const saldoUser = document.querySelector('input[name="saldoUser"]');
+                if (parseInt(document.querySelector('input[name="saldoUser"]').value) < parseInt(document.querySelector('.total-harga-kuliner').textContent.replace(/\D/g, ''))) {
+                    alertSaldo.classList.remove('hidden');
+                    alertSaldo.classList.add('flex');
+                    // pointer-events-none opacity-50 cursor-not-allowed
+                    document.querySelector('.tombolPesan').classList.add('pointer-events-none', 'opacity-50', 'cursor-not-allowed');
+                } else {
+                    alertSaldo.classList.add('hidden');
+                    document.querySelector('.tombolPesan').classList.remove('pointer-events-none');
+                    document.querySelector('.tombolPesan').classList.remove('opacity-50');
+                    document.querySelector('.tombolPesan').classList.remove('cursor-not-allowed');
+                }
 
-            // console.log(totalHarga.textContent);
+                // console.log(totalHarga.textContent);
 
-        })
+            })
+        } catch (error) {
 
-        const alertSaldo = document.querySelector('#saldoKurang');
-        const saldoUser = document.querySelector('input[name="saldoUser"]');
-        if (parseInt(document.querySelector('input[name="saldoUser"]').value) < parseInt(document.querySelector('.total-harga-kuliner').textContent.replace(/\D/g, ''))) {
-            alertSaldo.classList.remove('hidden');
-            alertSaldo.classList.add('flex');
         }
 
-        console.log(document.querySelector('input[name="jumlah"]').value)
+        try {
+            const alertSaldo = document.querySelector('#saldoKurang');
+            const saldoUser = document.querySelector('input[name="saldoUser"]');
+            if (parseInt(document.querySelector('input[name="saldoUser"]').value) < parseInt(document.querySelector('.total-harga-kuliner').textContent.replace(/\D/g, ''))) {
+                alertSaldo.classList.remove('hidden');
+                alertSaldo.classList.add('flex');
+            }
+
+            console.log(document.querySelector('input[name="jumlah"]').value)
+        } catch (error) {
+
+        }
 
         // console.log(parseInt(document.querySelector('input[name="saldoUser"]').value));
         // console.log(parseInt(document.querySelector('.total-harga-kuliner').textContent.replace(/\D/g, '')));
@@ -350,6 +370,22 @@
         //         quantityInput.value = currentValue + 1;
         //     }
         // }
+
+        const ratingKuliner = document.querySelector('#ratingKuliner');
+        const stars = ratingKuliner.querySelectorAll('i');
+
+        for (let i = 0; i < stars.length; i++) {
+            stars[i].addEventListener('click', function() {
+                for (let j = i + 1; j < stars.length; j++) {
+                    stars[j].classList.remove('text-yellow-300');
+                }
+
+                for (let j = 0; j <= i; j++) {
+                    stars[j].classList.add('text-yellow-300')
+                }
+            })
+
+        }
     </script>
     <script>
         const dropdown = document.querySelector('.dropdown');

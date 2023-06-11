@@ -72,28 +72,28 @@ class Pariwisata extends BaseController
             case 'customer':
                 // $pesanan = $this->pesananModel->orderBy('tanggal_pesan', 'desc')->asArray()->like('customer', $cari);
                 $pesanan = $db->table('pesanan');
-                $pesanan->select('user.nama AS customer, pesanan.tanggal_pesan, wisata.nama AS nama_wisata, pesanan.harga_total, pembayaran.detail, pesanan.no_pesanan');
+                $pesanan->select('user.nama AS customer, pesanan.bukti, pesanan.tanggal_pesan, wisata.nama AS nama_wisata, pesanan.harga_total, pembayaran.via, pesanan.no_pesanan');
                 $pesanan->join('wisata', 'wisata.id = pesanan.id_produk');
                 $pesanan->join('user', 'user.id = pesanan.id_user');
                 $pesanan->join('pembayaran', 'pembayaran.id = pesanan.id_payment');
-                $pesanan = $pesanan->orderBy('tanggal_pesan', 'desc')->like('customer', $cari)->get()->getResultArray();
+                $pesanan = $pesanan->orderBy('tanggal_pesan', 'desc')->like('customer', $cari)->getWhere(['pesanan.status' => '1'])->getResultArray();
                 break;
             case 'no_pesanan':
                 // $pesanan = $this->pesananModel->orderBy('tanggal_pesan', 'desc')->asArray()->like('no_pesanan', $cari);
                 $pesanan = $db->table('pesanan');
-                $pesanan->select('user.nama AS customer, pesanan.tanggal_pesan, wisata.nama AS nama_wisata, pesanan.harga_total, pembayaran.detail, pesanan.no_pesanan');
+                $pesanan->select('user.nama AS customer, pesanan.bukti, pesanan.tanggal_pesan, wisata.nama AS nama_wisata, pesanan.harga_total, pembayaran.via, pesanan.no_pesanan');
                 $pesanan->join('wisata', 'wisata.id = pesanan.id_produk');
                 $pesanan->join('user', 'user.id = pesanan.id_user');
                 $pesanan->join('pembayaran', 'pembayaran.id = pesanan.id_payment');
-                $pesanan = $pesanan->orderBy('tanggal_pesan', 'desc')->like('no_pesanan', $cari)->get()->getResultArray();
+                $pesanan = $pesanan->orderBy('tanggal_pesan', 'desc')->like('no_pesanan', $cari)->getWhere(['pesanan.status' => '1'])->getResultArray();
                 break;
             default:
                 $pesanan = $db->table('pesanan');
-                $pesanan->select('user.nama AS customer, pesanan.no_pesanan, pesanan.tanggal_pesan, wisata.nama AS nama_wisata, pesanan.harga_total, pembayaran.detail, pesanan.no_pesanan');
+                $pesanan->select('user.nama AS customer, pesanan.bukti, pesanan.no_pesanan, pesanan.tanggal_pesan, wisata.nama AS nama_wisata, pesanan.harga_total, pembayaran.via, pesanan.no_pesanan');
                 $pesanan->join('wisata', 'wisata.id = pesanan.id_produk');
                 $pesanan->join('user', 'user.id = pesanan.id_user');
                 $pesanan->join('pembayaran', 'pembayaran.id = pesanan.id_payment');
-                $pesanan = $pesanan->orderBy('tanggal_pesan', 'desc')->get()->getResultArray();
+                $pesanan = $pesanan->orderBy('tanggal_pesan', 'desc')->getWhere(['pesanan.status' => '1'])->getResultArray();
         }
 
         $data = [
@@ -106,6 +106,15 @@ class Pariwisata extends BaseController
         ];
 
         return view('admin/pesananTiket', $data);
+    }
+
+    public function accTiket()
+    {
+        $this->pesananModel->update($this->request->getPost('no_pesanan'), [
+            'status' => 2
+        ]);
+
+        return redirect()->to('/pariwisata/pesanan-tiket');
     }
 
     public function hapus($id, $jenis)

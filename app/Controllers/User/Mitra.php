@@ -5,6 +5,7 @@ namespace App\Controllers\User;
 use App\Controllers\BaseController;
 use App\Models\KulinerModel;
 use App\Models\PenginapanModel;
+use App\Models\TefoodModel;
 use App\Models\UserModel;
 
 class Mitra extends BaseController
@@ -12,6 +13,7 @@ class Mitra extends BaseController
     protected $userModel;
     protected $kulinerModel;
     protected $penginapanModel;
+    protected $tefoodModel;
 
     public function __construct()
     {
@@ -19,6 +21,7 @@ class Mitra extends BaseController
         $this->userModel = new UserModel();
         $this->kulinerModel = new KulinerModel();
         $this->penginapanModel = new PenginapanModel();
+        $this->tefoodModel = new TefoodModel();
         cekLogin();
     }
 
@@ -30,16 +33,13 @@ class Mitra extends BaseController
         $produkKuliner->groupBy('kuliner.id')->orderBy('kuliner.nama');
         $produkKuliner = $produkKuliner->getWhere(['kuliner.id_user' => $this->user['id'], 'kuliner.status' => '1', 'rating.jenis_produk' => 'kuliner'])->getResultArray();
 
-        $saldoMitra = $db->table('kuliner')->selectSum('pendapatan', 'saldo')->get()->getRowArray();
-
-        $produkPenginapan = $db->table('penginapan')->select('*')->orderBy('nama')->getWhere(['id_user' => $this->user['id'], 'status' => '1'])->getResultArray();
+        $saldoMitra = $this->user['saldo'];
 
         if ($this->user['role_id'] == '3') {
             $data = [
                 'title' => 'Mitra Tecation',
                 'user' => $this->user,
                 'produkKuliner' => $produkKuliner,
-                'produkPenginapan' => $produkPenginapan,
                 'saldo' => $saldoMitra,
             ];
         } else {
@@ -49,7 +49,72 @@ class Mitra extends BaseController
             ];
         }
 
-        return view('/mitra/index', $data);
+        return view('/mitra/partial/produk', $data);
+    }
+
+    public function updateStatus($id_pesan)
+    {
+        $dataPesan = $this->tefoodModel->find($id_pesan);
+        $seller = $this->userModel->find($dataPesan['id_penjual']);
+
+        if ($dataPesan['status'] == '1') {
+            $this->tefoodModel->update($id_pesan, [
+                'status' => $dataPesan['status'] + 1
+            ]);
+            $this->userModel->update($dataPesan['id_penjual'], [
+                'saldo' => $seller['saldo'] + $dataPesan['harga_total']
+            ]);
+        } else {
+            $this->tefoodModel->update($id_pesan, [
+                'status' => $dataPesan['status'] + 1
+            ]);
+        }
+
+        if ($this->user['role_id'] == '2') {
+            return redirect()->to('/pesanan');
+        } elseif ($this->user['role_id'] == '3') {
+            return redirect()->to('/mitra/pesanan');
+        }
+    }
+
+    public function riwayatPesan()
+    {
+        $db = \Config\Database::connect();
+        $riwayatPesan = $db->table('tefood')->select('tefood.jumlah, tefood.harga_total, user.nama, kuliner.nama AS nama_kuliner, kuliner.harga, kuliner.gambar');
+        $riwayatPesan->join('kuliner', 'kuliner.id = tefood.id_produk');
+        $riwayatPesan->join('user', 'user.id = tefood.id_customer');
+        $riwayatPesan = $riwayatPesan->getWhere(['tefood.id_penjual' => $this->user['id'], 'tefood.status' => '2'])->getResultArray();
+
+        $saldoMitra = $this->user['saldo'];
+
+        $data = [
+            'title' => 'Mitra Tecation',
+            'user' => $this->user,
+            'saldo' => $saldoMitra,
+            'riwayatPesanan' => $riwayatPesan
+        ];
+
+        return view('/mitra/partial/riwayatPesan', $data);
+    }
+
+    public function pesananMitra()
+    {
+        $db = \Config\Database::connect();
+        $pesananKuliner = $db->table('tefood')->select('kuliner.gambar, kuliner.nama AS nama_kuliner, tefood.jumlah, tefood.harga_total, tefood.status, tefood.id_pesan, user.nama');
+        $pesananKuliner->join('kuliner', 'kuliner.id = tefood.id_produk');
+        $pesananKuliner->join('user', 'user.id = tefood.id_customer');
+        $pesananKuliner = $pesananKuliner->getWhere(['tefood.id_penjual' => $this->user['id'], 'tefood.status != ' => '2'])->getResultArray();
+
+        $saldoMitra = $this->user['saldo'];
+
+        $data = [
+            'title' => 'Mitra Tecation',
+            'user' => $this->user,
+            'saldo' => $saldoMitra,
+            'pesanan' => $pesananKuliner
+        ];
+
+        return view('/mitra/partial/pesanan', $data);
     }
 
     public function register()

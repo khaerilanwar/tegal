@@ -17,14 +17,14 @@ class RatingSeeder extends Seeder
 
         $faker = \Faker\Factory::create('id_ID');
 
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 40; $i++) {
             $data = [
                 'tanggal' => $faker->date(),
-                'rate' => $faker->randomElement([1, 2, 3, 4, 5]),
+                'rate' => $faker->randomElement([3, 4, 5]),
                 'review' => $faker->paragraph(3, false),
                 'jenis_produk' => 'kuliner',
                 'id_user' => $faker->randomElement($id_users),
-                'id_produk' => $faker->randomElement([1, 2, 3, 4, 5, 6, 7, 8])
+                'id_produk' => $faker->randomElement([1, 3, 4, 5, 6])
             ];
 
             \Config\Database::connect()->table('rating')->insert($data);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2023 at 05:50 AM
+-- Generation Time: Jun 11, 2023 at 06:22 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_tegal`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bukti_bayar`
+--
+
+CREATE TABLE `bukti_bayar` (
+  `id` int(11) NOT NULL,
+  `gambar` varchar(255) NOT NULL,
+  `jenis_bayar` varchar(20) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `no_pesan` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bukti_bayar`
+--
+
+INSERT INTO `bukti_bayar` (`id`, `gambar`, `jenis_bayar`, `id_user`, `no_pesan`) VALUES
+(1, '1686495407_5e2da7fdf2e4a6848263.jpg', 'wisata', 16, 972001428);
 
 -- --------------------------------------------------------
 
@@ -47,11 +68,11 @@ CREATE TABLE `kuliner` (
 --
 
 INSERT INTO `kuliner` (`id`, `nama`, `jenis_kuliner`, `harga`, `terjual`, `pendapatan`, `deskripsi`, `gambar`, `alamat`, `maps`, `id_user`, `status`) VALUES
-(1, 'Sate Kambing Batibul', 'Makanan', '320000', 0, 0, 'Sate kambing batibul adalah Sate yang menjadi ciri khas Kota Tegal. Dinamakan batibul karena dibuat dari daging kambing atau domba muda dibawah tiga bulan, yang dipotong dadu, disusun pada tusuk sate dari bambu, dan dikombinasikan dengan lemak, hati atau ginjal.  Tekstur dagingnya empuk, tidak alot, dan jauh dari bau prengus. Sate Batibul disajikan dengan bawang merah, kecap, dan sambal. Sambal kecap tidak dicampur dengan sate melainkan terpisah dengan tambahan sambal terasi. \r\n\r\n- Makan Ditempat\r\n- Bawa Pulang\r\n- Pesan Antar\r\n- Buka Senin-Minggu 09.00-22.00 WIB', '1668577398_58cbaa67419bb8854217.jpg', 'Jl. Gajah Mada No.14 Mintaragen Kec.Tegal Timur Kota Tegal', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15844.938710436192!2d109.1194778395508!3d-6.862454499999991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6fb7ae56bea4f5%3A0xb6043cd0e87b463e!2sSate%20Kambing%20Muda%20CEMPE%20LEMU%20Jl.%20Ahmad%20Yani!5e0!3m2!1sid!2sid!4v1668577309353!5m2!1sid!2sid\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 15, 1),
-(3, 'Hot Seblak Jeletot !', 'Makanan', '10000', 0, 0, 'Seblak jeletot di Kota Tegal memiliki ciri khas tersendiri, di antaranya dari segi rasanya yang pedas manis.Kemudian, seblak jeletot yang disajikan tidak berkuah juga tidak kering alias nyemek. Dalam satu porsi Hot Seblak Jeletot terdapat isian telor, sawi, kerupuk dan makaroni. Hot Seblak Jeletot mempunyai 2 cabang lain, yakni di Jalan Werkudoro Kota Tegal dan Jalan KH Wahid Hasyim, Slawi.\r\n\r\n- Makan Ditempat\r\n- Bawa Pulang\r\n- Pesan Antar\r\n- Buka Senin-Minggu 10.00-21.30 WIB', 'seblak.jpg', 'Jl. Kartini No.77 Slerok Kec. Tegal Timur Kota Tegal', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.003285143813!2d110.44657131428798!3d-7.008894994937086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708c8cbc4c04d1%3A0x30d4206f66ea3213!2sMie%20Ayam%20Bakso%20Moroseneng%20Mas%20Ade!5e0!3m2!1sid!2sid!4v1668345940910!5m2!1sid!2sid\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 15, 1),
-(4, 'Es Lontrong Brebes', 'Minuman', '6000', 0, 0, 'Es Lontrong tidak bisa dijumpai di daerah manapun kecuali di Slawi. Dinamakan es Lontrong karena lokasi jualnya yang didalam gang/lontrong. Dalam penyajian, minuman legendaris asli slawi ini berisi es serut yang diberi isian kacang hijau, cincau, sirup merah, dan kuah santan. Untuk tambahannya bisa dengan kolang-kaling ataupun potongan roti tawar.\r\n\r\n- Makan Ditempat\r\n- Bawa Pulang\r\n- Pesan Anta\r\n- Buka Senin-Minggu 08.00-16.00 WIB', 'eslontrong.jpg', 'Jl. Letjen Suprapto No.26 Slawi Wetan Kec. Slawi Kab. Tegal', '&lt;iframe src=&quot;https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.003285143813!2d110.44657131428798!3d-7.008894994937086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708c8cbc4c04d1%3A0x30d4206f66ea3213!2sMie%20Ayam%20Bakso%20Moroseneng%20Mas%20Ade!5e0!3m2!1sid!2sid!4v1668345940910!5m2!1sid!2sid&quot; width=&quot;400&quot; height=&quot;300&quot; style=&quot;border:0;&quot; allowfullscreen=&quot;&quot; loading=&quot;lazy&quot; referrerpolicy=&quot;no-referrer-when-downgrade&quot;&gt;&lt;/iframe&gt;', 15, 1),
-(5, 'Gomu Boba & Cheese Tea ', 'Minuman', '12000', 3, 36000, 'Gomu Boba & Cheese Tea, Werkudoro Tegal merupakan sebuah tempat makan yang berada di Tegal. Rumah makan ini menyajikan berbagai menu cepat saji, jajanan & minuman yang dibanderol dengan harga yang murah dan bersahabat dengan kantong. Harga  untuk menikmati menu Rekomendasi yang disajikan Gomu Boba And Cheese Tea, Werkudoro Tegal berkisar antara Rp 9.000 - Rp 15.000.\r\n\r\n- Makan Ditempat\r\n- Bawa Pulang\r\n- Pesan Antar\r\n- Buka Senin-Minggu 09.00-21.00 WIB', 'boba.jpg', 'Jl. Werkudoro No.87 Pengabean Slerok Kec.Tegal Timur Kab. Tegal', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.003285143813!2d110.44657131428798!3d-7.008894994937086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708c8cbc4c04d1%3A0x30d4206f66ea3213!2sMie%20Ayam%20Bakso%20Moroseneng%20Mas%20Ade!5e0!3m2!1sid!2sid!4v1668345940910!5m2!1sid!2sid\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 15, 1),
-(6, 'Minuman Tradisional', 'Minuman', '8000', 4, 32000, 'Menyediakan berbagai macam jamu tradisional dengan harga yang paling terjangkau tanpa menghilangkan khasiat dari penggunaannya. Dibuat dari bahan-bahan  alami yang berkualitas, berkhasiat untuk kesehatan dan kehangatan tubuh.\r\n\r\n- Bawa Pulang\r\n- Pesan Antar\r\n- Buka Senin - Minggu 07.00-21.00 WIB', '1685892549_8738080d8b5bacc0e978.jpg', 'Gg. 6  RT.03 RW.09 Panggung Kec. Tegal Timur Kota Tegal', '&lt;iframe src=&quot;https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.003285143813!2d110.44657131428798!3d-7.008894994937086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708c8cbc4c04d1%3A0x30d4206f66ea3213!2sMie%20Ayam%20Bakso%20Moroseneng%20Mas%20Ade!5e0!3m2!1sid!2sid!4v1668345940910!5m2!1sid!2sid&quot; width=&quot;400&quot; height=&quot;300&quot; style=&quot;border:0;&quot; allowfullscreen=&quot;&quot; loading=&quot;lazy&quot; referrerpolicy=&quot;no-referrer-when-downgrade&quot;&gt;&lt;/iframe&gt;', 15, 1),
+(1, 'Sate Kambing Batibul', 'Makanan', '320000', 2, 640000, 'Sate kambing batibul adalah Sate yang menjadi ciri khas Kota Tegal. Dinamakan batibul karena dibuat dari daging kambing atau domba muda dibawah tiga bulan, yang dipotong dadu, disusun pada tusuk sate dari bambu, dan dikombinasikan dengan lemak, hati atau ginjal.  Tekstur dagingnya empuk, tidak alot, dan jauh dari bau prengus. Sate Batibul disajikan dengan bawang merah, kecap, dan sambal. Sambal kecap tidak dicampur dengan sate melainkan terpisah dengan tambahan sambal terasi. \r\n\r\n- Makan Ditempat\r\n- Bawa Pulang\r\n- Pesan Antar\r\n- Buka Senin-Minggu 09.00-22.00 WIB', '1668577398_58cbaa67419bb8854217.jpg', 'Jl. Gajah Mada No.14 Mintaragen Kec.Tegal Timur Kota Tegal', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15844.938710436192!2d109.1194778395508!3d-6.862454499999991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6fb7ae56bea4f5%3A0xb6043cd0e87b463e!2sSate%20Kambing%20Muda%20CEMPE%20LEMU%20Jl.%20Ahmad%20Yani!5e0!3m2!1sid!2sid!4v1668577309353!5m2!1sid!2sid\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 15, 1),
+(3, 'Hot Seblak Jeletot !', 'Makanan', '10000', 9, 90000, 'Seblak jeletot di Kota Tegal memiliki ciri khas tersendiri, di antaranya dari segi rasanya yang pedas manis.Kemudian, seblak jeletot yang disajikan tidak berkuah juga tidak kering alias nyemek. Dalam satu porsi Hot Seblak Jeletot terdapat isian telor, sawi, kerupuk dan makaroni. Hot Seblak Jeletot mempunyai 2 cabang lain, yakni di Jalan Werkudoro Kota Tegal dan Jalan KH Wahid Hasyim, Slawi.\r\n\r\n- Makan Ditempat\r\n- Bawa Pulang\r\n- Pesan Antar\r\n- Buka Senin-Minggu 10.00-21.30 WIB', 'seblak.jpg', 'Jl. Kartini No.77 Slerok Kec. Tegal Timur Kota Tegal', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.003285143813!2d110.44657131428798!3d-7.008894994937086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708c8cbc4c04d1%3A0x30d4206f66ea3213!2sMie%20Ayam%20Bakso%20Moroseneng%20Mas%20Ade!5e0!3m2!1sid!2sid!4v1668345940910!5m2!1sid!2sid\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 15, 1),
+(4, 'Es Lontrong Brebes', 'Minuman', '6000', 16, 96000, 'Es Lontrong tidak bisa dijumpai di daerah manapun kecuali di Slawi. Dinamakan es Lontrong karena lokasi jualnya yang didalam gang/lontrong. Dalam penyajian, minuman legendaris asli slawi ini berisi es serut yang diberi isian kacang hijau, cincau, sirup merah, dan kuah santan. Untuk tambahannya bisa dengan kolang-kaling ataupun potongan roti tawar.\r\n\r\n- Makan Ditempat\r\n- Bawa Pulang\r\n- Pesan Anta\r\n- Buka Senin-Minggu 08.00-16.00 WIB', 'eslontrong.jpg', 'Jl. Letjen Suprapto No.26 Slawi Wetan Kec. Slawi Kab. Tegal', '&lt;iframe src=&quot;https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.003285143813!2d110.44657131428798!3d-7.008894994937086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708c8cbc4c04d1%3A0x30d4206f66ea3213!2sMie%20Ayam%20Bakso%20Moroseneng%20Mas%20Ade!5e0!3m2!1sid!2sid!4v1668345940910!5m2!1sid!2sid&quot; width=&quot;400&quot; height=&quot;300&quot; style=&quot;border:0;&quot; allowfullscreen=&quot;&quot; loading=&quot;lazy&quot; referrerpolicy=&quot;no-referrer-when-downgrade&quot;&gt;&lt;/iframe&gt;', 15, 1),
+(5, 'Gomu Boba & Cheese Tea ', 'Minuman', '12000', 10, 120000, 'Gomu Boba & Cheese Tea, Werkudoro Tegal merupakan sebuah tempat makan yang berada di Tegal. Rumah makan ini menyajikan berbagai menu cepat saji, jajanan & minuman yang dibanderol dengan harga yang murah dan bersahabat dengan kantong. Harga  untuk menikmati menu Rekomendasi yang disajikan Gomu Boba And Cheese Tea, Werkudoro Tegal berkisar antara Rp 9.000 - Rp 15.000.\r\n\r\n- Makan Ditempat\r\n- Bawa Pulang\r\n- Pesan Antar\r\n- Buka Senin-Minggu 09.00-21.00 WIB', 'boba.jpg', 'Jl. Werkudoro No.87 Pengabean Slerok Kec.Tegal Timur Kab. Tegal', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.003285143813!2d110.44657131428798!3d-7.008894994937086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708c8cbc4c04d1%3A0x30d4206f66ea3213!2sMie%20Ayam%20Bakso%20Moroseneng%20Mas%20Ade!5e0!3m2!1sid!2sid!4v1668345940910!5m2!1sid!2sid\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 15, 1),
+(6, 'Minuman Tradisional', 'Minuman', '8000', 8, 64000, 'Menyediakan berbagai macam jamu tradisional dengan harga yang paling terjangkau tanpa menghilangkan khasiat dari penggunaannya. Dibuat dari bahan-bahan  alami yang berkualitas, berkhasiat untuk kesehatan dan kehangatan tubuh.\r\n\r\n- Bawa Pulang\r\n- Pesan Antar\r\n- Buka Senin - Minggu 07.00-21.00 WIB', '1685892549_8738080d8b5bacc0e978.jpg', 'Gg. 6  RT.03 RW.09 Panggung Kec. Tegal Timur Kota Tegal', '&lt;iframe src=&quot;https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.003285143813!2d110.44657131428798!3d-7.008894994937086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708c8cbc4c04d1%3A0x30d4206f66ea3213!2sMie%20Ayam%20Bakso%20Moroseneng%20Mas%20Ade!5e0!3m2!1sid!2sid!4v1668345940910!5m2!1sid!2sid&quot; width=&quot;400&quot; height=&quot;300&quot; style=&quot;border:0;&quot; allowfullscreen=&quot;&quot; loading=&quot;lazy&quot; referrerpolicy=&quot;no-referrer-when-downgrade&quot;&gt;&lt;/iframe&gt;', 15, 1),
 (17, 'Mie Goreng Bang Anwar', 'Makanan', '10000', 0, 0, 'Quia eaque voluptas officiis eveniet inventore ipsum laboriosam. Quae in id rerum. Sit ipsum ipsa et quisquam. Nemo numquam unde dignissimos voluptas eum eligendi maiores. Voluptatem quaerat explicabo soluta est in possimus. Suscipit aut velit eum. Quo nesciunt quis aut est et ab ut. Quos veniam dolorum sunt eos voluptatem quis. Laboriosam similique ut explicabo voluptas. Est eum deserunt et totam ullam aut eum blanditiis. Quo veritatis in similique magni eius eius.', 'makanan.jpg', 'Dk. Bakit  No. 975, Tarakan 85800, Kaltim', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15844.830445426334!2d108.99871203955077!3d-6.865706700000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6fb1a8cf239bc3%3A0x705c765bb0278920!2sNasi%20Goreng%20BangCep!5e0!3m2!1sid!2sid!4v1669570219760!5m2!1sid!2sid\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 0, 0),
 (18, 'Nasi Goreng Mba Istia', 'Makanan', '13000', 0, 0, 'Fugit ipsa quibusdam et. Ea perferendis assumenda omnis ut blanditiis numquam. Sapiente deleniti excepturi quo dignissimos. Dolores ducimus eum reiciendis sit ullam. Ut facilis nihil voluptatum excepturi tenetur. Est atque non et dolore. Fugiat accusantium odit et exercitationem deserunt placeat veniam. Et autem voluptas qui voluptatibus dolore. Nulla dolores sunt quo laborum quia. Cupiditate ut enim voluptatem ipsa. Odit ut ab cumque dolores.', 'makanan.jpg', 'Ds. Bagas Pati No. 665, Malang 62074, Sulut', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15844.830445426334!2d108.99871203955077!3d-6.865706700000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6fb1a8cf239bc3%3A0x705c765bb0278920!2sNasi%20Goreng%20BangCep!5e0!3m2!1sid!2sid!4v1669570219760!5m2!1sid!2sid\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 0, 0),
 (20, 'Nasi Goreng Brebes', 'Makanan', '16000', 0, 0, 'Consequatur vel autem qui laboriosam. Ut culpa omnis et eaque laborum distinctio. Quaerat ut omnis accusamus recusandae dolorum placeat quis. Ut nulla magni sed alias. Sit qui reprehenderit quia. Officia aut ab qui voluptatem. Vero maiores sed voluptatem cumque magnam. Aperiam et quas quis adipisci. Enim vel omnis odit deleniti et provident.', 'makanan.jpg', 'Dk. Adisumarmo No. 830, Jambi 25463, Kaltara', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15844.830445426334!2d108.99871203955077!3d-6.865706700000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6fb1a8cf239bc3%3A0x705c765bb0278920!2sNasi%20Goreng%20BangCep!5e0!3m2!1sid!2sid!4v1669570219760!5m2!1sid!2sid\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 0, 0),
@@ -145,7 +166,7 @@ INSERT INTO `penginapan` (`id`, `nama`, `jenis_penginapan`, `harga`, `deskripsi`
 CREATE TABLE `pesanan` (
   `no_pesanan` int(25) NOT NULL,
   `customer` varchar(128) NOT NULL,
-  `tanggal_pesan` date NOT NULL,
+  `tanggal_pesan` varchar(128) NOT NULL,
   `tanggal_datang` date NOT NULL,
   `jumlah_tiket` int(5) NOT NULL,
   `jenis_pesan` varchar(50) NOT NULL,
@@ -163,15 +184,39 @@ CREATE TABLE `pesanan` (
 
 INSERT INTO `pesanan` (`no_pesanan`, `customer`, `tanggal_pesan`, `tanggal_datang`, `jumlah_tiket`, `jenis_pesan`, `id_user`, `id_payment`, `id_produk`, `harga_total`, `status`, `bukti`) VALUES
 (327826303, 'Anwar Family', '2022-11-20', '2022-11-22', 5, 'wisata', 15, 3, 1, '75000', 3, ''),
+(550921505, 'Anwar Family', '2023-06-08', '2023-06-21', 4, 'wisata', 15, 2, 2, '40000', 0, ''),
 (563260230, 'Family Adudu', '2022-12-04', '2022-12-15', 3, 'wisata', 15, 1, 6, '60000', 0, ''),
 (649179524, 'Wimas Team', '2022-12-15', '2022-12-27', 4, 'wisata', 15, 3, 5, '30000', 3, ''),
 (747906993, 'Viyaa', '2023-05-31', '2023-06-19', 7, 'wisata', 15, 3, 6, '70000', 3, ''),
 (1073398082, 'Mas Anwar', '2022-11-19', '2022-11-25', 90, 'wisata', 15, 2, 9, '1800000', 0, ''),
 (1423215115, 'salsabilah', '2023-05-31', '2023-06-12', 4, 'wisata', 15, 2, 8, '100000', 0, ''),
 (1423994470, 'Jonathan', '2022-12-09', '2022-12-09', 5, 'wisata', 15, 1, 7, '75000', 3, ''),
+(1792876973, 'Jonathan', '2023-06-11 22:26:36', '2023-06-15', 4, 'wisata', 16, 3, 2, '40000', 2, '1686497218_9a2aaccedba71784dc14.jpg'),
 (1876593470, 'Istia Family', '2022-11-20', '2022-11-30', 3, 'wisata', 15, 4, 5, '30000', 0, ''),
 (1960218888, 'Ningrum Family', '2022-12-03', '2022-12-14', 2, 'wisata', 15, 4, 8, '20000', 3, ''),
 (2042282771, 'Big Family Anwar', '2022-12-04', '2022-12-11', 9, 'wisata', 15, 4, 2, '135000', 0, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pesanpenginapan`
+--
+
+CREATE TABLE `pesanpenginapan` (
+  `id` int(11) NOT NULL,
+  `nama_lengkap` varchar(128) NOT NULL,
+  `tanggal_kedatangan` date NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_produk` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pesanpenginapan`
+--
+
+INSERT INTO `pesanpenginapan` (`id`, `nama_lengkap`, `tanggal_kedatangan`, `jumlah`, `id_user`, `id_produk`) VALUES
+(1, 'Jehan Shaila', '2023-06-28', 3, 16, 4);
 
 -- --------------------------------------------------------
 
@@ -181,119 +226,13 @@ INSERT INTO `pesanan` (`no_pesanan`, `customer`, `tanggal_pesan`, `tanggal_datan
 
 CREATE TABLE `rating` (
   `id` int(11) NOT NULL,
-  `tanggal` date NOT NULL,
+  `tanggal` varchar(128) NOT NULL,
   `rate` int(5) NOT NULL,
   `review` varchar(255) NOT NULL,
   `jenis_produk` varchar(15) NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_produk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `rating`
---
-
-INSERT INTO `rating` (`id`, `tanggal`, `rate`, `review`, `jenis_produk`, `id_user`, `id_produk`) VALUES
-(1, '2001-12-31', 4, 'Officiis porro accusamus atque est provident molestiae dolorem. Rerum cumque sed sunt quibusdam et. Corporis deserunt eaque dignissimos.', 'kuliner', 2, 3),
-(2, '1998-04-27', 1, 'Dolor labore aspernatur et voluptatibus et voluptate. Sapiente officiis ad accusantium facilis. Eligendi praesentium repudiandae sit ea doloribus.', 'kuliner', 28, 7),
-(3, '1982-03-28', 1, 'Nesciunt reprehenderit quae consequatur eaque soluta. Repudiandae et eaque officia ut veritatis eos. Beatae velit doloremque fugiat ad nobis rerum est omnis.', 'kuliner', 21, 3),
-(4, '1994-12-28', 1, 'In omnis distinctio laudantium doloremque. Amet consequatur atque aut minus omnis pariatur officiis. Placeat reiciendis impedit neque harum voluptate perferendis.', 'kuliner', 14, 1),
-(5, '1999-02-17', 2, 'Repellat nemo illo molestiae ea et incidunt aut. Mollitia et eos ipsam saepe occaecati dolorem possimus. Ut et sapiente reprehenderit aliquid sint.', 'kuliner', 5, 4),
-(6, '2003-07-17', 5, 'Et voluptas odio minima. Dolores qui animi dolorem. Vero sit deleniti facere et.', 'kuliner', 17, 4),
-(7, '2006-03-18', 1, 'Animi architecto nisi rerum voluptates. Sed autem qui explicabo. Ut placeat tempora odit fuga ea eum rerum.', 'kuliner', 29, 5),
-(8, '2016-09-06', 2, 'Dolor consequuntur neque iste perspiciatis molestiae voluptate. Sapiente et veritatis molestiae quos voluptatem. Id eveniet dolor soluta deleniti nihil.', 'kuliner', 29, 2),
-(9, '1997-03-01', 2, 'Quidem odio eaque optio sunt. Ipsa id corporis doloremque animi. Consequatur ipsa occaecati et beatae hic fugiat hic.', 'kuliner', 14, 2),
-(10, '2009-05-17', 2, 'Sit quia consequatur sed ipsam nostrum nisi. Fugiat aut corrupti eius aut. Dolorem magni sed ipsum impedit maiores.', 'kuliner', 1, 4),
-(11, '1998-08-28', 3, 'Quo assumenda eos velit autem consequuntur quas praesentium. Quo est fugit vel ratione voluptas molestiae. Quia facilis laboriosam iste iste totam culpa.', 'kuliner', 5, 7),
-(12, '1991-10-19', 1, 'Nesciunt et animi saepe pariatur fuga non. Ea nisi accusantium qui facilis. Error quia similique ex in et sit.', 'kuliner', 5, 5),
-(13, '2016-12-31', 4, 'Eveniet nihil dolor maxime et. Reiciendis et iusto aut eos eius omnis distinctio. Possimus inventore repellat ut omnis est excepturi aut sunt.', 'kuliner', 28, 1),
-(14, '1975-07-16', 3, 'Eum doloremque facilis perferendis. Ut odit animi atque ipsam quidem aut. In distinctio est sequi illum.', 'kuliner', 19, 8),
-(15, '1990-05-22', 3, 'Deleniti eius praesentium nihil quia. Sit illo amet sit. Ea unde dolorem excepturi cumque eligendi.', 'kuliner', 29, 2),
-(16, '2009-12-10', 2, 'Omnis molestiae totam repudiandae explicabo. Eum ipsam autem aut natus. Sed dolor deleniti perspiciatis quod illo quaerat.', 'kuliner', 27, 8),
-(17, '1990-11-13', 2, 'Error est repellat atque sunt illum. Placeat et aut consequatur. Accusantium iure fugit repellat quod rerum dolor voluptas.', 'kuliner', 27, 4),
-(18, '1978-07-30', 2, 'Eum distinctio sapiente omnis quidem error vel. Incidunt soluta illum ipsa quia officiis. Ut in non eveniet quibusdam nesciunt.', 'kuliner', 5, 5),
-(19, '1996-02-12', 4, 'Fugiat temporibus in voluptates necessitatibus. Quo sed praesentium nemo non. Voluptatem repudiandae voluptatem ut vitae et et minima.', 'kuliner', 5, 1),
-(20, '1984-12-01', 3, 'Accusamus et accusantium aliquam quis iure voluptatem. Aut doloribus tenetur aut. Cum voluptatem vel enim ullam nam natus ipsum.', 'kuliner', 2, 2),
-(21, '1986-08-29', 4, 'Vel cum totam odit accusamus iure. Sit dolorum blanditiis praesentium rerum expedita nihil provident. Quam harum labore recusandae saepe in dolor eos sed.', 'kuliner', 18, 4),
-(22, '1986-09-29', 2, 'Dignissimos quia qui et eum cupiditate corporis. Repudiandae ad minima sit reprehenderit quia aut qui voluptas. Qui veniam minus cupiditate ut.', 'kuliner', 29, 5),
-(23, '1978-04-10', 1, 'Autem nemo excepturi nulla modi voluptate dolore. Aut officia laborum quam hic enim. Quas explicabo est aliquid doloribus et.', 'kuliner', 5, 5),
-(24, '1978-07-12', 3, 'Eligendi exercitationem quia at velit iure id adipisci. Et unde veritatis consequatur repudiandae minima quisquam. Aut quam est quibusdam amet perspiciatis rerum.', 'kuliner', 28, 6),
-(25, '1971-02-08', 5, 'Excepturi esse veritatis repellendus tenetur iusto aspernatur aspernatur. Illum consequuntur exercitationem aspernatur quibusdam. Earum et quaerat quo non.', 'kuliner', 19, 7),
-(26, '2013-01-04', 5, 'Commodi eum expedita distinctio sit. Exercitationem non eum consequatur commodi fugiat veniam. Nisi occaecati cupiditate minus iusto ea sint.', 'kuliner', 2, 8),
-(27, '2005-03-17', 3, 'Quas eius ipsam et consequatur dolorum. Ipsa reiciendis pariatur dolor omnis et animi delectus sunt. Maiores facilis nisi sit temporibus.', 'kuliner', 29, 5),
-(28, '1978-03-15', 2, 'Officia non ut quae nesciunt. Cum ab porro nisi. Veritatis non iure voluptatem facere omnis illo.', 'kuliner', 22, 6),
-(29, '2007-09-02', 5, 'Aut ut qui molestiae velit occaecati expedita. Qui non necessitatibus maxime quasi. A sequi reiciendis repellendus veniam id assumenda quod.', 'kuliner', 5, 2),
-(30, '1987-11-18', 4, 'Dolorem omnis ad nulla dolorem velit maiores. Repellendus voluptas doloribus doloribus. Totam enim perferendis aperiam quia enim.', 'kuliner', 14, 5),
-(31, '2003-12-27', 4, 'Dolorem eius vel ab impedit officia corporis. Sint laudantium et vel voluptatem sit recusandae maxime temporibus. Mollitia sunt veniam possimus in.', 'kuliner', 18, 6),
-(32, '2019-08-23', 3, 'Vel sed ratione voluptas placeat aut quasi. Nihil et omnis doloremque voluptatum. Aliquid dolore sit eos ipsum occaecati.', 'kuliner', 21, 5),
-(33, '1994-04-06', 1, 'Natus quos dolorum eveniet aut. Vitae ipsum assumenda aliquid in. Quisquam officiis molestiae non praesentium.', 'kuliner', 5, 6),
-(34, '2001-11-16', 3, 'Et quia qui error iure odio qui perspiciatis doloremque. Quidem rem adipisci ratione placeat voluptatum. Necessitatibus possimus omnis quod voluptatem.', 'kuliner', 28, 8),
-(35, '2016-11-04', 2, 'Incidunt voluptas exercitationem quia sit molestiae quas nostrum. Dolorem ut adipisci velit corporis atque. Quae sed similique ex.', 'kuliner', 19, 6),
-(36, '1984-04-10', 4, 'Et deserunt harum quis. Sit repellendus eum qui illo ea. Nostrum illo neque fugiat nemo et asperiores.', 'kuliner', 20, 1),
-(37, '1991-07-15', 3, 'Consequuntur voluptatem ratione nam rerum quibusdam. Necessitatibus deleniti ut nemo consequuntur quam possimus est. Est ratione voluptate quod magni aut.', 'kuliner', 2, 6),
-(38, '2011-04-23', 4, 'Expedita nam qui voluptatem repellat dolores alias. Et ut dolorum delectus sunt ullam nesciunt dignissimos. Libero maxime error dolor ducimus natus quasi iusto.', 'kuliner', 15, 2),
-(39, '1993-03-03', 4, 'Omnis cupiditate voluptas iusto sed numquam. Quo qui vero quia deleniti saepe. Eos et dolorem delectus doloribus.', 'kuliner', 1, 4),
-(40, '1993-10-05', 3, 'Autem nihil commodi ipsa quia fuga rerum. Ipsa nemo sint natus voluptatem laboriosam in. Ea quia expedita accusantium totam non animi rerum.', 'kuliner', 18, 2),
-(41, '1977-11-26', 4, 'Qui dolor placeat commodi sint. Vero perspiciatis placeat provident. Nihil voluptatem dolore et numquam laboriosam voluptatibus.', 'kuliner', 20, 5),
-(42, '1984-07-17', 2, 'Dolores nostrum sapiente earum laudantium aut. Nesciunt architecto enim sed. Ratione repellat nobis expedita cum at dolores.', 'kuliner', 1, 4),
-(43, '1979-02-02', 2, 'Ipsa iste officia fugiat omnis totam. Expedita et placeat nihil impedit autem. Enim aspernatur earum architecto itaque necessitatibus.', 'kuliner', 2, 7),
-(44, '1988-04-22', 5, 'Nostrum necessitatibus sed a molestiae delectus. A necessitatibus eum sunt et deleniti et. Aut omnis ratione et tempore velit.', 'kuliner', 15, 3),
-(45, '1986-02-18', 4, 'Cumque eligendi non nisi voluptatem eaque eligendi. Illum labore autem aspernatur praesentium ex itaque. Aut ea qui rem dolore maxime quo qui.', 'kuliner', 18, 2),
-(46, '1993-07-30', 2, 'Dicta a culpa nisi autem dolorum provident. Cum eum laudantium voluptates incidunt quia cumque. Ipsam sunt voluptatem commodi ut facilis explicabo deleniti autem.', 'kuliner', 17, 2),
-(47, '1972-09-19', 4, 'Sint ratione rerum nemo accusamus animi ea. Est et odio cumque quia sit. Quibusdam impedit cupiditate nam soluta.', 'kuliner', 16, 7),
-(48, '1973-09-14', 2, 'Nesciunt doloribus sit sed quaerat dolorem praesentium. Quod aut earum qui necessitatibus rerum. Optio qui saepe nihil mollitia est qui.', 'kuliner', 28, 8),
-(49, '1984-06-11', 4, 'Deserunt earum eum et unde vel. Aut ab necessitatibus non dolores consectetur et. Facilis repudiandae labore magni unde.', 'kuliner', 21, 6),
-(50, '2003-11-18', 4, 'Ipsa cupiditate libero facilis optio. Aperiam accusamus sint aperiam qui sapiente neque. Molestias a accusamus quaerat sint.', 'kuliner', 29, 2),
-(51, '1988-09-19', 4, 'Molestiae est provident adipisci. Quia non minima ipsa amet necessitatibus aut voluptas. Quia nisi dolores quas fuga modi.', 'kuliner', 5, 2),
-(52, '1984-02-16', 4, 'Est minima odit magnam voluptatum. Est tenetur provident error recusandae facere. Est quo repellat non pariatur dolor dolorem adipisci.', 'kuliner', 1, 2),
-(53, '1987-01-15', 2, 'Aliquam dolorem voluptatem voluptates blanditiis. Exercitationem et officia nesciunt. Aut inventore quos sint rerum.', 'kuliner', 21, 1),
-(54, '2003-07-07', 4, 'Tempore consequuntur nihil velit magnam provident distinctio. Mollitia aut harum natus cupiditate. Autem vero ullam consequatur aut omnis quos.', 'kuliner', 22, 7),
-(55, '1988-09-25', 5, 'In sunt enim doloremque nemo. Tenetur tempore ipsa accusamus enim velit minima recusandae. Ut accusantium omnis non voluptatem ut velit.', 'kuliner', 1, 6),
-(56, '1990-12-08', 5, 'Nulla autem vero consequuntur omnis commodi incidunt. Voluptas sunt eos ut fuga minus. Voluptatem vel dignissimos sit ipsum in ducimus voluptatem.', 'kuliner', 1, 6),
-(57, '2011-01-11', 4, 'Porro ducimus sunt ut distinctio. Tempora explicabo aut ullam ducimus et accusantium esse. Tempore similique ullam id quos.', 'kuliner', 22, 4),
-(58, '2013-04-15', 1, 'Voluptas ratione necessitatibus odit. Necessitatibus enim et harum deserunt natus fugiat. Accusamus aut voluptatem et sit quos aut iure non.', 'kuliner', 1, 2),
-(59, '2022-11-10', 1, 'Atque architecto sapiente ut eaque nesciunt est et. Aspernatur nostrum nulla eaque recusandae qui. Dicta incidunt ea natus tempora error voluptas.', 'kuliner', 28, 8),
-(60, '1993-07-27', 1, 'Sed modi consequuntur non accusamus. Possimus quaerat voluptatem sunt deserunt tempore. Labore deserunt sint fuga quas odit.', 'kuliner', 16, 3),
-(61, '1987-10-31', 3, 'Vitae at aut atque magnam aut. Neque eligendi et non. Deserunt ut perferendis ut velit iusto recusandae minus.', 'kuliner', 16, 2),
-(62, '2021-11-23', 4, 'Quia ut ut voluptas fugit pariatur non quas. Voluptates voluptatibus deleniti rerum et consequuntur ea. Accusamus assumenda voluptates deleniti et.', 'kuliner', 18, 3),
-(63, '2022-02-15', 4, 'Praesentium facere veniam quibusdam quo. Et incidunt enim qui eos vel error error asperiores. Beatae ut earum voluptatibus.', 'kuliner', 28, 2),
-(64, '1971-12-08', 4, 'Nulla est et ipsa omnis blanditiis. Quibusdam voluptas sint autem quia. Nemo dolor doloribus omnis assumenda hic id.', 'kuliner', 15, 3),
-(65, '2015-01-22', 3, 'Quasi voluptates quibusdam sint rerum nemo et id. Sapiente omnis architecto maxime. Quis eligendi ut ea ullam.', 'kuliner', 21, 8),
-(66, '2006-11-17', 5, 'Quod voluptatum nostrum vel assumenda fuga qui. Et commodi consequuntur sed iusto est voluptas. Aut dolor qui alias et nihil aut.', 'kuliner', 22, 8),
-(67, '1974-12-10', 1, 'Vitae ex commodi omnis ut et. Dolorum sapiente rerum architecto maxime ut ex. Dignissimos modi repudiandae id amet.', 'kuliner', 28, 3),
-(68, '1993-04-27', 4, 'Sapiente eum ut optio ut. Totam occaecati qui repudiandae aut expedita consequuntur sed culpa. Nulla hic sunt at sunt consectetur quis.', 'kuliner', 17, 3),
-(69, '1970-12-08', 2, 'Aperiam corporis cupiditate aliquid ea consequuntur dignissimos nostrum. Corrupti vel similique ut voluptas velit eius est. Accusamus voluptas sunt rerum laudantium quaerat.', 'kuliner', 15, 4),
-(70, '2021-01-29', 4, 'Quis veniam repellendus consequuntur consequatur. Autem voluptatum sed vero et qui unde. Deleniti sed est ut explicabo.', 'kuliner', 5, 8),
-(71, '1974-03-15', 2, 'Aut nisi maiores ratione autem fugiat vel. Autem aut et et sit est sed. Minus suscipit velit commodi eos reiciendis non.', 'kuliner', 15, 5),
-(72, '1996-11-03', 4, 'Alias totam velit voluptatem quo cum ipsam consequatur nihil. Corporis autem quibusdam sapiente doloremque. Veritatis doloremque ea sed.', 'kuliner', 21, 2),
-(73, '2005-05-07', 4, 'Nobis debitis voluptatum amet iste omnis dolore quo. Voluptas et aspernatur sequi quia enim sequi. Ut voluptatum quis tempore voluptatibus sed eaque laboriosam.', 'kuliner', 29, 8),
-(74, '1972-10-30', 5, 'Enim aut exercitationem odit libero eius reprehenderit deleniti. Impedit nulla quam commodi vitae nam. Deserunt iusto iste accusamus ut.', 'kuliner', 14, 1),
-(75, '1985-03-02', 3, 'Sed nihil ut modi quis qui qui. Deserunt tempora non nemo corrupti. Dolorem exercitationem deleniti ea unde.', 'kuliner', 19, 6),
-(76, '1993-07-24', 1, 'Soluta odit voluptatem consequuntur eos adipisci molestiae. Maiores minima nobis architecto commodi dolor non error. Pariatur et voluptatem voluptas ut.', 'kuliner', 15, 5),
-(77, '1977-12-21', 3, 'Cupiditate occaecati explicabo dolores soluta. Sunt nesciunt minima ut ullam. Iure ut consequatur quia et.', 'kuliner', 22, 3),
-(78, '1985-02-08', 1, 'Dolorem laboriosam nesciunt non qui praesentium. Saepe numquam illum dolorem consectetur incidunt et deserunt consequatur. Deserunt iste nesciunt autem cum asperiores dolor porro molestiae.', 'kuliner', 15, 8),
-(79, '1992-01-11', 3, 'Accusamus sed voluptas illo non. Saepe iure explicabo at soluta voluptatem. Ea modi ab harum ea sapiente suscipit dignissimos.', 'kuliner', 27, 3),
-(80, '1999-07-21', 4, 'Omnis earum deserunt quaerat et laborum in. Reiciendis quo et fugiat. Enim voluptatem qui reiciendis voluptas dolores consectetur qui.', 'kuliner', 19, 7),
-(81, '1976-01-02', 2, 'Omnis sequi voluptate similique quae. Sunt fugit nobis sunt. Sit occaecati quibusdam qui illum.', 'kuliner', 2, 1),
-(82, '1970-09-27', 3, 'Nemo natus et harum sequi. Enim reiciendis itaque quaerat cum commodi. Illo nostrum sit dolorum consequatur suscipit officiis enim.', 'kuliner', 20, 7),
-(83, '2008-03-15', 5, 'Quos dolorem eum ipsum reiciendis nihil sequi. Ab atque nihil sit. Eum voluptatibus maxime voluptas quod sunt aut.', 'kuliner', 21, 7),
-(84, '2006-10-16', 2, 'Error magnam quia ea aut. Dicta rerum alias deserunt porro id. A hic aut nobis impedit adipisci eius nisi.', 'kuliner', 20, 1),
-(85, '1980-01-29', 1, 'Beatae dolor voluptatibus fugiat veniam dolore ratione neque magni. Exercitationem maiores quasi occaecati modi amet quod. Perferendis nisi beatae dolorum repellat facere maxime.', 'kuliner', 1, 5),
-(86, '1983-04-14', 4, 'Non natus est incidunt doloremque reiciendis dicta temporibus ducimus. Reiciendis minima nihil sed at quos. Ducimus eum nostrum aut distinctio dolores.', 'kuliner', 18, 1),
-(87, '1974-10-28', 3, 'Aliquid veritatis earum sint nam eos voluptatem. Est ex enim aut quibusdam quam. Soluta quo voluptates fugiat totam a.', 'kuliner', 29, 3),
-(88, '2010-12-24', 3, 'A temporibus aut doloremque sapiente. Est architecto omnis rem possimus. Voluptas itaque qui et et sint sequi.', 'kuliner', 29, 6),
-(89, '1976-11-17', 3, 'Enim ipsum ducimus molestias quasi accusamus et hic. Repellendus ut tempora rerum minus. Quo nostrum omnis in id veritatis.', 'kuliner', 1, 4),
-(90, '1984-01-24', 2, 'Quidem soluta laboriosam quae sit quis eveniet rerum. Maiores a sint quis repellendus dolores neque earum neque. Ratione vel eum perspiciatis esse.', 'kuliner', 14, 7),
-(91, '1974-03-31', 1, 'Vel excepturi deserunt aperiam exercitationem nihil sunt placeat. Laboriosam nobis itaque quia qui magnam. Voluptatum eos dolor nulla officiis.', 'kuliner', 17, 8),
-(92, '2006-09-29', 1, 'Accusantium odio dolorum accusantium dolorum. Facilis aut rem ea veniam dolorem rerum. Explicabo commodi laboriosam earum.', 'kuliner', 18, 3),
-(93, '2017-04-17', 2, 'Quo dolor consequatur aliquam. Maiores id tenetur non veritatis et vitae commodi at. Sint sit aut expedita voluptatem iure.', 'kuliner', 19, 8),
-(94, '1993-03-12', 5, 'Amet sit quidem voluptas. Repellat ipsa exercitationem excepturi aut. Iure dolores repellat non illo.', 'kuliner', 15, 6),
-(95, '1973-07-11', 2, 'Tempora iste enim corrupti earum explicabo rerum sapiente hic. Magnam vero enim voluptas quae repellat soluta omnis. Cupiditate et exercitationem ad reiciendis amet numquam voluptatem.', 'kuliner', 29, 7),
-(96, '2014-09-20', 5, 'Nostrum aut perspiciatis et est voluptas nostrum assumenda eligendi. Omnis ad a pariatur dolorem. Ut ut et voluptatem rerum.', 'kuliner', 2, 4),
-(97, '2021-02-26', 1, 'Deserunt aperiam qui recusandae consequatur. Voluptatem dolorem aut id laboriosam. Possimus impedit nulla occaecati facilis quia doloribus quis.', 'kuliner', 28, 8),
-(98, '1984-02-06', 3, 'Fugiat qui saepe non nostrum adipisci quos quis. Fugit aspernatur eveniet alias sit ducimus. Quis quae voluptatum ex nam minus.', 'kuliner', 15, 1),
-(99, '1983-07-08', 3, 'Vero dicta et amet voluptates nemo suscipit. Accusantium dicta fugit ullam eum dolorem. Et distinctio ipsa veritatis molestias.', 'kuliner', 18, 1),
-(100, '2015-07-21', 4, 'Corrupti sit temporibus excepturi at quia veniam aut architecto. Distinctio amet dolorum adipisci qui occaecati velit veniam. Nisi culpa nemo dolorum culpa quaerat.', 'kuliner', 21, 6);
 
 -- --------------------------------------------------------
 
@@ -303,22 +242,15 @@ INSERT INTO `rating` (`id`, `tanggal`, `rate`, `review`, `jenis_produk`, `id_use
 
 CREATE TABLE `tefood` (
   `id_pesan` int(11) NOT NULL,
-  `tanggal_pesan` date NOT NULL,
+  `tanggal_pesan` varchar(128) NOT NULL,
   `jumlah` int(11) NOT NULL,
   `jenis_pesan` char(20) NOT NULL,
-  `id_user` int(11) NOT NULL,
+  `id_customer` int(11) NOT NULL,
+  `id_penjual` int(11) NOT NULL,
   `id_produk` int(11) NOT NULL,
   `harga_total` int(11) NOT NULL,
   `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tefood`
---
-
-INSERT INTO `tefood` (`id_pesan`, `tanggal_pesan`, `jumlah`, `jenis_pesan`, `id_user`, `id_produk`, `harga_total`, `status`) VALUES
-(1, '2023-06-08', 4, 'kuliner', 15, 6, 32000, 0),
-(2, '2023-06-08', 3, 'kuliner', 16, 5, 36000, 0);
 
 -- --------------------------------------------------------
 
@@ -349,8 +281,8 @@ INSERT INTO `user` (`id`, `nama`, `email`, `no_telp`, `jenis_kelamin`, `alamat`,
 (2, 'Istia Ningrum', 'istianingrum@gmail.com', '083121242561', 'Perempuan', 'Sawojajar, Brebes', '$2y$10$cQM749U1j/oF2qxA8tBCHOOxhbYVlj3SY4OL72rU9x7a2fLVds2gO', 'default.jpg', 0, 1, 2),
 (5, 'Krisdiana', 'krisdiana@gmail.com', '081257800047', 'Perempuan', 'Gamprit, Brebes', '$2y$10$aEeWfdCY0kJ0a/qNt5zkyOm4P9UOV5HRLh1FebyOr.CjHzlSh9vCS', 'default.jpg', 0, 1, 2),
 (14, 'Adduru Nafisah', 'adudu@gmail.com', '081187900098', 'Perempuan', 'Pasarbatang, Brebes', '$2y$10$nwtp6qxzU05Ns9n1D2ATt.J8QhRwPyf44aoFAVAHcRJimE/Refs7G', 'default.jpg', 0, 1, 2),
-(15, 'Nurul Rahmanda Afriannisa', 'nurul@gmail.com', '081257800047', 'Perempuan', 'Kaligangsa Wetan, Brebes', '$2y$10$cpNdOhSDdMJLGsUhcZoPPOouR33UaY.a.HLEyLxwvPmUeuVPPf1ki', '1685278813_3cf1b2f7997e33836825.jpg', 468000, 1, 3),
-(16, 'Nihayatul Fathiyah', 'ayaa@gmail.com', '085870627026', 'Perempuan', 'Banjaratma, Brebes', '$2y$10$fclZNl2E9fuzrjaOLqpU/.hQFE8ri4RNIXmtrD.mNUqBxb1k88Jgm', 'default.jpg', 164000, 1, 2),
+(15, 'Nurul Rahmanda Afriannisa', 'nurul@gmail.com', '081257800047', 'Perempuan', 'Kaligangsa Wetan, Brebes', '$2y$10$cpNdOhSDdMJLGsUhcZoPPOouR33UaY.a.HLEyLxwvPmUeuVPPf1ki', '1685278813_3cf1b2f7997e33836825.jpg', 160000, 1, 3),
+(16, 'Nihayatul Fathiyah', 'ayaa@gmail.com', '085870627026', 'Perempuan', 'Banjaratma, Brebes', '$2y$10$fclZNl2E9fuzrjaOLqpU/.hQFE8ri4RNIXmtrD.mNUqBxb1k88Jgm', 'default.jpg', 180000, 1, 2),
 (17, 'Rahma Liza Arifiyah', 'liza@gmail.com', '083121242542', 'Perempuan', 'Pasarbatang, Brebes', '$2y$10$wPbfth0gnBGm15AmTmswb.OtuTpdENDT2On2LpigYjLl2XqcVormq', '1668611388_da32d42732f1a4413bc3.jpg', 0, 1, 2),
 (18, 'Istia Ningrum', 'istianingrum09@gmail.com', '083121242542', 'Perempuan', 'jl. Pemuda Sawojajar, Brebes', '$2y$10$lvEK0XuqnUfsvIfWeOgPZOnVokAIRoPQRbzt4bNco7QxiIHWLpjhW', 'default.jpg', 0, 1, 2),
 (19, 'Aliando Syarief', 'aliandogans@gmail.com', '087782824940', 'Laki-laki', 'Cikeusal Kidul, Ketanggungan, Brebes', '$2y$10$OGnib5v7Lk3EKZHTydGGD.Ww9fPxzmJKKy60g.tzrdDt11HvEkJfO', '1671085603_d1f047dc41eb7f0f9ed9.jpg', 0, 1, 2),
@@ -360,7 +292,10 @@ INSERT INTO `user` (`id`, `nama`, `email`, `no_telp`, `jenis_kelamin`, `alamat`,
 (27, 'Khaeril Anwar', 'khaerilanwar0001@gmail.com', '087856906294', 'Perempuan', 'Brebes', '$2y$10$.eIyJYX3ppu1eMZ58FXiVOgdE2LT0iMuEty1tgoHz8C2b0sHDu.zq', 'default.jpg', 0, 1, 2),
 (28, 'Khaeril Anwar Istia', 'kabtegalubsi@gmail.com', '087856906294', 'Perempuan', 'Brebes', '$2y$10$hvypoVs45rDzQZ8/3fHqgeIDOfEY4dxkunlUR6mc01mY/5.gelzXW', 'default.jpg', 0, 1, 2),
 (29, 'Khaeril Anwar', 'rediofficial27@gmail.com', '087856906294', 'Laki-laki', 'Brebes', '$2y$10$JcDdhPYxzFFZ3NDTm8wtieakEqZ/m6xspx7.C9sZ26we.JdTNFvN6', 'default.jpg', 0, 0, 2),
-(32, 'Tri Haryanto', 'm150dsx0234@bangkit.academy', '087856906294', 'Laki-laki', 'Brebes', '$2y$10$th6ZJLa4XMSpGMZTOCHfhuGPQCvfr/oEfEIFkRplpv457oAovGIXe', 'default.jpg', 0, 0, 2);
+(32, 'Tri Haryanto', 'm150dsx0234@bangkit.academy', '087856906294', 'Laki-laki', 'Brebes', '$2y$10$th6ZJLa4XMSpGMZTOCHfhuGPQCvfr/oEfEIFkRplpv457oAovGIXe', 'default.jpg', 0, 0, 2),
+(37, 'rani', 'ranioppoa33@gmail.com', '081215847404', 'Perempuan', 'TEGAL', '$2y$10$Myw0AbpP/FBF109RGBFc0.Lxv5mnKllpH4AnT/vdhuyZs/uHJAEIm', 'default.jpg', 0, 0, 2),
+(38, 'Lusiana Amelia', 'khaerilanwar0003@gmail.com', '087856906294', 'Laki-laki', 'Brebes', '$2y$10$BUqfxdSRi7Mqcs1B5KU49.WoYaH0XFAgT.3WOKgZleJgkX/HMdgOu', 'default.jpg', 0, 1, 2),
+(39, 'Wasriatun', 'khaerilanwar0004@gmail.com', '081234567890', 'Perempuan', 'Wangandalem', '$2y$10$LiGKAu/6.KxFl7g7t4c9Cu9g/nCHzc.BxkUNjPxjEm5CnXKVgpu.G', 'default.jpg', 0, 0, 2);
 
 -- --------------------------------------------------------
 
@@ -383,7 +318,12 @@ INSERT INTO `user_token` (`id`, `email`, `token`, `date_created`) VALUES
 (7, 'rediofficial27@gmail.com', 'L6Eaj6kJoh6JLh9lKymG1DMeV/2B9MLUcwP/ZKV0XTE=', 1671588794),
 (8, 'm150dsx0234@bangkit.academy', 'hTHBh7xVmz0Xa0wSeQZreX/vVDN4MSK4U19UBuLvqWM=', 1686119678),
 (9, 'm150dsx0234@bangkit.academy', 'onEUeMud8tVctaGrtJyHdv2UT/lLlGQqWi4SdL33hp4=', 1686120268),
-(10, 'm150dsx0234@bangkit.academy', 'NfT6ymoIGhEe1zFixYkJDEk/9rguh6I978lAP1kl6+U=', 1686120958);
+(10, 'm150dsx0234@bangkit.academy', 'NfT6ymoIGhEe1zFixYkJDEk/9rguh6I978lAP1kl6+U=', 1686120958),
+(11, '12211073@gmail.com', 'EHd2qUqwyoMQi9MT6VYMWfFlidJxf8alqzRMzDDwrew=', 1686296298),
+(12, 'rani@gmail.com', 'bkod/jHzn0t7CzL5/KvJ0MvutxedZ9rdSKewDbN0AlQ=', 1686296338),
+(13, '12211073@bsi.ac.id', 'Km8QCXO0dREu7ohawUmusi8SRKRCWooxLLsBwTX7j+g=', 1686296435),
+(14, 'ranioppoa33@gmail.com', 'wX2hbfQeR1voMjo1JMm+cbamFJ9zlzFKxxB41OaFv0M=', 1686296895),
+(16, 'khaerilanwar0004@gmail.com', 'E/7o2lozrf+37qZZAMdz91fPligsJfrcDinLo34YPHI=', 1686297625);
 
 -- --------------------------------------------------------
 
@@ -420,6 +360,12 @@ INSERT INTO `wisata` (`id`, `nama`, `harga`, `lokasi`, `maps`, `alamat`, `deskri
 --
 
 --
+-- Indexes for table `bukti_bayar`
+--
+ALTER TABLE `bukti_bayar`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `kuliner`
 --
 ALTER TABLE `kuliner`
@@ -442,6 +388,12 @@ ALTER TABLE `penginapan`
 --
 ALTER TABLE `pesanan`
   ADD PRIMARY KEY (`no_pesanan`);
+
+--
+-- Indexes for table `pesanpenginapan`
+--
+ALTER TABLE `pesanpenginapan`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `rating`
@@ -478,6 +430,12 @@ ALTER TABLE `wisata`
 --
 
 --
+-- AUTO_INCREMENT for table `bukti_bayar`
+--
+ALTER TABLE `bukti_bayar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `kuliner`
 --
 ALTER TABLE `kuliner`
@@ -496,28 +454,34 @@ ALTER TABLE `penginapan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
+-- AUTO_INCREMENT for table `pesanpenginapan`
+--
+ALTER TABLE `pesanpenginapan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `rating`
 --
 ALTER TABLE `rating`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tefood`
 --
 ALTER TABLE `tefood`
-  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `user_token`
 --
 ALTER TABLE `user_token`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `wisata`
