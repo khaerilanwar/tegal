@@ -73,7 +73,12 @@
 
     <div class="container mx-auto">
         <h4 class="font-heebo text-center dark:text-white text-xl mb-2">TecationPay</h4>
-        <h2 class="font-heebo text-center dark:text-white text-4xl font-black mb-6">Rp. <?= number_format($saldo, 0, '', '.') ?></h2>
+        <div class="flex justify-center items-center align-bottom">
+            <h2 class="mt-7 font-heebo text-center dark:text-white text-4xl font-black mr-4 mb-6">Rp. <?= number_format($user['saldo'], 0, '', '.') ?></h2>
+            <button data-modal-target="topUpSaldo" data-modal-toggle="topUpSaldo" type="button">
+                <i class="m-0 text-4xl fa-regular dark:text-white fa-square-plus"></i>
+            </button>
+        </div>
     </div>
 
 
