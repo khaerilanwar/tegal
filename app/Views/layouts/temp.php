@@ -390,20 +390,51 @@
         //     }
         // }
 
-        const ratingKuliner = document.querySelector('#ratingKuliner');
-        const stars = ratingKuliner.querySelectorAll('i');
+        // const ratingKuliner = document.querySelector('.ratingKuliner');
+        // const stars = ratingKuliner.querySelectorAll('i');
 
-        for (let i = 0; i < stars.length; i++) {
-            stars[i].addEventListener('click', function() {
-                for (let j = i + 1; j < stars.length; j++) {
-                    stars[j].classList.remove('text-yellow-300');
-                }
+        // for (let i = 0; i < stars.length; i++) {
+        //     stars[i].addEventListener('click', function() {
+        //         for (let j = i + 1; j < stars.length; j++) {
+        //             stars[j].classList.remove('text-yellow-300');
+        //         }
 
-                for (let j = 0; j <= i; j++) {
-                    stars[j].classList.add('text-yellow-300')
-                }
-            })
+        //         for (let j = 0; j <= i; j++) {
+        //             stars[j].classList.add('text-yellow-300')
+        //         }
+        //     })
+        // }
 
+        const metode = document.querySelector('#metode');
+        const rekening = document.querySelector('#rekening');
+
+        metode.addEventListener('change', function() {
+            const selectedOption = metode.value;
+
+            if (selectedOption == 'Dana' || selectedOption == 'ShopeePay') {
+                rekening.value = '085870627026';
+            } else if (selectedOption == 'Bank BRI') {
+                rekening.value = '586501030011537';
+            } else if (selectedOption == 'Bank BCA') {
+                rekening.value = '5220304312';
+            }
+        })
+
+        const ratingKuliners = document.querySelectorAll('.ratingKuliner');
+
+        for (let i = 0; i < ratingKuliners.length; i++) {
+            const stars = ratingKuliners[i].querySelectorAll('i');
+            for (let j = 0; j < stars.length; j++) {
+                stars[j].addEventListener('click', function() {
+                    for (let k = j + 1; k < stars.length; k++) {
+                        stars[k].classList.remove('text-yellow-300');
+                    }
+
+                    for (let k = 0; k <= j; k++) {
+                        stars[k].classList.add('text-yellow-300')
+                    }
+                })
+            }
         }
     </script>
     <script>

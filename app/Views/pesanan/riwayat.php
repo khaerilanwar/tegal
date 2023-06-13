@@ -110,7 +110,7 @@
                     <input type="hidden" name="id_produk" value="<?= $data['id_produk']; ?>">
                     <div class="grid gap-2 mb-4 sm:grid-cols-2">
                         <span class="block sm:col-span-2 text-sm font-medium text-gray-900 dark:text-white">Rating</span>
-                        <div id="ratingKuliner" class="flex items-center mb-3">
+                        <div id="ratingKuliner" class="ratingKuliner flex items-center mb-3">
                             <input class="hidden" type="radio" id="star1" name="rating" value="1" />
                             <label for="star1"><i class="cursor-pointer text-gray-500 text-xl mr-1 fa-solid fa-star"></i></label>
                             <input class="hidden" type="radio" id="star2" name="rating" value="2" />

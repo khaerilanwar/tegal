@@ -234,6 +234,7 @@
                         </select>
                     </div>
 
+
                     <div>
                         <label for="metode" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Metode Pembayaran</label>
                         <select id="metode" name="metode" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -242,6 +243,11 @@
                             <option value="Bank BRI">Bank BRI</option>
                             <option value="Bank BCA">Bank BCA</option>
                         </select>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="rekening" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tujuan transfer</label>
+                        <input type="text" id="rekening" value="085870627026" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" readonly>
                     </div>
 
                     <div>

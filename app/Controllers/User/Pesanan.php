@@ -36,7 +36,8 @@ class Pesanan extends BaseController
         $wisata = $db->table('pesanan');
         $wisata->select('pesanan.harga_total, pesanan.tanggal_datang, pesanan.jumlah_tiket AS jumlah, pesanan.jenis_pesan, pesanan.no_pesanan AS id_pesan, pesanan.status, wisata.gambar, wisata.nama, wisata.harga');
         $wisata->join('wisata', 'wisata.id = pesanan.id_produk');
-        $wisata = $wisata->getWhere(['pesanan.id_user' => $this->user['id'], 'pesanan.status !=' => '3'])->getResultArray();
+        $wisata = $wisata->where('pesanan.id_user', $this->user['id'])->whereNotIn('pesanan.status', ['3', '4'])->get()->getResultArray();
+        // $wisata = $wisata->getWhere(['pesanan.id_user' => $this->user['id'], 'pesanan.status !=' => '3'])->getResultArray();
 
         $kuliner = $db->table('tefood');
         $kuliner->select('tefood.id_pesan, tefood.jumlah, kuliner.harga, kuliner.nama, tefood.jenis_pesan, tefood.status, kuliner.gambar, tefood.harga_total');
@@ -140,7 +141,8 @@ class Pesanan extends BaseController
         $wisata = $db->table('pesanan');
         $wisata->select('pesanan.harga_total, pesanan.no_pesanan AS id_pesan, pesanan.status, pesanan.id_produk, pesanan.jenis_pesan, wisata.harga, pesanan.jumlah_tiket AS jumlah, wisata.gambar, wisata.nama');
         $wisata->join('wisata', 'wisata.id = pesanan.id_produk');
-        $wisata = $wisata->getWhere(['pesanan.id_user' => $this->user['id'], 'pesanan.status' => '3'])->getResultArray();
+        $wisata = $wisata->where('pesanan.id_user', $this->user['id'])->whereIn('pesanan.status', ['3', '4'])->get()->getResultArray();
+        // $wisata = $wisata->getWhere(['pesanan.id_user' => $this->user['id'], 'pesanan.status' => '3'])->getResultArray();
 
         $kuliner = $db->table('tefood');
         $kuliner->select('tefood.harga_total, tefood.id_pesan, tefood.status, tefood.id_produk, tefood.jenis_pesan, tefood.jumlah, kuliner.gambar, kuliner.harga, kuliner.nama');
