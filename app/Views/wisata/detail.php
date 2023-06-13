@@ -28,103 +28,74 @@
 
 <!-- ULASAN -->
 
-<div class="container mx-auto px-36 mb-12">
+<div class="container mx-auto px-36 my-12">
     <div class="flex items-center mb-3">
-        <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <title>First star</title>
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-        </svg>
-        <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <title>Second star</title>
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-        </svg>
-        <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <title>Third star</title>
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-        </svg>
-        <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <title>Fourth star</title>
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-        </svg>
-        <svg aria-hidden="true" class="w-5 h-5 text-gray-300 dark:text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <title>Fifth star</title>
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-        </svg>
-        <p class="ml-2 text-sm font-medium text-gray-900 dark:text-white">4.95 out of 5</p>
-    </div>
-    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">1,745 global ratings</p>
-    <div class="flex items-center mt-4">
-        <span class="text-sm font-medium text-blue-600 dark:text-blue-500">5 star</span>
-        <div class="w-2/4 h-5 mx-4 bg-gray-200 rounded dark:bg-gray-700">
-            <div class="h-5 bg-yellow-400 rounded" style="width: 70%"></div>
-        </div>
-        <span class="text-sm font-medium text-blue-600 dark:text-blue-500">70%</span>
-    </div>
-    <div class="flex items-center mt-4">
-        <span class="text-sm font-medium text-blue-600 dark:text-blue-500">4 star</span>
-        <div class="w-2/4 h-5 mx-4 bg-gray-200 rounded dark:bg-gray-700">
-            <div class="h-5 bg-yellow-400 rounded" style="width: 17%"></div>
-        </div>
-        <span class="text-sm font-medium text-blue-600 dark:text-blue-500">17%</span>
-    </div>
-    <div class="flex items-center mt-4">
-        <span class="text-sm font-medium text-blue-600 dark:text-blue-500">3 star</span>
-        <div class="w-2/4 h-5 mx-4 bg-gray-200 rounded dark:bg-gray-700">
-            <div class="h-5 bg-yellow-400 rounded" style="width: 8%"></div>
-        </div>
-        <span class="text-sm font-medium text-blue-600 dark:text-blue-500">8%</span>
-    </div>
-    <div class="flex items-center mt-4">
-        <span class="text-sm font-medium text-blue-600 dark:text-blue-500">2 star</span>
-        <div class="w-2/4 h-5 mx-4 bg-gray-200 rounded dark:bg-gray-700">
-            <div class="h-5 bg-yellow-400 rounded" style="width: 4%"></div>
-        </div>
-        <span class="text-sm font-medium text-blue-600 dark:text-blue-500">4%</span>
-    </div>
-    <div class="flex items-center mt-4">
-        <span class="text-sm font-medium text-blue-600 dark:text-blue-500">1 star</span>
-        <div class="w-2/4 h-5 mx-4 bg-gray-200 rounded dark:bg-gray-700">
-            <div class="h-5 bg-yellow-400 rounded" style="width: 1%"></div>
-        </div>
-        <span class="text-sm font-medium text-blue-600 dark:text-blue-500">1%</span>
-    </div>
 
+        <?php for ($i = 1; $i <= 5; $i++) : ?>
+            <?php if ($i <= intval($rating_global['rate_mean'])) : ?>
+                <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <title>Fourth star</title>
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+            <?php else : ?>
+                <svg aria-hidden="true" class="w-5 h-5 text-gray-300 dark:text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <title>Fifth star</title>
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+            <?php endif; ?>
+        <?php endfor; ?>
 
-    <!-- REVIEW USERS -->
-    <article class="mt-10 w-2/3">
-        <div class="flex items-center mb-4 space-x-4">
-            <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt="">
-            <div class="space-y-1 font-medium dark:text-white">
-                <p class="text-2xl">Jese Leos</p>
+        <p class="ml-2 text-sm font-medium text-gray-900 dark:text-white"><?= number_format(floatval($rating_global['rate_mean']), 2); ?> out of 5</p>
+    </div>
+    <p class="text-sm font-medium text-gray-500 dark:text-gray-400"><?= count($rating); ?> global ratings</p>
+
+    <?php foreach ($rating as $review) : ?>
+        <!-- REVIEW USERS -->
+        <article class="mt-10 w-2/3">
+            <div class="flex items-center mb-4 space-x-4">
+                <img class="w-10 h-10 rounded-full" src="/assets/img/<?= $review['gambar']; ?>" alt="">
+                <div class="space-y-1 font-medium dark:text-white">
+                    <p class="text-2xl"><?= $review['nama']; ?></p>
+                </div>
             </div>
-        </div>
-        <div class="flex items-center mb-1">
-            <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <title>First star</title>
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-            </svg>
-            <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <title>Second star</title>
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-            </svg>
-            <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <title>Third star</title>
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-            </svg>
-            <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <title>Fourth star</title>
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-            </svg>
-            <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <title>Fifth star</title>
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-            </svg>
-        </div>
-        <footer class="mb-5 text-sm text-gray-500 dark:text-gray-400">
-            <p>Reviewed on <time datetime="2017-03-03 19:00">March 3, 2017</time></p>
-        </footer>
-        <p class="mb-2 text-gray-500 dark:text-gray-400 text-justify">This is my third Invicta Pro Diver. They are just fantastic value for money. This one arrived yesterday and the first thing I did was set the time, popped on an identical strap from another Invicta and went in the shower with it to test the waterproofing.... No problems.</p>
-    </article>
+            <div class="flex items-center mb-1">
+
+                <?php for ($i = 1; $i <= 5; $i++) : ?>
+                    <?php if ($i <= $review['rate']) : ?>
+                        <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <title>Fourth star</title>
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                    <?php else : ?>
+                        <svg aria-hidden="true" class="w-5 h-5 text-gray-300 dark:text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <title>Fifth star</title>
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                    <?php endif; ?>
+                <?php endfor; ?>
+
+            </div>
+            <footer class="mb-5 text-sm text-gray-500 dark:text-gray-400">
+                <p>Reviewed on <time datetime="2017-03-03 19:00">
+                        <?php
+                            $date = $review['tanggal']; // Tanggal yang ingin diubah formatnya
+
+
+                            // $date = $review['tanggal']; // Tanggal yang ingin diubah formatnya
+                            // setlocale(LC_TIME, 'id_ID');
+                            // $newDate = strftime('%d %B %Y', strtotime($date));
+                            // $newDate = date('d F Y ', strtotime($date));
+                            $timestamp = strtotime($date);
+                            $newDate = date('d F Y', $timestamp);
+
+                            echo $newDate; // Output: 18 May 2023
+
+                            ?>
+                    </time></p>
+            </footer>
+            <p class="mb-2 text-gray-500 dark:text-gray-400 text-justify"><?= $review['review']; ?></p>
+        </article>
+    <?php endforeach; ?>
 
 </div>
 

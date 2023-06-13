@@ -127,6 +127,12 @@
         </script>
     <?php endif; ?>
 
+    <?php if (session()->getFlashdata('topUp')) : ?>
+        <script>
+            swal("Berhasil!", "<?= session()->getFlashdata('topUp'); ?>!", "success");
+        </script>
+    <?php endif; ?>
+
     <!-- JAVASCRIPT CUSTOM -->
     <script src="/assets/js/script.js"></script>
 
@@ -149,6 +155,19 @@
             const gambar = document.querySelector('#gambar');
             // const sampulLabel = document.querySelector('.custom-f')
             const imgPreview = document.querySelector('.img-preview');
+            const fileGambar = new FileReader();
+
+            fileGambar.readAsDataURL(gambar.files[0]);
+
+            fileGambar.onload = function(e) {
+                imgPreview.src = e.target.result;
+            }
+        }
+
+        function previewImgTopUp() {
+            const gambar = document.querySelector('#gambarTopUp');
+            // const sampulLabel = document.querySelector('.custom-f')
+            const imgPreview = document.querySelector('.img-preview-TopUp');
             const fileGambar = new FileReader();
 
             fileGambar.readAsDataURL(gambar.files[0]);

@@ -17,7 +17,7 @@ class RatingSeeder extends Seeder
 
         $faker = \Faker\Factory::create('id_ID');
 
-        for ($i = 0; $i < 40; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             $data = [
                 'tanggal' => $faker->date(),
                 'rate' => $faker->randomElement([3, 4, 5]),

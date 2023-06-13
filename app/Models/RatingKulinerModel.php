@@ -4,9 +4,9 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class RatingModel extends Model
+class RatingKulinerModel extends Model
 {
-    protected $table = 'rating';
+    protected $table = 'rating_kuliner';
     protected $allowedFields = [
         'id',
         'tanggal',

@@ -42,13 +42,23 @@ class Wisata extends BaseController
 
     public function detail($id)
     {
+        $db = \Config\Database::connect();
         $wisata = $this->wisataModel->find($id);
         $nama = $wisata['nama'];
+
+        $rating = $db->table('rating_wisata');
+        $rating->select('rating_wisata.tanggal, rating_wisata.rate, rating_wisata.review, user.nama, user.gambar');
+        $rating->join('user', 'user.id = rating_wisata.id_user')->orderBy('rating_wisata.tanggal', 'DESC');
+        $rating = $rating->getWhere(['rating_wisata.id_produk' => $id, 'rating_wisata.jenis_produk' => 'wisata'])->getResultArray();
+
+        $rating_mean = $db->table('rating_wisata')->selectAvg('rate', 'rate_mean')->where('id_produk', $id)->where('jenis_produk', 'wisata')->get()->getRowArray();
 
         $data = [
             'title' => "Pariwisata $nama",
             'wisata' => $wisata,
-            'user' => $this->user
+            'user' => $this->user,
+            'rating_global' => $rating_mean,
+            'rating' => $rating
         ];
 
         // jika komik tidak ada di tabel

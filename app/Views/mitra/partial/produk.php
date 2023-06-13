@@ -76,7 +76,7 @@
     </section>
 
     <div class="container mx-auto">
-        <h4 class="font-heebo text-center dark:text-white text-xl mb-2">Saldo Mitra</h4>
+        <h4 class="font-heebo text-center dark:text-white text-xl mb-2">TecationPay</h4>
         <h2 class="font-heebo text-center dark:text-white text-4xl font-black mb-6">Rp. <?= number_format($saldo, 0, '', '.') ?></h2>
     </div>
 

@@ -5,20 +5,23 @@ namespace App\Controllers\User;
 use App\Controllers\BaseController;
 use App\Models\BuktiBayarModel;
 use App\Models\PesananModel;
-use App\Models\RatingModel;
+use App\Models\RatingKulinerModel;
+use App\Models\RatingWisataModel;
 use App\Models\TefoodModel;
 use CodeIgniter\I18n\Time;
 
 class Pesanan extends BaseController
 {
-    protected $ratingModel;
+    protected $ratingkulinerModel;
+    protected $ratingwisataModel;
     protected $tefoodModel;
     protected $buktiModel;
     protected $pesananModel;
 
     public function __construct()
     {
-        $this->ratingModel = new RatingModel();
+        $this->ratingkulinerModel = new RatingKulinerModel();
+        $this->ratingwisataModel = new RatingWisataModel();
         $this->tefoodModel = new TefoodModel();
         $this->buktiModel = new BuktiBayarModel();
         $this->pesananModel = new PesananModel();
@@ -38,7 +41,8 @@ class Pesanan extends BaseController
         $kuliner = $db->table('tefood');
         $kuliner->select('tefood.id_pesan, tefood.jumlah, kuliner.harga, kuliner.nama, tefood.jenis_pesan, tefood.status, kuliner.gambar, tefood.harga_total');
         $kuliner->join('kuliner', 'kuliner.id = tefood.id_produk');
-        $kuliner = $kuliner->getWhere(['tefood.id_customer' => $this->user['id'], 'tefood.status !=' => '2', 'tefood.status !=' => '3'])->getResultArray();
+        $kuliner = $kuliner->where('tefood.id_customer', $this->user['id'])->whereNotIn('tefood.status', ['2', '3'])->get()->getResultArray();
+        // $kuliner = $kuliner->getWhere(['tefood.id_customer' => $this->user['id'], 'tefood.status !=' => '2', 'tefood.status !=' => '3'])->getResultArray();
 
         $pesanan = array_merge($wisata, $kuliner);
 
@@ -51,6 +55,17 @@ class Pesanan extends BaseController
         return view('/pesanan/index', $data);
     }
 
+    public function pakaiTiket()
+    {
+        $id_pesan = htmlspecialchars($this->request->getPost('id_pesan'));
+
+        $this->pesananModel->update($id_pesan, [
+            'status' => 3
+        ]);
+
+        return redirect()->to('/pesanan');
+    }
+
     public function rating()
     {
         $id_produk = htmlspecialchars($this->request->getPost('id_produk'));
@@ -59,20 +74,38 @@ class Pesanan extends BaseController
         $rating = htmlspecialchars($this->request->getPost('rating'));
         $review = htmlspecialchars($this->request->getPost('review'));
 
-        $dataPesan = $this->tefoodModel->find($id_pesan);
 
-        $this->ratingModel->save([
-            'tanggal' => Time::now(),
-            'rate' => $rating,
-            'review' => $review,
-            'jenis_produk' => $jenis_produk,
-            'id_user' => $this->user['id'],
-            'id_produk' => $id_produk
-        ]);
+        if ($jenis_produk == 'kuliner') {
+            $dataPesan = $this->tefoodModel->find($id_pesan);
+            $this->ratingkulinerModel->save([
+                'tanggal' => Time::now(),
+                'rate' => $rating,
+                'review' => $review,
+                'jenis_produk' => $jenis_produk,
+                'id_user' => $this->user['id'],
+                'id_produk' => $id_produk
+            ]);
 
-        $this->tefoodModel->update($id_pesan, [
-            'status' => $dataPesan['status'] + 1
-        ]);
+            $this->tefoodModel->update($id_pesan, [
+                'status' => $dataPesan['status'] + 1
+            ]);
+        } elseif ($jenis_produk == 'wisata') {
+            $dataPesan = $this->pesananModel->find($id_pesan);
+            $this->ratingwisataModel->save([
+                'tanggal' => Time::now(),
+                'rate' => $rating,
+                'review' => $review,
+                'jenis_produk' => $jenis_produk,
+                'id_user' => $this->user['id'],
+                'id_produk' => $id_produk
+            ]);
+
+            $this->pesananModel->update($id_pesan, [
+                'status' => $dataPesan['status'] + 1
+            ]);
+        }
+
+
 
         session()->setFlashdata('isiRating', 'Terimakasih sudah menilai!');
 
@@ -112,7 +145,8 @@ class Pesanan extends BaseController
         $kuliner = $db->table('tefood');
         $kuliner->select('tefood.harga_total, tefood.id_pesan, tefood.status, tefood.id_produk, tefood.jenis_pesan, tefood.jumlah, kuliner.gambar, kuliner.harga, kuliner.nama');
         $kuliner->join('kuliner', 'kuliner.id = tefood.id_produk')->orderBy('tanggal_pesan', 'DESC');
-        $kuliner = $kuliner->getWhere(['tefood.status' => '2', 'tefood.status' => '3', 'tefood.id_customer' => $this->user['id']])->getResultArray();
+        $kuliner = $kuliner->whereIn('tefood.status', ['2', '3'])->where('tefood.id_customer', $this->user['id'])->get()->getResultArray();
+        // $kuliner = $kuliner->getWhere(['tefood.status' => '2', 'tefood.status' => '3', 'tefood.id_customer' => $this->user['id']])->getResultArray();
 
         $riwayatPesanan = array_merge($wisata, $kuliner);
 

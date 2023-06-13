@@ -64,6 +64,12 @@
                                     <span class="bot-line"></span>
                                 </a>
                             </li>
+                            <li class="<?= preg_match('/Tecation/', $title) ? 'active' : ''; ?>">
+                                <a href="/tecation">
+                                    <i class="fa-solid fa-credit-card"></i>Tecation
+                                    <span class="bot-line"></span>
+                                </a>
+                            </li>
                             <li class="has-sub <?= preg_match('/Pariwisata/', $title) ? 'active' : ''; ?>">
                                 <a href="#">
                                     <i class="fa-solid fa-plane-departure"></i>Pariwisata
@@ -176,6 +182,10 @@
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-tachometer-alt"></i>Tecation</a>
                         </li>
                         <li>
                             <a href="chart.html">

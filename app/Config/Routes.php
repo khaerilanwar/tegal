@@ -72,6 +72,9 @@ $routes->post('/pariwisata/tambahWisata', 'Admin\Pariwisata::tambahWisata');
 $routes->post('/pariwisata/acc-tiket', 'Admin\Pariwisata::accTiket');
 $routes->delete('/pariwisata/(:num)/(:any)', 'Admin\Pariwisata::hapus/$1/$2');
 
+// ADMIN TECATION
+$routes->get('/tecation', 'Admin\Tecation::index');
+
 // ADMIN  KULINER
 $routes->get('/kuliner-tegal', 'Admin\Kuliner::index');
 $routes->get('/kuliner-tegal/confirm', 'Admin\Kuliner::confirm');
@@ -114,12 +117,15 @@ $routes->get('/mitra/pesanan', 'User\Mitra::pesananMitra');
 $routes->get('/mitra/riwayat-pesanan', 'User\Mitra::riwayatPesan');
 $routes->post('/mitra/update-status/(:num)', 'User\Mitra::updateStatus/$1');
 $routes->post('/mitra/register', 'User\Mitra::register');
+$routes->post('/mitra/top-up', 'User\Mitra::topUp');
+$routes->post('/mitra/acc-saldo', 'User\Mitra::accSaldo');
 $routes->post('/mitra/update/(:any)/(:num)', 'User\Mitra::update/$1/$2');
 
 // USER PESANAN
 $routes->get('/pesanan', 'User\Pesanan::index');
 $routes->get('/pesanan/riwayat', 'User\Pesanan::history');
 $routes->post('/pesanan/rating', 'User\Pesanan::rating');
+$routes->post('/pesanan/pakai-tiket', 'User\Pesanan::pakaiTiket');
 $routes->post('/pesanan/unggah-bukti/(:any)', 'User\Pesanan::unggahBukti/$1');
 
 //ROUTES KULINER

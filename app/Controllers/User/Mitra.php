@@ -6,7 +6,9 @@ use App\Controllers\BaseController;
 use App\Models\KulinerModel;
 use App\Models\PenginapanModel;
 use App\Models\TefoodModel;
+use App\Models\TopUpModel;
 use App\Models\UserModel;
+use CodeIgniter\I18n\Time;
 
 class Mitra extends BaseController
 {
@@ -14,6 +16,7 @@ class Mitra extends BaseController
     protected $kulinerModel;
     protected $penginapanModel;
     protected $tefoodModel;
+    protected $topUpModel;
 
     public function __construct()
     {
@@ -22,16 +25,17 @@ class Mitra extends BaseController
         $this->kulinerModel = new KulinerModel();
         $this->penginapanModel = new PenginapanModel();
         $this->tefoodModel = new TefoodModel();
+        $this->topUpModel = new TopUpModel();
         cekLogin();
     }
 
     public function index()
     {
         $db = \Config\Database::connect();
-        $produkKuliner = $db->table('rating')->select('kuliner.id AS id_kuliner, kuliner.harga, kuliner.maps, kuliner.alamat, kuliner.deskripsi, kuliner.gambar, kuliner.nama, kuliner.terjual, kuliner.pendapatan, kuliner.jenis_kuliner, rating.id, rating.jenis_produk')->selectAvg('rating.rate', 'rate_produk');
-        $produkKuliner->join('kuliner', 'kuliner.id = rating.id_produk', 'right');
+        $produkKuliner = $db->table('rating_kuliner')->select('kuliner.id AS id_kuliner, kuliner.harga, kuliner.maps, kuliner.alamat, kuliner.deskripsi, kuliner.gambar, kuliner.nama, kuliner.terjual, kuliner.pendapatan, kuliner.jenis_kuliner, rating_kuliner.id, rating_kuliner.jenis_produk')->selectAvg('rating_kuliner.rate', 'rate_produk');
+        $produkKuliner->join('kuliner', 'kuliner.id = rating_kuliner.id_produk', 'right');
         $produkKuliner->groupBy('kuliner.id')->orderBy('kuliner.nama');
-        $produkKuliner = $produkKuliner->getWhere(['kuliner.id_user' => $this->user['id'], 'kuliner.status' => '1', 'rating.jenis_produk' => 'kuliner'])->getResultArray();
+        $produkKuliner = $produkKuliner->getWhere(['kuliner.id_user' => $this->user['id'], 'kuliner.status' => '1'])->getResultArray();
 
         $saldoMitra = $this->user['saldo'];
 
@@ -50,6 +54,51 @@ class Mitra extends BaseController
         }
 
         return view('/mitra/partial/produk', $data);
+    }
+
+    public function accSaldo()
+    {
+        $id_topUp = htmlspecialchars($this->request->getPost('id'));
+        $dataTopUp = $this->topUpModel->find($id_topUp);
+        $dataUser = $this->userModel->find($dataTopUp['id_user']);
+
+        $this->topUpModel->update($id_topUp, [
+            'status' => 'Lunas'
+        ]);
+
+        $this->userModel->update($dataTopUp['id_user'], [
+            'saldo' => $dataUser['saldo'] + $dataTopUp['nominal']
+        ]);
+
+        return redirect()->to('/tecation');
+    }
+
+    public function topUp()
+    {
+        $nominal = htmlspecialchars($this->request->getPost('nominal'));
+        $metode = htmlspecialchars($this->request->getPost('metode'));
+
+        $fileGambar = $this->request->getFile('bukti');
+        if ($fileGambar->getError() == 0) {
+            // generate nama gambar
+            $namaGambar = $fileGambar->getRandomName();
+
+            // pindahkan file ke folder img
+            $fileGambar->move('assets/img', $namaGambar);
+        }
+
+        $this->topUpModel->save([
+            'nominal' => $nominal,
+            'metode' => $metode,
+            'tanggal' => Time::now(),
+            'bukti' => $namaGambar,
+            'status' => 'Belum Lunas',
+            'id_user' => $this->user['id']
+        ]);
+
+        session()->setFlashdata('topUp', 'Menunngu konfirmasi Admin');
+
+        return redirect()->to('/pesanan');
     }
 
     public function updateStatus($id_pesan)
@@ -83,7 +132,8 @@ class Mitra extends BaseController
         $riwayatPesan = $db->table('tefood')->select('tefood.jumlah, tefood.harga_total, user.nama, kuliner.nama AS nama_kuliner, kuliner.harga, kuliner.gambar');
         $riwayatPesan->join('kuliner', 'kuliner.id = tefood.id_produk');
         $riwayatPesan->join('user', 'user.id = tefood.id_customer');
-        $riwayatPesan = $riwayatPesan->getWhere(['tefood.id_penjual' => $this->user['id'], 'tefood.status' => '2'])->getResultArray();
+        $riwayatPesan = $riwayatPesan->where('tefood.id_penjual', $this->user['id'])->whereIn('tefood.status', ['2', '3'])->get()->getResultArray();
+        // $riwayatPesan = $riwayatPesan->getWhere(['tefood.id_penjual' => $this->user['id'], 'tefood.status' => ['2', '3']])->getResultArray();
 
         $saldoMitra = $this->user['saldo'];
 
@@ -103,7 +153,8 @@ class Mitra extends BaseController
         $pesananKuliner = $db->table('tefood')->select('kuliner.gambar, kuliner.nama AS nama_kuliner, tefood.jumlah, tefood.harga_total, tefood.status, tefood.id_pesan, user.nama');
         $pesananKuliner->join('kuliner', 'kuliner.id = tefood.id_produk');
         $pesananKuliner->join('user', 'user.id = tefood.id_customer');
-        $pesananKuliner = $pesananKuliner->getWhere(['tefood.id_penjual' => $this->user['id'], 'tefood.status != ' => '2'])->getResultArray();
+        $pesananKuliner = $pesananKuliner->where('tefood.id_penjual', $this->user['id'])->whereNotIn('tefood.status', ['2', '3'])->get()->getResultArray();
+        // $pesananKuliner = $pesananKuliner->getWhere(['tefood.id_penjual' => $this->user['id'], 'tefood.status != ' => '2'])->getResultArray();
 
         $saldoMitra = $this->user['saldo'];
 

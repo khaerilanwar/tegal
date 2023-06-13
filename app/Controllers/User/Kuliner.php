@@ -76,12 +76,12 @@ class Kuliner extends BaseController
 
         $kuliner = $this->kulinerModel->find($id);
         $nama = $kuliner['nama'];
-        $rating = $db->table('rating');
-        $rating->select('rating.tanggal, rating.rate, rating.review, user.nama, user.gambar');
-        $rating->join('user', 'user.id = rating.id_user')->orderBy('rating.tanggal', 'DESC');
-        $rating = $rating->getWhere(['rating.id_produk' => $id, 'rating.jenis_produk' => 'kuliner'])->getResultArray();
+        $rating = $db->table('rating_kuliner');
+        $rating->select('rating_kuliner.tanggal, rating_kuliner.rate, rating_kuliner.review, user.nama, user.gambar');
+        $rating->join('user', 'user.id = rating_kuliner.id_user')->orderBy('rating_kuliner.tanggal', 'DESC');
+        $rating = $rating->getWhere(['rating_kuliner.id_produk' => $id, 'rating_kuliner.jenis_produk' => 'kuliner'])->getResultArray();
 
-        $rating_mean = $db->table('rating')->selectAvg('rate', 'rate_mean')->where('id_produk', $id)->get()->getRowArray();
+        $rating_mean = $db->table('rating_kuliner')->selectAvg('rate', 'rate_mean')->where('id_produk', $id)->where('jenis_produk', 'kuliner')->get()->getRowArray();
 
         $data = [
             'title' => "Kuliner $nama",
