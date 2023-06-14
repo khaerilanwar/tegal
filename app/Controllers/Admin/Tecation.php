@@ -31,7 +31,7 @@ class Tecation extends BaseController
         $topUp = $topUp->get()->getResultArray();
 
         $data = [
-            'title' => "Pesanan Tiket Pariwisata Kabupaten Tegal",
+            'title' => "Top Up Tecation Kabupaten Tegal",
             'admin' => $admin,
             'topUp' => $topUp
         ];

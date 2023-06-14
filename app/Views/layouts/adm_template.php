@@ -84,19 +84,12 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="has-sub <?= preg_match('/Penginapan/', $title) ? 'active' : ''; ?>">
-                                <a href="#">
+
+                            <li class="<?= preg_match('/Penginapan/', $title) ? 'active' : ''; ?>">
+                                <a href="/penginapan-tegal">
                                     <i class="fa-solid fa-bed"></i>Penginapan
                                     <span class="bot-line"></span>
                                 </a>
-                                <ul class="header3-sub-list list-unstyled">
-                                    <li>
-                                        <a href="/penginapan-tegal/">Daftar Penginapan</a>
-                                    </li>
-                                    <li>
-                                        <a href="/penginapan-tegal/confirm">Konfirmasi Iklan</a>
-                                    </li>
-                                </ul>
                             </li>
                             <li class="has-sub <?= preg_match('/Kuliner/', $title) ? 'active' : ''; ?>">
                                 <a href="#">
