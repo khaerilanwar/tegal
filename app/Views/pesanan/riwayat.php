@@ -20,7 +20,7 @@
     </div>
 </div>
 
-<div class="container mx-auto mb-10 h-screen">
+<div class="container mx-auto mb-10 min-h-screen">
 
     <div class="w-4/5 mx-auto">
         <div class="sm:hidden">
@@ -60,6 +60,18 @@
                                     <tr>
                                         <td class="dark:text-white">Status</td>
                                         <td class="dark:text-white">: Pesanan Selesai</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="dark:text-white">Tanggal</td>
+                                        <td class="dark:text-white">: <?php
+                                                                            $dateString = $data['tanggal_pesan'];
+                                                                            $datetime = new DateTime($dateString);
+                                                                            $date = $datetime->format('H:i, d F Y');
+                                                                            echo $date;
+
+                                                                            // echo $data['tanggal_pesan'];
+
+                                                                            ?></td>
                                     </tr>
                                     <tr>
                                         <td class="text-lg font-medium pt-2 dark:text-white">Total</td>

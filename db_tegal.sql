@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2023 at 10:29 AM
+-- Generation Time: Jun 14, 2023 at 04:55 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -69,8 +69,8 @@ CREATE TABLE `kuliner` (
 
 INSERT INTO `kuliner` (`id`, `nama`, `jenis_kuliner`, `harga`, `terjual`, `pendapatan`, `deskripsi`, `gambar`, `alamat`, `maps`, `id_user`, `status`) VALUES
 (1, 'Sate Kambing Batibul', 'Makanan', '320000', 2, 640000, 'Sate kambing batibul adalah Sate yang menjadi ciri khas Kota Tegal. Dinamakan batibul karena dibuat dari daging kambing atau domba muda dibawah tiga bulan, yang dipotong dadu, disusun pada tusuk sate dari bambu, dan dikombinasikan dengan lemak, hati atau ginjal.  Tekstur dagingnya empuk, tidak alot, dan jauh dari bau prengus. Sate Batibul disajikan dengan bawang merah, kecap, dan sambal. Sambal kecap tidak dicampur dengan sate melainkan terpisah dengan tambahan sambal terasi. \r\n\r\n- Makan Ditempat\r\n- Bawa Pulang\r\n- Pesan Antar\r\n- Buka Senin-Minggu 09.00-22.00 WIB', '1668577398_58cbaa67419bb8854217.jpg', 'Jl. Gajah Mada No.14 Mintaragen Kec.Tegal Timur Kota Tegal', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15844.938710436192!2d109.1194778395508!3d-6.862454499999991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6fb7ae56bea4f5%3A0xb6043cd0e87b463e!2sSate%20Kambing%20Muda%20CEMPE%20LEMU%20Jl.%20Ahmad%20Yani!5e0!3m2!1sid!2sid!4v1668577309353!5m2!1sid!2sid\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 15, 1),
-(3, 'Hot Seblak Jeletot !', 'Makanan', '10000', 10, 100000, 'Seblak jeletot di Kota Tegal memiliki ciri khas tersendiri, di antaranya dari segi rasanya yang pedas manis.Kemudian, seblak jeletot yang disajikan tidak berkuah juga tidak kering alias nyemek. Dalam satu porsi Hot Seblak Jeletot terdapat isian telor, sawi, kerupuk dan makaroni. Hot Seblak Jeletot mempunyai 2 cabang lain, yakni di Jalan Werkudoro Kota Tegal dan Jalan KH Wahid Hasyim, Slawi.\r\n\r\n- Makan Ditempat\r\n- Bawa Pulang\r\n- Pesan Antar\r\n- Buka Senin-Minggu 10.00-21.30 WIB', 'seblak.jpg', 'Jl. Kartini No.77 Slerok Kec. Tegal Timur Kota Tegal', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.003285143813!2d110.44657131428798!3d-7.008894994937086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708c8cbc4c04d1%3A0x30d4206f66ea3213!2sMie%20Ayam%20Bakso%20Moroseneng%20Mas%20Ade!5e0!3m2!1sid!2sid!4v1668345940910!5m2!1sid!2sid\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 15, 1),
-(4, 'Es Lontrong Brebes', 'Minuman', '6000', 16, 96000, 'Es Lontrong tidak bisa dijumpai di daerah manapun kecuali di Slawi. Dinamakan es Lontrong karena lokasi jualnya yang didalam gang/lontrong. Dalam penyajian, minuman legendaris asli slawi ini berisi es serut yang diberi isian kacang hijau, cincau, sirup merah, dan kuah santan. Untuk tambahannya bisa dengan kolang-kaling ataupun potongan roti tawar.\r\n\r\n- Makan Ditempat\r\n- Bawa Pulang\r\n- Pesan Anta\r\n- Buka Senin-Minggu 08.00-16.00 WIB', 'eslontrong.jpg', 'Jl. Letjen Suprapto No.26 Slawi Wetan Kec. Slawi Kab. Tegal', '&lt;iframe src=&quot;https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.003285143813!2d110.44657131428798!3d-7.008894994937086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708c8cbc4c04d1%3A0x30d4206f66ea3213!2sMie%20Ayam%20Bakso%20Moroseneng%20Mas%20Ade!5e0!3m2!1sid!2sid!4v1668345940910!5m2!1sid!2sid&quot; width=&quot;400&quot; height=&quot;300&quot; style=&quot;border:0;&quot; allowfullscreen=&quot;&quot; loading=&quot;lazy&quot; referrerpolicy=&quot;no-referrer-when-downgrade&quot;&gt;&lt;/iframe&gt;', 15, 1),
+(3, 'Hot Seblak Jeletot !', 'Makanan', '10000', 11, 110000, 'Seblak jeletot di Kota Tegal memiliki ciri khas tersendiri, di antaranya dari segi rasanya yang pedas manis.Kemudian, seblak jeletot yang disajikan tidak berkuah juga tidak kering alias nyemek. Dalam satu porsi Hot Seblak Jeletot terdapat isian telor, sawi, kerupuk dan makaroni. Hot Seblak Jeletot mempunyai 2 cabang lain, yakni di Jalan Werkudoro Kota Tegal dan Jalan KH Wahid Hasyim, Slawi.\r\n\r\n- Makan Ditempat\r\n- Bawa Pulang\r\n- Pesan Antar\r\n- Buka Senin-Minggu 10.00-21.30 WIB', 'seblak.jpg', 'Jl. Kartini No.77 Slerok Kec. Tegal Timur Kota Tegal', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.003285143813!2d110.44657131428798!3d-7.008894994937086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708c8cbc4c04d1%3A0x30d4206f66ea3213!2sMie%20Ayam%20Bakso%20Moroseneng%20Mas%20Ade!5e0!3m2!1sid!2sid!4v1668345940910!5m2!1sid!2sid\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 15, 1),
+(4, 'Es Lontrong Brebes', 'Minuman', '6000', 18, 108000, 'Es Lontrong tidak bisa dijumpai di daerah manapun kecuali di Slawi. Dinamakan es Lontrong karena lokasi jualnya yang didalam gang/lontrong. Dalam penyajian, minuman legendaris asli slawi ini berisi es serut yang diberi isian kacang hijau, cincau, sirup merah, dan kuah santan. Untuk tambahannya bisa dengan kolang-kaling ataupun potongan roti tawar.\r\n\r\n- Makan Ditempat\r\n- Bawa Pulang\r\n- Pesan Anta\r\n- Buka Senin-Minggu 08.00-16.00 WIB', 'eslontrong.jpg', 'Jl. Letjen Suprapto No.26 Slawi Wetan Kec. Slawi Kab. Tegal', '&lt;iframe src=&quot;https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.003285143813!2d110.44657131428798!3d-7.008894994937086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708c8cbc4c04d1%3A0x30d4206f66ea3213!2sMie%20Ayam%20Bakso%20Moroseneng%20Mas%20Ade!5e0!3m2!1sid!2sid!4v1668345940910!5m2!1sid!2sid&quot; width=&quot;400&quot; height=&quot;300&quot; style=&quot;border:0;&quot; allowfullscreen=&quot;&quot; loading=&quot;lazy&quot; referrerpolicy=&quot;no-referrer-when-downgrade&quot;&gt;&lt;/iframe&gt;', 15, 1),
 (5, 'Gomu Boba & Cheese Tea ', 'Minuman', '12000', 12, 144000, 'Gomu Boba & Cheese Tea, Werkudoro Tegal merupakan sebuah tempat makan yang berada di Tegal. Rumah makan ini menyajikan berbagai menu cepat saji, jajanan & minuman yang dibanderol dengan harga yang murah dan bersahabat dengan kantong. Harga  untuk menikmati menu Rekomendasi yang disajikan Gomu Boba And Cheese Tea, Werkudoro Tegal berkisar antara Rp 9.000 - Rp 15.000.\r\n\r\n- Makan Ditempat\r\n- Bawa Pulang\r\n- Pesan Antar\r\n- Buka Senin-Minggu 09.00-21.00 WIB', 'boba.jpg', 'Jl. Werkudoro No.87 Pengabean Slerok Kec.Tegal Timur Kab. Tegal', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.003285143813!2d110.44657131428798!3d-7.008894994937086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708c8cbc4c04d1%3A0x30d4206f66ea3213!2sMie%20Ayam%20Bakso%20Moroseneng%20Mas%20Ade!5e0!3m2!1sid!2sid!4v1668345940910!5m2!1sid!2sid\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 15, 1),
 (6, 'Minuman Tradisional', 'Minuman', '8000', 8, 64000, 'Menyediakan berbagai macam jamu tradisional dengan harga yang paling terjangkau tanpa menghilangkan khasiat dari penggunaannya. Dibuat dari bahan-bahan  alami yang berkualitas, berkhasiat untuk kesehatan dan kehangatan tubuh.\r\n\r\n- Bawa Pulang\r\n- Pesan Antar\r\n- Buka Senin - Minggu 07.00-21.00 WIB', '1685892549_8738080d8b5bacc0e978.jpg', 'Gg. 6  RT.03 RW.09 Panggung Kec. Tegal Timur Kota Tegal', '&lt;iframe src=&quot;https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.003285143813!2d110.44657131428798!3d-7.008894994937086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708c8cbc4c04d1%3A0x30d4206f66ea3213!2sMie%20Ayam%20Bakso%20Moroseneng%20Mas%20Ade!5e0!3m2!1sid!2sid!4v1668345940910!5m2!1sid!2sid&quot; width=&quot;400&quot; height=&quot;300&quot; style=&quot;border:0;&quot; allowfullscreen=&quot;&quot; loading=&quot;lazy&quot; referrerpolicy=&quot;no-referrer-when-downgrade&quot;&gt;&lt;/iframe&gt;', 15, 1),
 (17, 'Mie Goreng Bang Anwar', 'Makanan', '10000', 0, 0, 'Quia eaque voluptas officiis eveniet inventore ipsum laboriosam. Quae in id rerum. Sit ipsum ipsa et quisquam. Nemo numquam unde dignissimos voluptas eum eligendi maiores. Voluptatem quaerat explicabo soluta est in possimus. Suscipit aut velit eum. Quo nesciunt quis aut est et ab ut. Quos veniam dolorum sunt eos voluptatem quis. Laboriosam similique ut explicabo voluptas. Est eum deserunt et totam ullam aut eum blanditiis. Quo veritatis in similique magni eius eius.', 'makanan.jpg', 'Dk. Bakit  No. 975, Tarakan 85800, Kaltim', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15844.830445426334!2d108.99871203955077!3d-6.865706700000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6fb1a8cf239bc3%3A0x705c765bb0278920!2sNasi%20Goreng%20BangCep!5e0!3m2!1sid!2sid!4v1669570219760!5m2!1sid!2sid\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 0, 0),
@@ -183,16 +183,18 @@ CREATE TABLE `pesanan` (
 --
 
 INSERT INTO `pesanan` (`no_pesanan`, `customer`, `tanggal_pesan`, `tanggal_datang`, `jumlah_tiket`, `jenis_pesan`, `id_user`, `id_payment`, `id_produk`, `harga_total`, `status`, `bukti`) VALUES
+(301918199, 'Team Manda', '2023-06-13 18:11:33', '2023-06-15', 3, 'wisata', 16, 2, 5, '60000', 3, '1686654709_adef7dca362c4012524f.jpg'),
 (327826303, 'Anwar Family', '2022-11-20', '2022-11-22', 5, 'wisata', 15, 3, 1, '75000', 3, ''),
 (550921505, 'Anwar Family', '2023-06-08', '2023-06-21', 4, 'wisata', 15, 2, 2, '40000', 0, ''),
 (563260230, 'Family Adudu', '2022-12-04', '2022-12-15', 3, 'wisata', 15, 1, 6, '60000', 0, ''),
 (649179524, 'Wimas Team', '2022-12-15', '2022-12-27', 4, 'wisata', 15, 3, 5, '30000', 3, ''),
+(704354749, 'anwarku', '2023-06-14 09:27:27', '2023-06-21', 4, 'wisata', 16, 2, 8, '100000', 0, ''),
 (747906993, 'Viyaa', '2023-05-31', '2023-06-19', 7, 'wisata', 15, 3, 6, '70000', 3, ''),
 (1073398082, 'Mas Anwar', '2022-11-19', '2022-11-25', 90, 'wisata', 15, 2, 9, '1800000', 0, ''),
 (1423215115, 'salsabilah', '2023-05-31', '2023-06-12', 4, 'wisata', 15, 2, 8, '100000', 0, ''),
 (1423994470, 'Jonathan', '2022-12-09', '2022-12-09', 5, 'wisata', 15, 1, 7, '75000', 3, ''),
-(1563596880, 'Ningrum Family', '2023-06-12 22:56:01', '2023-06-14', 2, 'wisata', 16, 4, 6, '20000', 0, ''),
-(1792876973, 'Jonathan', '2023-06-11 22:26:36', '2023-06-15', 4, 'wisata', 16, 3, 2, '40000', 3, '1686497218_9a2aaccedba71784dc14.jpg'),
+(1563596880, 'Ningrum Family', '2023-06-12 22:56:01', '2023-06-14', 2, 'wisata', 16, 4, 6, '20000', 3, '1686706871_301e09fd1e1a796197c4.jpg'),
+(1792876973, 'Jonathan', '2023-06-11 22:26:36', '2023-06-15', 4, 'wisata', 16, 3, 2, '40000', 4, '1686497218_9a2aaccedba71784dc14.jpg'),
 (1876593470, 'Istia Family', '2022-11-20', '2022-11-30', 3, 'wisata', 15, 4, 5, '30000', 0, ''),
 (1960218888, 'Ningrum Family', '2022-12-03', '2022-12-14', 2, 'wisata', 15, 4, 8, '20000', 3, ''),
 (2042282771, 'Big Family Anwar', '2022-12-04', '2022-12-11', 9, 'wisata', 15, 4, 2, '135000', 0, '');
@@ -251,6 +253,13 @@ CREATE TABLE `rating_wisata` (
   `id_produk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `rating_wisata`
+--
+
+INSERT INTO `rating_wisata` (`id`, `tanggal`, `rate`, `review`, `jenis_produk`, `id_user`, `id_produk`) VALUES
+(1, '2023-06-13 18:10:27', 4, 'dasdasdas', 'wisata', 16, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -275,7 +284,10 @@ CREATE TABLE `tefood` (
 
 INSERT INTO `tefood` (`id_pesan`, `tanggal_pesan`, `jumlah`, `jenis_pesan`, `id_customer`, `id_penjual`, `id_produk`, `harga_total`, `status`) VALUES
 (1, '2023-06-12 09:24:43', 2, 'kuliner', 16, 15, 5, 24000, 3),
-(2, '2023-06-12 12:23:26', 1, 'kuliner', 16, 15, 3, 10000, 3);
+(2, '2023-06-12 12:23:26', 1, 'kuliner', 16, 15, 3, 10000, 3),
+(3, '2023-06-13 18:04:46', 1, 'kuliner', 16, 15, 4, 6000, 2),
+(4, '2023-06-14 09:29:40', 1, 'kuliner', 16, 15, 3, 10000, 0),
+(5, '2023-06-14 09:37:30', 1, 'kuliner', 16, 15, 4, 6000, 0);
 
 -- --------------------------------------------------------
 
@@ -298,7 +310,8 @@ CREATE TABLE `top_up` (
 --
 
 INSERT INTO `top_up` (`id`, `nominal`, `metode`, `tanggal`, `bukti`, `status`, `id_user`) VALUES
-(1, 100000, 'Bank BRI', '2023-06-13 15:10:28', '1686643828_1164a1280405d6a2e8f1.jpg', 'Lunas', 16);
+(1, 100000, 'Bank BRI', '2023-06-13 15:10:28', '1686643828_1164a1280405d6a2e8f1.jpg', 'Lunas', 16),
+(2, 300000, 'ShopeePay', '2023-06-13 18:03:38', '1686654218_07dcd2401e9339ab0923.jpg', 'Lunas', 16);
 
 -- --------------------------------------------------------
 
@@ -329,8 +342,8 @@ INSERT INTO `user` (`id`, `nama`, `email`, `no_telp`, `jenis_kelamin`, `alamat`,
 (2, 'Istia Ningrum', 'istianingrum@gmail.com', '083121242561', 'Perempuan', 'Sawojajar, Brebes', '$2y$10$cQM749U1j/oF2qxA8tBCHOOxhbYVlj3SY4OL72rU9x7a2fLVds2gO', 'default.jpg', 0, 1, 2),
 (5, 'Krisdiana', 'krisdiana@gmail.com', '081257800047', 'Perempuan', 'Gamprit, Brebes', '$2y$10$aEeWfdCY0kJ0a/qNt5zkyOm4P9UOV5HRLh1FebyOr.CjHzlSh9vCS', 'default.jpg', 0, 1, 2),
 (14, 'Adduru Nafisah', 'adudu@gmail.com', '081187900098', 'Perempuan', 'Pasarbatang, Brebes', '$2y$10$nwtp6qxzU05Ns9n1D2ATt.J8QhRwPyf44aoFAVAHcRJimE/Refs7G', 'default.jpg', 0, 1, 2),
-(15, 'Nurul Rahmanda Afriannisa', 'nurul@gmail.com', '081257800047', 'Perempuan', 'Kaligangsa Wetan, Brebes', '$2y$10$cpNdOhSDdMJLGsUhcZoPPOouR33UaY.a.HLEyLxwvPmUeuVPPf1ki', '1685278813_3cf1b2f7997e33836825.jpg', 194000, 1, 3),
-(16, 'Nihayatul Fathiyah', 'ayaa@gmail.com', '085870627026', 'Perempuan', 'Banjaratma, Brebes', '$2y$10$fclZNl2E9fuzrjaOLqpU/.hQFE8ri4RNIXmtrD.mNUqBxb1k88Jgm', 'default.jpg', 246000, 1, 2),
+(15, 'Nurul Rahmanda Afriannisa', 'nurul@gmail.com', '081257800047', 'Perempuan', 'Kaligangsa Wetan, Brebes', '$2y$10$cpNdOhSDdMJLGsUhcZoPPOouR33UaY.a.HLEyLxwvPmUeuVPPf1ki', '1685278813_3cf1b2f7997e33836825.jpg', 200000, 1, 3),
+(16, 'Nihayatul Fathiyah', 'ayaa@gmail.com', '085870627026', 'Perempuan', 'Banjaratma, Brebes', '$2y$10$fclZNl2E9fuzrjaOLqpU/.hQFE8ri4RNIXmtrD.mNUqBxb1k88Jgm', 'default.jpg', 278000, 1, 2),
 (17, 'Rahma Liza Arifiyah', 'liza@gmail.com', '083121242542', 'Perempuan', 'Pasarbatang, Brebes', '$2y$10$wPbfth0gnBGm15AmTmswb.OtuTpdENDT2On2LpigYjLl2XqcVormq', '1668611388_da32d42732f1a4413bc3.jpg', 0, 1, 2),
 (18, 'Istia Ningrum', 'istianingrum09@gmail.com', '083121242542', 'Perempuan', 'jl. Pemuda Sawojajar, Brebes', '$2y$10$lvEK0XuqnUfsvIfWeOgPZOnVokAIRoPQRbzt4bNco7QxiIHWLpjhW', 'default.jpg', 0, 1, 2),
 (19, 'Aliando Syarief', 'aliandogans@gmail.com', '087782824940', 'Laki-laki', 'Cikeusal Kidul, Ketanggungan, Brebes', '$2y$10$OGnib5v7Lk3EKZHTydGGD.Ww9fPxzmJKKy60g.tzrdDt11HvEkJfO', '1671085603_d1f047dc41eb7f0f9ed9.jpg', 0, 1, 2),
@@ -529,19 +542,19 @@ ALTER TABLE `rating_kuliner`
 -- AUTO_INCREMENT for table `rating_wisata`
 --
 ALTER TABLE `rating_wisata`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tefood`
 --
 ALTER TABLE `tefood`
-  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `top_up`
 --
 ALTER TABLE `top_up`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`

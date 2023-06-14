@@ -30,14 +30,14 @@
                             <img class="w-8 h-8 rounded-full" src="/assets/img/<?= $data['gambar']; ?>" alt="Neil image">
                         </div>
                         <div class="flex-1 min-w-0">
-                            <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                            <p class="text-lg font-medium text-gray-900 truncate dark:text-white">
                                 <?= $data['nama_kuliner']; ?>
                             </p>
-                            <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                            <p class="text-lg text-gray-500 truncate dark:text-gray-400">
                                 Pesanan Selesai
                             </p>
                         </div>
-                        <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                        <div class="inline-flex items-center text-lg font-semibold text-gray-900 dark:text-white">
                             Rp. <?= number_format($data['harga_total'], 0, '', '.') ?>
                         </div>
                     </div>

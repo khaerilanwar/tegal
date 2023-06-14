@@ -34,18 +34,36 @@ class Pesanan extends BaseController
 
         $db = \Config\Database::connect();
         $wisata = $db->table('pesanan');
-        $wisata->select('pesanan.harga_total, pesanan.tanggal_datang, pesanan.jumlah_tiket AS jumlah, pesanan.jenis_pesan, pesanan.no_pesanan AS id_pesan, pesanan.status, wisata.gambar, wisata.nama, wisata.harga');
+        $wisata->select('pesanan.harga_total, pesanan.tanggal_datang, pesanan.jumlah_tiket AS jumlah, pesanan.jenis_pesan, pesanan.no_pesanan AS id_pesan, pesanan.status, wisata.gambar, wisata.nama, wisata.harga, pesanan.tanggal_pesan');
         $wisata->join('wisata', 'wisata.id = pesanan.id_produk');
         $wisata = $wisata->where('pesanan.id_user', $this->user['id'])->whereNotIn('pesanan.status', ['3', '4'])->get()->getResultArray();
         // $wisata = $wisata->getWhere(['pesanan.id_user' => $this->user['id'], 'pesanan.status !=' => '3'])->getResultArray();
 
         $kuliner = $db->table('tefood');
-        $kuliner->select('tefood.id_pesan, tefood.jumlah, kuliner.harga, kuliner.nama, tefood.jenis_pesan, tefood.status, kuliner.gambar, tefood.harga_total');
+        $kuliner->select('tefood.harga_total, tefood.id_pesan, tefood.jumlah, kuliner.harga, kuliner.nama, tefood.jenis_pesan, tefood.status, kuliner.gambar, tefood.tanggal_pesan, tefood.id_penjual');
         $kuliner->join('kuliner', 'kuliner.id = tefood.id_produk');
         $kuliner = $kuliner->where('tefood.id_customer', $this->user['id'])->whereNotIn('tefood.status', ['2', '3'])->get()->getResultArray();
         // $kuliner = $kuliner->getWhere(['tefood.id_customer' => $this->user['id'], 'tefood.status !=' => '2', 'tefood.status !=' => '3'])->getResultArray();
 
+        // dd(count($kuliner[0]));
+
         $pesanan = array_merge($wisata, $kuliner);
+
+        // Mengambil array data tanggal dan waktu menjadi array terpisah
+        $datetimes = array_column($pesanan, 'tanggal_pesan');
+
+        // Mengubah format tanggal dan waktu menjadi timestamp untuk pengurutan
+        $timestamps = [];
+        foreach ($datetimes as $datetime) {
+            $timestamps[] = strtotime($datetime);
+        }
+
+        // Mengurutkan array datetimes dan timestamps secara bersamaan
+        array_multisort($timestamps, $datetimes, $pesanan);
+
+        // Membalikkan urutan array secara descending
+        $datetimes = array_reverse($datetimes);
+        $pesanan = array_reverse($pesanan);
 
         $data = [
             'title' => 'Pesanan Saya',
@@ -139,18 +157,34 @@ class Pesanan extends BaseController
     {
         $db = \Config\Database::connect();
         $wisata = $db->table('pesanan');
-        $wisata->select('pesanan.harga_total, pesanan.no_pesanan AS id_pesan, pesanan.status, pesanan.id_produk, pesanan.jenis_pesan, wisata.harga, pesanan.jumlah_tiket AS jumlah, wisata.gambar, wisata.nama');
+        $wisata->select('pesanan.harga_total, pesanan.tanggal_pesan, pesanan.no_pesanan AS id_pesan, pesanan.status, pesanan.id_produk, pesanan.jenis_pesan, wisata.harga, pesanan.jumlah_tiket AS jumlah, wisata.gambar, wisata.nama');
         $wisata->join('wisata', 'wisata.id = pesanan.id_produk');
         $wisata = $wisata->where('pesanan.id_user', $this->user['id'])->whereIn('pesanan.status', ['3', '4'])->get()->getResultArray();
         // $wisata = $wisata->getWhere(['pesanan.id_user' => $this->user['id'], 'pesanan.status' => '3'])->getResultArray();
 
         $kuliner = $db->table('tefood');
-        $kuliner->select('tefood.harga_total, tefood.id_pesan, tefood.status, tefood.id_produk, tefood.jenis_pesan, tefood.jumlah, kuliner.gambar, kuliner.harga, kuliner.nama');
-        $kuliner->join('kuliner', 'kuliner.id = tefood.id_produk')->orderBy('tanggal_pesan', 'DESC');
+        $kuliner->select('tefood.harga_total, tefood.tanggal_pesan, tefood.id_pesan, tefood.status, tefood.id_produk, tefood.jenis_pesan, tefood.jumlah, kuliner.gambar, kuliner.harga, kuliner.nama');
+        $kuliner->join('kuliner', 'kuliner.id = tefood.id_produk')->orderBy('tefood.tanggal_pesan', 'DESC');
         $kuliner = $kuliner->whereIn('tefood.status', ['2', '3'])->where('tefood.id_customer', $this->user['id'])->get()->getResultArray();
         // $kuliner = $kuliner->getWhere(['tefood.status' => '2', 'tefood.status' => '3', 'tefood.id_customer' => $this->user['id']])->getResultArray();
 
         $riwayatPesanan = array_merge($wisata, $kuliner);
+
+        // Mengambil array data tanggal dan waktu menjadi array terpisah
+        $datetimes = array_column($riwayatPesanan, 'tanggal_pesan');
+
+        // Mengubah format tanggal dan waktu menjadi timestamp untuk pengurutan
+        $timestamps = [];
+        foreach ($datetimes as $datetime) {
+            $timestamps[] = strtotime($datetime);
+        }
+
+        // Mengurutkan array datetimes dan timestamps secara bersamaan
+        array_multisort($timestamps, $datetimes, $riwayatPesanan);
+
+        // Membalikkan urutan array secara descending
+        $datetimes = array_reverse($datetimes);
+        $riwayatPesanan = array_reverse($riwayatPesanan);
 
         $data = [
             'title' => 'Pesanan Saya',

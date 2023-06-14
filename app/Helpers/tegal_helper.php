@@ -30,5 +30,10 @@ function cekSession()
     } elseif (session()->email && session()->role_id == 2) {
         header('Location: /home');
         exit;
+    } elseif (session()->email && session()->role_id == 3) {
+        header('Location: /home');
+        exit;
     }
+
+    // return session()->email . ' ' . session()->role_id;
 }

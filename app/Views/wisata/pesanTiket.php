@@ -27,7 +27,7 @@
                 </div>
                 <div class="mb-6">
                     <label for="jumlah_tiket" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jumlah Tiket</label>
-                    <input onclick="total()" onkeyup="total()" type="number" min="1" name="jumlah_tiket" id="jumlah_tiket" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Jumlah Tiket">
+                    <input onclick="total()" onkeyup="total()" value="1" type="number" min="1" name="jumlah_tiket" id="jumlah_tiket" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Jumlah Tiket">
                 </div>
             </div>
 

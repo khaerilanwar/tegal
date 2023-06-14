@@ -216,7 +216,6 @@
             <div class="px-6 py-6 lg:px-8">
                 <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Unggah Bukti Pembayaran</h3>
                 <form class="space-y-6" action="/mitra/top-up" enctype="multipart/form-data" method="post">
-                    <input type="hidden" name="no_pesan" value="<?= $data['id_pesan']; ?>">
 
                     <div>
                         <label for="nominal" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nominal Top Up</label>

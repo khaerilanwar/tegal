@@ -207,7 +207,7 @@
                         <input type="hidden" name="jumlah" value="1">
                         <input type="hidden" name="idProduk" value="<?= $kuliner['id']; ?>">
                         <input type="hidden" name="hargaProduk" value="<?= $kuliner['harga']; ?>">
-                        <button type="submit" class="<?= $user['saldo'] == '0' ? 'pointer-events-none opacity-50 cursor-not-allowed' : '' ?> text-white inline-flex items-center bg-blue-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 tombolPesan">
+                        <button type="submit" class="<?= !$user ? '0' : ($user['saldo'] == '0' ? 'pointer-events-none opacity-50 cursor-not-allowed' : '') ?> text-white inline-flex items-center bg-blue-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 tombolPesan">
                             Pesan
                         </button>
                     </form>

@@ -19,6 +19,7 @@ class Login extends BaseController
 
     public function index()
     {
+        // dd(cekSession());
         $data = [
             'title' => 'Login | Kabupaten Tegal',
             'validation' => \Config\Services::validation()
