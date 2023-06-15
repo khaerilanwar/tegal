@@ -5,8 +5,8 @@
 <div class="jumbotron jumbotron-fluid bg-light">
     <div class="container text-center">
         <img src="/assets/img/brand-tegal.png" alt="Kabupaten Tegal" width="80">
-        <h2 class="display-4 my-3">Pariwisata Kabupaten Tegal</h2>
-        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas mollitia tenetur quia recusandae suscipit illum adipisci quam! Voluptatem facere dicta voluptatibus quaerat voluptatum totam culpa tempora nesciunt autem dolor? Repudiandae?</p>
+        <h2 class="display-4 my-3">Pariwisata Kota & Kabupaten Tegal</h2>
+        <p class="lead"> Daftar Pariwisata yang ada di Kota & Kabupaten Tegal</p>
     </div>
 </div>
 
@@ -15,7 +15,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="title-5 m-b-35">Daftar Tempat Pariwisata Kabupaten Tegal</h1>
+                <h1 class="title-5 m-b-35">Daftar Tempat Pariwisata Kota Tegal</h1>
                 <div class="table-data__tool">
                     <div class="table-data__tool-left">
                         <form action="" method="get">

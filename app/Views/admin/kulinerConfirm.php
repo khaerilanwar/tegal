@@ -5,8 +5,8 @@
 <div class="jumbotron jumbotron-fluid bg-light">
     <div class="container text-center">
         <img src="/assets/img/brand-tegal.png" alt="Kabupaten Tegal" width="80">
-        <h2 class="display-4 my-3">Aneka Kuliner Kabupaten Tegal</h2>
-        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas mollitia tenetur quia recusandae suscipit illum adipisci quam! Voluptatem facere dicta voluptatibus quaerat voluptatum totam culpa tempora nesciunt autem dolor? Repudiandae?</p>
+        <h2 class="display-4 my-3">Konfirmasi Iklan Kuliner</h2>
+        <p class="lead">Daftar Konfirmasi Iklan Kuliner Mitra Tecation</p>
     </div>
 </div>
 
@@ -15,7 +15,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="title-6 m-b-35 text-dark">Daftar Konfirmasi Kuliner Kabupaten Tegal</h3>
+                <h3 class="title-6 m-b-35 text-dark">Daftar Konfirmasi Iklan Kuliner</h3>
                 <?php if (count($kuliner) > 0) : ?>
                     <div class="table-data__tool">
                         <div class="table-data__tool-left">

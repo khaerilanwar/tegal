@@ -36,7 +36,7 @@
                         </div>
                     </li>
                     <li class="group">
-                        <a href="/wisata" class="transition-all duration-500 group-hover:text-blue-500 font-heebo text-lg text-white">Destinasi</a>
+                        <a href="/wisata" class="transition-all duration-500 group-hover:text-blue-500 font-heebo text-lg text-white">Pariwisata</a>
                         <div class="transition-all duration-500 mt-1 h-[3px] bg-slate-400 rounded-md group-hover:bg-purple-500">
                         </div>
                     </li>
@@ -68,7 +68,7 @@
                 <a class="font-heebo font-" href="/">Beranda</a>
             </li>
             <li class="my-2 ml-8">
-                <a class="font-heebo" href="/wisata">Destinasi</a>
+                <a class="font-heebo" href="/wisata">Pariwisata</a>
             </li>
             <li class="my-2 ml-8">
                 <a class="font-heebo" href="/kuliner">Kuliner</a>
@@ -83,14 +83,14 @@
             <?php endif; ?>
         </ul>
 
-        <h1 class="text-white text-center font-heebo font-bold sm:text-6xl mt-12 text-2xl">WISATA KABUPATEN BREBES</h1>
+        <h1 class="text-white text-center font-heebo font-bold sm:text-6xl mt-12 text-2xl">Pariwisata & UMKM Kota Tegal </h1>
         <h2 class="text-center text-white text-xl sm:text-[2.5rem] font-heebo mt-8">You will love every corner
             of it</h2>
         <h4 class="text-white text-center sm:text-lg text-sm px-5 font-heebo mt-[1.15rem]">Let's explore one of the biggest
             city in Indonesia with
             famous
             name
-            called City of Heroes.</h4>
+            called City of Bahari.</h4>
 
         <div class="container mx-auto mt-[14rem]">
             <div class="flex sm:justify-center justify-evenly sm:gap-16">
@@ -128,7 +128,7 @@
     <div class="container mx-auto mt-20 sm:mb-10 mb-3">
         <img class="mx-auto" src="/assets/img/icon-sign (1).png" alt="">
 
-        <h1 class="mt-7 sm:text-6xl text-4xl text-center text-[#6096B4] font-heebo">Start Your Best <br>Journey In Brebes
+        <h1 class="mt-7 sm:text-6xl text-4xl text-center text-[#6096B4] font-heebo">Start Your Best <br>Journey In Tegal
         </h1>
     </div>
 
