@@ -62,7 +62,7 @@
                                 <?php foreach ($kuliner as $k) : ?>
                                     <tr>
                                         <td class="px-3 align-middle"><?= $i++; ?>.</td>
-                                        <td class="px-3 align-middle"><?= $k['nama_kuliner']; ?></td>
+                                        <td class="px-3 align-middle"><?= $k['nama']; ?></td>
                                         <td class="px-3 align-middle text-center"><?= $k['jenis_kuliner']; ?></td>
                                         <td class="px-3 align-middle text-center">Rp. <?= number_format($k['harga'], 0, '', '.') ?></td>
                                         <td class="px-3 align-middle"><?= $k['user_email']; ?></td>
@@ -114,7 +114,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <h2 class="text-center mb-3"><?= $k['nama_kuliner']; ?></h2>
+                            <h2 class="text-center mb-3"><?= $k['nama']; ?></h2>
                             <div class="d-flex justify-content-center mb-3">
                                 <img src="/assets/img/<?= $k['gambar']; ?>" width="300">
                             </div>
