@@ -110,7 +110,6 @@
                                 <th>Nama</th>
                                 <th>Email</th>
                                 <th>No. Telepon</th>
-                                <th>Alamat</th>
                                 <th>Role</th>
                                 <th></th>
                             </tr>
@@ -122,7 +121,6 @@
                                     <td><?= $u['nama']; ?></td>
                                     <td><?= $u['email']; ?></td>
                                     <td><?= $u['no_telp']; ?></td>
-                                    <td><?= $u['alamat']; ?></td>
                                     <td><?= $u['role_id'] == 1 ? 'Administrator' : 'Pengguna'; ?></td>
                                     <td>
 
@@ -145,7 +143,7 @@
                         </tbody>
                     </table>
                 </div>
-                <?= $pager->links('dashboardAdmin', 'pagination'); ?>
+                <?= $pager->links('dashboardAdmin', 'admPagination'); ?>
             </div>
         </div>
     </div>

@@ -86,7 +86,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <?= $pager->links('kulinerConfirmAdmin', 'pagination'); ?>
+                    <?= $pager->links('kulinerConfirmAdmin', 'admPagination'); ?>
                 <?php else : ?>
                     <div class="row">
                         <div class="col-md-12">

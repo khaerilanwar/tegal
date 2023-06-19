@@ -87,7 +87,7 @@
                         </tbody>
                     </table>
                 </div>
-                <?= $pager->links('wisataAdmin', 'pagination'); ?>
+                <?= $pager->links('wisataAdmin', 'admPagination'); ?>
             </div>
         </div>
     </div>
