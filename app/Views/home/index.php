@@ -15,7 +15,7 @@
     <!-- CDN GOOGLE FONT HEEBO -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -187,7 +187,7 @@
                     <img class="w-full h-full object-cover group-hover:scale-125 transition-all duration-[2000ms]" src="/assets/img/<?= $penginapan[0]['gambar']; ?>" alt="">
                 </div>
                 <div class="mt-5">
-                    <span class="px-3 py-2 text-sm sm:text-lg bg-[#6096B4] text-white font-heebo rounded-lg">Pariwisata</span>
+                    <span class="px-3 py-2 text-sm sm:text-lg bg-[#6096B4] text-white font-heebo rounded-lg">Penginapan</span>
                     <h5 class="sm:mt-3 mt-2 sm:text-xl font-bold font-heebo"><?= $penginapan[0]['nama']; ?></h5>
                     <p class="sm:mt-1"><i class="fa-solid fa-location-dot"></i><span class="ml-2"><?php
                                                                                                     $alamat = $penginapan[0]['alamat'];
@@ -209,7 +209,7 @@
                     <img class="group-hover:scale-125 w-full h-full object-cover transition-all duration-[2000ms]" src="/assets/img/<?= $kuliner[0]['gambar']; ?>" alt="">
                 </div>
                 <div class="mt-5">
-                    <span class="px-3 py-2 text-sm sm:text-lg bg-[#6096B4] text-white font-heebo rounded-lg">Pariwisata</span>
+                    <span class="px-3 py-2 text-sm sm:text-lg bg-[#6096B4] text-white font-heebo rounded-lg">Kuliner</span>
                     <h5 class="sm:mt-3 mt-2 sm:text-xl font-bold font-heebo"><?= $kuliner[0]['nama']; ?></h5>
                     <p class="sm:mt-1"><i class="fa-solid fa-location-dot"></i><span class="ml-2"><?php
                                                                                                     $alamat = $kuliner[0]['alamat'];
@@ -269,7 +269,7 @@
             <div class="sm:flex sm:items-center sm:justify-between">
                 <a href="/" class="flex items-center mb-4 sm:mb-0">
                     <img src="/assets/img/gateng.png" class="h-8 mr-3" alt="Tecation Logo" />
-                    <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">Tecation</span>
+                    <span class="self-center text-2xl tracking-widest font-medium font-pacifico whitespace-nowrap text-white">Tecation</span>
                 </a>
                 <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-white sm:mb-0 dark:text-gray-400">
                     <li>
