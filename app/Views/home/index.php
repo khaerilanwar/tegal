@@ -23,7 +23,7 @@
         <div class="-z-[49] opacity-60 absolute top-0 left-0 h-screen w-full object-cover bg-black">
         </div>
         <video autoplay muted loop class="-z-50 absolute top-0 left-0 h-screen w-full object-cover">
-            <source src="https://tourism.surabaya.go.id/assets/front/videos/surabaya.mp4" type="video/mp4">
+            <source src="/assets/videos/surabaya-28.mp4" type="video/mp4">
         </video>
 
         <div class="container mx-auto flex justify-between sm:justify-around py-3">
