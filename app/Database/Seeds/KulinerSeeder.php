@@ -22,45 +22,19 @@ class KulinerSeeder extends Seeder
         // if($jenis == 'Makanan') {
         // }
         $nameFood = [
-            'Xi BoBa',
-            'Milkmax',
-            'Es Teh Indonesia',
-            'Mixue',
-            'Starbucks',
-            'Kopi Kenangan',
-            'Menantea',
-            'Kopi Janji Jiwa',
-            'Teh Poci',
-            'Milk Tea',
-            'Milk Beng Beng',
-            'Oreo Milk',
-            'Beli Kopi'
+            'Xi BoBa'
         ];
 
         $harga = [
-            5000,
-            5000,
-            10000,
-            8000,
-            5000,
-            5000,
-            5000,
-            7000,
-            10000,
-            10000,
-            8000,
-            7000,
-            18000
+            5000
         ];
 
-        for ($i = 0; $i < 12; $i++) {
+        for ($i = 0; $i < 1; $i++) {
             $emailUser = $faker->randomElement($email);
             $data = [
-                'nama_kuliner' => $nameFood[$i],
-                'slug' => url_title($nameFood[$i], '-', true),
+                'nama' => $nameFood[$i],
                 'jenis_kuliner' => 'Minuman',
-                'user_email' => $emailUser,
-                'nomor_user' => \Config\Database::connect()->table('user')->select('no_telp')->where('email', $emailUser)->get()->getRowArray(),
+                'id_user' => 1,
                 'harga' => $harga[$i],
                 'deskripsi' => $faker->text(500),
                 'gambar' => 'minuman.jpeg',

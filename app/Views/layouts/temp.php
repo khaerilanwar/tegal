@@ -31,11 +31,11 @@
 
 <body class="dark:bg-slate-900">
 
-    <?= (preg_match('/Login/', $title) || preg_match('/Registrasi/', $title)) ?: $this->include('layouts/navbar_tailwind') ?>
+    <?= (preg_match('/Login/', $title) || preg_match('/Registrasi/', $title)) ? '' : $this->include('layouts/navbar_tailwind') ?>
 
     <?= $this->renderSection('content'); ?>
 
-    <?= (preg_match('/Login/', $title) || preg_match('/Registrasi/', $title)) ?: $this->include('layouts/footer_tailwind'); ?>
+    <?= (preg_match('/Login/', $title) || preg_match('/Registrasi/', $title)) ? '' : $this->include('layouts/footer_tailwind'); ?>
 
     <!-- TOMBOL UNTUK MENGGANTI DARK DAN LIGHT MODE -->
     <input type="checkbox" id="toggle" class="hidden" />

@@ -34,18 +34,18 @@
                 <div class="border-t-2 border-slate-700">
                     <h3 class="font-heebo text-xl font-semibold py-2 text-center dark:text-white"><?= $data['nama']; ?></h3>
                     <p class="text-center"><i class="fa-solid fa-location-dot dark:text-white"></i><span class="ml-2 dark:text-white"><?php
-                                                                                                                                            $alamat = $data['alamat'];
-                                                                                                                                            $alamat = explode(" ", $alamat);
-                                                                                                                                            $alamat_split = [];
-                                                                                                                                            for ($i = 0; $i < 4; $i++) {
-                                                                                                                                                $alamat_split[] = $alamat[$i];
-                                                                                                                                            }
-                                                                                                                                            $view_alamat = implode(" ", $alamat_split);
-                                                                                                                                            if ($view_alamat[-1] == "," or $view_alamat[-1] == ".") {
-                                                                                                                                                substr($view_alamat, 0, strlen($view_alamat) - 1);
-                                                                                                                                            }
-                                                                                                                                            echo $view_alamat
-                                                                                                                                            ?></span></p>
+                                                                                                                                        $alamat = $data['alamat'];
+                                                                                                                                        $alamat = explode(" ", $alamat);
+                                                                                                                                        $alamat_split = [];
+                                                                                                                                        for ($i = 0; $i < 4; $i++) {
+                                                                                                                                            $alamat_split[] = $alamat[$i];
+                                                                                                                                        }
+                                                                                                                                        $view_alamat = implode(" ", $alamat_split);
+                                                                                                                                        if ($view_alamat[-1] == "," or $view_alamat[-1] == ".") {
+                                                                                                                                            substr($view_alamat, 0, strlen($view_alamat) - 1);
+                                                                                                                                        }
+                                                                                                                                        echo $view_alamat
+                                                                                                                                        ?></span></p>
                 </div>
             </div>
         <?php endforeach; ?>

@@ -3,7 +3,6 @@
 namespace App\Controllers\User;
 
 use App\Controllers\BaseController;
-use App\Models\JasaModel;
 use App\Models\KulinerModel;
 use App\Models\PenginapanModel;
 use Exception;

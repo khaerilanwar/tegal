@@ -2,10 +2,6 @@
 
 <?php $this->section('content'); ?>
 
-<?php
-var_dump($validation->getErrors());
-?>
-
 <div class="fixed top-0 left-0 right-0 bottom-0 bg-slate-300 -z-10 h-full w-full dark:hidden"></div>
 
 <section class="bg-slate-300 dark:bg-gray-900 md:my-24">

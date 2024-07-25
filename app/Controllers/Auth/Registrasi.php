@@ -137,7 +137,7 @@ class Registrasi extends BaseController
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
         $mail->Username = '12210952@bsi.ac.id';
-        $mail->Password = '2002';
+        $mail->Password = 'ubsi12210952';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port = 465;
         $mail->SMTPOptions = array(
